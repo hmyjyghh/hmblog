@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Step 1: DataFrame 和 to_csv 函数详解 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.4">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.b92e6d01.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.d98947a7.js" as="script"><link rel="preload" href="/hmblog/assets/js/3.ac02bfbd.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.ba4d6411.js" as="script"><link rel="preload" href="/hmblog/assets/js/118.88018068.js" as="script"><link rel="preload" href="/hmblog/assets/js/9.d5a05a45.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.07b66ac1.js"><link rel="prefetch" href="/hmblog/assets/js/100.3fc73df5.js"><link rel="prefetch" href="/hmblog/assets/js/101.64af12d6.js"><link rel="prefetch" href="/hmblog/assets/js/102.66135ce7.js"><link rel="prefetch" href="/hmblog/assets/js/103.56ea7b53.js"><link rel="prefetch" href="/hmblog/assets/js/104.ae3ba763.js"><link rel="prefetch" href="/hmblog/assets/js/105.c22c691a.js"><link rel="prefetch" href="/hmblog/assets/js/106.3c7811dd.js"><link rel="prefetch" href="/hmblog/assets/js/107.8c0b1d6f.js"><link rel="prefetch" href="/hmblog/assets/js/108.70fa098c.js"><link rel="prefetch" href="/hmblog/assets/js/109.733990ab.js"><link rel="prefetch" href="/hmblog/assets/js/11.91f5d141.js"><link rel="prefetch" href="/hmblog/assets/js/110.0ea8c799.js"><link rel="prefetch" href="/hmblog/assets/js/111.89828e13.js"><link rel="prefetch" href="/hmblog/assets/js/112.35113804.js"><link rel="prefetch" href="/hmblog/assets/js/113.2ed9b43b.js"><link rel="prefetch" href="/hmblog/assets/js/114.f6b30ed1.js"><link rel="prefetch" href="/hmblog/assets/js/115.a31caf4a.js"><link rel="prefetch" href="/hmblog/assets/js/116.0749629d.js"><link rel="prefetch" href="/hmblog/assets/js/117.bfc542c9.js"><link rel="prefetch" href="/hmblog/assets/js/119.310db11a.js"><link rel="prefetch" href="/hmblog/assets/js/12.2126dbf5.js"><link rel="prefetch" href="/hmblog/assets/js/120.1141dce4.js"><link rel="prefetch" href="/hmblog/assets/js/121.1494b9e8.js"><link rel="prefetch" href="/hmblog/assets/js/122.285059df.js"><link rel="prefetch" href="/hmblog/assets/js/123.c9c0740a.js"><link rel="prefetch" href="/hmblog/assets/js/124.d4272d3b.js"><link rel="prefetch" href="/hmblog/assets/js/125.c37947d7.js"><link rel="prefetch" href="/hmblog/assets/js/126.47ac89e8.js"><link rel="prefetch" href="/hmblog/assets/js/127.11cfb168.js"><link rel="prefetch" href="/hmblog/assets/js/128.6a3886f9.js"><link rel="prefetch" href="/hmblog/assets/js/129.6e6373aa.js"><link rel="prefetch" href="/hmblog/assets/js/13.c9ef1f8e.js"><link rel="prefetch" href="/hmblog/assets/js/130.b65efc1e.js"><link rel="prefetch" href="/hmblog/assets/js/131.a27b0677.js"><link rel="prefetch" href="/hmblog/assets/js/132.580d38e7.js"><link rel="prefetch" href="/hmblog/assets/js/133.99cf2230.js"><link rel="prefetch" href="/hmblog/assets/js/134.c4d0ce0b.js"><link rel="prefetch" href="/hmblog/assets/js/135.57e79868.js"><link rel="prefetch" href="/hmblog/assets/js/136.3b83d28b.js"><link rel="prefetch" href="/hmblog/assets/js/137.97cfdf8b.js"><link rel="prefetch" href="/hmblog/assets/js/138.72953b05.js"><link rel="prefetch" href="/hmblog/assets/js/139.14b4afa2.js"><link rel="prefetch" href="/hmblog/assets/js/14.2741cb43.js"><link rel="prefetch" href="/hmblog/assets/js/140.1aa21427.js"><link rel="prefetch" href="/hmblog/assets/js/141.4e510cd3.js"><link rel="prefetch" href="/hmblog/assets/js/142.adb40915.js"><link rel="prefetch" href="/hmblog/assets/js/143.fd7d6776.js"><link rel="prefetch" href="/hmblog/assets/js/144.01777b06.js"><link rel="prefetch" href="/hmblog/assets/js/145.8eb30e2d.js"><link rel="prefetch" href="/hmblog/assets/js/146.16904ec7.js"><link rel="prefetch" href="/hmblog/assets/js/147.dd42237c.js"><link rel="prefetch" href="/hmblog/assets/js/148.11bd2f09.js"><link rel="prefetch" href="/hmblog/assets/js/149.440b0d3c.js"><link rel="prefetch" href="/hmblog/assets/js/15.491bfa3e.js"><link rel="prefetch" href="/hmblog/assets/js/150.cc36fe5f.js"><link rel="prefetch" href="/hmblog/assets/js/16.eedcc008.js"><link rel="prefetch" href="/hmblog/assets/js/17.8380d8a3.js"><link rel="prefetch" href="/hmblog/assets/js/18.e6b6ee67.js"><link rel="prefetch" href="/hmblog/assets/js/19.127093b0.js"><link rel="prefetch" href="/hmblog/assets/js/20.13018e45.js"><link rel="prefetch" href="/hmblog/assets/js/21.89860b7c.js"><link rel="prefetch" href="/hmblog/assets/js/22.94430091.js"><link rel="prefetch" href="/hmblog/assets/js/23.51c0584a.js"><link rel="prefetch" href="/hmblog/assets/js/24.53f66321.js"><link rel="prefetch" href="/hmblog/assets/js/25.1b9960ef.js"><link rel="prefetch" href="/hmblog/assets/js/26.2ad4a545.js"><link rel="prefetch" href="/hmblog/assets/js/27.61f08265.js"><link rel="prefetch" href="/hmblog/assets/js/28.7d1ff35e.js"><link rel="prefetch" href="/hmblog/assets/js/29.6b22745a.js"><link rel="prefetch" href="/hmblog/assets/js/30.dbd2057a.js"><link rel="prefetch" href="/hmblog/assets/js/31.b6da7053.js"><link rel="prefetch" href="/hmblog/assets/js/32.e03872ce.js"><link rel="prefetch" href="/hmblog/assets/js/33.b7f362d2.js"><link rel="prefetch" href="/hmblog/assets/js/34.1169a1a5.js"><link rel="prefetch" href="/hmblog/assets/js/35.e5ea3f4f.js"><link rel="prefetch" href="/hmblog/assets/js/36.b302e5cf.js"><link rel="prefetch" href="/hmblog/assets/js/37.a776ac4e.js"><link rel="prefetch" href="/hmblog/assets/js/38.c42c5308.js"><link rel="prefetch" href="/hmblog/assets/js/39.2315e4ad.js"><link rel="prefetch" href="/hmblog/assets/js/4.e51e222a.js"><link rel="prefetch" href="/hmblog/assets/js/40.59a76a42.js"><link rel="prefetch" href="/hmblog/assets/js/41.92a92c71.js"><link rel="prefetch" href="/hmblog/assets/js/42.61ca43b4.js"><link rel="prefetch" href="/hmblog/assets/js/43.a8e42d68.js"><link rel="prefetch" href="/hmblog/assets/js/44.f827a38c.js"><link rel="prefetch" href="/hmblog/assets/js/45.b66d2400.js"><link rel="prefetch" href="/hmblog/assets/js/46.2e3e1c2c.js"><link rel="prefetch" href="/hmblog/assets/js/47.586c5420.js"><link rel="prefetch" href="/hmblog/assets/js/48.bbe7e84d.js"><link rel="prefetch" href="/hmblog/assets/js/49.1683c8c2.js"><link rel="prefetch" href="/hmblog/assets/js/5.60398f15.js"><link rel="prefetch" href="/hmblog/assets/js/50.fb57cd2d.js"><link rel="prefetch" href="/hmblog/assets/js/51.b582d8ea.js"><link rel="prefetch" href="/hmblog/assets/js/52.92359bad.js"><link rel="prefetch" href="/hmblog/assets/js/53.434c2729.js"><link rel="prefetch" href="/hmblog/assets/js/54.4855b577.js"><link rel="prefetch" href="/hmblog/assets/js/55.dba15bdb.js"><link rel="prefetch" href="/hmblog/assets/js/56.134930d5.js"><link rel="prefetch" href="/hmblog/assets/js/57.fd8efef4.js"><link rel="prefetch" href="/hmblog/assets/js/58.1a6910f8.js"><link rel="prefetch" href="/hmblog/assets/js/59.cec11d6b.js"><link rel="prefetch" href="/hmblog/assets/js/6.775d6c13.js"><link rel="prefetch" href="/hmblog/assets/js/60.4f17565c.js"><link rel="prefetch" href="/hmblog/assets/js/61.e11c97b6.js"><link rel="prefetch" href="/hmblog/assets/js/62.d0d8a8f8.js"><link rel="prefetch" href="/hmblog/assets/js/63.3a9f0dc8.js"><link rel="prefetch" href="/hmblog/assets/js/64.14d4c59c.js"><link rel="prefetch" href="/hmblog/assets/js/65.d29628d5.js"><link rel="prefetch" href="/hmblog/assets/js/66.77327c57.js"><link rel="prefetch" href="/hmblog/assets/js/67.e2b2575f.js"><link rel="prefetch" href="/hmblog/assets/js/68.b10a7b92.js"><link rel="prefetch" href="/hmblog/assets/js/69.646f2f43.js"><link rel="prefetch" href="/hmblog/assets/js/7.e91fdee2.js"><link rel="prefetch" href="/hmblog/assets/js/70.29584ec7.js"><link rel="prefetch" href="/hmblog/assets/js/71.de7e3007.js"><link rel="prefetch" href="/hmblog/assets/js/72.9cfea194.js"><link rel="prefetch" href="/hmblog/assets/js/73.74c9946b.js"><link rel="prefetch" href="/hmblog/assets/js/74.f8d240f9.js"><link rel="prefetch" href="/hmblog/assets/js/75.73cf14f9.js"><link rel="prefetch" href="/hmblog/assets/js/76.f8f7d7b5.js"><link rel="prefetch" href="/hmblog/assets/js/77.fa7d91e1.js"><link rel="prefetch" href="/hmblog/assets/js/78.a7ba0c6d.js"><link rel="prefetch" href="/hmblog/assets/js/79.723396c2.js"><link rel="prefetch" href="/hmblog/assets/js/8.968ba87b.js"><link rel="prefetch" href="/hmblog/assets/js/80.5dcac119.js"><link rel="prefetch" href="/hmblog/assets/js/81.bb90945f.js"><link rel="prefetch" href="/hmblog/assets/js/82.7eb130e3.js"><link rel="prefetch" href="/hmblog/assets/js/83.1778be9c.js"><link rel="prefetch" href="/hmblog/assets/js/84.8fb39d4e.js"><link rel="prefetch" href="/hmblog/assets/js/85.78ac88bd.js"><link rel="prefetch" href="/hmblog/assets/js/86.278d7285.js"><link rel="prefetch" href="/hmblog/assets/js/87.602c108d.js"><link rel="prefetch" href="/hmblog/assets/js/88.d12875c2.js"><link rel="prefetch" href="/hmblog/assets/js/89.fe6dacd2.js"><link rel="prefetch" href="/hmblog/assets/js/90.9dff9ce6.js"><link rel="prefetch" href="/hmblog/assets/js/91.450517df.js"><link rel="prefetch" href="/hmblog/assets/js/92.df0a8d8f.js"><link rel="prefetch" href="/hmblog/assets/js/93.b21a5e6b.js"><link rel="prefetch" href="/hmblog/assets/js/94.7d79ac06.js"><link rel="prefetch" href="/hmblog/assets/js/95.87c5459f.js"><link rel="prefetch" href="/hmblog/assets/js/96.297f9a5b.js"><link rel="prefetch" href="/hmblog/assets/js/97.4e40563e.js"><link rel="prefetch" href="/hmblog/assets/js/98.3a7b1c48.js"><link rel="prefetch" href="/hmblog/assets/js/99.449f1699.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.b92e6d01.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1c636796><div data-v-1c636796><div class="password-shadow password-wrapper-out" style="display:none;" data-v-2c3e9f55 data-v-1c636796 data-v-1c636796><h3 class="title" data-v-2c3e9f55>寒梦的博客</h3> <p class="description" data-v-2c3e9f55>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-2c3e9f55><input type="password" value="" data-v-2c3e9f55> <span data-v-2c3e9f55>Konck! Knock!</span> <button data-v-2c3e9f55>OK</button></label> <div class="footer" data-v-2c3e9f55><span data-v-2c3e9f55><i class="iconfont reco-theme" data-v-2c3e9f55></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-2c3e9f55>vuePress-theme-reco</a></span> <span data-v-2c3e9f55><i class="iconfont reco-copyright" data-v-2c3e9f55></i> <a data-v-2c3e9f55><span data-v-2c3e9f55>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-1c636796><header class="navbar" data-v-1c636796><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/data-structure.html" class="nav-link"><i class="undefined"></i>
+  Python 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/class.html" class="nav-link"><i class="undefined"></i>
+  Python 类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/module.html" class="nav-link"><i class="undefined"></i>
+  Python 模块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/package.html" class="nav-link"><i class="undefined"></i>
+  Python 包
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/exception.html" class="nav-link"><i class="undefined"></i>
+  Python 异常
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/file.html" class="nav-link"><i class="undefined"></i>
+  Python 文件操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/regex.html" class="nav-link"><i class="undefined"></i>
+  Python 正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/thread.html" class="nav-link"><i class="undefined"></i>
+  Python 多线程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/process.html" class="nav-link"><i class="undefined"></i>
+  Python 多进程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/network.html" class="nav-link"><i class="undefined"></i>
+  Python 网络编程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/database.html" class="nav-link"><i class="undefined"></i>
+  Python 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/technology-point.html" class="nav-link"><i class="undefined"></i>
+  Python 中技术点练习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-deploy.html" class="nav-link"><i class="undefined"></i>
+  大模型应用开发部署
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-code.html" class="nav-link"><i class="undefined"></i>
+  手撕Transformer 代码
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-knowledge.html" class="nav-link"><i class="undefined"></i>
+  理解Transformer 代码必看
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-related.html" class="nav-link"><i class="undefined"></i>
+  transformer 相关源码
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-transformer.html" class="nav-link"><i class="undefined"></i>
+  Transformers实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train.html" class="nav-link"><i class="undefined"></i>
+  Transformers实战2
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-code.html" class="nav-link"><i class="undefined"></i>
+  模型训练代码分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  Transformer 核心组件学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-question.html" class="nav-link"><i class="undefined"></i>
+  Transformer 论文精读中的常见问题
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-case.html" class="nav-link"><i class="undefined"></i>
+  大模型应用开发案例
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-summary.html" class="nav-link"><i class="undefined"></i>
+  大模型应用开发总结
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-question.html" class="nav-link"><i class="undefined"></i>
+  大模型应用常见问题
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/impl-transformer.html" class="nav-link"><i class="undefined"></i>
+  手撕Transformer
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-RNN.html" class="nav-link"><i class="undefined"></i>
+  RNN（循环神经网络）是什么？
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-evaluate.html" class="nav-link"><i class="undefined"></i>
+  大模型评估指标
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain.html" class="nav-link"><i class="undefined"></i>
+  Langchain 核心知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/extended-learning.html" class="nav-link"><i class="undefined"></i>
+  扩展学习知识
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/self-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling 自己练习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-fine-tuning.html" class="nav-link"><i class="undefined"></i>
+  模型微调需要的库或者方法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/lora-fine-tuning.html" class="nav-link"><i class="undefined"></i>
+  LoRA 微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  练习langchain prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/construct-dataset.html" class="nav-link"><i class="undefined"></i>
+  如何构造数据集
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/auto-model-desc.html" class="nav-link"><i class="undefined"></i>
+  加载模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/compute-metrics.html" class="nav-link"><i class="undefined"></i>
+  评估函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/ner-instruct-task.html" class="nav-link"><i class="undefined"></i>
+  NER 任务指令数据构造
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/deep-learning.html" class="nav-link"><i class="undefined"></i>
+  深度学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  第一个大模型项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/stage-four-chatbot.html" class="nav-link"><i class="undefined"></i>
+  阶段四实战作业
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/python.html" class="nav-link"><i class="undefined"></i>
+  python学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1c636796></div> <aside class="sidebar" data-v-1c636796><div class="personal-info-wrapper" data-v-6f92ba70 data-v-1c636796><!----> <h3 class="name" data-v-6f92ba70>
+    寒梦
+  </h3> <div class="num" data-v-6f92ba70><div data-v-6f92ba70><h3 data-v-6f92ba70>104</h3> <h6 data-v-6f92ba70>Articles</h6></div> <div data-v-6f92ba70><h3 data-v-6f92ba70>4</h3> <h6 data-v-6f92ba70>Tags</h6></div></div> <ul class="social-links" data-v-6f92ba70></ul> <hr data-v-6f92ba70></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/data-structure.html" class="nav-link"><i class="undefined"></i>
+  Python 数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/class.html" class="nav-link"><i class="undefined"></i>
+  Python 类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/module.html" class="nav-link"><i class="undefined"></i>
+  Python 模块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/package.html" class="nav-link"><i class="undefined"></i>
+  Python 包
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/exception.html" class="nav-link"><i class="undefined"></i>
+  Python 异常
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/file.html" class="nav-link"><i class="undefined"></i>
+  Python 文件操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/regex.html" class="nav-link"><i class="undefined"></i>
+  Python 正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/thread.html" class="nav-link"><i class="undefined"></i>
+  Python 多线程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/process.html" class="nav-link"><i class="undefined"></i>
+  Python 多进程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/network.html" class="nav-link"><i class="undefined"></i>
+  Python 网络编程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/database.html" class="nav-link"><i class="undefined"></i>
+  Python 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/technology-point.html" class="nav-link"><i class="undefined"></i>
+  Python 中技术点练习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-deploy.html" class="nav-link"><i class="undefined"></i>
+  大模型应用开发部署
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-code.html" class="nav-link"><i class="undefined"></i>
+  手撕Transformer 代码
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-knowledge.html" class="nav-link"><i class="undefined"></i>
+  理解Transformer 代码必看
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-related.html" class="nav-link"><i class="undefined"></i>
+  transformer 相关源码
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-transformer.html" class="nav-link"><i class="undefined"></i>
+  Transformers实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train.html" class="nav-link"><i class="undefined"></i>
+  Transformers实战2
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-code.html" class="nav-link"><i class="undefined"></i>
+  模型训练代码分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  Transformer 核心组件学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-question.html" class="nav-link"><i class="undefined"></i>
+  Transformer 论文精读中的常见问题
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-case.html" class="nav-link"><i class="undefined"></i>
+  大模型应用开发案例
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-summary.html" class="nav-link"><i class="undefined"></i>
+  大模型应用开发总结
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-question.html" class="nav-link"><i class="undefined"></i>
+  大模型应用常见问题
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/impl-transformer.html" class="nav-link"><i class="undefined"></i>
+  手撕Transformer
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-RNN.html" class="nav-link"><i class="undefined"></i>
+  RNN（循环神经网络）是什么？
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-evaluate.html" class="nav-link"><i class="undefined"></i>
+  大模型评估指标
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain.html" class="nav-link"><i class="undefined"></i>
+  Langchain 核心知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/extended-learning.html" class="nav-link"><i class="undefined"></i>
+  扩展学习知识
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/self-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling 自己练习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-fine-tuning.html" class="nav-link"><i class="undefined"></i>
+  模型微调需要的库或者方法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/lora-fine-tuning.html" class="nav-link"><i class="undefined"></i>
+  LoRA 微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  练习langchain prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/construct-dataset.html" class="nav-link"><i class="undefined"></i>
+  如何构造数据集
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/auto-model-desc.html" class="nav-link"><i class="undefined"></i>
+  加载模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/compute-metrics.html" class="nav-link"><i class="undefined"></i>
+  评估函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/ner-instruct-task.html" class="nav-link"><i class="undefined"></i>
+  NER 任务指令数据构造
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/deep-learning.html" class="nav-link"><i class="undefined"></i>
+  深度学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  第一个大模型项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/stage-four-chatbot.html" class="nav-link"><i class="undefined"></i>
+  阶段四实战作业
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/python.html" class="nav-link"><i class="undefined"></i>
+  python学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-2c3e9f55 data-v-1c636796><h3 class="title" data-v-2c3e9f55></h3> <!----> <label id="box" class="inputBox" data-v-2c3e9f55><input type="password" value="" data-v-2c3e9f55> <span data-v-2c3e9f55>Konck! Knock!</span> <button data-v-2c3e9f55>OK</button></label> <div class="footer" data-v-2c3e9f55><span data-v-2c3e9f55><i class="iconfont reco-theme" data-v-2c3e9f55></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-2c3e9f55>vuePress-theme-reco</a></span> <span data-v-2c3e9f55><i class="iconfont reco-copyright" data-v-2c3e9f55></i> <a data-v-2c3e9f55><span data-v-2c3e9f55>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-1c636796><div data-v-1c636796><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Step 1: DataFrame 和 to_csv 函数详解</h1> <div data-v-6acedb3b><i class="iconfont reco-account" data-v-6acedb3b><span data-v-6acedb3b>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="step-1-dataframe-和-to-csv-函数详解"><a href="#step-1-dataframe-和-to-csv-函数详解" class="header-anchor">#</a> Step 1: DataFrame 和 to_csv 函数详解</h2> <h3 id="dataframe-数据帧"><a href="#dataframe-数据帧" class="header-anchor">#</a> DataFrame（数据帧）</h3> <p><strong>DataFrame</strong> 是pandas库中最核心的数据结构，相当于一个二维的表格数据。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+
+<span class="token comment"># 创建DataFrame的几种方式</span>
+<span class="token comment"># 1. 从字典创建</span>
+data <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'姓名'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token string">'李四'</span><span class="token punctuation">,</span> <span class="token string">'王五'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">'年龄'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">'城市'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'北京'</span><span class="token punctuation">,</span> <span class="token string">'上海'</span><span class="token punctuation">,</span> <span class="token string">'广州'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+
+<span class="token comment"># 2. 从列表创建</span>
+data_list <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token string">'北京'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'李四'</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token string">'上海'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'王五'</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token string">'广州'</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span>
+df2 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data_list<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'姓名'</span><span class="token punctuation">,</span> <span class="token string">'年龄'</span><span class="token punctuation">,</span> <span class="token string">'城市'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># DataFrame的基本属性</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;形状: </span><span class="token interpolation"><span class="token punctuation">{</span>df<span class="token punctuation">.</span>shape<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>        <span class="token comment"># (3, 3)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;列名: </span><span class="token interpolation"><span class="token punctuation">{</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">.</span>tolist<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>  <span class="token comment"># ['姓名', '年龄', '城市']</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;索引: </span><span class="token interpolation"><span class="token punctuation">{</span>df<span class="token punctuation">.</span>index<span class="token punctuation">.</span>tolist<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>    <span class="token comment"># [0, 1, 2]</span>
+</code></pre></div><h3 id="to-csv-函数"><a href="#to-csv-函数" class="header-anchor">#</a> to_csv 函数</h3> <p><strong>to_csv()</strong> 用于将DataFrame保存为CSV文件：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 基本用法</span>
+df<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span><span class="token string">'data.csv'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 常用参数详解</span>
+df<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>
+    <span class="token string">'data.csv'</span><span class="token punctuation">,</span>           <span class="token comment"># 文件名</span>
+    index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>          <span class="token comment"># 不保存行索引</span>
+    header<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>          <span class="token comment"># 保存列名</span>
+    encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">,</span>     <span class="token comment"># 编码格式</span>
+    mode<span class="token operator">=</span><span class="token string">'w'</span><span class="token punctuation">,</span>             <span class="token comment"># 写入模式：'w'覆盖，'a'追加</span>
+    sep<span class="token operator">=</span><span class="token string">','</span><span class="token punctuation">,</span>              <span class="token comment"># 分隔符</span>
+    na_rep<span class="token operator">=</span><span class="token string">'NULL'</span>         <span class="token comment"># 缺失值替换</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 在你的代码中的应用</span>
+<span class="token keyword">def</span> <span class="token function">write</span><span class="token punctuation">(</span>rows<span class="token punctuation">,</span> header<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    df_new <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>rows<span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>rows<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    df_new<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>
+        file_name<span class="token punctuation">,</span> 
+        mode<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">,</span>         <span class="token comment"># 追加模式</span>
+        header<span class="token operator">=</span>header<span class="token punctuation">,</span>    <span class="token comment"># 只有第一次写入表头</span>
+        index<span class="token operator">=</span><span class="token boolean">False</span>       <span class="token comment"># 不保存行号</span>
+    <span class="token punctuation">)</span>
+</code></pre></div><hr> <h2 id="step-2-大模型应用开发中常用的pandas函数"><a href="#step-2-大模型应用开发中常用的pandas函数" class="header-anchor">#</a> Step 2: 大模型应用开发中常用的pandas函数</h2> <h3 id="_1-数据读取函数"><a href="#_1-数据读取函数" class="header-anchor">#</a> 1. 数据读取函数</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 读取各种格式数据</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'data.csv'</span><span class="token punctuation">)</span>           <span class="token comment"># CSV文件</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span><span class="token string">'data.json'</span><span class="token punctuation">)</span>         <span class="token comment"># JSON文件</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'data.xlsx'</span><span class="token punctuation">)</span>        <span class="token comment"># Excel文件</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_parquet<span class="token punctuation">(</span><span class="token string">'data.parquet'</span><span class="token punctuation">)</span>   <span class="token comment"># Parquet文件（高效）</span>
+</code></pre></div><h3 id="_2-数据探索函数"><a href="#_2-数据探索函数" class="header-anchor">#</a> 2. 数据探索函数</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 基本信息查看</span>
+df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>              <span class="token comment"># 前5行</span>
+df<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment"># 数据类型和内存信息</span>
+df<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment"># 数值列统计信息</span>
+df<span class="token punctuation">.</span>shape                <span class="token comment"># 数据形状</span>
+df<span class="token punctuation">.</span>columns              <span class="token comment"># 列名</span>
+
+<span class="token comment"># 数据统计</span>
+df<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment"># 平均值</span>
+df<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment"># 最大值</span>
+df<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 值计数</span>
+</code></pre></div><h3 id="_3-数据清洗函数"><a href="#_3-数据清洗函数" class="header-anchor">#</a> 3. 数据清洗函数</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 处理缺失值</span>
+df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span>             <span class="token comment"># 删除缺失值</span>
+df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>            <span class="token comment"># 填充缺失值</span>
+df<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment"># 统计每列缺失值数量</span>
+
+<span class="token comment"># 数据类型转换</span>
+df<span class="token punctuation">[</span><span class="token string">'timestamp'</span><span class="token punctuation">]</span> <span class="token operator">=</span> pd<span class="token punctuation">.</span>to_datetime<span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'timestamp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+df<span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token string">'category'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 去重和筛选</span>
+df<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># 去重</span>
+df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">0.8</span><span class="token punctuation">]</span>  <span class="token comment"># 条件筛选</span>
+</code></pre></div><h3 id="_4-数据处理函数"><a href="#_4-数据处理函数" class="header-anchor">#</a> 4. 数据处理函数</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 数据分组聚合（重要！）</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'category'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 按类别分组求平均分</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'user_id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string">'score'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'mean'</span><span class="token punctuation">,</span> <span class="token string">'max'</span><span class="token punctuation">,</span> <span class="token string">'count'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'text'</span><span class="token punctuation">:</span> <span class="token string">'count'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 数据排序</span>
+df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token string">'score'</span><span class="token punctuation">,</span> ascending<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment"># 按分数降序排列</span>
+
+<span class="token comment"># 数据合并</span>
+pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">]</span><span class="token punctuation">)</span>                    <span class="token comment"># 纵向合并</span>
+pd<span class="token punctuation">.</span>merge<span class="token punctuation">(</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">,</span> on<span class="token operator">=</span><span class="token string">'user_id'</span><span class="token punctuation">)</span>         <span class="token comment"># 横向合并</span>
+</code></pre></div><h3 id="_5-文本数据处理-大模型应用重点"><a href="#_5-文本数据处理-大模型应用重点" class="header-anchor">#</a> 5. 文本数据处理（大模型应用重点）</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 文本列操作</span>
+df<span class="token punctuation">[</span><span class="token string">'text_length'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment"># 文本长度</span>
+df<span class="token punctuation">[</span><span class="token string">'clean_text'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>          <span class="token comment"># 转小写</span>
+df<span class="token punctuation">[</span><span class="token string">'word_count'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 词数统计</span>
+df<span class="token punctuation">[</span><span class="token string">'contains_keyword'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span>contains<span class="token punctuation">(</span><span class="token string">'AI'</span><span class="token punctuation">)</span>  <span class="token comment"># 包含关键词</span>
+
+<span class="token comment"># 应用自定义函数（常用于大模型处理）</span>
+df<span class="token punctuation">[</span><span class="token string">'embedding'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>get_embedding<span class="token punctuation">)</span>  <span class="token comment"># 生成嵌入向量</span>
+df<span class="token punctuation">[</span><span class="token string">'sentiment'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>analyze_sentiment<span class="token punctuation">)</span>  <span class="token comment"># 情感分析</span>
+</code></pre></div><h3 id="_6-数据集划分"><a href="#_6-数据集划分" class="header-anchor">#</a> 6. 数据集划分</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 训练集测试集划分</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+train_df<span class="token punctuation">,</span> test_df <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>df<span class="token punctuation">,</span> test_size<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 按条件划分</span>
+train_df <span class="token operator">=</span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'split'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'train'</span><span class="token punctuation">]</span>
+test_df <span class="token operator">=</span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'split'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'test'</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="_7-批处理函数-处理大量数据"><a href="#_7-批处理函数-处理大量数据" class="header-anchor">#</a> 7. 批处理函数（处理大量数据）</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 分批处理大数据集</span>
+batch_size <span class="token operator">=</span> <span class="token number">1000</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">,</span> batch_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  batch_df <span class="token operator">=</span> df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i<span class="token operator">+</span>batch_size<span class="token punctuation">]</span>
+  process_batch<span class="token punctuation">(</span>batch_df<span class="token punctuation">)</span>  <span class="token comment"># 处理每个批次</span>
+
+<span class="token comment"># 使用迭代器</span>
+<span class="token keyword">for</span> chunk <span class="token keyword">in</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'large_file.csv'</span><span class="token punctuation">,</span> chunksize<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  process_chunk<span class="token punctuation">(</span>chunk<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_8-特征工程函数"><a href="#_8-特征工程函数" class="header-anchor">#</a> 8. 特征工程函数</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 创建时间特征</span>
+df<span class="token punctuation">[</span><span class="token string">'hour'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'timestamp'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>dt<span class="token punctuation">.</span>hour
+df<span class="token punctuation">[</span><span class="token string">'day_of_week'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'timestamp'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>dt<span class="token punctuation">.</span>dayofweek
+
+<span class="token comment"># 独热编码</span>
+df_encoded <span class="token operator">=</span> pd<span class="token punctuation">.</span>get_dummies<span class="token punctuation">(</span>df<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 数据标准化</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> StandardScaler
+df<span class="token punctuation">[</span><span class="token string">'score_normalized'</span><span class="token punctuation">]</span> <span class="token operator">=</span> StandardScaler<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><p>这些函数在大模型应用开发中非常实用，特别是在数据预处理、特征工程和结果分析阶段。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-7115df4a data-v-1c636796><li class="level-2" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#step-1-dataframe-和-to-csv-函数详解" class="sidebar-link reco-side-step-1-dataframe-和-to-csv-函数详解" data-v-7115df4a>Step 1: DataFrame 和 to_csv 函数详解</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#dataframe-数据帧" class="sidebar-link reco-side-dataframe-数据帧" data-v-7115df4a>DataFrame（数据帧）</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#to-csv-函数" class="sidebar-link reco-side-to-csv-函数" data-v-7115df4a>to_csv 函数</a></li><li class="level-2" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#step-2-大模型应用开发中常用的pandas函数" class="sidebar-link reco-side-step-2-大模型应用开发中常用的pandas函数" data-v-7115df4a>Step 2: 大模型应用开发中常用的pandas函数</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_1-数据读取函数" class="sidebar-link reco-side-_1-数据读取函数" data-v-7115df4a>1. 数据读取函数</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_2-数据探索函数" class="sidebar-link reco-side-_2-数据探索函数" data-v-7115df4a>2. 数据探索函数</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_3-数据清洗函数" class="sidebar-link reco-side-_3-数据清洗函数" data-v-7115df4a>3. 数据清洗函数</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_4-数据处理函数" class="sidebar-link reco-side-_4-数据处理函数" data-v-7115df4a>4. 数据处理函数</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_5-文本数据处理-大模型应用重点" class="sidebar-link reco-side-_5-文本数据处理-大模型应用重点" data-v-7115df4a>5. 文本数据处理（大模型应用重点）</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_6-数据集划分" class="sidebar-link reco-side-_6-数据集划分" data-v-7115df4a>6. 数据集划分</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_7-批处理函数-处理大量数据" class="sidebar-link reco-side-_7-批处理函数-处理大量数据" data-v-7115df4a>7. 批处理函数（处理大量数据）</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/pystudy/pandas-study.html#_8-特征工程函数" class="sidebar-link reco-side-_8-特征工程函数" data-v-7115df4a>8. 特征工程函数</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-65133105 data-v-65133105><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-65133105><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-65133105></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-65133105></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.d98947a7.js" defer></script><script src="/hmblog/assets/js/3.ac02bfbd.js" defer></script><script src="/hmblog/assets/js/1.ba4d6411.js" defer></script><script src="/hmblog/assets/js/118.88018068.js" defer></script><script src="/hmblog/assets/js/9.d5a05a45.js" defer></script>
+  </body>
+</html>
