@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>大模型评估指标 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.252ae38c.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/96.8d479f68.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.5613e6ba.js"><link rel="prefetch" href="/hmblog/assets/js/101.b8eb0459.js"><link rel="prefetch" href="/hmblog/assets/js/102.40868c51.js"><link rel="prefetch" href="/hmblog/assets/js/103.1f40d097.js"><link rel="prefetch" href="/hmblog/assets/js/104.4e73c56a.js"><link rel="prefetch" href="/hmblog/assets/js/105.cb525ef5.js"><link rel="prefetch" href="/hmblog/assets/js/106.252f49ca.js"><link rel="prefetch" href="/hmblog/assets/js/107.91d170e8.js"><link rel="prefetch" href="/hmblog/assets/js/108.8a514186.js"><link rel="prefetch" href="/hmblog/assets/js/109.f15844d7.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.a0e27b36.js"><link rel="prefetch" href="/hmblog/assets/js/111.1c542559.js"><link rel="prefetch" href="/hmblog/assets/js/112.5fa57e84.js"><link rel="prefetch" href="/hmblog/assets/js/113.bfbfcd5a.js"><link rel="prefetch" href="/hmblog/assets/js/114.2e526e4d.js"><link rel="prefetch" href="/hmblog/assets/js/115.221e2f65.js"><link rel="prefetch" href="/hmblog/assets/js/116.a7726179.js"><link rel="prefetch" href="/hmblog/assets/js/117.22075f73.js"><link rel="prefetch" href="/hmblog/assets/js/118.459f31e3.js"><link rel="prefetch" href="/hmblog/assets/js/119.f7a33a09.js"><link rel="prefetch" href="/hmblog/assets/js/120.8b58a340.js"><link rel="prefetch" href="/hmblog/assets/js/121.277e1f1e.js"><link rel="prefetch" href="/hmblog/assets/js/122.ec3ae934.js"><link rel="prefetch" href="/hmblog/assets/js/123.514ade54.js"><link rel="prefetch" href="/hmblog/assets/js/124.6b6c2b7d.js"><link rel="prefetch" href="/hmblog/assets/js/125.a7fb1fbe.js"><link rel="prefetch" href="/hmblog/assets/js/126.b5ef252a.js"><link rel="prefetch" href="/hmblog/assets/js/127.d8121d6d.js"><link rel="prefetch" href="/hmblog/assets/js/128.40963707.js"><link rel="prefetch" href="/hmblog/assets/js/129.bf256481.js"><link rel="prefetch" href="/hmblog/assets/js/130.0031ec91.js"><link rel="prefetch" href="/hmblog/assets/js/131.4fe99cc5.js"><link rel="prefetch" href="/hmblog/assets/js/132.fcf1a74b.js"><link rel="prefetch" href="/hmblog/assets/js/133.ff8e24a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.db2d31f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b152d9b0.js"><link rel="prefetch" href="/hmblog/assets/js/136.936be57e.js"><link rel="prefetch" href="/hmblog/assets/js/137.48f9d2b5.js"><link rel="prefetch" href="/hmblog/assets/js/138.3bdb70b7.js"><link rel="prefetch" href="/hmblog/assets/js/139.2c511f09.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.5f00d305.js"><link rel="prefetch" href="/hmblog/assets/js/141.41c9f925.js"><link rel="prefetch" href="/hmblog/assets/js/142.b37e8f1d.js"><link rel="prefetch" href="/hmblog/assets/js/143.20c71a9e.js"><link rel="prefetch" href="/hmblog/assets/js/144.17cece65.js"><link rel="prefetch" href="/hmblog/assets/js/145.978e7516.js"><link rel="prefetch" href="/hmblog/assets/js/146.94bdfed5.js"><link rel="prefetch" href="/hmblog/assets/js/147.f9c95b0c.js"><link rel="prefetch" href="/hmblog/assets/js/148.355cbcf5.js"><link rel="prefetch" href="/hmblog/assets/js/149.b1e46aaf.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.b5a35472.js"><link rel="prefetch" href="/hmblog/assets/js/151.d309c32e.js"><link rel="prefetch" href="/hmblog/assets/js/152.fb9a950d.js"><link rel="prefetch" href="/hmblog/assets/js/153.c231397c.js"><link rel="prefetch" href="/hmblog/assets/js/154.2c76a2e9.js"><link rel="prefetch" href="/hmblog/assets/js/155.ad43ee17.js"><link rel="prefetch" href="/hmblog/assets/js/156.b0fe3a29.js"><link rel="prefetch" href="/hmblog/assets/js/157.d085315f.js"><link rel="prefetch" href="/hmblog/assets/js/158.9f11fbf4.js"><link rel="prefetch" href="/hmblog/assets/js/159.178d8a8a.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.e6a3b7e3.js"><link rel="prefetch" href="/hmblog/assets/js/161.b897eab6.js"><link rel="prefetch" href="/hmblog/assets/js/162.54114dbe.js"><link rel="prefetch" href="/hmblog/assets/js/163.156fce2c.js"><link rel="prefetch" href="/hmblog/assets/js/164.e44a107d.js"><link rel="prefetch" href="/hmblog/assets/js/165.50843d9b.js"><link rel="prefetch" href="/hmblog/assets/js/166.51cc166e.js"><link rel="prefetch" href="/hmblog/assets/js/167.1e241fd0.js"><link rel="prefetch" href="/hmblog/assets/js/168.1f0c33e5.js"><link rel="prefetch" href="/hmblog/assets/js/169.62546341.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.3e1d4983.js"><link rel="prefetch" href="/hmblog/assets/js/171.5975c042.js"><link rel="prefetch" href="/hmblog/assets/js/172.a172fe4f.js"><link rel="prefetch" href="/hmblog/assets/js/173.b7f30ce1.js"><link rel="prefetch" href="/hmblog/assets/js/174.cf213ee7.js"><link rel="prefetch" href="/hmblog/assets/js/175.fead80ee.js"><link rel="prefetch" href="/hmblog/assets/js/176.d8597cdf.js"><link rel="prefetch" href="/hmblog/assets/js/177.72596ae1.js"><link rel="prefetch" href="/hmblog/assets/js/178.d0c48b18.js"><link rel="prefetch" href="/hmblog/assets/js/179.d5c444fc.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.2f29e719.js"><link rel="prefetch" href="/hmblog/assets/js/181.bb359567.js"><link rel="prefetch" href="/hmblog/assets/js/182.e140022f.js"><link rel="prefetch" href="/hmblog/assets/js/183.88c88131.js"><link rel="prefetch" href="/hmblog/assets/js/184.7dafb863.js"><link rel="prefetch" href="/hmblog/assets/js/185.6ee6fee4.js"><link rel="prefetch" href="/hmblog/assets/js/186.a58d3091.js"><link rel="prefetch" href="/hmblog/assets/js/187.06e4ac29.js"><link rel="prefetch" href="/hmblog/assets/js/188.4f58b234.js"><link rel="prefetch" href="/hmblog/assets/js/189.b7fcaad5.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.1ee24f3f.js"><link rel="prefetch" href="/hmblog/assets/js/191.71d1ed44.js"><link rel="prefetch" href="/hmblog/assets/js/192.8e13dbd5.js"><link rel="prefetch" href="/hmblog/assets/js/193.6ffdbe3c.js"><link rel="prefetch" href="/hmblog/assets/js/194.f3092777.js"><link rel="prefetch" href="/hmblog/assets/js/195.61518c26.js"><link rel="prefetch" href="/hmblog/assets/js/196.4749bfe4.js"><link rel="prefetch" href="/hmblog/assets/js/197.02f293f5.js"><link rel="prefetch" href="/hmblog/assets/js/198.66d067f8.js"><link rel="prefetch" href="/hmblog/assets/js/199.e713626b.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.a0428ce1.js"><link rel="prefetch" href="/hmblog/assets/js/201.10f94064.js"><link rel="prefetch" href="/hmblog/assets/js/202.85104aab.js"><link rel="prefetch" href="/hmblog/assets/js/203.610baaad.js"><link rel="prefetch" href="/hmblog/assets/js/204.d7a56285.js"><link rel="prefetch" href="/hmblog/assets/js/205.e9c3d532.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.b6871f20.js"><link rel="prefetch" href="/hmblog/assets/js/41.b9269303.js"><link rel="prefetch" href="/hmblog/assets/js/42.e8164e0c.js"><link rel="prefetch" href="/hmblog/assets/js/43.70ef46e5.js"><link rel="prefetch" href="/hmblog/assets/js/44.9331e0b2.js"><link rel="prefetch" href="/hmblog/assets/js/45.5feef070.js"><link rel="prefetch" href="/hmblog/assets/js/46.cbe15db5.js"><link rel="prefetch" href="/hmblog/assets/js/47.13b797de.js"><link rel="prefetch" href="/hmblog/assets/js/48.7030d96f.js"><link rel="prefetch" href="/hmblog/assets/js/49.21360ca4.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.2278b4f1.js"><link rel="prefetch" href="/hmblog/assets/js/51.dfcce7fa.js"><link rel="prefetch" href="/hmblog/assets/js/52.411e6b71.js"><link rel="prefetch" href="/hmblog/assets/js/53.9f14e863.js"><link rel="prefetch" href="/hmblog/assets/js/54.ae21c7a9.js"><link rel="prefetch" href="/hmblog/assets/js/55.0b0dbecf.js"><link rel="prefetch" href="/hmblog/assets/js/56.2b3b9c9e.js"><link rel="prefetch" href="/hmblog/assets/js/57.eb5c4857.js"><link rel="prefetch" href="/hmblog/assets/js/58.5bb642a4.js"><link rel="prefetch" href="/hmblog/assets/js/59.310d4748.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.43f50fd6.js"><link rel="prefetch" href="/hmblog/assets/js/61.bf7359ad.js"><link rel="prefetch" href="/hmblog/assets/js/62.bbc1a63f.js"><link rel="prefetch" href="/hmblog/assets/js/63.4f514386.js"><link rel="prefetch" href="/hmblog/assets/js/64.75891b13.js"><link rel="prefetch" href="/hmblog/assets/js/65.c594c5f0.js"><link rel="prefetch" href="/hmblog/assets/js/66.3b2e8434.js"><link rel="prefetch" href="/hmblog/assets/js/67.d21dd018.js"><link rel="prefetch" href="/hmblog/assets/js/68.3a1952eb.js"><link rel="prefetch" href="/hmblog/assets/js/69.4a9f3de5.js"><link rel="prefetch" href="/hmblog/assets/js/70.79851ca4.js"><link rel="prefetch" href="/hmblog/assets/js/71.6b0dd684.js"><link rel="prefetch" href="/hmblog/assets/js/72.194abe8d.js"><link rel="prefetch" href="/hmblog/assets/js/73.57d7aacb.js"><link rel="prefetch" href="/hmblog/assets/js/74.21d325f3.js"><link rel="prefetch" href="/hmblog/assets/js/75.5db4d81f.js"><link rel="prefetch" href="/hmblog/assets/js/76.f614fd28.js"><link rel="prefetch" href="/hmblog/assets/js/77.5fb8fe74.js"><link rel="prefetch" href="/hmblog/assets/js/78.cbf908d6.js"><link rel="prefetch" href="/hmblog/assets/js/79.16b13beb.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.b7f99985.js"><link rel="prefetch" href="/hmblog/assets/js/81.c5c33a8c.js"><link rel="prefetch" href="/hmblog/assets/js/82.1bb32711.js"><link rel="prefetch" href="/hmblog/assets/js/83.0126cbfc.js"><link rel="prefetch" href="/hmblog/assets/js/84.bf184586.js"><link rel="prefetch" href="/hmblog/assets/js/85.ed882d02.js"><link rel="prefetch" href="/hmblog/assets/js/86.00a6c023.js"><link rel="prefetch" href="/hmblog/assets/js/87.19ec978b.js"><link rel="prefetch" href="/hmblog/assets/js/88.da0b0fce.js"><link rel="prefetch" href="/hmblog/assets/js/89.1b3f0dc7.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.5b446b43.js"><link rel="prefetch" href="/hmblog/assets/js/91.b7568648.js"><link rel="prefetch" href="/hmblog/assets/js/92.41c96c2a.js"><link rel="prefetch" href="/hmblog/assets/js/93.c88897c2.js"><link rel="prefetch" href="/hmblog/assets/js/94.1b8ca6ee.js"><link rel="prefetch" href="/hmblog/assets/js/95.ad838784.js"><link rel="prefetch" href="/hmblog/assets/js/97.50826eb1.js"><link rel="prefetch" href="/hmblog/assets/js/98.bdb338cb.js"><link rel="prefetch" href="/hmblog/assets/js/99.4842effa.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/rag-question-compare.html" class="nav-link"><i class="undefined"></i>
+  临时
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>129</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/rag-question-compare.html" class="nav-link"><i class="undefined"></i>
+  临时
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">大模型评估指标</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="大模型评估指标"><a href="#大模型评估指标" class="header-anchor">#</a> 大模型评估指标</h1> <h2 id="evaluate"><a href="#evaluate" class="header-anchor">#</a> Evaluate</h2> <ul><li>evaluate 库是一个非常简单易用的机器学习模型评估函数库,</li> <li>只需要一行代码便可以加载各种任务的评估函数</li></ul> <h3 id="_1-加载评估函数"><a href="#_1-加载评估函数" class="header-anchor">#</a> 1. 加载评估函数</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> evaluate
+
+accuracy <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">)</span>
+precision <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;precision&quot;</span><span class="token punctuation">)</span>
+recall <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;recall&quot;</span><span class="token punctuation">)</span>
+f1 <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;f1&quot;</span><span class="token punctuation">)</span>
+roc_auc <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;roc_auc&quot;</span><span class="token punctuation">)</span>
+log_loss <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;log_loss&quot;</span><span class="token punctuation">)</span>
+auc <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;auc&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><ol><li>accuracy(准确率)</li> <li>precision(精确率)</li> <li>recall(召回率)</li> <li>f1-score(f1 值)</li> <li>roc-auc(ROC 曲线下的面积)</li> <li>log-loss(对数损失)</li></ol> <ul><li>常用的 2 个参数
+<ol><li>predictions(预测值)</li> <li>reference(参考值)</li></ol></li></ul> <h2 id="拿到评估指标数据后-做一个可视化"><a href="#拿到评估指标数据后-做一个可视化" class="header-anchor">#</a> 拿到评估指标数据后，做一个可视化</h2> <ul><li>用 matplotlib 做一个可视化 图表</li> <li>用 seaborn 做一个可视化 图表</li> <li>from evaluate.visualization import radar_plot, 目前只支持雷达图</li></ul> <h3 id="别人做的笔记"><a href="#别人做的笔记" class="header-anchor">#</a> 别人做的笔记</h3> <p>Evaluate 基本用法：</p> <p>常见评估指标示例：</p> <ul><li>accuracy：准确率，计算预测正确的比例。</li> <li>f1：F1 分数，精确率和召回率的调和平均。</li> <li>precision：精确率。</li> <li>recall：召回率。</li> <li>bleu：用于机器翻译的 BLEU 分数。</li> <li>rouge：用于摘要和生成的 ROUGE 分数。</li> <li>meteor：METEOR 分数，用于翻译评估。</li> <li>bertscore：基于 BERT 的语义相似度分数。</li> <li>perplexity：困惑度，用于语言模型。</li> <li>squad：用于问答的 SQuAD 评估。</li> <li>glue：GLUE 基准的多种子指标（如 MRPC 的 F1 等）。</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 导包</span>
+
+<span class="token keyword">import</span> os
+
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'HF_ENDPOINT'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'https://hf-mirror.com'</span>
+
+<span class="token keyword">import</span> evaluate
+
+
+
+<span class="token comment"># 加载评估函数</span>
+
+accuracy <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">)</span>
+
+
+
+<span class="token comment"># 使用评估函数</span>
+
+results <span class="token operator">=</span> accuracy<span class="token punctuation">.</span>compute<span class="token punctuation">(</span>references<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> predictions<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+
+<span class="token comment"># 迭代计算，不完全拼起来算</span>
+
+<span class="token keyword">for</span> ref<span class="token punctuation">,</span> pred <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># (0,1), (1,0), (0,0), (1,1)</span>
+
+    accuracy<span class="token punctuation">.</span>add<span class="token punctuation">(</span>references<span class="token operator">=</span>ref<span class="token punctuation">,</span> predictions<span class="token operator">=</span>pred<span class="token punctuation">)</span>
+
+accuracy<span class="token punctuation">.</span>compute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+
+<span class="token keyword">for</span> refs<span class="token punctuation">,</span> preds <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ((0,1), (1,0)), ((0,0), (1,1))</span>
+
+    accuracy<span class="token punctuation">.</span>add_batch<span class="token punctuation">(</span>references<span class="token operator">=</span>refs<span class="token punctuation">,</span> predictions<span class="token operator">=</span>preds<span class="token punctuation">)</span>
+
+accuracy<span class="token punctuation">.</span>compute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+
+<span class="token comment"># 同时使用多个evaluate指标</span>
+
+clf_metrics <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>combine<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;f1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;recall&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;precision&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+clf_metrics<span class="token punctuation">.</span>compute<span class="token punctuation">(</span>predictions<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> references<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+
+<span class="token comment"># 评估结果可视化</span>
+
+<span class="token keyword">from</span> evaluate<span class="token punctuation">.</span>visualization <span class="token keyword">import</span> radar_plot   <span class="token comment"># 目前只支持雷达图</span>
+
+data <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">:</span> <span class="token number">0.99</span><span class="token punctuation">,</span> <span class="token string">&quot;precision&quot;</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token string">&quot;f1&quot;</span><span class="token punctuation">:</span> <span class="token number">0.95</span><span class="token punctuation">,</span> <span class="token string">&quot;latency_in_seconds&quot;</span><span class="token punctuation">:</span> <span class="token number">33.6</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">:</span> <span class="token number">0.98</span><span class="token punctuation">,</span> <span class="token string">&quot;precision&quot;</span><span class="token punctuation">:</span> <span class="token number">0.87</span><span class="token punctuation">,</span> <span class="token string">&quot;f1&quot;</span><span class="token punctuation">:</span> <span class="token number">0.91</span><span class="token punctuation">,</span> <span class="token string">&quot;latency_in_seconds&quot;</span><span class="token punctuation">:</span> <span class="token number">11.2</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">:</span> <span class="token number">0.98</span><span class="token punctuation">,</span> <span class="token string">&quot;precision&quot;</span><span class="token punctuation">:</span> <span class="token number">0.78</span><span class="token punctuation">,</span> <span class="token string">&quot;f1&quot;</span><span class="token punctuation">:</span> <span class="token number">0.88</span><span class="token punctuation">,</span> <span class="token string">&quot;latency_in_seconds&quot;</span><span class="token punctuation">:</span> <span class="token number">87.6</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">:</span> <span class="token number">0.88</span><span class="token punctuation">,</span> <span class="token string">&quot;precision&quot;</span><span class="token punctuation">:</span> <span class="token number">0.78</span><span class="token punctuation">,</span> <span class="token string">&quot;f1&quot;</span><span class="token punctuation">:</span> <span class="token number">0.81</span><span class="token punctuation">,</span> <span class="token string">&quot;latency_in_seconds&quot;</span><span class="token punctuation">:</span> <span class="token number">101.6</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+
+
+model_names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Model 1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Model 2&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Model 3&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Model 4&quot;</span><span class="token punctuation">]</span>
+
+
+
+plot <span class="token operator">=</span> radar_plot<span class="token punctuation">(</span>data<span class="token operator">=</span>data<span class="token punctuation">,</span> model_names<span class="token operator">=</span>model_names<span class="token punctuation">)</span>
+</code></pre></div><h3 id="f1-这个指标-参数使用"><a href="#f1-这个指标-参数使用" class="header-anchor">#</a> f1 这个指标-参数使用</h3> <div class="language-py extra-class"><pre class="language-py"><code>f1 <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;f1&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>参数详情</li></ul> <div class="language-Text extra-class"><pre class="language-text"><code>EvaluationModule(name: &quot;f1&quot;, module_type: &quot;metric&quot;, features: {'predictions': Value('int32'), 'references': Value('int32')}, usage: &quot;&quot;&quot;
+Args:
+    predictions (`list` of `int`): Predicted labels.
+    references (`list` of `int`): Ground truth labels.
+    labels (`list` of `int`): The set of labels to include when `average` is not set to `'binary'`, and the order of the labels if `average` is `None`. Labels present in the data can be excluded, for example to calculate a multiclass average ignoring a majority negative class. Labels not present in the data will result in 0 components in a macro average. For multilabel targets, labels are column indices. By default, all labels in `predictions` and `references` are used in sorted order. Defaults to None.
+    pos_label (`int`): The class to be considered the positive class, in the case where `average` is set to `binary`. Defaults to 1.
+    average (`string`): This parameter is required for multiclass/multilabel targets. If set to `None`, the scores for each class are returned. Otherwise, this determines the type of averaging performed on the data. Defaults to `'binary'`.
+
+        - 'binary': Only report results for the class specified by `pos_label`. This is applicable only if the classes found in `predictions` and `references` are binary.
+        - 'micro': Calculate metrics globally by counting the total true positives, false negatives and false positives.
+        - 'macro': Calculate metrics for each label, and find their unweighted mean. This does not take label imbalance into account.
+        - 'weighted': Calculate metrics for each label, and find their average weighted by support (the number of true instances for each label). This alters `'macro'` to account for label imbalance. This option can result in an F-score that is not between precision and recall.
+        - 'samples': Calculate metrics for each instance, and find their average (only meaningful for multilabel classification).
+    sample_weight (`list` of `float`): Sample weights Defaults to None.
+
+Returns:
+    f1 (`float` or `array` of `float`): F1 score or list of f1 scores, depending on the value passed to `average`. Minimum possible value is 0. Maximum possible value is 1. Higher f1 scores are better.
+
+Examples:
+
+    Example 1-A simple binary example
+        &gt;&gt;&gt; f1_metric = evaluate.load(&quot;f1&quot;)
+        &gt;&gt;&gt; results = f1_metric.compute(references=[0, 1, 0, 1, 0], predictions=[0, 0, 1, 1, 0])
+        &gt;&gt;&gt; print(results)
+        {'f1': 0.5}
+
+    Example 2-The same simple binary example as in Example 1, but with `pos_label` set to `0`.
+        &gt;&gt;&gt; f1_metric = evaluate.load(&quot;f1&quot;)
+        &gt;&gt;&gt; results = f1_metric.compute(references=[0, 1, 0, 1, 0], predictions=[0, 0, 1, 1, 0], pos_label=0)
+        &gt;&gt;&gt; print(round(results['f1'], 2))
+        0.67
+
+    Example 3-The same simple binary example as in Example 1, but with `sample_weight` included.
+        &gt;&gt;&gt; f1_metric = evaluate.load(&quot;f1&quot;)
+        &gt;&gt;&gt; results = f1_metric.compute(references=[0, 1, 0, 1, 0], predictions=[0, 0, 1, 1, 0], sample_weight=[0.9, 0.5, 3.9, 1.2, 0.3])
+        &gt;&gt;&gt; print(round(results['f1'], 2))
+        0.35
+
+    Example 4-A multiclass example, with different values for the `average` input.
+        &gt;&gt;&gt; predictions = [0, 2, 1, 0, 0, 1]
+        &gt;&gt;&gt; references = [0, 1, 2, 0, 1, 2]
+        &gt;&gt;&gt; results = f1_metric.compute(predictions=predictions, references=references, average=&quot;macro&quot;)
+        &gt;&gt;&gt; print(round(results['f1'], 2))
+        0.27
+        &gt;&gt;&gt; results = f1_metric.compute(predictions=predictions, references=references, average=&quot;micro&quot;)
+        &gt;&gt;&gt; print(round(results['f1'], 2))
+        0.33
+        &gt;&gt;&gt; results = f1_metric.compute(predictions=predictions, references=references, average=&quot;weighted&quot;)
+        &gt;&gt;&gt; print(round(results['f1'], 2))
+        0.27
+        &gt;&gt;&gt; results = f1_metric.compute(predictions=predictions, references=references, average=None)
+        &gt;&gt;&gt; print(results)
+        {'f1': array([0.8, 0. , 0. ])}
+
+    Example 5-A multi-label example
+        &gt;&gt;&gt; f1_metric = evaluate.load(&quot;f1&quot;, &quot;multilabel&quot;)
+        &gt;&gt;&gt; results = f1_metric.compute(predictions=[[0, 1, 1], [1, 1, 0]], references=[[0, 1, 1], [0, 1, 0]], average=&quot;macro&quot;)
+        &gt;&gt;&gt; print(round(results['f1'], 2))
+        0.67
+&quot;&quot;&quot;, stored examples: 0)
+</code></pre></div><h3 id="使用场景"><a href="#使用场景" class="header-anchor">#</a> 使用场景</h3> <h4 id="场景一"><a href="#场景一" class="header-anchor">#</a> 场景一:</h4> <ul><li>全局计算</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>accuracy <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">)</span>
+results <span class="token operator">=</span> accuracy<span class="token punctuation">.</span>compute<span class="token punctuation">(</span>references<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> predictions<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+results
+</code></pre></div><h4 id="场景二-评估指标计算-迭代计算"><a href="#场景二-评估指标计算-迭代计算" class="header-anchor">#</a> 场景二: 评估指标计算--迭代计算</h4> <ul><li>需要预测一个batch 的结果</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>accuracy <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> ref<span class="token punctuation">,</span> pred <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    accuracy<span class="token punctuation">.</span>add<span class="token punctuation">(</span>references<span class="token operator">=</span>ref<span class="token punctuation">,</span> predictions<span class="token operator">=</span>pred<span class="token punctuation">)</span>
+accuracy<span class="token punctuation">.</span>compute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 输出结果: {'accuracy': 0.5}</span>
+</code></pre></div><ul><li>数据格式不一样</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>accuracy <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> refs<span class="token punctuation">,</span> preds <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    accuracy<span class="token punctuation">.</span>add_batch<span class="token punctuation">(</span>references<span class="token operator">=</span>refs<span class="token punctuation">,</span> predictions<span class="token operator">=</span>preds<span class="token punctuation">)</span>
+accuracy<span class="token punctuation">.</span>compute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 输出结果: {'accuracy': 0.5}</span>
+</code></pre></div><h4 id="场景四-多个评估指标计算"><a href="#场景四-多个评估指标计算" class="header-anchor">#</a> 场景四: 多个评估指标计算</h4> <div class="language-py extra-class"><pre class="language-py"><code>clf_metrics <span class="token operator">=</span> evaluate<span class="token punctuation">.</span>combine<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;accuracy&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;f1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;recall&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;precision&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+clf_metrics
+
+
+clf_metrics<span class="token punctuation">.</span>compute<span class="token punctuation">(</span>predictions<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> references<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">{</span>
+  <span class="token string">'accuracy'</span><span class="token punctuation">:</span> <span class="token number">0.6666666666666666</span><span class="token punctuation">,</span>
+  <span class="token string">'f1'</span><span class="token punctuation">:</span> <span class="token number">0.6666666666666666</span><span class="token punctuation">,</span>
+  <span class="token string">'recall'</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+  <span class="token string">'precision'</span><span class="token punctuation">:</span> <span class="token number">1.0</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="评估结果可视化"><a href="#评估结果可视化" class="header-anchor">#</a> 评估结果可视化</h3> <ul><li>用 matplotlib 做一个可视化 图表</li> <li>用 seaborn 做一个可视化 图表</li></ul> <h2 id="评估指标汇总"><a href="#评估指标汇总" class="header-anchor">#</a> 评估指标汇总</h2> <h3 id="一、端到端评测-end-to-end-evaluation-的核心定义"><a href="#一、端到端评测-end-to-end-evaluation-的核心定义" class="header-anchor">#</a> 一、端到端评测（End-to-End Evaluation）的核心定义</h3> <p>在Agent多轮对话系统中，<strong>端到端评测</strong> 是跳过中间模块（如意图识别、槽位填充、知识库检索等）的单独评测，直接从「用户输入（多轮对话上下文）」到「Agent最终回复」的全链路效果评估。核心是模拟真实用户使用场景，评估系统整体解决问题的能力，而非单个模块的性能。</p> <p>简单来说：</p> <ul><li>模块化评测：只测「意图识别准不准」「槽位提取对不对」；</li> <li>端到端评测：测「用户说一段话（多轮），Agent能不能给出满足需求的回复」。</li></ul> <h3 id="二、端到端评测的核心指标"><a href="#二、端到端评测的核心指标" class="header-anchor">#</a> 二、端到端评测的核心指标</h3> <p>常见的端到端评测指标分为两类：</p> <ol><li><strong>自动指标</strong>：BLEU、ROUGE、METEOR（文本相似度）、Success Rate（任务完成率）、F1（回复正确性）等；</li> <li><strong>人工指标</strong>：回复相关性、流畅性、逻辑性、用户满意度（1-5分）等。</li></ol> <p>其中，<strong>任务完成率（Success Rate）</strong> 是多轮对话Agent端到端评测的核心指标（比如：用户通过多轮对话完成「预订酒店」，是否真的完成了所有关键步骤）。</p> <h3 id="三、python代码示例-多轮对话agent的端到端评测"><a href="#三、python代码示例-多轮对话agent的端到端评测" class="header-anchor">#</a> 三、Python代码示例：多轮对话Agent的端到端评测</h3> <p>以下示例以「多轮酒店预订对话」为例，实现端到端评测的核心逻辑：</p> <ol><li>定义评测数据集（包含多轮上下文、预期完成的任务、预期回复）；</li> <li>调用Agent系统获取实际回复；</li> <li>计算「任务完成率」「回复相似度（BLEU）」等端到端指标。</li></ol> <h4 id="步骤1-安装依赖"><a href="#步骤1-安装依赖" class="header-anchor">#</a> 步骤1：安装依赖</h4> <div class="language-bash extra-class"><pre class="language-bash"><code>pip <span class="token function">install</span> nltk  <span class="token comment"># 用于计算BLEU/ROUGE</span>
+pip <span class="token function">install</span> sklearn  <span class="token comment"># 辅助指标计算</span>
+</code></pre></div><h4 id="步骤2-完整代码示例"><a href="#步骤2-完整代码示例" class="header-anchor">#</a> 步骤2：完整代码示例</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> nltk
+<span class="token keyword">from</span> nltk<span class="token punctuation">.</span>translate<span class="token punctuation">.</span>bleu_score <span class="token keyword">import</span> sentence_bleu<span class="token punctuation">,</span> SmoothingFunction
+<span class="token keyword">from</span> typing <span class="token keyword">import</span> List<span class="token punctuation">,</span> Dict<span class="token punctuation">,</span> Tuple
+
+<span class="token comment"># 下载nltk所需资源（首次运行需执行）</span>
+nltk<span class="token punctuation">.</span>download<span class="token punctuation">(</span><span class="token string">'punkt'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># --------------------------</span>
+<span class="token comment"># 1. 定义端到端评测数据集（多轮对话场景）</span>
+<span class="token comment"># --------------------------</span>
+<span class="token comment"># 每条数据包含：多轮上下文、任务目标、预期回复、关键任务槽位</span>
+evaluation_dataset <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&quot;dialog_context&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;用户：我想订明天上海的酒店&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;Agent：请问你需要什么价位的？&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;用户：300-500元，靠近地铁口&quot;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;task_goal&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;预订上海明天300-500元靠近地铁口的酒店&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;expected_response&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;为你推荐上海2号线南京东路站附近的XX酒店，价格420元/晚，符合你的300-500元预算，需要帮你预订吗？&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;key_slots&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;city&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;上海&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;date&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;明天&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;price_range&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;300-500元&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;location&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;靠近地铁口&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&quot;dialog_context&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;用户：我要取消昨天订的北京酒店&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;Agent：请问你的预订编号是多少？&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;用户：NO123456&quot;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;task_goal&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;取消编号NO123456的北京酒店预订&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;expected_response&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;已为你查询到预订编号NO123456的北京酒店订单，确认取消该订单吗？&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;key_slots&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;action&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;取消&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;city&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;order_id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;NO123456&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment"># --------------------------</span>
+<span class="token comment"># 2. 模拟Agent多轮对话回复函数（实际为调用Agent系统）</span>
+<span class="token comment"># --------------------------</span>
+<span class="token keyword">def</span> <span class="token function">agent_response</span><span class="token punctuation">(</span>dialog_context<span class="token punctuation">:</span> List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+    模拟Agent根据多轮上下文生成回复
+    实际场景中：这里会调用真实的Agent系统接口
+    &quot;&quot;&quot;</span>
+    last_user_utterance <span class="token operator">=</span> dialog_context<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">&quot;用户：&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token string">&quot;上海&quot;</span> <span class="token keyword">in</span> last_user_utterance <span class="token keyword">and</span> <span class="token string">&quot;300-500&quot;</span> <span class="token keyword">in</span> last_user_utterance<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;为你推荐上海2号线南京东路站附近的XX酒店，价格420元/晚，符合你的300-500元预算，需要帮你预订吗？&quot;</span>
+    <span class="token keyword">elif</span> <span class="token string">&quot;取消&quot;</span> <span class="token keyword">in</span> last_user_utterance <span class="token keyword">and</span> <span class="token string">&quot;NO123456&quot;</span> <span class="token keyword">in</span> last_user_utterance<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;已为你查询到预订编号NO123456的北京酒店订单，确认取消该订单吗？&quot;</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;抱歉，我没理解你的需求，请再说明一下。&quot;</span>
+
+<span class="token comment"># --------------------------</span>
+<span class="token comment"># 3. 端到端评测核心逻辑</span>
+<span class="token comment"># --------------------------</span>
+<span class="token keyword">class</span> <span class="token class-name">E2EConversationEvaluator</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>smoother <span class="token operator">=</span> SmoothingFunction<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 解决BLEU分数为0的问题</span>
+
+    <span class="token keyword">def</span> <span class="token function">calculate_bleu</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pred_response<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> expected_response<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">float</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;计算回复的BLEU分数（文本相似度）&quot;&quot;&quot;</span>
+        <span class="token comment"># 分词（中英文通用，nltk.punkt支持中文分句，分词需自定义，这里简化为按空格/字符拆分）</span>
+        pred_tokens <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>pred_response<span class="token punctuation">)</span>  <span class="token comment"># 中文按字符拆分</span>
+        expected_tokens <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>expected_response<span class="token punctuation">)</span>
+        <span class="token comment"># 计算BLEU-4（n-gram=4）</span>
+        bleu <span class="token operator">=</span> sentence_bleu<span class="token punctuation">(</span>
+            <span class="token punctuation">[</span>expected_tokens<span class="token punctuation">]</span><span class="token punctuation">,</span> 
+            pred_tokens<span class="token punctuation">,</span> 
+            smoothing_function<span class="token operator">=</span>self<span class="token punctuation">.</span>smoother<span class="token punctuation">.</span>method4<span class="token punctuation">,</span>
+            weights<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token builtin">round</span><span class="token punctuation">(</span>bleu<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">check_task_completion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pred_response<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> key_slots<span class="token punctuation">:</span> Dict<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;
+        检查任务是否完成（核心端到端指标）：
+        验证Agent回复中是否包含所有关键槽位（任务完成的核心信息）
+        &quot;&quot;&quot;</span>
+        <span class="token keyword">for</span> slot_key<span class="token punctuation">,</span> slot_value <span class="token keyword">in</span> key_slots<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> slot_value <span class="token keyword">not</span> <span class="token keyword">in</span> pred_response<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dataset<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Dict<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Dict<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;
+        执行端到端评测，返回整体指标：
+        - 任务完成率（Success Rate）
+        - 平均BLEU分数（Average BLEU）
+        &quot;&quot;&quot;</span>
+        total_samples <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+        completed_tasks <span class="token operator">=</span> <span class="token number">0</span>
+        total_bleu <span class="token operator">=</span> <span class="token number">0.0</span>
+
+        <span class="token comment"># 逐样本评测</span>
+        <span class="token keyword">for</span> idx<span class="token punctuation">,</span> sample <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;\n=== 评测样本 </span><span class="token interpolation"><span class="token punctuation">{</span>idx<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">}</span></span><span class="token string"> ===&quot;</span></span><span class="token punctuation">)</span>
+            <span class="token comment"># 1. 获取Agent实际回复</span>
+            pred_response <span class="token operator">=</span> agent_response<span class="token punctuation">(</span>sample<span class="token punctuation">[</span><span class="token string">&quot;dialog_context&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token comment"># 2. 获取预期回复和关键槽位</span>
+            expected_response <span class="token operator">=</span> sample<span class="token punctuation">[</span><span class="token string">&quot;expected_response&quot;</span><span class="token punctuation">]</span>
+            key_slots <span class="token operator">=</span> sample<span class="token punctuation">[</span><span class="token string">&quot;key_slots&quot;</span><span class="token punctuation">]</span>
+            
+            <span class="token comment"># 3. 计算指标</span>
+            bleu_score <span class="token operator">=</span> self<span class="token punctuation">.</span>calculate_bleu<span class="token punctuation">(</span>pred_response<span class="token punctuation">,</span> expected_response<span class="token punctuation">)</span>
+            task_completed <span class="token operator">=</span> self<span class="token punctuation">.</span>check_task_completion<span class="token punctuation">(</span>pred_response<span class="token punctuation">,</span> key_slots<span class="token punctuation">)</span>
+            
+            <span class="token comment"># 4. 打印单样本结果</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;上下文：</span><span class="token interpolation"><span class="token punctuation">{</span>sample<span class="token punctuation">[</span><span class="token string">'dialog_context'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;预期回复：</span><span class="token interpolation"><span class="token punctuation">{</span>expected_response<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Agent回复：</span><span class="token interpolation"><span class="token punctuation">{</span>pred_response<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;BLEU分数：</span><span class="token interpolation"><span class="token punctuation">{</span>bleu_score<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;任务完成：</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'是'</span> <span class="token keyword">if</span> task_completed <span class="token keyword">else</span> <span class="token string">'否'</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+
+            <span class="token comment"># 累计指标</span>
+            total_bleu <span class="token operator">+=</span> bleu_score
+            <span class="token keyword">if</span> task_completed<span class="token punctuation">:</span>
+                completed_tasks <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token comment"># 计算整体指标</span>
+        success_rate <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span>completed_tasks <span class="token operator">/</span> total_samples <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        avg_bleu <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span>total_bleu <span class="token operator">/</span> total_samples<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 返回整体评测结果</span>
+        overall_metrics <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;total_samples&quot;</span><span class="token punctuation">:</span> total_samples<span class="token punctuation">,</span>
+            <span class="token string">&quot;completed_tasks&quot;</span><span class="token punctuation">:</span> completed_tasks<span class="token punctuation">,</span>
+            <span class="token string">&quot;success_rate(%)&quot;</span><span class="token punctuation">:</span> success_rate<span class="token punctuation">,</span>
+            <span class="token string">&quot;average_bleu&quot;</span><span class="token punctuation">:</span> avg_bleu
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> overall_metrics
+
+<span class="token comment"># --------------------------</span>
+<span class="token comment"># 4. 执行评测并输出结果</span>
+<span class="token comment"># --------------------------</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>
+    evaluator <span class="token operator">=</span> E2EConversationEvaluator<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    overall_metrics <span class="token operator">=</span> evaluator<span class="token punctuation">.</span>evaluate<span class="token punctuation">(</span>evaluation_dataset<span class="token punctuation">)</span>
+    
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n=== 端到端评测整体结果 ===&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> metric_name<span class="token punctuation">,</span> metric_value <span class="token keyword">in</span> overall_metrics<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>metric_name<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>metric_value<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="四、代码运行结果"><a href="#四、代码运行结果" class="header-anchor">#</a> 四、代码运行结果</h3> <div class="language- extra-class"><pre class="language-text"><code>=== 评测样本 1 ===
+上下文：['用户：我想订明天上海的酒店', 'Agent：请问你需要什么价位的？', '用户：300-500元，靠近地铁口']
+预期回复：为你推荐上海2号线南京东路站附近的XX酒店，价格420元/晚，符合你的300-500元预算，需要帮你预订吗？
+Agent回复：为你推荐上海2号线南京东路站附近的XX酒店，价格420元/晚，符合你的300-500元预算，需要帮你预订吗？
+BLEU分数：1.0
+任务完成：是
+
+=== 评测样本 2 ===
+上下文：['用户：我要取消昨天订的北京酒店', 'Agent：请问你的预订编号是多少？', '用户：NO123456']
+预期回复：已为你查询到预订编号NO123456的北京酒店订单，确认取消该订单吗？
+Agent回复：已为你查询到预订编号NO123456的北京酒店订单，确认取消该订单吗？
+BLEU分数：1.0
+任务完成：是
+
+=== 端到端评测整体结果 ===
+total_samples: 2
+completed_tasks: 2
+success_rate(%): 100.0
+average_bleu: 1.0
+</code></pre></div><h3 id="五、端到端评测的扩展说明"><a href="#五、端到端评测的扩展说明" class="header-anchor">#</a> 五、端到端评测的扩展说明</h3> <ol><li><p><strong>指标扩展</strong>：</p> <ul><li>除了任务完成率和BLEU，还可加入「回复相关性评分（人工标注1-5分）」「多轮逻辑一致性」「错误回复率」等；</li> <li>对于开放域对话（非任务型），可加入「PPL（困惑度，衡量回复流畅性）」「多样性（distinct-1/distinct-2）」。</li></ul></li> <li><p><strong>真实场景适配</strong>：</p> <ul><li>代码中<code>agent_response</code>函数需替换为真实Agent的API调用；</li> <li>评测数据集需覆盖更多场景（边界case、多轮超长对话、歧义问题等）；</li> <li>可结合A/B测试，对比不同Agent版本的端到端效果。</li></ul></li> <li><p><strong>与模块化评测的区别</strong>：
+比如「意图识别模块评测」只看「用户说300-500元酒店」是否识别为「预订酒店意图」，而端到端评测不关心意图识别是否正确，只看最终是否能给出符合需求的回复（即使意图识别有小误差，但Agent通过多轮修正完成了任务，端到端评测仍判定为成功）。</p></li></ol> <p>总结：端到端评测的核心是「<strong>以用户视角评估整体效果</strong>」，而非纠结单个模块的细节，<strong>这也是衡量Agent实际使用体验的最直接方式</strong>。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#evaluate" class="sidebar-link reco-side-evaluate" data-v-b57cc07c>Evaluate</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#_1-加载评估函数" class="sidebar-link reco-side-_1-加载评估函数" data-v-b57cc07c>1. 加载评估函数</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#拿到评估指标数据后-做一个可视化" class="sidebar-link reco-side-拿到评估指标数据后-做一个可视化" data-v-b57cc07c>拿到评估指标数据后，做一个可视化</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#别人做的笔记" class="sidebar-link reco-side-别人做的笔记" data-v-b57cc07c>别人做的笔记</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#f1-这个指标-参数使用" class="sidebar-link reco-side-f1-这个指标-参数使用" data-v-b57cc07c>f1 这个指标-参数使用</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#使用场景" class="sidebar-link reco-side-使用场景" data-v-b57cc07c>使用场景</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#评估结果可视化" class="sidebar-link reco-side-评估结果可视化" data-v-b57cc07c>评估结果可视化</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#评估指标汇总" class="sidebar-link reco-side-评估指标汇总" data-v-b57cc07c>评估指标汇总</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#一、端到端评测-end-to-end-evaluation-的核心定义" class="sidebar-link reco-side-一、端到端评测-end-to-end-evaluation-的核心定义" data-v-b57cc07c>一、端到端评测（End-to-End Evaluation）的核心定义</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#二、端到端评测的核心指标" class="sidebar-link reco-side-二、端到端评测的核心指标" data-v-b57cc07c>二、端到端评测的核心指标</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#三、python代码示例-多轮对话agent的端到端评测" class="sidebar-link reco-side-三、python代码示例-多轮对话agent的端到端评测" data-v-b57cc07c>三、Python代码示例：多轮对话Agent的端到端评测</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#四、代码运行结果" class="sidebar-link reco-side-四、代码运行结果" data-v-b57cc07c>四、代码运行结果</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-evaluate.html#五、端到端评测的扩展说明" class="sidebar-link reco-side-五、端到端评测的扩展说明" data-v-b57cc07c>五、端到端评测的扩展说明</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.252ae38c.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/96.8d479f68.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>

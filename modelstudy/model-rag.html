@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RAG | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.252ae38c.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/106.252f49ca.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.5613e6ba.js"><link rel="prefetch" href="/hmblog/assets/js/101.b8eb0459.js"><link rel="prefetch" href="/hmblog/assets/js/102.40868c51.js"><link rel="prefetch" href="/hmblog/assets/js/103.1f40d097.js"><link rel="prefetch" href="/hmblog/assets/js/104.4e73c56a.js"><link rel="prefetch" href="/hmblog/assets/js/105.cb525ef5.js"><link rel="prefetch" href="/hmblog/assets/js/107.91d170e8.js"><link rel="prefetch" href="/hmblog/assets/js/108.8a514186.js"><link rel="prefetch" href="/hmblog/assets/js/109.f15844d7.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.a0e27b36.js"><link rel="prefetch" href="/hmblog/assets/js/111.1c542559.js"><link rel="prefetch" href="/hmblog/assets/js/112.5fa57e84.js"><link rel="prefetch" href="/hmblog/assets/js/113.bfbfcd5a.js"><link rel="prefetch" href="/hmblog/assets/js/114.2e526e4d.js"><link rel="prefetch" href="/hmblog/assets/js/115.221e2f65.js"><link rel="prefetch" href="/hmblog/assets/js/116.a7726179.js"><link rel="prefetch" href="/hmblog/assets/js/117.22075f73.js"><link rel="prefetch" href="/hmblog/assets/js/118.459f31e3.js"><link rel="prefetch" href="/hmblog/assets/js/119.f7a33a09.js"><link rel="prefetch" href="/hmblog/assets/js/120.8b58a340.js"><link rel="prefetch" href="/hmblog/assets/js/121.277e1f1e.js"><link rel="prefetch" href="/hmblog/assets/js/122.ec3ae934.js"><link rel="prefetch" href="/hmblog/assets/js/123.514ade54.js"><link rel="prefetch" href="/hmblog/assets/js/124.6b6c2b7d.js"><link rel="prefetch" href="/hmblog/assets/js/125.a7fb1fbe.js"><link rel="prefetch" href="/hmblog/assets/js/126.b5ef252a.js"><link rel="prefetch" href="/hmblog/assets/js/127.d8121d6d.js"><link rel="prefetch" href="/hmblog/assets/js/128.40963707.js"><link rel="prefetch" href="/hmblog/assets/js/129.bf256481.js"><link rel="prefetch" href="/hmblog/assets/js/130.0031ec91.js"><link rel="prefetch" href="/hmblog/assets/js/131.4fe99cc5.js"><link rel="prefetch" href="/hmblog/assets/js/132.fcf1a74b.js"><link rel="prefetch" href="/hmblog/assets/js/133.ff8e24a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.db2d31f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b152d9b0.js"><link rel="prefetch" href="/hmblog/assets/js/136.936be57e.js"><link rel="prefetch" href="/hmblog/assets/js/137.48f9d2b5.js"><link rel="prefetch" href="/hmblog/assets/js/138.3bdb70b7.js"><link rel="prefetch" href="/hmblog/assets/js/139.2c511f09.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.5f00d305.js"><link rel="prefetch" href="/hmblog/assets/js/141.41c9f925.js"><link rel="prefetch" href="/hmblog/assets/js/142.b37e8f1d.js"><link rel="prefetch" href="/hmblog/assets/js/143.20c71a9e.js"><link rel="prefetch" href="/hmblog/assets/js/144.17cece65.js"><link rel="prefetch" href="/hmblog/assets/js/145.978e7516.js"><link rel="prefetch" href="/hmblog/assets/js/146.94bdfed5.js"><link rel="prefetch" href="/hmblog/assets/js/147.f9c95b0c.js"><link rel="prefetch" href="/hmblog/assets/js/148.355cbcf5.js"><link rel="prefetch" href="/hmblog/assets/js/149.b1e46aaf.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.b5a35472.js"><link rel="prefetch" href="/hmblog/assets/js/151.d309c32e.js"><link rel="prefetch" href="/hmblog/assets/js/152.fb9a950d.js"><link rel="prefetch" href="/hmblog/assets/js/153.c231397c.js"><link rel="prefetch" href="/hmblog/assets/js/154.2c76a2e9.js"><link rel="prefetch" href="/hmblog/assets/js/155.ad43ee17.js"><link rel="prefetch" href="/hmblog/assets/js/156.b0fe3a29.js"><link rel="prefetch" href="/hmblog/assets/js/157.d085315f.js"><link rel="prefetch" href="/hmblog/assets/js/158.9f11fbf4.js"><link rel="prefetch" href="/hmblog/assets/js/159.178d8a8a.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.e6a3b7e3.js"><link rel="prefetch" href="/hmblog/assets/js/161.b897eab6.js"><link rel="prefetch" href="/hmblog/assets/js/162.54114dbe.js"><link rel="prefetch" href="/hmblog/assets/js/163.156fce2c.js"><link rel="prefetch" href="/hmblog/assets/js/164.e44a107d.js"><link rel="prefetch" href="/hmblog/assets/js/165.50843d9b.js"><link rel="prefetch" href="/hmblog/assets/js/166.51cc166e.js"><link rel="prefetch" href="/hmblog/assets/js/167.1e241fd0.js"><link rel="prefetch" href="/hmblog/assets/js/168.1f0c33e5.js"><link rel="prefetch" href="/hmblog/assets/js/169.62546341.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.3e1d4983.js"><link rel="prefetch" href="/hmblog/assets/js/171.5975c042.js"><link rel="prefetch" href="/hmblog/assets/js/172.a172fe4f.js"><link rel="prefetch" href="/hmblog/assets/js/173.b7f30ce1.js"><link rel="prefetch" href="/hmblog/assets/js/174.cf213ee7.js"><link rel="prefetch" href="/hmblog/assets/js/175.fead80ee.js"><link rel="prefetch" href="/hmblog/assets/js/176.d8597cdf.js"><link rel="prefetch" href="/hmblog/assets/js/177.72596ae1.js"><link rel="prefetch" href="/hmblog/assets/js/178.d0c48b18.js"><link rel="prefetch" href="/hmblog/assets/js/179.d5c444fc.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.2f29e719.js"><link rel="prefetch" href="/hmblog/assets/js/181.bb359567.js"><link rel="prefetch" href="/hmblog/assets/js/182.e140022f.js"><link rel="prefetch" href="/hmblog/assets/js/183.88c88131.js"><link rel="prefetch" href="/hmblog/assets/js/184.7dafb863.js"><link rel="prefetch" href="/hmblog/assets/js/185.6ee6fee4.js"><link rel="prefetch" href="/hmblog/assets/js/186.a58d3091.js"><link rel="prefetch" href="/hmblog/assets/js/187.06e4ac29.js"><link rel="prefetch" href="/hmblog/assets/js/188.4f58b234.js"><link rel="prefetch" href="/hmblog/assets/js/189.b7fcaad5.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.1ee24f3f.js"><link rel="prefetch" href="/hmblog/assets/js/191.71d1ed44.js"><link rel="prefetch" href="/hmblog/assets/js/192.8e13dbd5.js"><link rel="prefetch" href="/hmblog/assets/js/193.6ffdbe3c.js"><link rel="prefetch" href="/hmblog/assets/js/194.f3092777.js"><link rel="prefetch" href="/hmblog/assets/js/195.61518c26.js"><link rel="prefetch" href="/hmblog/assets/js/196.4749bfe4.js"><link rel="prefetch" href="/hmblog/assets/js/197.02f293f5.js"><link rel="prefetch" href="/hmblog/assets/js/198.66d067f8.js"><link rel="prefetch" href="/hmblog/assets/js/199.e713626b.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.a0428ce1.js"><link rel="prefetch" href="/hmblog/assets/js/201.10f94064.js"><link rel="prefetch" href="/hmblog/assets/js/202.85104aab.js"><link rel="prefetch" href="/hmblog/assets/js/203.610baaad.js"><link rel="prefetch" href="/hmblog/assets/js/204.d7a56285.js"><link rel="prefetch" href="/hmblog/assets/js/205.e9c3d532.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.b6871f20.js"><link rel="prefetch" href="/hmblog/assets/js/41.b9269303.js"><link rel="prefetch" href="/hmblog/assets/js/42.e8164e0c.js"><link rel="prefetch" href="/hmblog/assets/js/43.70ef46e5.js"><link rel="prefetch" href="/hmblog/assets/js/44.9331e0b2.js"><link rel="prefetch" href="/hmblog/assets/js/45.5feef070.js"><link rel="prefetch" href="/hmblog/assets/js/46.cbe15db5.js"><link rel="prefetch" href="/hmblog/assets/js/47.13b797de.js"><link rel="prefetch" href="/hmblog/assets/js/48.7030d96f.js"><link rel="prefetch" href="/hmblog/assets/js/49.21360ca4.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.2278b4f1.js"><link rel="prefetch" href="/hmblog/assets/js/51.dfcce7fa.js"><link rel="prefetch" href="/hmblog/assets/js/52.411e6b71.js"><link rel="prefetch" href="/hmblog/assets/js/53.9f14e863.js"><link rel="prefetch" href="/hmblog/assets/js/54.ae21c7a9.js"><link rel="prefetch" href="/hmblog/assets/js/55.0b0dbecf.js"><link rel="prefetch" href="/hmblog/assets/js/56.2b3b9c9e.js"><link rel="prefetch" href="/hmblog/assets/js/57.eb5c4857.js"><link rel="prefetch" href="/hmblog/assets/js/58.5bb642a4.js"><link rel="prefetch" href="/hmblog/assets/js/59.310d4748.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.43f50fd6.js"><link rel="prefetch" href="/hmblog/assets/js/61.bf7359ad.js"><link rel="prefetch" href="/hmblog/assets/js/62.bbc1a63f.js"><link rel="prefetch" href="/hmblog/assets/js/63.4f514386.js"><link rel="prefetch" href="/hmblog/assets/js/64.75891b13.js"><link rel="prefetch" href="/hmblog/assets/js/65.c594c5f0.js"><link rel="prefetch" href="/hmblog/assets/js/66.3b2e8434.js"><link rel="prefetch" href="/hmblog/assets/js/67.d21dd018.js"><link rel="prefetch" href="/hmblog/assets/js/68.3a1952eb.js"><link rel="prefetch" href="/hmblog/assets/js/69.4a9f3de5.js"><link rel="prefetch" href="/hmblog/assets/js/70.79851ca4.js"><link rel="prefetch" href="/hmblog/assets/js/71.6b0dd684.js"><link rel="prefetch" href="/hmblog/assets/js/72.194abe8d.js"><link rel="prefetch" href="/hmblog/assets/js/73.57d7aacb.js"><link rel="prefetch" href="/hmblog/assets/js/74.21d325f3.js"><link rel="prefetch" href="/hmblog/assets/js/75.5db4d81f.js"><link rel="prefetch" href="/hmblog/assets/js/76.f614fd28.js"><link rel="prefetch" href="/hmblog/assets/js/77.5fb8fe74.js"><link rel="prefetch" href="/hmblog/assets/js/78.cbf908d6.js"><link rel="prefetch" href="/hmblog/assets/js/79.16b13beb.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.b7f99985.js"><link rel="prefetch" href="/hmblog/assets/js/81.c5c33a8c.js"><link rel="prefetch" href="/hmblog/assets/js/82.1bb32711.js"><link rel="prefetch" href="/hmblog/assets/js/83.0126cbfc.js"><link rel="prefetch" href="/hmblog/assets/js/84.bf184586.js"><link rel="prefetch" href="/hmblog/assets/js/85.ed882d02.js"><link rel="prefetch" href="/hmblog/assets/js/86.00a6c023.js"><link rel="prefetch" href="/hmblog/assets/js/87.19ec978b.js"><link rel="prefetch" href="/hmblog/assets/js/88.da0b0fce.js"><link rel="prefetch" href="/hmblog/assets/js/89.1b3f0dc7.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.5b446b43.js"><link rel="prefetch" href="/hmblog/assets/js/91.b7568648.js"><link rel="prefetch" href="/hmblog/assets/js/92.41c96c2a.js"><link rel="prefetch" href="/hmblog/assets/js/93.c88897c2.js"><link rel="prefetch" href="/hmblog/assets/js/94.1b8ca6ee.js"><link rel="prefetch" href="/hmblog/assets/js/95.ad838784.js"><link rel="prefetch" href="/hmblog/assets/js/96.8d479f68.js"><link rel="prefetch" href="/hmblog/assets/js/97.50826eb1.js"><link rel="prefetch" href="/hmblog/assets/js/98.bdb338cb.js"><link rel="prefetch" href="/hmblog/assets/js/99.4842effa.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/rag-question-compare.html" class="nav-link"><i class="undefined"></i>
+  临时
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>129</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/rag-question-compare.html" class="nav-link"><i class="undefined"></i>
+  临时
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">RAG</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="rag"><a href="#rag" class="header-anchor">#</a> RAG</h2> <h3 id="_1-基本概念"><a href="#_1-基本概念" class="header-anchor">#</a> 1. 基本概念</h3> <blockquote><p>RAG（Retrieval Augmented Generation）- 检索增强⽣成，顾名思义，通过检索外部数据，增强⼤模型的⽣成效果。</p></blockquote> <ul><li>RAG即检索增强⽣成，<strong>为LLM提供了从某些数据源检索到的信息</strong>，并基于此修正⽣成的答案。</li> <li>RAG 基本上是<code>Search + LLM 提示</code>，可以通过⼤模型回答查询，并将搜索算法所找到的信息作为⼤模型的上下⽂。</li> <li>查询和检索到的上下⽂都会被注⼊到发送到 LLM 的提示语中。</li></ul> <h3 id="_2-rag系统工作流程图解"><a href="#_2-rag系统工作流程图解" class="header-anchor">#</a> 2. RAG系统⼯作流程图解</h3> <p><img src="/hmblog/images/llm/rag/RAG-1.png" alt="RAG系统⼯作流程图解"></p> <h3 id="_3-rag系统的搭建流程"><a href="#_3-rag系统的搭建流程" class="header-anchor">#</a> 3. RAG系统的搭建流程</h3> <p><img src="/hmblog/images/llm/rag/RAG-2.png" alt="RAG系统搭建流程"></p> <h3 id="_4-rag-工作流程拆解"><a href="#_4-rag-工作流程拆解" class="header-anchor">#</a> 4. RAG 工作流程拆解</h3> <h4 id="索引-indexing"><a href="#索引-indexing" class="header-anchor">#</a> 索引（Indexing）</h4> <ul><li>索引⾸先清理和提取各种格式的原始数据，如 PDF、HTML、 Word 和 Markdown，然后将其转换为统⼀的纯⽂本格式。</li> <li>为了适应语⾔模型的上下⽂限制，⽂本被分割成更⼩的、可消化的块（chunk）。</li> <li>然后<code>使⽤嵌⼊模型</code>将块编码成向量表示，<code>并存储在向量数据库中</code>。这⼀步对于在随后的检索阶段实现⾼效的相似性搜索⾄关重要。</li> <li>知识库分割成 chunks，并将 chunks 向量化⾄向量库中</li></ul> <h4 id="检索-retrieval"><a href="#检索-retrieval" class="header-anchor">#</a> 检索（Retrieval）</h4> <ul><li>在收到⽤户查询（Query）后，RAG 系统采⽤与索引阶段相同的编码模型将查询转换为向量表示，</li> <li>然后计算索引语料库中查询向量与块向量的相似性得分。该系统优先级和检索最⾼ k （Top-K）块，显示最⼤的相似性查询。</li> <li>这些块随后被⽤作 <code>prompt</code> 中的扩展上下⽂。Query 向量化，匹配向量空间中相近的 chunks</li></ul> <h3 id="_5-rag具体实现流程"><a href="#_5-rag具体实现流程" class="header-anchor">#</a> 5. RAG具体实现流程</h3> <p>加载⽂件 =&gt; 读取⽂本 =&gt; ⽂本分割 =&gt;⽂本向量化 =&gt; 输⼊问题向量化 =&gt; 在⽂本向量中匹配出与问题向量最相似的 top k 个 =&gt; 匹配出的⽂本作为上下⽂和问题⼀起添加到 <code>prompt</code> 中 =&gt; 提交给 LLM ⽣成回答</p> <h3 id="_6-向量与embeddings的定义"><a href="#_6-向量与embeddings的定义" class="header-anchor">#</a> 6. 向量与Embeddings的定义</h3> <ol><li>将⽂本转成⼀组浮点数：每个下标 i ，对应⼀个维度</li> <li>整个数组对应⼀个 n 维空间的⼀个点，即<code>⽂本向量</code>⼜叫 Embeddings</li> <li>向量之间可以计算距离，距离远近对应<code>语义相似度</code>⼤⼩</li></ol> <h3 id="_7-文档的加载与切割-基于文档的llm回复系统搭建"><a href="#_7-文档的加载与切割-基于文档的llm回复系统搭建" class="header-anchor">#</a> 7. ⽂档的加载与切割（基于⽂档的LLM回复系统搭建）</h3> <p><img src="/hmblog/images/llm/rag/RAG-3.png" alt="⽂档的加载与切割"></p> <h2 id="为什么需要rag"><a href="#为什么需要rag" class="header-anchor">#</a> 为什么需要RAG</h2> <h3 id="_1-因为llm的局限性-所以需要rag来增强模型的能力"><a href="#_1-因为llm的局限性-所以需要rag来增强模型的能力" class="header-anchor">#</a> 1. 因为LLM的局限性，所以需要RAG来增强模型的能力</h3> <blockquote><p>将⼤模型应⽤于实际业务场景时会发现，通⽤的基础⼤模型基本⽆法满⾜我们的实际业务需求，主要有以下⼏⽅⾯原因:</p></blockquote> <ul><li>LLM的知识不是实时的，不具备知识更新</li> <li>LLM可能不知道你私有的领域/业务知识</li> <li>LLM有时会在回答中⽣成看似合理但实际上是错误的信息</li></ul> <h3 id="_2-为什么会用到rag"><a href="#_2-为什么会用到rag" class="header-anchor">#</a> 2. 为什么会⽤到RAG?</h3> <ol><li>提⾼准确性: <code>通过检索相关的信息</code>，RAG可以提⾼⽣成⽂本的准确性。</li> <li>减少训练成本：与需要⼤量数据来训练的⼤型⽣成模型相⽐，<code>RAG可以通过检索机制</code>来减少所需的训练数据量，从⽽降低训练成本。</li> <li>适应性强：RAG模型可以适应新的或不断变化的数据。<code>由于它们能够检索最新的信息</code>，因此在新数据和事件出现时，它们能够快速适应并⽣成相关的⽂本。</li></ol> <h3 id="_3-rag-和-fine-tuning-对比"><a href="#_3-rag-和-fine-tuning-对比" class="header-anchor">#</a> 3. RAG 和 Fine-tuning 对比</h3> <ol><li>RAG（检索增强⽣成）是把内部的⽂档数据先进⾏embedding，<strong>借助检索先获得⼤致的知识范围答案，再结合prompt给到LLM</strong>，让LLM⽣成最终的答案</li> <li>Fine-tuning（微调）<strong>是⽤⼀定量的数据集</strong>对LLM进⾏局部参数的调整，以期望LLM更加理解我们的业务逻辑，有更好的<code>zero-shot</code>能⼒。</li></ol> <h2 id="rag-框架或技术点"><a href="#rag-框架或技术点" class="header-anchor">#</a> RAG 框架或技术点</h2> <h3 id="_1-multi-query-多查询"><a href="#_1-multi-query-多查询" class="header-anchor">#</a> 1. Multi-Query(多查询)</h3> <ul><li><strong>查询生成 / 改写</strong>：使用 <code>LLM</code> 对用户的初始查询进行改写，<strong>生成多个语义相似但表述不同的查询变体</strong>。</li> <li>这些变体从不同角度诠释原始问题，扩大检索覆盖范围。</li> <li>例如，原始查询是 “气候变化的影响”，生成的查询可能包括 “气候变化的经济后果”, “气候变化与公共健康” 等。</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 多查询，提示词模版设计</span>
+
+template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;You are an AI language model assistant. Your task is to generate five 
+different versions of the given user question to retrieve relevant documents from a vector 
+database. By generating multiple perspectives on the user question, your goal is to help
+the user overcome some of the limitations of the distance-based similarity search. 
+Provide these alternative questions separated by newlines. Original question: {question}&quot;&quot;&quot;</span>
+
+<span class="token comment"># 中文解释：你是一个AI语言模型助手。你的任务是生成N个针对给定用户问题的不同版本，从向量中检索相关文档数据库......</span>
+</code></pre></div><h3 id="_2-fusion-rag"><a href="#_2-fusion-rag" class="header-anchor">#</a> 2. Fusion RAG</h3> <p>RAG Fusion（RAG 融合）</p> <p>包含 <code>多查询</code>  +  <code>RRF</code></p> <ul><li>倒数排名融合</li></ul> <blockquote><p>RRF(Reciprocal Rank Fusion)是一种融合多个检索结果列表的算法，<strong>特别适用于混合检索场景</strong>（如结合稠密向量检索和稀疏词频检索）。</p></blockquote> <blockquote><p>使用(RRF) 算法合并所有检索结果,</p></blockquote> <h4 id="融合步骤"><a href="#融合步骤" class="header-anchor">#</a> 融合步骤</h4> <ul><li>对每个生成的查询进行基于向量的搜索，形成多路搜索召回的list。</li></ul> <ol><li>为每个排名列表中的结果分配倒数排名分数，分数按 <code>1/(rank + k)</code> 计算，其中 <code>rank</code> 是文档在列表中的位置，<code>k</code> 是一个常量，通常设置为 <code>60</code> 效果最佳。</li> <li>分数累加(倒数排名分数相加)</li> <li>获得最终的排序, 提高最相关文档在结果列表顶部出现的可能性。</li></ol> <ul><li><strong>提示调整</strong>：在提示中要求 LLM 更重视原始查询，以缓解多查询可能稀释用户原始意图的问题。</li></ul> <h3 id="_3-decomposition"><a href="#_3-decomposition" class="header-anchor">#</a> 3. Decomposition</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> ChatPromptTemplate
+
+<span class="token comment"># Decomposition</span>
+template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;You are a helpful assistant that generates multiple sub-questions related to an input question. \n
+The goal is to break down the input into a set of sub-problems / sub-questions that can be answers in isolation. \n
+Generate multiple search queries related to: {question} \n
+Output (3 queries):&quot;&quot;&quot;</span>
+
+<span class="token comment"># 你是一个能够根据输入问题生成多个相关子问题的有帮助的助手。目标是将输入分解为一组子问题/子问题，这些子问题可以独立回答。</span>
+prompt_decomposition <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span>template<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_4-hyde"><a href="#_4-hyde" class="header-anchor">#</a> 4. HyDE</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># step1 首先就是定义一个生成假设文档的提示词</span>
+<span class="token comment"># HyDE document generation</span>
+<span class="token comment"># 您可以使用这个文档生成提示, 您可以根据您感兴趣的领域任意调整它。</span>
+template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;Please write a scientific paper passage to answer the question
+Question: {question}
+Passage:&quot;&quot;&quot;</span>
+prompt_hyde <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span>template<span class="token punctuation">)</span>
+
+<span class="token comment"># step2 调用大模型, 得到与我们的问题相关的假设文档部分。</span>
+generate_docs_for_retrieval <span class="token operator">=</span> <span class="token punctuation">(</span>
+  prompt_hyde <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span>temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">)</span>
+
+<span class="token comment"># Run</span>
+question <span class="token operator">=</span> <span class="token string">&quot;What is task decomposition for LLM agents?&quot;</span>
+generate_docs_for_retrieval<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;question&quot;</span><span class="token punctuation">:</span>question<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># step3 接下来，就是用那个假设性文档，构成链 去使用, 运行检索</span>
+retrieval_chain <span class="token operator">=</span> generate_docs_for_retrieval <span class="token operator">|</span> retriever
+retrieved_docs <span class="token operator">=</span> retrieval_chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;question&quot;</span><span class="token punctuation">:</span>question<span class="token punctuation">}</span><span class="token punctuation">)</span>
+retrieved_docs
+
+<span class="token comment"># retriever, 我们将从索引中获取与`已嵌入的假设文档`相关的文档。</span>
+<span class="token comment"># 得到了一些与该假设文档相关的检索块。</span>
+
+<span class="token comment"># step4 最后，我们在这里获取我们定义的检索到的文档以及我们的问题。</span>
+<span class="token comment"># 也就是将，查询到相关片段(eg: 这里的retrieved_docs)作为上下文，再次传送给大模型去检索，答案</span>
+
+<span class="token comment"># 在这里定义我们检索到的文档  和  要询问的问题</span>
+template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;Answer the following question based on this context:
+
+{context}
+
+Question: {question}
+&quot;&quot;&quot;</span>
+
+prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span>template<span class="token punctuation">)</span>
+
+final_rag_chain <span class="token operator">=</span> <span class="token punctuation">(</span>
+  prompt
+  <span class="token operator">|</span> llm
+  <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+final_rag_chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;context&quot;</span><span class="token punctuation">:</span>retrieved_docs<span class="token punctuation">,</span><span class="token string">&quot;question&quot;</span><span class="token punctuation">:</span>question<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><h1 id="检索过程-可以在langsmith-平台去查看"><a href="#检索过程-可以在langsmith-平台去查看" class="header-anchor">#</a> 检索过程，可以在LangSmith 平台去查看</h1> <h3 id="_5-routing"><a href="#_5-routing" class="header-anchor">#</a> 5. Routing</h3> <p>个人理解：根据不同的问题，导航到不同的向量数据库去查询，以便更精准地进行查询。</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># step1 </span>
+<span class="token comment"># 假设我们有三个不同的文档,例如Python文档、JS文档、Golang文档</span>
+<span class="token comment"># Data model</span>
+<span class="token keyword">class</span> <span class="token class-name">RouteQuery</span><span class="token punctuation">(</span>BaseModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token triple-quoted-string string">&quot;&quot;&quot;Route a user query to the most relevant datasource.&quot;&quot;&quot;</span>
+
+  datasource<span class="token punctuation">:</span> Literal<span class="token punctuation">[</span><span class="token string">&quot;python_docs&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;js_docs&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;golang_docs&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> Field<span class="token punctuation">(</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+    description<span class="token operator">=</span><span class="token string">&quot;Given a user question choose which datasource would be most relevant for answering their question&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span>
+
+<span class="token comment"># LLM with function call </span>
+llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo-0125&quot;</span><span class="token punctuation">,</span> temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+structured_llm <span class="token operator">=</span> llm<span class="token punctuation">.</span>with_structured_output<span class="token punctuation">(</span>RouteQuery<span class="token punctuation">)</span>
+
+<span class="token comment"># 拥有3个文档源，然后与LLM进行绑定</span>
+<span class="token comment"># 因此, 您可以看到我们对结构化输出所做的工作,基本上是在幕后。即采用对象定义,转换为函数模式并将该函数模式绑定到我们的LLM。</span>
+
+
+<span class="token comment"># step2 然后我们调用 Prompt</span>
+<span class="token comment"># Prompt </span>
+system <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;You are an expert at routing a user question to the appropriate data source.
+
+Based on the programming language the question is referring to, route it to the relevant data source.&quot;&quot;&quot;</span>
+
+<span class="token comment"># 提示词翻译</span>
+<span class="token triple-quoted-string string">&quot;&quot;&quot;您是将用户问题路由到适当数据源的专家。
+
+根据问题所指的编程语言，将其路由到相关数据源。&quot;&quot;&quot;</span>
+prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_messages<span class="token punctuation">(</span>
+  <span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> system<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;human&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;{question}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># Define router </span>
+router <span class="token operator">=</span> prompt <span class="token operator">|</span> structured_llm
+
+<span class="token comment"># 因此, 您基本上可以将这个问题与不同的链挂钩,例如,Python的检索器链一, JS的检索器链二, 等等。</span>
+<span class="token comment"># step3 </span>
+<span class="token keyword">def</span> <span class="token function">choose_route</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">if</span> <span class="token string">&quot;python_docs&quot;</span> <span class="token keyword">in</span> result<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">### Logic here </span>
+    <span class="token keyword">return</span> <span class="token string">&quot;chain for python_docs&quot;</span>
+  <span class="token keyword">elif</span> <span class="token string">&quot;js_docs&quot;</span> <span class="token keyword">in</span> result<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">### Logic here </span>
+    <span class="token keyword">return</span> <span class="token string">&quot;chain for js_docs&quot;</span>
+  <span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token comment">### Logic here </span>
+    <span class="token keyword">return</span> <span class="token string">&quot;golang_docs&quot;</span>
+
+<span class="token comment"># 所有这有点像路由机制</span>
+<span class="token comment"># 但这实际上是在承担输入问题并将其转换为结构化对象的繁重工作,该结构化对象将输出限制为我们在路由问题中关心的几种输出类型之一。</span>
+
+<span class="token comment"># 所以,这确实是这一切结合在一起的方式。</span>
+
+<span class="token comment"># step4</span>
+</code></pre></div><h2 id="ragas-评估"><a href="#ragas-评估" class="header-anchor">#</a> Ragas 评估</h2> <p><strong>数据准备</strong>：输入 question、contexts、answer，可选 ground truth。</p> <div class="language-py extra-class"><pre class="language-py"><code>eval_data <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&quot;question&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Ragas 的核心指标有哪些？&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;contexts&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;Ragas 包含 context precision、context recall、faithfulness、answer relevancy 等指标...&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;answer&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Ragas 的核心指标包括上下文精确率、上下文召回率、忠实度和答案相关性。&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;ground_truth&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Ragas 的核心指标包括上下文精确率、上下文召回率、忠实度和答案相关性。&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="核心定位与设计理念"><a href="#核心定位与设计理念" class="header-anchor">#</a> 核心定位与设计理念</h3> <ul><li><strong>面向 RAG 全流程</strong>：聚焦检索质量与生成质量两大维度，指标可直接映射到系统组件的优化方向。</li> <li><strong>无参考评估</strong>：减少对人工标注 ground truth 的依赖，通过 LLM 与嵌入模型实现自动验证。</li> <li><strong>可操作</strong>：每个指标都有明确计算逻辑与优化建议，便于落地迭代。</li></ul> <hr> <h3 id="核心指标体系-0-1-分-越高越好"><a href="#核心指标体系-0-1-分-越高越好" class="header-anchor">#</a> 核心指标体系（0–1 分，越高越好）</h3> <table><thead><tr><th style="text-align:left;">维度</th> <th style="text-align:left;">指标</th> <th style="text-align:left;">定义与计算逻辑</th> <th style="text-align:left;">优化方向</th> <th style="text-align:left;">理想阈值</th></tr></thead> <tbody><tr><td style="text-align:left;">检索质量</td> <td style="text-align:left;">Context Precision（上下文精确率）</td> <td style="text-align:left;">检索到的上下文是否均为回答必需，过滤冗余</td> <td style="text-align:left;">提升检索相关性、去重、过滤噪声</td> <td style="text-align:left;">≥0.8</td></tr> <tr><td style="text-align:left;">检索质量</td> <td style="text-align:left;">Context Recall（上下文召回率）</td> <td style="text-align:left;">是否完整召回回答所需关键信息</td> <td style="text-align:left;">优化检索策略、调整 top-k、分块与重排</td> <td style="text-align:left;">≥0.9</td></tr> <tr><td style="text-align:left;">检索质量</td> <td style="text-align:left;">Context Entity Recall（上下文实体召回率）</td> <td style="text-align:left;">关键实体的召回完整性</td> <td style="text-align:left;">增强实体抽取、优化向量/关键词检索</td> <td style="text-align:left;">≥0.9</td></tr> <tr><td style="text-align:left;">生成质量</td> <td style="text-align:left;">Faithfulness（忠实度）</td> <td style="text-align:left;">答案陈述是否可从上下文推断，检测幻觉</td> <td style="text-align:left;">优化提示词、增加引用、限制幻觉</td> <td style="text-align:left;">≥0.85</td></tr> <tr><td style="text-align:left;">生成质量</td> <td style="text-align:left;">Answer Relevancy（答案相关性）</td> <td style="text-align:left;">答案对问题的响应程度，是否切题</td> <td style="text-align:left;">优化提示词、增强问题理解、控制冗余</td> <td style="text-align:left;">≥0.85</td></tr> <tr><td style="text-align:left;">生成质量</td> <td style="text-align:left;">Answer Correctness（答案正确性）</td> <td style="text-align:left;">与 ground truth 的事实匹配程度（需参考）</td> <td style="text-align:left;">提升检索召回与生成忠实度</td> <td style="text-align:left;">≥0.8</td></tr> <tr><td style="text-align:left;">综合</td> <td style="text-align:left;">Ragas Score</td> <td style="text-align:left;">综合上述指标的加权得分（可自定义权重）</td> <td style="text-align:left;">全链路协同优化</td> <td style="text-align:left;">≥0.8</td></tr></tbody></table> <h3 id="ragas-评估指标"><a href="#ragas-评估指标" class="header-anchor">#</a> ragas 评估指标</h3> <ul><li>context_precision: 上下文精确率</li> <li>context_recall: 上下文召回率</li> <li>faithfulness: 忠实度</li> <li>answer_relevancy: 答案相关性</li></ul> <h3 id="评估流程与实现原理"><a href="#评估流程与实现原理" class="header-anchor">#</a> 评估流程与实现原理</h3> <ol><li><strong>数据准备</strong>：输入 question、contexts、answer，可选 ground truth。</li> <li><strong>指标计算</strong>：
+<ul><li>检索指标：通过嵌入相似度与 LLM 验证上下文相关性与召回完整性。</li> <li>生成指标：将答案分解为原子陈述，由 LLM 验证是否可从上下文推导（Faithfulness）；通过语义相似度评估 Answer Relevancy。</li></ul></li> <li><strong>结果分析</strong>：生成各指标分数与综合 Ragas Score，定位检索或生成环节的瓶颈。</li></ol> <hr> <h3 id="与传统评估方法的对比"><a href="#与传统评估方法的对比" class="header-anchor">#</a> 与传统评估方法的对比</h3> <table><thead><tr><th style="text-align:left;">特性</th> <th style="text-align:left;">传统方法（BLEU/ROUGE）</th> <th style="text-align:left;">Ragas</th></tr></thead> <tbody><tr><td style="text-align:left;">评估标准</td> <td style="text-align:left;">文本表面相似度</td> <td style="text-align:left;">语义理解 + 事实一致性</td></tr> <tr><td style="text-align:left;">参考依赖</td> <td style="text-align:left;">必须 ground truth</td> <td style="text-align:left;">支持无参考评估</td></tr> <tr><td style="text-align:left;">覆盖维度</td> <td style="text-align:left;">单一</td> <td style="text-align:left;">检索—生成全链路多维指标</td></tr> <tr><td style="text-align:left;">RAG 适用性</td> <td style="text-align:left;">低（无法评估检索质量）</td> <td style="text-align:left;">高（针对性设计）</td></tr></tbody></table></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#rag" class="sidebar-link reco-side-rag" data-v-b57cc07c>RAG</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_1-基本概念" class="sidebar-link reco-side-_1-基本概念" data-v-b57cc07c>1. 基本概念</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_2-rag系统工作流程图解" class="sidebar-link reco-side-_2-rag系统工作流程图解" data-v-b57cc07c>2. RAG系统⼯作流程图解</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_3-rag系统的搭建流程" class="sidebar-link reco-side-_3-rag系统的搭建流程" data-v-b57cc07c>3. RAG系统的搭建流程</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_4-rag-工作流程拆解" class="sidebar-link reco-side-_4-rag-工作流程拆解" data-v-b57cc07c>4. RAG 工作流程拆解</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_5-rag具体实现流程" class="sidebar-link reco-side-_5-rag具体实现流程" data-v-b57cc07c>5. RAG具体实现流程</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_6-向量与embeddings的定义" class="sidebar-link reco-side-_6-向量与embeddings的定义" data-v-b57cc07c>6. 向量与Embeddings的定义</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_7-文档的加载与切割-基于文档的llm回复系统搭建" class="sidebar-link reco-side-_7-文档的加载与切割-基于文档的llm回复系统搭建" data-v-b57cc07c>7. ⽂档的加载与切割（基于⽂档的LLM回复系统搭建）</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#为什么需要rag" class="sidebar-link reco-side-为什么需要rag" data-v-b57cc07c>为什么需要RAG</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_1-因为llm的局限性-所以需要rag来增强模型的能力" class="sidebar-link reco-side-_1-因为llm的局限性-所以需要rag来增强模型的能力" data-v-b57cc07c>1. 因为LLM的局限性，所以需要RAG来增强模型的能力</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_2-为什么会用到rag" class="sidebar-link reco-side-_2-为什么会用到rag" data-v-b57cc07c>2. 为什么会⽤到RAG?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_3-rag-和-fine-tuning-对比" class="sidebar-link reco-side-_3-rag-和-fine-tuning-对比" data-v-b57cc07c>3. RAG 和 Fine-tuning 对比</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#rag-框架或技术点" class="sidebar-link reco-side-rag-框架或技术点" data-v-b57cc07c>RAG 框架或技术点</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_1-multi-query-多查询" class="sidebar-link reco-side-_1-multi-query-多查询" data-v-b57cc07c>1. Multi-Query(多查询)</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_2-fusion-rag" class="sidebar-link reco-side-_2-fusion-rag" data-v-b57cc07c>2. Fusion RAG</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_3-decomposition" class="sidebar-link reco-side-_3-decomposition" data-v-b57cc07c>3. Decomposition</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_4-hyde" class="sidebar-link reco-side-_4-hyde" data-v-b57cc07c>4. HyDE</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#_5-routing" class="sidebar-link reco-side-_5-routing" data-v-b57cc07c>5. Routing</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#ragas-评估" class="sidebar-link reco-side-ragas-评估" data-v-b57cc07c>Ragas 评估</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#核心定位与设计理念" class="sidebar-link reco-side-核心定位与设计理念" data-v-b57cc07c>核心定位与设计理念</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#核心指标体系-0-1-分-越高越好" class="sidebar-link reco-side-核心指标体系-0-1-分-越高越好" data-v-b57cc07c>核心指标体系（0–1 分，越高越好）</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#ragas-评估指标" class="sidebar-link reco-side-ragas-评估指标" data-v-b57cc07c>ragas 评估指标</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#评估流程与实现原理" class="sidebar-link reco-side-评估流程与实现原理" data-v-b57cc07c>评估流程与实现原理</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-rag.html#与传统评估方法的对比" class="sidebar-link reco-side-与传统评估方法的对比" data-v-b57cc07c>与传统评估方法的对比</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.252ae38c.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/106.252f49ca.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Transformer 相关 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.252ae38c.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/120.8b58a340.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.5613e6ba.js"><link rel="prefetch" href="/hmblog/assets/js/101.b8eb0459.js"><link rel="prefetch" href="/hmblog/assets/js/102.40868c51.js"><link rel="prefetch" href="/hmblog/assets/js/103.1f40d097.js"><link rel="prefetch" href="/hmblog/assets/js/104.4e73c56a.js"><link rel="prefetch" href="/hmblog/assets/js/105.cb525ef5.js"><link rel="prefetch" href="/hmblog/assets/js/106.252f49ca.js"><link rel="prefetch" href="/hmblog/assets/js/107.91d170e8.js"><link rel="prefetch" href="/hmblog/assets/js/108.8a514186.js"><link rel="prefetch" href="/hmblog/assets/js/109.f15844d7.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.a0e27b36.js"><link rel="prefetch" href="/hmblog/assets/js/111.1c542559.js"><link rel="prefetch" href="/hmblog/assets/js/112.5fa57e84.js"><link rel="prefetch" href="/hmblog/assets/js/113.bfbfcd5a.js"><link rel="prefetch" href="/hmblog/assets/js/114.2e526e4d.js"><link rel="prefetch" href="/hmblog/assets/js/115.221e2f65.js"><link rel="prefetch" href="/hmblog/assets/js/116.a7726179.js"><link rel="prefetch" href="/hmblog/assets/js/117.22075f73.js"><link rel="prefetch" href="/hmblog/assets/js/118.459f31e3.js"><link rel="prefetch" href="/hmblog/assets/js/119.f7a33a09.js"><link rel="prefetch" href="/hmblog/assets/js/121.277e1f1e.js"><link rel="prefetch" href="/hmblog/assets/js/122.ec3ae934.js"><link rel="prefetch" href="/hmblog/assets/js/123.514ade54.js"><link rel="prefetch" href="/hmblog/assets/js/124.6b6c2b7d.js"><link rel="prefetch" href="/hmblog/assets/js/125.a7fb1fbe.js"><link rel="prefetch" href="/hmblog/assets/js/126.b5ef252a.js"><link rel="prefetch" href="/hmblog/assets/js/127.d8121d6d.js"><link rel="prefetch" href="/hmblog/assets/js/128.40963707.js"><link rel="prefetch" href="/hmblog/assets/js/129.bf256481.js"><link rel="prefetch" href="/hmblog/assets/js/130.0031ec91.js"><link rel="prefetch" href="/hmblog/assets/js/131.4fe99cc5.js"><link rel="prefetch" href="/hmblog/assets/js/132.fcf1a74b.js"><link rel="prefetch" href="/hmblog/assets/js/133.ff8e24a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.db2d31f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b152d9b0.js"><link rel="prefetch" href="/hmblog/assets/js/136.936be57e.js"><link rel="prefetch" href="/hmblog/assets/js/137.48f9d2b5.js"><link rel="prefetch" href="/hmblog/assets/js/138.3bdb70b7.js"><link rel="prefetch" href="/hmblog/assets/js/139.2c511f09.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.5f00d305.js"><link rel="prefetch" href="/hmblog/assets/js/141.41c9f925.js"><link rel="prefetch" href="/hmblog/assets/js/142.b37e8f1d.js"><link rel="prefetch" href="/hmblog/assets/js/143.20c71a9e.js"><link rel="prefetch" href="/hmblog/assets/js/144.17cece65.js"><link rel="prefetch" href="/hmblog/assets/js/145.978e7516.js"><link rel="prefetch" href="/hmblog/assets/js/146.94bdfed5.js"><link rel="prefetch" href="/hmblog/assets/js/147.f9c95b0c.js"><link rel="prefetch" href="/hmblog/assets/js/148.355cbcf5.js"><link rel="prefetch" href="/hmblog/assets/js/149.b1e46aaf.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.b5a35472.js"><link rel="prefetch" href="/hmblog/assets/js/151.d309c32e.js"><link rel="prefetch" href="/hmblog/assets/js/152.fb9a950d.js"><link rel="prefetch" href="/hmblog/assets/js/153.c231397c.js"><link rel="prefetch" href="/hmblog/assets/js/154.2c76a2e9.js"><link rel="prefetch" href="/hmblog/assets/js/155.ad43ee17.js"><link rel="prefetch" href="/hmblog/assets/js/156.b0fe3a29.js"><link rel="prefetch" href="/hmblog/assets/js/157.d085315f.js"><link rel="prefetch" href="/hmblog/assets/js/158.9f11fbf4.js"><link rel="prefetch" href="/hmblog/assets/js/159.178d8a8a.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.e6a3b7e3.js"><link rel="prefetch" href="/hmblog/assets/js/161.b897eab6.js"><link rel="prefetch" href="/hmblog/assets/js/162.54114dbe.js"><link rel="prefetch" href="/hmblog/assets/js/163.156fce2c.js"><link rel="prefetch" href="/hmblog/assets/js/164.e44a107d.js"><link rel="prefetch" href="/hmblog/assets/js/165.50843d9b.js"><link rel="prefetch" href="/hmblog/assets/js/166.51cc166e.js"><link rel="prefetch" href="/hmblog/assets/js/167.1e241fd0.js"><link rel="prefetch" href="/hmblog/assets/js/168.1f0c33e5.js"><link rel="prefetch" href="/hmblog/assets/js/169.62546341.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.3e1d4983.js"><link rel="prefetch" href="/hmblog/assets/js/171.5975c042.js"><link rel="prefetch" href="/hmblog/assets/js/172.a172fe4f.js"><link rel="prefetch" href="/hmblog/assets/js/173.b7f30ce1.js"><link rel="prefetch" href="/hmblog/assets/js/174.cf213ee7.js"><link rel="prefetch" href="/hmblog/assets/js/175.fead80ee.js"><link rel="prefetch" href="/hmblog/assets/js/176.d8597cdf.js"><link rel="prefetch" href="/hmblog/assets/js/177.72596ae1.js"><link rel="prefetch" href="/hmblog/assets/js/178.d0c48b18.js"><link rel="prefetch" href="/hmblog/assets/js/179.d5c444fc.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.2f29e719.js"><link rel="prefetch" href="/hmblog/assets/js/181.bb359567.js"><link rel="prefetch" href="/hmblog/assets/js/182.e140022f.js"><link rel="prefetch" href="/hmblog/assets/js/183.88c88131.js"><link rel="prefetch" href="/hmblog/assets/js/184.7dafb863.js"><link rel="prefetch" href="/hmblog/assets/js/185.6ee6fee4.js"><link rel="prefetch" href="/hmblog/assets/js/186.a58d3091.js"><link rel="prefetch" href="/hmblog/assets/js/187.06e4ac29.js"><link rel="prefetch" href="/hmblog/assets/js/188.4f58b234.js"><link rel="prefetch" href="/hmblog/assets/js/189.b7fcaad5.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.1ee24f3f.js"><link rel="prefetch" href="/hmblog/assets/js/191.71d1ed44.js"><link rel="prefetch" href="/hmblog/assets/js/192.8e13dbd5.js"><link rel="prefetch" href="/hmblog/assets/js/193.6ffdbe3c.js"><link rel="prefetch" href="/hmblog/assets/js/194.f3092777.js"><link rel="prefetch" href="/hmblog/assets/js/195.61518c26.js"><link rel="prefetch" href="/hmblog/assets/js/196.4749bfe4.js"><link rel="prefetch" href="/hmblog/assets/js/197.02f293f5.js"><link rel="prefetch" href="/hmblog/assets/js/198.66d067f8.js"><link rel="prefetch" href="/hmblog/assets/js/199.e713626b.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.a0428ce1.js"><link rel="prefetch" href="/hmblog/assets/js/201.10f94064.js"><link rel="prefetch" href="/hmblog/assets/js/202.85104aab.js"><link rel="prefetch" href="/hmblog/assets/js/203.610baaad.js"><link rel="prefetch" href="/hmblog/assets/js/204.d7a56285.js"><link rel="prefetch" href="/hmblog/assets/js/205.e9c3d532.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.b6871f20.js"><link rel="prefetch" href="/hmblog/assets/js/41.b9269303.js"><link rel="prefetch" href="/hmblog/assets/js/42.e8164e0c.js"><link rel="prefetch" href="/hmblog/assets/js/43.70ef46e5.js"><link rel="prefetch" href="/hmblog/assets/js/44.9331e0b2.js"><link rel="prefetch" href="/hmblog/assets/js/45.5feef070.js"><link rel="prefetch" href="/hmblog/assets/js/46.cbe15db5.js"><link rel="prefetch" href="/hmblog/assets/js/47.13b797de.js"><link rel="prefetch" href="/hmblog/assets/js/48.7030d96f.js"><link rel="prefetch" href="/hmblog/assets/js/49.21360ca4.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.2278b4f1.js"><link rel="prefetch" href="/hmblog/assets/js/51.dfcce7fa.js"><link rel="prefetch" href="/hmblog/assets/js/52.411e6b71.js"><link rel="prefetch" href="/hmblog/assets/js/53.9f14e863.js"><link rel="prefetch" href="/hmblog/assets/js/54.ae21c7a9.js"><link rel="prefetch" href="/hmblog/assets/js/55.0b0dbecf.js"><link rel="prefetch" href="/hmblog/assets/js/56.2b3b9c9e.js"><link rel="prefetch" href="/hmblog/assets/js/57.eb5c4857.js"><link rel="prefetch" href="/hmblog/assets/js/58.5bb642a4.js"><link rel="prefetch" href="/hmblog/assets/js/59.310d4748.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.43f50fd6.js"><link rel="prefetch" href="/hmblog/assets/js/61.bf7359ad.js"><link rel="prefetch" href="/hmblog/assets/js/62.bbc1a63f.js"><link rel="prefetch" href="/hmblog/assets/js/63.4f514386.js"><link rel="prefetch" href="/hmblog/assets/js/64.75891b13.js"><link rel="prefetch" href="/hmblog/assets/js/65.c594c5f0.js"><link rel="prefetch" href="/hmblog/assets/js/66.3b2e8434.js"><link rel="prefetch" href="/hmblog/assets/js/67.d21dd018.js"><link rel="prefetch" href="/hmblog/assets/js/68.3a1952eb.js"><link rel="prefetch" href="/hmblog/assets/js/69.4a9f3de5.js"><link rel="prefetch" href="/hmblog/assets/js/70.79851ca4.js"><link rel="prefetch" href="/hmblog/assets/js/71.6b0dd684.js"><link rel="prefetch" href="/hmblog/assets/js/72.194abe8d.js"><link rel="prefetch" href="/hmblog/assets/js/73.57d7aacb.js"><link rel="prefetch" href="/hmblog/assets/js/74.21d325f3.js"><link rel="prefetch" href="/hmblog/assets/js/75.5db4d81f.js"><link rel="prefetch" href="/hmblog/assets/js/76.f614fd28.js"><link rel="prefetch" href="/hmblog/assets/js/77.5fb8fe74.js"><link rel="prefetch" href="/hmblog/assets/js/78.cbf908d6.js"><link rel="prefetch" href="/hmblog/assets/js/79.16b13beb.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.b7f99985.js"><link rel="prefetch" href="/hmblog/assets/js/81.c5c33a8c.js"><link rel="prefetch" href="/hmblog/assets/js/82.1bb32711.js"><link rel="prefetch" href="/hmblog/assets/js/83.0126cbfc.js"><link rel="prefetch" href="/hmblog/assets/js/84.bf184586.js"><link rel="prefetch" href="/hmblog/assets/js/85.ed882d02.js"><link rel="prefetch" href="/hmblog/assets/js/86.00a6c023.js"><link rel="prefetch" href="/hmblog/assets/js/87.19ec978b.js"><link rel="prefetch" href="/hmblog/assets/js/88.da0b0fce.js"><link rel="prefetch" href="/hmblog/assets/js/89.1b3f0dc7.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.5b446b43.js"><link rel="prefetch" href="/hmblog/assets/js/91.b7568648.js"><link rel="prefetch" href="/hmblog/assets/js/92.41c96c2a.js"><link rel="prefetch" href="/hmblog/assets/js/93.c88897c2.js"><link rel="prefetch" href="/hmblog/assets/js/94.1b8ca6ee.js"><link rel="prefetch" href="/hmblog/assets/js/95.ad838784.js"><link rel="prefetch" href="/hmblog/assets/js/96.8d479f68.js"><link rel="prefetch" href="/hmblog/assets/js/97.50826eb1.js"><link rel="prefetch" href="/hmblog/assets/js/98.bdb338cb.js"><link rel="prefetch" href="/hmblog/assets/js/99.4842effa.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/rag-question-compare.html" class="nav-link"><i class="undefined"></i>
+  临时
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>129</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/rag-question-compare.html" class="nav-link"><i class="undefined"></i>
+  临时
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Transformer 相关</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="transformer-相关"><a href="#transformer-相关" class="header-anchor">#</a> Transformer 相关</h2> <h3 id="_1-什么是位置编码"><a href="#_1-什么是位置编码" class="header-anchor">#</a> 1. 什么是位置编码？</h3> <blockquote><p>当我们将文本输入模型时，往往会忽略输入序列中单词的顺序</p></blockquote> <p>举个幽默性的例子：
+eg: 狗咬了我  和 我咬了狗， 在模型看来，是一样的，这是灾难性的</p> <ul><li>Transformer 模型，与之前的RNN 和 LSTM 不同，<strong>Transformer 不按顺序处理数据</strong>，而是并行处理输入。</li> <li>因此，我们需要位置编码来告诉模型，<strong>输入序列中各个单词的顺序</strong>。</li></ul> <blockquote><p>注意： 位置编码在 transformer 模型架构中的位置，</p></blockquote> <ul><li>输入转为 embedding，添加位置信息，使模型更好地理解每个词的位置。</li></ul> <h3 id="_2-解释一下语言模型中token的概念"><a href="#_2-解释一下语言模型中token的概念" class="header-anchor">#</a> 2. 解释一下语言模型中token的概念？</h3> <blockquote><p>在LLMs 中， token是模型读取或生成的文本单位。</p></blockquote> <p>Token可以是字符、单词、子词或其他文本或代码片段, 具体取决于所使用的<code>tokenization</code>方法或方案。</p> <blockquote><p>语言模型中常见的几种tokenization方法:</p></blockquote> <ul><li>基于单词的</li> <li>基于字符的</li> <li>基于子词的</li></ul> <h3 id="_3-简单说下什么是大语言模型-以及它是如何训练的"><a href="#_3-简单说下什么是大语言模型-以及它是如何训练的" class="header-anchor">#</a> 3. 简单说下什么是大语言模型, 以及它是如何训练的?</h3> <blockquote><p>什么是大语言模型?</p></blockquote> <ul><li>LLM是高级的自然语言处理(NLP)模型, 经过海量数据集的训练, <strong>能够理解和生成类似人类的文本</strong>。</li> <li>能够基于输入生成连贯且上下文相关的文本。</li></ul> <p><strong>总结一下, 大语言模型</strong>:</p> <ul><li>一种能够<code>识别、预测和生成人类语言</code>的机器学习算法。</li> <li>预训练规模达到PB级的文本数据集,通常包含数十亿到数千亿个参数的超大模型。</li> <li>LLM通常先在大规模数据集上进行预训练, 然后再针对特定任务进行微调。</li></ul> <blockquote><p>如何训练的?</p></blockquote> <ul><li>在海量的数据集上，进行预训练</li> <li>微调</li> <li>强化学习</li></ul> <h3 id="_4-如何在大型语言模型中使用stop-sequence"><a href="#_4-如何在大型语言模型中使用stop-sequence" class="header-anchor">#</a> 4. 如何在大型语言模型中使用Stop Sequence?</h3> <blockquote><p>停止序列</p></blockquote> <p>Stop Sequence 用于<strong>让模型在期望的点停止生成</strong>, 例如在句子或列表结束时。通常情况下,回车键 <strong>(\n)可以作为单行完成的Stop Sequence</strong>。</p> <p>在聊天场景中,目标是只生成与当前说话者相关的一行文本。使用了以下三个Stop Sequences:</p> <ul><li>换行符(\n)</li> <li>字符串&quot;Human:&quot;</li> <li>字符串&quot;Al:&quot;</li></ul> <p>总结: Stop Sequence可以<strong>帮助模型在合适的地方停止生成</strong>, 避免生成不必要的文本或发生不合理的切换。</p> <ul><li>它特别适用于<code>控制生成长度和格式的场景</code>。</li></ul> <h3 id="_5"><a href="#_5" class="header-anchor">#</a> 5.</h3> <h3 id="_6"><a href="#_6" class="header-anchor">#</a> 6.</h3> <h3 id="_7"><a href="#_7" class="header-anchor">#</a> 7.</h3> <h3 id="_8"><a href="#_8" class="header-anchor">#</a> 8.</h3> <h3 id="_9"><a href="#_9" class="header-anchor">#</a> 9.</h3> <h3 id="_10"><a href="#_10" class="header-anchor">#</a> 10.</h3> <h2 id="搜索-search"><a href="#搜索-search" class="header-anchor">#</a> 搜索（Search）</h2> <h3 id="_1-为什么高质量搜索功能对大模型非常重要"><a href="#_1-为什么高质量搜索功能对大模型非常重要" class="header-anchor">#</a> 1. 为什么高质量搜索功能对大模型非常重要?</h3> <blockquote><p>对于提升LLM在<strong>需要从输入上下文中识别相关信息的任务中</strong>的表现至关重要, 尤其是在<code>多文档问答</code>和键值检索等应用场景中。</p></blockquote> <ol><li>当输入<strong>上下文变得更长时, 模型性能会显著下降</strong>, 同时成本也会增加。</li> <li>因此, 提供精确且相关的信息不仅可以降低成本, 还能够提升LLM系统的准确性。</li></ol> <ul><li>研究表明, LLM在上下文开头或结尾有相关信息时, 能达到最佳效果(可以看到一个U型曲线)。这种现象通常被称为&quot;Lost in the Middle&quot;</li></ul> <h3 id="_2-在信息检索和语义搜索中-常用的架构模式"><a href="#_2-在信息检索和语义搜索中-常用的架构模式" class="header-anchor">#</a> 2. 在信息检索和语义搜索中, 常用的架构模式</h3> <blockquote><p>主要有两种: Bi-Encoder 模型 和 Cross-Encoder模型</p></blockquote> <ol><li>Bi-Encoder 模型</li></ol> <ul><li><p>在Bi-Encoder模型中,可以并行使用encoders--个用于编码输入query,另一个用于编码候选
+documents。它们独立工作,为query和每个document生成各自的embedding。Bi-Encoder将信息
+编码为向量形式(如SentenceAvec或Sentence Bvec),可以使使用距离度量来比较这些向量的相似
+性。</p></li> <li><p>应用场景:</p> <ul><li>Bi-Encoder常用于以document检索为主要目标的任务(如ANNSearch), 例如搜索引擎和推荐系统。</li></ul></li></ul> <ol start="2"><li>Cross-Encoder模型</li></ol> <ul><li><p>在Cross-Encoder模型中,query和document在一个encoder中共同处理。这就意味着模型的输入
+必须是包含query和document的一对信息,最终输出的相似度分数介于0到1之间,1表示最相似
+因此,Cross-Encoder模型需要逐对输入来计算相似性。</p></li> <li><p>应用场景:</p> <ul><li>Cross-Encoder在需要捕捉query与document之间交互关系的任务中非常有用,比如需要理解上下文
+或query与document关系的任务。Cross-Encoder通常用作ranlking模型,帮助根据query对搜索
+结果进行排序。</li></ul></li></ul> <h3 id="_3-如何在大规模数据集中实现高效且准确的搜索"><a href="#_3-如何在大规模数据集中实现高效且准确的搜索" class="header-anchor">#</a> 3. 如何在大规模数据集中实现高效且准确的搜索?</h3> <p>使用<code>Cross-Encoder模型</code>相比于<code>Bi-Encoder模型</code> <strong>能够实现更高的准确性</strong>, 但代价是速度会变慢。</p> <ul><li>因此,在信息检索或语义搜索场景下,将Cross-Ercoder和Bi-Encoder结合使用是一个合理的选择。</li></ul> <p>首先,可以使用高效的Bi-Encoder来检索出前100个最相似的句子,然后再使用Cross-Encoder计算每对
+(query,hit)的分数,对这些结果进行重新排序。</p> <p>实际操作中,这个流程如下:
+·第一步:使用文档集合和查询,利用Bi-Encoder模型快速检索出候选结果列表。之所以优先使用Bi
+Encoder,是因为它速度快,能够准确找到与查询在语义上相似的文档,同时也会包含一些不需要的额外
+文档。
+第二步:将候选结果输入Cross-Encoder模型,进一步筛选出最相关的结果。Cross-Encoder模型只在
+Bi-Encoder结果的一个子集中运行,由于Cross-Encoder准确度高,可以有效过滤掉Bi-Encoder中的
+无关文档。
+这种方法结合了Bi-Encoder的高效检索能力和Cross-Encoder的的高准确度,适合在大规模数据集上使用。</p> <h3 id="_4-如果有一个rag系统-但结果不准确。经调查发现检索系统不够准确-可以采取哪些步骤来改进它"><a href="#_4-如果有一个rag系统-但结果不准确。经调查发现检索系统不够准确-可以采取哪些步骤来改进它" class="header-anchor">#</a> 4. 如果有一个RAG系统, 但结果不准确。经调查发现检索系统不够准确, 可以采取哪些步骤来改进它?</h3> <ol><li>数据分块策略:</li></ol> <ul><li>数据分块方式的不同会对搜索结果产生显著影响,详细内容大家可以回
+看一下数据分块部分的内容。</li></ul> <ol start="2"><li><p>搜索策略:
+有三种搜索方式可供选择:
+。全文搜索:将内容分解为关键字以进行搜索。
+·向量搜索:使用向量embeddings进行搜索。
+混合搜索:结合以上两种方法,使用关键字和向量检索来获得最佳结果。注意,混合搜索优于全文搜
+索和向量搜索。</p></li> <li><p>查询类型:
+微软曾在一项实验中发现,不同风格的查询在不同的搜索设置中会有不同的NDCG分数。</p></li></ol> <p>重排序模型:
+一个强大的重排序模型可以改进搜索结果。
+Fine-tuningembedding 模型:
+正如在前一个问题&quot;Walk me through steps of improving sentende transformer model used for
+embedding?&quot;中所看到的那样,Fine-tuning能显著改进embeddiing表示和搜索结果。
+·Fine-tuned重排序模型:
+我们可以在自定义数据上对重排序模型进行Fine-tuning,以提高重排序模型的准确性</p> <h3 id="_5-关键字检索-keyword-based-retrieval-方法"><a href="#_5-关键字检索-keyword-based-retrieval-方法" class="header-anchor">#</a> 5. 关键字检索(keyword-based retrieval)方法</h3> <blockquote><p>关键字检索（keyword-based retrieval）是一类基于词项匹配的检索范式，而 BM25 是该范式下的一种经典排序算法，二者是 “范畴与实例” 的关系，并非完全等同。</p></blockquote> <p>BM25有几个关键组成部分:
+·词频(TF):这表示一个词在文档中出现的频率。不过,BM25并不是是简单地使用原始的词频,而是进行
+了一些修改,加入了&quot;饱和效应&quot;(saturation effects)。这样做的目的是防止高频出现的词对相关性得
+分产生过大的影响。
+逆文档频率(IDF):这是衡量一个词在所有文档中重要性的指标。IDF会给稀有词更高的权重,而对于那
+些常见词,它会赋予较低的权重。
+文档长度归一化:由于长文档中术语可能自然地出现得更频繁,这样会导致偏差。因此,BM25对词频进
+行归一化,调整文档的长度,避免评分向长文档倾斜。
+·查询词饱和:这是为了减少高词频对相关性评分的过度影响,即使一个查询词出现非常多次,其影响力也
+会逐渐减弱。</p> <p>BM25的优缺点
+优点
+。简单高效
+。同时考虑了词频和文档长度
+。能够处理大型文档集合
+缺点
+。BM25不考虑查询和文档的语义或上下文
+。假设查询词是独立的,这不一定总是成立
+。过度依赖词频和文档长度,可能忽视其他重要因素</p> <h3 id="_6-如何微调re-ranking模型"><a href="#_6-如何微调re-ranking模型" class="header-anchor">#</a> 6. 如何微调re-ranking模型?</h3> <p>微调re-ranking模型的一种常用方法是:</p> <ul><li>使用Sentence Transformer。</li> <li>Cross-encoder模型是基于transformer的模型(例如BERT、ROBERTa等),它们接受一对句子作为输入,输出一个连续的值来表示两
+个句子的语义相似度。</li> <li>Sentence Transformers是一个Python框架, 可以用来训练和使用这些模型。
+此外, Sentence Transformers 还支持为句子对的评分和句子对分类任务训练Cross-Encoder模型。</li></ul> <ol><li>首先准备数据集，结合RAG 项目里面，微调reranker 模型的步骤，来理解</li></ol> <p>模型训练:
+·训练模型相对简单。首先选择一个基础模型(Huggingface的任意模型都可以使用),并根据任务需要定
+义标签数量。
+在连续评分的情况下,我们可以使用CECorrelationEvaluator进行评估。这个类适用于Cross-
+Encoder模型评估,它会计算句子对的预测评分与实际评分之间的Pearson和Spearman相关系数。
+·对于二分类任务,我们可以使用CEBinaryClassificationEvaluator,而多分类任务可以使用CESOf
+tmaxAccuracyEvaluator 。</p> <ul><li>最后, 对模型进行评估, 如果模型表现达到预期效果, 保存模型</li></ul> <h3 id="_7-信息检索中常用的评价指标-以及这些指标在什么时候会失效"><a href="#_7-信息检索中常用的评价指标-以及这些指标在什么时候会失效" class="header-anchor">#</a> 7. 信息检索中常用的评价指标, 以及这些指标在什么时候会失效?</h3> <blockquote><p>在信息检索中, 最常用的评价指标是<code>Accuracy@1</code>和<code>Accurracy@3</code></p></blockquote> <ol><li>Accuracy@1:这个指标衡量模型在重新排序的结果列表中将最相关关的项排在第一位的准确率。具体来
+说,它是模型对于查询能够将最佳答案排在首位的比例。较高的Accuracy@1表明系统在将最相关项置于
+列表顶端方面表现更好。</li> <li>Accuracy@3:这个指标类似于Accuracy@1,但它衡量的是最相关的项是否出现在重新排序结果列表的
+前三个位置中。Accuracy@3表示的是模型在查询中将最佳答案排在前前三名的比例。较高的Accuracy@3
+表明系统在将相关项置于前3个位置方面表现较好。</li></ol> <p>Accuracy@N的局限性:Accuracy@N指标衡量的是在前k个文档中是否至少存在一个相关结果,但它无法评
+估相关项在列表中出现的具体位置。
+例如,Accuracy可以告诉我们相关结果是否出现在前10个搜索索结果中,但无法说明它是排在第一个位置还是最
+后一个位置。因此,当我们关心相关结果出现在列表中的具体顺序时Accuracy@N的表现可能不够理想。</p> <h3 id="_8-2"><a href="#_8-2" class="header-anchor">#</a> 8.</h3> <h3 id="_9-一个推荐系统-应该选择哪种评价指标来评估系统的效果"><a href="#_9-一个推荐系统-应该选择哪种评价指标来评估系统的效果" class="header-anchor">#</a> 9. 一个推荐系统, 应该选择哪种评价指标来评估系统的效果?</h3> <p>所以nDCG (Normalized Discounted Cumulative Gain)是推荐系统或信息检索中常用的一个指标,用来评
+估排序模型的质量。
+它既考虑返回项的相关性,也考虑它们在排序列表中的位置。其核心思想是高度相关的项应该更早地出现在列
+表中。</p> <h3 id="_10-对比不同的信息检索指标-并说明分别在什么情况下使用"><a href="#_10-对比不同的信息检索指标-并说明分别在什么情况下使用" class="header-anchor">#</a> 10. 对比不同的信息检索指标, 并说明分别在什么情况下使用?</h3> <table><thead><tr><th>指标</th> <th>什么时候使用</th> <th>实时应用场景</th> <th>失效场景</th></tr></thead> <tbody><tr><td>Accuracy@N</td> <td>当关心在前N个结果中至少有一个推荐是正确的</td> <td>在信息检索中，只需在前N个结果中找到一个正确答案时适用</td> <td>无法关注相关项在前N个结果中的具体位置</td></tr> <tr><td>MRR@10</td> <td>当关心相关项在列表中出现的速度时使用</td> <td>适用于问答系统，希望相关答案尽可能排在前N个结果的顶部</td> <td>只考虑相关项的位置，而不考虑其相关性，例如在网页搜索中，搜索结果的排序有时需要基于更高的相关性</td></tr> <tr><td>nDCG</td> <td>当关心所有项的质量且它们的顺序很重要时使用</td> <td>推荐系统或信息检索中，需要关注推荐项的顺序和质量</td> <td>假设高度相关的项在列表中出现得越靠前越有用，这在某些情况下可能不适用</td></tr></tbody></table> <h3 id="_11-hybrid-search的工作原理"><a href="#_11-hybrid-search的工作原理" class="header-anchor">#</a> 11. Hybrid Search的工作原理</h3> <blockquote><p>Hybrid Search结合了向量搜索和关键字(稀疏)搜索的优势。包含 稠密 和 稀疏</p></blockquote> <ul><li>向量搜索的优势， 找到与query 最相似的信息、</li> <li>关键字搜索的优势在于， 精确性</li></ul> <p>在实际查询中，会使用向量搜索和关键字搜索分别检索前K个结果块。
+使用 RRF做一个融合， 输出融合后的列表</p> <h3 id="_12-假设有多个方法生成的搜索结果-你会如何将它们合并并统一排名-得到一个单一的结果集"><a href="#_12-假设有多个方法生成的搜索结果-你会如何将它们合并并统一排名-得到一个单一的结果集" class="header-anchor">#</a> 12. 假设有多个方法生成的搜索结果,你会如何将它们合并并统一排名, 得到一个单一的结果集?</h3> <ul><li>RRF: 倒数排名融合</li></ul> <h3 id="_13-如何处理multi-hop-multifaceted查询"><a href="#_13-如何处理multi-hop-multifaceted查询" class="header-anchor">#</a> 13. 如何处理multi-hop/multifaceted查询?</h3> <ul><li>处理多跳问答(MHQA)任务，是回答涉及多个信息片段和多步骤推理的自然语言问题</li></ul> <h2 id="大语言模型"><a href="#大语言模型" class="header-anchor">#</a> 大语言模型</h2> <h3 id="_1-self-attention"><a href="#_1-self-attention" class="header-anchor">#</a> 1. Self-Attention</h3> <p>自注意力机制， QK相乘，求相似度，做一次缩放， 然后归一化处理， 然后和 V 进行加权求和
+自注意力机制的缺点</p> <h4 id="_1-1-self-attention-机制的缺点"><a href="#_1-1-self-attention-机制的缺点" class="header-anchor">#</a> 1.1 Self-Attention 机制的缺点？</h4> <h3 id="_2-transformer-在计算和内存上消耗巨大-为什么"><a href="#_2-transformer-在计算和内存上消耗巨大-为什么" class="header-anchor">#</a> 2. Transformer 在计算和内存上消耗巨大，为什么</h3> <p>MHA 多头注意力机制</p> <p>带来的开销，每个头都有自己独立的线性层， QKV 矩阵，每次解码都需要加载解码器权重</p> <p>为了缓解MHA内存瓶颈</p> <p>MQA，GQA</p> <h3 id="_3-如何增加-llm的-上下文长度"><a href="#_3-如何增加-llm的-上下文长度" class="header-anchor">#</a> 3. 如何增加 LLM的 上下文长度</h3> <ul><li>ALiBi, 两阶段训练法</li></ul> <h3 id="_4-什么是位置编码"><a href="#_4-什么是位置编码" class="header-anchor">#</a> 4. 什么是位置编码</h3> <blockquote><p>当我们将文本输入模型时，往往会忽略输入序列中单词的顺序</p></blockquote> <p>举个幽默性的例子：
+eg: 狗咬了我  和 我咬了狗， 在模型看来，是一样的，这是灾难性的</p> <ul><li>Transformer 模型，与之前的RNN 和 LSTM 不同，<strong>Transformer 不按顺序处理数据</strong>，而是并行处理输入。</li> <li>因此，我们需要位置编码来告诉模型，<strong>输入序列中各个单词的顺序</strong>。</li></ul> <blockquote><p>注意： 位置编码在 transformer 模型架构中的位置，</p></blockquote> <ul><li>输入转为 embedding，添加位置信息，使模型更好地理解每个词的位置。</li></ul> <h3 id="_5-transformer-架构"><a href="#_5-transformer-架构" class="header-anchor">#</a> 5. Transformer 架构</h3> <blockquote><p>Transformer 模型包含两个主要部分: <code>Encoder(编码器)</code> 和 <code>Decoder (解码器）</code></p></blockquote> <p>是一种用于<strong>理解数据序列的神经网络架构</strong>, 广泛应用于NLP任务。因为其可扩展性和处理长距离依赖的能力而闻名。</p> <h3 id="架构图"><a href="#架构图" class="header-anchor">#</a> 架构图</h3> <p><img src="/hmblog/images/llm/transformer/transformer.png" alt="transformer"></p> <h4 id="encoder-编码器"><a href="#encoder-编码器" class="header-anchor">#</a> Encoder(编码器)</h4> <ol><li>步骤1: Encoder接收输入序列(例如一种语言的句子)并将其转换为连续表示序列。该序列将作为Decoder生成输出的基础。<strong>在标准架构图中, Encoder位于左侧模块。</strong></li> <li>步骤2: 输入文本首先被转换为<code>word embeddings</code>, 这些向量表示能够捕捉词汇的语义信息。</li> <li>步骤3: 向embeddings注入<code>positional encoding</code>, 以标识<code>词汇在序列中的位置信息</code>及词问相对距离。</li> <li>步骤4: 每个编码块包含两个核心子模块:multi-head attention机制与positionwise feed-forward network
+(原论文采用6个这样的块结构)。</li> <li>步骤5: 需特别注意,每个子模块均采用<strong>残差连接</strong>并接入normalization层, 该设计能有效促进深层模型训练并稳定学习过程。</li></ol> <p>上述流程描述的是单个Encoder的处理过程。Encoder最终输出的向量维度与输入维度保持一致,实际应用中可将多个Encoder进行堆叠使用。</p> <h3 id="decoder-解码器"><a href="#decoder-解码器" class="header-anchor">#</a> Decoder(解码器)</h3> <ol><li>步骤1: Decoder生成输出序列(如另一种语言的句子),<strong>一次生成一个词</strong>。它基于encoder输出的连续表示序列和先前生成的符号来生成下一个符号。<strong>Decoder在架构图的右侧。</strong></li> <li>步骤2: Decoder也由多个相同的层组成(paper中设计为6层), 但额外添加了一个多头注意力机制来关注编码器的输出。</li> <li>步骤3: 首个子模块采用masked multi-head self-attention机制,通i过masking确保对特定位置的预测不会依赖
+后续位置信息。</li> <li>步骤4: 架构图中可见接收Encoder输出的multi-head attenticon模块,该模块被称作&quot;encoder-decoder
+attention&quot;,其keys与values向量源于Encoder。</li> <li>步骤5: 第二个子模块对Encoder输出执行multi-head attenticn计算-keys与values取自Encoder输出,而
+queries来自前一层Decoder的输出。例如预测&quot;am&quot;时,&quot;I&quot;将作为query与key,values则来自Encoder</li> <li>步骤6: 以生成翻译结果&quot;Iam...&quot;为例,Decoder首先生成&quot;I&quot;,随后将该结果回传至Decoder网络以生成后续词
+汇&quot;am&quot;(对应架构图中Decoder模块的&quot;Outputs&quot;流向)。</li> <li>步骤7: Decoder中的multi-head attention机制存在特殊约束:由于输出序列不完整,注意力仅允许关注输出
+序列中已生成的位置(通过将未来位置得分设置为负无穷实现)。</li> <li>步骤8: Decoder内的&quot;encoder-decoder attention&quot;运作方式与常规attention类似,但其query矩阵来自下层
+Decoder输出,keys与values向量则取自Encoder堆栈的最终输出。</li></ol> <h3 id="最终层和softmax层"><a href="#最终层和softmax层" class="header-anchor">#</a> 最终层和Softmax层</h3> <ul><li><p>logits、概率分布 等等字眼</p></li> <li><p>步骤1:Decoder堆栈的最终输出为一个浮点数向量。</p></li> <li><p>步骤2:通过未端Linear层与Softmax层将该向量转换为具体单词。</p></li> <li><p>步骤3:Linear层作为基础神经网络层,将Decoder输出向量转换为维度更大的logits向量。</p></li> <li><p>步骤4:假设模型从训练数据中学得10,000个唯一英语单词,这些词洞汇构成模型的&quot;输出词汇表&quot;。</p></li> <li><p>步骤5:此时logits向量将包含10,000个数值位,每个位置对)应输出词汇表中一个特定词的得分。</p></li> <li><p>步骤6:Softmax层将这些得分转换为概率分布:所有概率值为正数且总和为1.0。</p></li> <li><p>步骤7:选择概率最高的位置,该位置对应的单词即作为当前步骤的最终输出。</p></li> <li><p>步骤8:当模型识别到<code>&lt;end of sentence&gt;</code>标记时, <strong>此生成过程终止</strong></p></li></ul> <h3 id="损失函数"><a href="#损失函数" class="header-anchor">#</a> 损失函数</h3> <p>在已理解Transformer模型训练机制及端到端翻译流程的基础上, 我们现在重点解析如何通过损失函数计算，来优化模型训练:</p> <ul><li>步骤1: 模型训练从简单样本开始,例如将法语词&quot;merci&quot;翻译为英语词&quot;thanks&quot;</li> <li>步骤2: 期望模型输出能明确指示目标词&quot;thanks&quot;的概率分布,但由于模型尚未充分训练,此目标暂时无法实现</li> <li>步骤3: 模型参数(权重)经随机初始化后,未训练模型会为每个词汇生成具有随机数值的概率分布。通过<strong>反向传播</strong>算法,我们将比较<strong>实际输出与期望输出</strong>的差异,并据此调整模型权重使输出逐步逼近目标</li> <li>步骤4: 两个概率分布的比较采用差值计算方法, (此为简化说明,具体实现可参考<strong>交叉熵</strong>与 <strong>Kullback-Leibler散度(KL 散度)</strong> 等概念)</li> <li>步骤5: 实际训练场景通常使用多词长句,例如输入&quot;je suis étudiant&quot;时期望输出&quot;Iamastudent&quot;。要求模型成功输出特定维度(词汇表大小,通常为30,000至50,000量级)的概率布向量</li> <li>步骤6: 每个概率分布应在序列正确词位呈现最高概率值(如第一个分布中&quot;i&quot;概率最高,第二个分布中&quot;am&quot;概率最高,依此类推)</li> <li>步骤7: 在足够数据集上经过充分训练后,我们期望模型输出正确翻译。注意,即使某些词在当前时间步输出可能性极低,它们仍会获得微小概率值--这是softmax函数的优势特性,有助于训练过程稳定进行</li> <li>步骤8: 模型以逐时间步方式生成输出。若始终从概率分布中选择最高概率词项而忽略其他选项,该方法称为&quot;贪心解码&quot;</li> <li>步骤9: 另一种&quot;集束搜索&quot;方法会<strong>保留前K个候选词</strong>(例如top2),在下一时间步分别进行多次前向推理(假设首输
+出为'T或'a'), 综合评估多个位置的误差后保留最优路径。该方法始终在内存中维护两个局部假设(未完整翻译结
+果),最终返回两个翻译版本。保留的候选词数量与返回结果数量<strong>均为可调整的超参数</strong></li></ul> <h3 id="_6-2"><a href="#_6-2" class="header-anchor">#</a> 6.</h3> <h3 id="_7-2"><a href="#_7-2" class="header-anchor">#</a> 7.</h3> <h3 id="_8-3"><a href="#_8-3" class="header-anchor">#</a> 8.</h3> <h3 id="_9-2"><a href="#_9-2" class="header-anchor">#</a> 9.</h3> <h3 id="_10-2"><a href="#_10-2" class="header-anchor">#</a> 10.</h3> <h2 id="transformer-相关-2"><a href="#transformer-相关-2" class="header-anchor">#</a> Transformer 相关</h2> <h3 id="_1"><a href="#_1" class="header-anchor">#</a> 1.</h3> <h3 id="_2"><a href="#_2" class="header-anchor">#</a> 2.</h3> <h3 id="_3"><a href="#_3" class="header-anchor">#</a> 3.</h3> <h3 id="_4"><a href="#_4" class="header-anchor">#</a> 4.</h3> <h3 id="_5-2"><a href="#_5-2" class="header-anchor">#</a> 5.</h3> <h3 id="_6-3"><a href="#_6-3" class="header-anchor">#</a> 6.</h3> <h3 id="_7-3"><a href="#_7-3" class="header-anchor">#</a> 7.</h3> <h3 id="_8-4"><a href="#_8-4" class="header-anchor">#</a> 8.</h3> <h3 id="_9-3"><a href="#_9-3" class="header-anchor">#</a> 9.</h3> <h3 id="_10-3"><a href="#_10-3" class="header-anchor">#</a> 10.</h3> <h2 id="transformer-相关-3"><a href="#transformer-相关-3" class="header-anchor">#</a> Transformer 相关</h2> <h3 id="_1-2"><a href="#_1-2" class="header-anchor">#</a> 1.</h3> <h3 id="_2-2"><a href="#_2-2" class="header-anchor">#</a> 2.</h3> <h3 id="_3-2"><a href="#_3-2" class="header-anchor">#</a> 3.</h3> <h3 id="_4-2"><a href="#_4-2" class="header-anchor">#</a> 4.</h3> <h3 id="_5-3"><a href="#_5-3" class="header-anchor">#</a> 5.</h3> <h3 id="_6-4"><a href="#_6-4" class="header-anchor">#</a> 6.</h3> <h3 id="_7-4"><a href="#_7-4" class="header-anchor">#</a> 7.</h3> <h3 id="_8-5"><a href="#_8-5" class="header-anchor">#</a> 8.</h3> <h3 id="_9-4"><a href="#_9-4" class="header-anchor">#</a> 9.</h3> <h3 id="_10-4"><a href="#_10-4" class="header-anchor">#</a> 10.</h3></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#transformer-相关" class="sidebar-link reco-side-transformer-相关" data-v-b57cc07c>Transformer 相关</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_1-什么是位置编码" class="sidebar-link reco-side-_1-什么是位置编码" data-v-b57cc07c>1. 什么是位置编码？</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_2-解释一下语言模型中token的概念" class="sidebar-link reco-side-_2-解释一下语言模型中token的概念" data-v-b57cc07c>2. 解释一下语言模型中token的概念？</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_3-简单说下什么是大语言模型-以及它是如何训练的" class="sidebar-link reco-side-_3-简单说下什么是大语言模型-以及它是如何训练的" data-v-b57cc07c>3. 简单说下什么是大语言模型, 以及它是如何训练的?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_4-如何在大型语言模型中使用stop-sequence" class="sidebar-link reco-side-_4-如何在大型语言模型中使用stop-sequence" data-v-b57cc07c>4. 如何在大型语言模型中使用Stop Sequence?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_5" class="sidebar-link reco-side-_5" data-v-b57cc07c>5.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_6" class="sidebar-link reco-side-_6" data-v-b57cc07c>6.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_7" class="sidebar-link reco-side-_7" data-v-b57cc07c>7.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_8" class="sidebar-link reco-side-_8" data-v-b57cc07c>8.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_9" class="sidebar-link reco-side-_9" data-v-b57cc07c>9.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_10" class="sidebar-link reco-side-_10" data-v-b57cc07c>10.</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#搜索-search" class="sidebar-link reco-side-搜索-search" data-v-b57cc07c>搜索（Search）</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_1-为什么高质量搜索功能对大模型非常重要" class="sidebar-link reco-side-_1-为什么高质量搜索功能对大模型非常重要" data-v-b57cc07c>1. 为什么高质量搜索功能对大模型非常重要?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_2-在信息检索和语义搜索中-常用的架构模式" class="sidebar-link reco-side-_2-在信息检索和语义搜索中-常用的架构模式" data-v-b57cc07c>2. 在信息检索和语义搜索中, 常用的架构模式</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_3-如何在大规模数据集中实现高效且准确的搜索" class="sidebar-link reco-side-_3-如何在大规模数据集中实现高效且准确的搜索" data-v-b57cc07c>3. 如何在大规模数据集中实现高效且准确的搜索?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_4-如果有一个rag系统-但结果不准确。经调查发现检索系统不够准确-可以采取哪些步骤来改进它" class="sidebar-link reco-side-_4-如果有一个rag系统-但结果不准确。经调查发现检索系统不够准确-可以采取哪些步骤来改进它" data-v-b57cc07c>4. 如果有一个RAG系统, 但结果不准确。经调查发现检索系统不够准确, 可以采取哪些步骤来改进它?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_5-关键字检索-keyword-based-retrieval-方法" class="sidebar-link reco-side-_5-关键字检索-keyword-based-retrieval-方法" data-v-b57cc07c>5. 关键字检索(keyword-based retrieval)方法</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_6-如何微调re-ranking模型" class="sidebar-link reco-side-_6-如何微调re-ranking模型" data-v-b57cc07c>6. 如何微调re-ranking模型?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_7-信息检索中常用的评价指标-以及这些指标在什么时候会失效" class="sidebar-link reco-side-_7-信息检索中常用的评价指标-以及这些指标在什么时候会失效" data-v-b57cc07c>7. 信息检索中常用的评价指标, 以及这些指标在什么时候会失效?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_8-2" class="sidebar-link reco-side-_8-2" data-v-b57cc07c>8.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_9-一个推荐系统-应该选择哪种评价指标来评估系统的效果" class="sidebar-link reco-side-_9-一个推荐系统-应该选择哪种评价指标来评估系统的效果" data-v-b57cc07c>9. 一个推荐系统, 应该选择哪种评价指标来评估系统的效果?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_10-对比不同的信息检索指标-并说明分别在什么情况下使用" class="sidebar-link reco-side-_10-对比不同的信息检索指标-并说明分别在什么情况下使用" data-v-b57cc07c>10. 对比不同的信息检索指标, 并说明分别在什么情况下使用?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_11-hybrid-search的工作原理" class="sidebar-link reco-side-_11-hybrid-search的工作原理" data-v-b57cc07c>11. Hybrid Search的工作原理</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_12-假设有多个方法生成的搜索结果-你会如何将它们合并并统一排名-得到一个单一的结果集" class="sidebar-link reco-side-_12-假设有多个方法生成的搜索结果-你会如何将它们合并并统一排名-得到一个单一的结果集" data-v-b57cc07c>12. 假设有多个方法生成的搜索结果,你会如何将它们合并并统一排名, 得到一个单一的结果集?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_13-如何处理multi-hop-multifaceted查询" class="sidebar-link reco-side-_13-如何处理multi-hop-multifaceted查询" data-v-b57cc07c>13. 如何处理multi-hop/multifaceted查询?</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#大语言模型" class="sidebar-link reco-side-大语言模型" data-v-b57cc07c>大语言模型</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_1-self-attention" class="sidebar-link reco-side-_1-self-attention" data-v-b57cc07c>1. Self-Attention</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_2-transformer-在计算和内存上消耗巨大-为什么" class="sidebar-link reco-side-_2-transformer-在计算和内存上消耗巨大-为什么" data-v-b57cc07c>2. Transformer 在计算和内存上消耗巨大，为什么</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_3-如何增加-llm的-上下文长度" class="sidebar-link reco-side-_3-如何增加-llm的-上下文长度" data-v-b57cc07c>3. 如何增加 LLM的 上下文长度</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_4-什么是位置编码" class="sidebar-link reco-side-_4-什么是位置编码" data-v-b57cc07c>4. 什么是位置编码</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_5-transformer-架构" class="sidebar-link reco-side-_5-transformer-架构" data-v-b57cc07c>5. Transformer 架构</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#架构图" class="sidebar-link reco-side-架构图" data-v-b57cc07c>架构图</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#decoder-解码器" class="sidebar-link reco-side-decoder-解码器" data-v-b57cc07c>Decoder(解码器)</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#最终层和softmax层" class="sidebar-link reco-side-最终层和softmax层" data-v-b57cc07c>最终层和Softmax层</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#损失函数" class="sidebar-link reco-side-损失函数" data-v-b57cc07c>损失函数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_6-2" class="sidebar-link reco-side-_6-2" data-v-b57cc07c>6.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_7-2" class="sidebar-link reco-side-_7-2" data-v-b57cc07c>7.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_8-3" class="sidebar-link reco-side-_8-3" data-v-b57cc07c>8.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_9-2" class="sidebar-link reco-side-_9-2" data-v-b57cc07c>9.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_10-2" class="sidebar-link reco-side-_10-2" data-v-b57cc07c>10.</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#transformer-相关-2" class="sidebar-link reco-side-transformer-相关-2" data-v-b57cc07c>Transformer 相关</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_1" class="sidebar-link reco-side-_1" data-v-b57cc07c>1.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_2" class="sidebar-link reco-side-_2" data-v-b57cc07c>2.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_3" class="sidebar-link reco-side-_3" data-v-b57cc07c>3.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_4" class="sidebar-link reco-side-_4" data-v-b57cc07c>4.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_5-2" class="sidebar-link reco-side-_5-2" data-v-b57cc07c>5.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_6-3" class="sidebar-link reco-side-_6-3" data-v-b57cc07c>6.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_7-3" class="sidebar-link reco-side-_7-3" data-v-b57cc07c>7.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_8-4" class="sidebar-link reco-side-_8-4" data-v-b57cc07c>8.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_9-3" class="sidebar-link reco-side-_9-3" data-v-b57cc07c>9.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_10-3" class="sidebar-link reco-side-_10-3" data-v-b57cc07c>10.</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#transformer-相关-3" class="sidebar-link reco-side-transformer-相关-3" data-v-b57cc07c>Transformer 相关</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_1-2" class="sidebar-link reco-side-_1-2" data-v-b57cc07c>1.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_2-2" class="sidebar-link reco-side-_2-2" data-v-b57cc07c>2.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_3-2" class="sidebar-link reco-side-_3-2" data-v-b57cc07c>3.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_4-2" class="sidebar-link reco-side-_4-2" data-v-b57cc07c>4.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_5-3" class="sidebar-link reco-side-_5-3" data-v-b57cc07c>5.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_6-4" class="sidebar-link reco-side-_6-4" data-v-b57cc07c>6.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_7-4" class="sidebar-link reco-side-_7-4" data-v-b57cc07c>7.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_8-5" class="sidebar-link reco-side-_8-5" data-v-b57cc07c>8.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_9-4" class="sidebar-link reco-side-_9-4" data-v-b57cc07c>9.</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/question-bank.html#_10-4" class="sidebar-link reco-side-_10-4" data-v-b57cc07c>10.</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.252ae38c.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/120.8b58a340.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>
