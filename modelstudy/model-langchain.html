@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Langchain 核心知识点 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.4">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.b90bb923.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.6384c940.js" as="script"><link rel="preload" href="/hmblog/assets/js/3.9abc57d5.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.d0f8c90c.js" as="script"><link rel="preload" href="/hmblog/assets/js/74.f6771a1c.js" as="script"><link rel="preload" href="/hmblog/assets/js/9.ffd10309.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.6f542f16.js"><link rel="prefetch" href="/hmblog/assets/js/100.8999ab8d.js"><link rel="prefetch" href="/hmblog/assets/js/101.66b27e5e.js"><link rel="prefetch" href="/hmblog/assets/js/102.68d1bfb2.js"><link rel="prefetch" href="/hmblog/assets/js/103.cb1a4f9a.js"><link rel="prefetch" href="/hmblog/assets/js/104.5b992740.js"><link rel="prefetch" href="/hmblog/assets/js/105.e98e2771.js"><link rel="prefetch" href="/hmblog/assets/js/106.1d2674a7.js"><link rel="prefetch" href="/hmblog/assets/js/107.e4c17da1.js"><link rel="prefetch" href="/hmblog/assets/js/108.4f6761e8.js"><link rel="prefetch" href="/hmblog/assets/js/109.b687227a.js"><link rel="prefetch" href="/hmblog/assets/js/11.91f5d141.js"><link rel="prefetch" href="/hmblog/assets/js/110.07f1e092.js"><link rel="prefetch" href="/hmblog/assets/js/111.7ffb4dde.js"><link rel="prefetch" href="/hmblog/assets/js/112.f0b7d5c7.js"><link rel="prefetch" href="/hmblog/assets/js/113.08f289c1.js"><link rel="prefetch" href="/hmblog/assets/js/114.d515f51f.js"><link rel="prefetch" href="/hmblog/assets/js/115.30152616.js"><link rel="prefetch" href="/hmblog/assets/js/116.225bf898.js"><link rel="prefetch" href="/hmblog/assets/js/117.8fe006c7.js"><link rel="prefetch" href="/hmblog/assets/js/118.91639f98.js"><link rel="prefetch" href="/hmblog/assets/js/119.6c381b99.js"><link rel="prefetch" href="/hmblog/assets/js/12.40fdd925.js"><link rel="prefetch" href="/hmblog/assets/js/120.8c950085.js"><link rel="prefetch" href="/hmblog/assets/js/121.a2694949.js"><link rel="prefetch" href="/hmblog/assets/js/122.41b02a28.js"><link rel="prefetch" href="/hmblog/assets/js/123.638deccf.js"><link rel="prefetch" href="/hmblog/assets/js/124.7852f8ed.js"><link rel="prefetch" href="/hmblog/assets/js/125.9ab1a4d4.js"><link rel="prefetch" href="/hmblog/assets/js/126.fa7f79a1.js"><link rel="prefetch" href="/hmblog/assets/js/127.3ed51cfb.js"><link rel="prefetch" href="/hmblog/assets/js/128.2453e87b.js"><link rel="prefetch" href="/hmblog/assets/js/129.fc4305ed.js"><link rel="prefetch" href="/hmblog/assets/js/13.96f8eb4b.js"><link rel="prefetch" href="/hmblog/assets/js/130.36a1bc15.js"><link rel="prefetch" href="/hmblog/assets/js/131.22a410b9.js"><link rel="prefetch" href="/hmblog/assets/js/132.74bd14d9.js"><link rel="prefetch" href="/hmblog/assets/js/133.11ca171b.js"><link rel="prefetch" href="/hmblog/assets/js/134.fa22b523.js"><link rel="prefetch" href="/hmblog/assets/js/135.87165e4c.js"><link rel="prefetch" href="/hmblog/assets/js/136.e17a5b26.js"><link rel="prefetch" href="/hmblog/assets/js/137.34f6ac78.js"><link rel="prefetch" href="/hmblog/assets/js/138.98fe71a6.js"><link rel="prefetch" href="/hmblog/assets/js/139.863c462d.js"><link rel="prefetch" href="/hmblog/assets/js/14.e1307ddb.js"><link rel="prefetch" href="/hmblog/assets/js/140.5b97ad08.js"><link rel="prefetch" href="/hmblog/assets/js/141.820c7526.js"><link rel="prefetch" href="/hmblog/assets/js/142.fd6c2c03.js"><link rel="prefetch" href="/hmblog/assets/js/143.3223d722.js"><link rel="prefetch" href="/hmblog/assets/js/144.f6f4d112.js"><link rel="prefetch" href="/hmblog/assets/js/145.75976478.js"><link rel="prefetch" href="/hmblog/assets/js/146.4f73f3b9.js"><link rel="prefetch" href="/hmblog/assets/js/147.0290f571.js"><link rel="prefetch" href="/hmblog/assets/js/148.3ce96c83.js"><link rel="prefetch" href="/hmblog/assets/js/149.88ab4ccd.js"><link rel="prefetch" href="/hmblog/assets/js/15.c8f28fa1.js"><link rel="prefetch" href="/hmblog/assets/js/150.42901871.js"><link rel="prefetch" href="/hmblog/assets/js/151.c6cfedf1.js"><link rel="prefetch" href="/hmblog/assets/js/152.c075110a.js"><link rel="prefetch" href="/hmblog/assets/js/153.767d89d2.js"><link rel="prefetch" href="/hmblog/assets/js/154.9a99a357.js"><link rel="prefetch" href="/hmblog/assets/js/155.17017f13.js"><link rel="prefetch" href="/hmblog/assets/js/156.e9c7989d.js"><link rel="prefetch" href="/hmblog/assets/js/157.cfca26ca.js"><link rel="prefetch" href="/hmblog/assets/js/158.fa1550fb.js"><link rel="prefetch" href="/hmblog/assets/js/159.95b38393.js"><link rel="prefetch" href="/hmblog/assets/js/16.6beb9ca4.js"><link rel="prefetch" href="/hmblog/assets/js/160.f8edb948.js"><link rel="prefetch" href="/hmblog/assets/js/161.c5e5867d.js"><link rel="prefetch" href="/hmblog/assets/js/162.91b3b77b.js"><link rel="prefetch" href="/hmblog/assets/js/163.9fbac4c5.js"><link rel="prefetch" href="/hmblog/assets/js/164.3e6c7f5a.js"><link rel="prefetch" href="/hmblog/assets/js/165.aaef3fc8.js"><link rel="prefetch" href="/hmblog/assets/js/166.87876647.js"><link rel="prefetch" href="/hmblog/assets/js/167.2f2a09d9.js"><link rel="prefetch" href="/hmblog/assets/js/168.767f5460.js"><link rel="prefetch" href="/hmblog/assets/js/169.bda4a376.js"><link rel="prefetch" href="/hmblog/assets/js/17.e820338c.js"><link rel="prefetch" href="/hmblog/assets/js/170.fa13b7b9.js"><link rel="prefetch" href="/hmblog/assets/js/171.ec5fe49b.js"><link rel="prefetch" href="/hmblog/assets/js/172.0acfc9a5.js"><link rel="prefetch" href="/hmblog/assets/js/173.98ce4143.js"><link rel="prefetch" href="/hmblog/assets/js/174.2ee83b75.js"><link rel="prefetch" href="/hmblog/assets/js/175.151c0a7c.js"><link rel="prefetch" href="/hmblog/assets/js/176.8e6a1f2a.js"><link rel="prefetch" href="/hmblog/assets/js/177.5d1f761a.js"><link rel="prefetch" href="/hmblog/assets/js/178.3b121740.js"><link rel="prefetch" href="/hmblog/assets/js/179.3ad3396b.js"><link rel="prefetch" href="/hmblog/assets/js/18.3daf29e9.js"><link rel="prefetch" href="/hmblog/assets/js/180.b7fc61e4.js"><link rel="prefetch" href="/hmblog/assets/js/181.0168960f.js"><link rel="prefetch" href="/hmblog/assets/js/19.10ca0a07.js"><link rel="prefetch" href="/hmblog/assets/js/20.9d84ad0a.js"><link rel="prefetch" href="/hmblog/assets/js/21.6010de28.js"><link rel="prefetch" href="/hmblog/assets/js/22.2797ce52.js"><link rel="prefetch" href="/hmblog/assets/js/23.2ddb74fd.js"><link rel="prefetch" href="/hmblog/assets/js/24.4f97c5f7.js"><link rel="prefetch" href="/hmblog/assets/js/25.a1ee1451.js"><link rel="prefetch" href="/hmblog/assets/js/26.28eeeae5.js"><link rel="prefetch" href="/hmblog/assets/js/27.c678aaa0.js"><link rel="prefetch" href="/hmblog/assets/js/28.b3c9f2aa.js"><link rel="prefetch" href="/hmblog/assets/js/29.d6fd3149.js"><link rel="prefetch" href="/hmblog/assets/js/30.e513bf84.js"><link rel="prefetch" href="/hmblog/assets/js/31.e20e6d9d.js"><link rel="prefetch" href="/hmblog/assets/js/32.4e76475e.js"><link rel="prefetch" href="/hmblog/assets/js/33.3e0c942e.js"><link rel="prefetch" href="/hmblog/assets/js/34.60bd1011.js"><link rel="prefetch" href="/hmblog/assets/js/35.a053b7a7.js"><link rel="prefetch" href="/hmblog/assets/js/36.09b1a64f.js"><link rel="prefetch" href="/hmblog/assets/js/37.b6d61d3c.js"><link rel="prefetch" href="/hmblog/assets/js/38.11b4599e.js"><link rel="prefetch" href="/hmblog/assets/js/39.fbddfd0e.js"><link rel="prefetch" href="/hmblog/assets/js/4.62c79767.js"><link rel="prefetch" href="/hmblog/assets/js/40.19ef5949.js"><link rel="prefetch" href="/hmblog/assets/js/41.d52fb071.js"><link rel="prefetch" href="/hmblog/assets/js/42.b9629b09.js"><link rel="prefetch" href="/hmblog/assets/js/43.49b32d48.js"><link rel="prefetch" href="/hmblog/assets/js/44.129e195b.js"><link rel="prefetch" href="/hmblog/assets/js/45.a567c938.js"><link rel="prefetch" href="/hmblog/assets/js/46.68cf415f.js"><link rel="prefetch" href="/hmblog/assets/js/47.51b6c562.js"><link rel="prefetch" href="/hmblog/assets/js/48.14cdebf9.js"><link rel="prefetch" href="/hmblog/assets/js/49.37c15c52.js"><link rel="prefetch" href="/hmblog/assets/js/5.18a48000.js"><link rel="prefetch" href="/hmblog/assets/js/50.02f5a4ba.js"><link rel="prefetch" href="/hmblog/assets/js/51.e38d02da.js"><link rel="prefetch" href="/hmblog/assets/js/52.de215163.js"><link rel="prefetch" href="/hmblog/assets/js/53.3fa41e3f.js"><link rel="prefetch" href="/hmblog/assets/js/54.f5850ded.js"><link rel="prefetch" href="/hmblog/assets/js/55.3b5a2ee8.js"><link rel="prefetch" href="/hmblog/assets/js/56.b0b58e12.js"><link rel="prefetch" href="/hmblog/assets/js/57.7b15876c.js"><link rel="prefetch" href="/hmblog/assets/js/58.5d1a41b7.js"><link rel="prefetch" href="/hmblog/assets/js/59.81581d1f.js"><link rel="prefetch" href="/hmblog/assets/js/6.a0827074.js"><link rel="prefetch" href="/hmblog/assets/js/60.fd672828.js"><link rel="prefetch" href="/hmblog/assets/js/61.afc6adec.js"><link rel="prefetch" href="/hmblog/assets/js/62.8337cd1c.js"><link rel="prefetch" href="/hmblog/assets/js/63.c2bb1181.js"><link rel="prefetch" href="/hmblog/assets/js/64.6d8e3a3c.js"><link rel="prefetch" href="/hmblog/assets/js/65.0efe3ece.js"><link rel="prefetch" href="/hmblog/assets/js/66.ab700f63.js"><link rel="prefetch" href="/hmblog/assets/js/67.d1f4e9da.js"><link rel="prefetch" href="/hmblog/assets/js/68.6ea85b5f.js"><link rel="prefetch" href="/hmblog/assets/js/69.7fad0927.js"><link rel="prefetch" href="/hmblog/assets/js/7.da820db9.js"><link rel="prefetch" href="/hmblog/assets/js/70.242fd854.js"><link rel="prefetch" href="/hmblog/assets/js/71.cc3faed6.js"><link rel="prefetch" href="/hmblog/assets/js/72.7446e15e.js"><link rel="prefetch" href="/hmblog/assets/js/73.d0b0f540.js"><link rel="prefetch" href="/hmblog/assets/js/75.0c99f9a7.js"><link rel="prefetch" href="/hmblog/assets/js/76.7611c0e5.js"><link rel="prefetch" href="/hmblog/assets/js/77.b5439318.js"><link rel="prefetch" href="/hmblog/assets/js/78.59889d7c.js"><link rel="prefetch" href="/hmblog/assets/js/79.098bbfb6.js"><link rel="prefetch" href="/hmblog/assets/js/8.968ba87b.js"><link rel="prefetch" href="/hmblog/assets/js/80.48c15a74.js"><link rel="prefetch" href="/hmblog/assets/js/81.b61eaa93.js"><link rel="prefetch" href="/hmblog/assets/js/82.ac1c4470.js"><link rel="prefetch" href="/hmblog/assets/js/83.9d79f19d.js"><link rel="prefetch" href="/hmblog/assets/js/84.fcf16aa2.js"><link rel="prefetch" href="/hmblog/assets/js/85.200be386.js"><link rel="prefetch" href="/hmblog/assets/js/86.669d2852.js"><link rel="prefetch" href="/hmblog/assets/js/87.5cbf22f4.js"><link rel="prefetch" href="/hmblog/assets/js/88.573ee080.js"><link rel="prefetch" href="/hmblog/assets/js/89.024f85fa.js"><link rel="prefetch" href="/hmblog/assets/js/90.7e17783a.js"><link rel="prefetch" href="/hmblog/assets/js/91.d95c84ac.js"><link rel="prefetch" href="/hmblog/assets/js/92.a0d9d729.js"><link rel="prefetch" href="/hmblog/assets/js/93.f7390471.js"><link rel="prefetch" href="/hmblog/assets/js/94.26921b2c.js"><link rel="prefetch" href="/hmblog/assets/js/95.96b4b3f8.js"><link rel="prefetch" href="/hmblog/assets/js/96.82f469ed.js"><link rel="prefetch" href="/hmblog/assets/js/97.0a498b89.js"><link rel="prefetch" href="/hmblog/assets/js/98.6f131f57.js"><link rel="prefetch" href="/hmblog/assets/js/99.a7767d6c.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.b90bb923.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1c636796><div data-v-1c636796><div class="password-shadow password-wrapper-out" style="display:none;" data-v-2c3e9f55 data-v-1c636796 data-v-1c636796><h3 class="title" data-v-2c3e9f55>寒梦的博客</h3> <p class="description" data-v-2c3e9f55>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-2c3e9f55><input type="password" value="" data-v-2c3e9f55> <span data-v-2c3e9f55>Konck! Knock!</span> <button data-v-2c3e9f55>OK</button></label> <div class="footer" data-v-2c3e9f55><span data-v-2c3e9f55><i class="iconfont reco-theme" data-v-2c3e9f55></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-2c3e9f55>vuePress-theme-reco</a></span> <span data-v-2c3e9f55><i class="iconfont reco-copyright" data-v-2c3e9f55></i> <a data-v-2c3e9f55><span data-v-2c3e9f55>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-1c636796><header class="navbar" data-v-1c636796><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1c636796></div> <aside class="sidebar" data-v-1c636796><div class="personal-info-wrapper" data-v-6f92ba70 data-v-1c636796><!----> <h3 class="name" data-v-6f92ba70>
+    寒梦
+  </h3> <div class="num" data-v-6f92ba70><div data-v-6f92ba70><h3 data-v-6f92ba70>132</h3> <h6 data-v-6f92ba70>Articles</h6></div> <div data-v-6f92ba70><h3 data-v-6f92ba70>4</h3> <h6 data-v-6f92ba70>Tags</h6></div></div> <ul class="social-links" data-v-6f92ba70></ul> <hr data-v-6f92ba70></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-2c3e9f55 data-v-1c636796><h3 class="title" data-v-2c3e9f55></h3> <!----> <label id="box" class="inputBox" data-v-2c3e9f55><input type="password" value="" data-v-2c3e9f55> <span data-v-2c3e9f55>Konck! Knock!</span> <button data-v-2c3e9f55>OK</button></label> <div class="footer" data-v-2c3e9f55><span data-v-2c3e9f55><i class="iconfont reco-theme" data-v-2c3e9f55></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-2c3e9f55>vuePress-theme-reco</a></span> <span data-v-2c3e9f55><i class="iconfont reco-copyright" data-v-2c3e9f55></i> <a data-v-2c3e9f55><span data-v-2c3e9f55>寒梦</span>
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-1c636796><div data-v-1c636796><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Langchain 核心知识点</h1> <div data-v-6acedb3b><i class="iconfont reco-account" data-v-6acedb3b><span data-v-6acedb3b>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="langchain-核心知识点"><a href="#langchain-核心知识点" class="header-anchor">#</a> Langchain 核心知识点</h2> <h3 id="_1-langchain-表达式语言-lcel"><a href="#_1-langchain-表达式语言-lcel" class="header-anchor">#</a> 1. LangChain 表达式语言（LCEL）</h3> <div class="language-py extra-class"><pre class="language-py"><code>prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;rlm/rag-prompt&quot;</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>这行代码 <code>prompt = hub.pull(&quot;rlm/rag-prompt&quot;)</code> 是 LangChain 中一个非常重要且强大的功能。让我为您详细解释它的作用：</p> <h2 id="核心作用"><a href="#核心作用" class="header-anchor">#</a> 核心作用</h2> <p><strong>从 LangChain Hub 拉取一个预先设计好的、用于 RAG（检索增强生成）任务的提示词模板。</strong></p> <h2 id="详细解释"><a href="#详细解释" class="header-anchor">#</a> 详细解释</h2> <h3 id="_1-langchain-hub-是什么"><a href="#_1-langchain-hub-是什么" class="header-anchor">#</a> 1. LangChain Hub 是什么？</h3> <ul><li><strong>一个集中的提示词仓库</strong>：类似于 Docker Hub 之于容器镜像，或 GitHub 之于代码</li> <li><strong>社区共享的平台</strong>：开发者可以发布、共享和发现高质量的提示词模板</li> <li><strong>版本化管理</strong>：每个提示词都有版本控制，确保可重现性</li></ul> <h3 id="_2-rlm-rag-prompt-的具体内容"><a href="#_2-rlm-rag-prompt-的具体内容" class="header-anchor">#</a> 2. <code>&quot;rlm/rag-prompt&quot;</code> 的具体内容</h3> <blockquote><p>这是一个用于 RAG 任务的提示词模板，它定义了模型在生成答案时的行为。看这里
+当您拉取这个特定的提示词时，您得到的大致是这样的模板：</p></blockquote> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> ChatPromptTemplate
+
+<span class="token comment"># 这类似于您实际获取的内容：</span>
+template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
+
+Question: {question} 
+
+Context: {context} 
+
+Answer:&quot;&quot;&quot;</span>
+</code></pre></div><h3 id="_3-实际获取的提示词结构"><a href="#_3-实际获取的提示词结构" class="header-anchor">#</a> 3. 实际获取的提示词结构</h3> <p>您可以通过打印来查看具体内容：</p> <div class="language-python extra-class"><pre class="language-python"><code>prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;rlm/rag-prompt&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prompt<span class="token punctuation">)</span>  <span class="token comment"># 查看整个提示词模板</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prompt<span class="token punctuation">.</span>input_variables<span class="token punctuation">)</span>  <span class="token comment"># 查看需要的输入变量</span>
+</code></pre></div><p>输出通常会显示：</p> <ul><li><strong>输入变量</strong>：<code>['context', 'question']</code></li> <li><strong>模板内容</strong>：包含指导模型如何回答问题的指令</li></ul> <h3 id="_4-为什么使用-hub-而不是硬编码"><a href="#_4-为什么使用-hub-而不是硬编码" class="header-anchor">#</a> 4. 为什么使用 Hub 而不是硬编码？</h3> <table><thead><tr><th>方式</th> <th>优点</th> <th>缺点</th></tr></thead> <tbody><tr><td><strong><code>hub.pull()</code></strong></td> <td>• 可复用性<br>• 版本控制<br>• 社区最佳实践<br>• 易于更新和维护</td> <td>• 需要网络连接<br>• 依赖外部服务</td></tr> <tr><td><strong>硬编码提示词</strong></td> <td>• 离线可用<br>• 完全控制</td> <td>• 难以维护<br>• 无法共享<br>• 容易过时</td></tr></tbody></table> <h3 id="_5-等效的硬编码方式"><a href="#_5-等效的硬编码方式" class="header-anchor">#</a> 5. 等效的硬编码方式</h3> <blockquote><p>看这里
+如果您不想依赖 Hub，可以这样实现：</p></blockquote> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> ChatPromptTemplate
+
+<span class="token comment"># 手动创建相同的提示词</span>
+template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
+
+Question: {question} 
+
+Context: {context} 
+
+Answer:&quot;&quot;&quot;</span>
+
+prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span>template<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_6-高级用法-版本控制和特定版本"><a href="#_6-高级用法-版本控制和特定版本" class="header-anchor">#</a> 6. 高级用法：版本控制和特定版本</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 拉取特定版本</span>
+prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;rlm/rag-prompt&quot;</span><span class="token punctuation">,</span> version<span class="token operator">=</span><span class="token string">&quot;1.0&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 查看所有可用版本</span>
+versions <span class="token operator">=</span> hub<span class="token punctuation">.</span>list_versions<span class="token punctuation">(</span><span class="token string">&quot;rlm/rag-prompt&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_7-在-rag-流程中的作用"><a href="#_7-在-rag-流程中的作用" class="header-anchor">#</a> 7. 在 RAG 流程中的作用</h3> <p>在您的代码中，这个提示词这样被使用：</p> <div class="language-python extra-class"><pre class="language-python"><code>rag_chain <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span><span class="token string">&quot;context&quot;</span><span class="token punctuation">:</span> retriever <span class="token operator">|</span> format_docs<span class="token punctuation">,</span> <span class="token string">&quot;question&quot;</span><span class="token punctuation">:</span> RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token operator">|</span> prompt  <span class="token comment"># ← 这里使用拉取的提示词</span>
+    <span class="token operator">|</span> llm
+    <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+</code></pre></div><p>流程是：</p> <ol><li>从向量数据库检索相关文档 (<code>retriever</code>)</li> <li>格式化文档为字符串 (<code>format_docs</code>)</li> <li>将<strong>问题</strong>和<strong>上下文</strong>填充到提示词模板中</li> <li>发送给 LLM 生成答案</li></ol> <h2 id="实践建议"><a href="#实践建议" class="header-anchor">#</a> 实践建议</h2> <h3 id="适合使用-hub-pull-的情况"><a href="#适合使用-hub-pull-的情况" class="header-anchor">#</a> 适合使用 <code>hub.pull()</code> 的情况：</h3> <ul><li>快速原型开发</li> <li>使用社区验证过的最佳实践</li> <li>需要提示词版本管理的生产环境</li></ul> <h3 id="适合手动创建提示词的情况"><a href="#适合手动创建提示词的情况" class="header-anchor">#</a> 适合手动创建提示词的情况：</h3> <ul><li>离线环境</li> <li>需要高度定制化的提示词</li> <li>对提示词有特殊安全要求的环境</li></ul> <h3 id="检查网络连接"><a href="#检查网络连接" class="header-anchor">#</a> 检查网络连接：</h3> <p>如果遇到网络问题，可以这样处理：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">try</span><span class="token punctuation">:</span>
+    prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;rlm/rag-prompt&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;无法从 Hub 拉取提示词，使用本地备选方案&quot;</span><span class="token punctuation">)</span>
+    <span class="token comment"># 使用本地备选提示词</span>
+    template <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;...&quot;&quot;&quot;</span>  <span class="token comment"># 您的本地模板</span>
+    prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span>template<span class="token punctuation">)</span>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p><code>prompt = hub.pull(&quot;rlm/rag-prompt&quot;)</code> 的作用是：</p> <ol><li><strong>从中央仓库获取</strong>一个专门为 RAG 任务设计的提示词模板</li> <li><strong>遵循最佳实践</strong>：包含适当的指令和格式</li> <li><strong>提供标准化输入</strong>：期望 <code>context</code> 和 <code>question</code> 两个变量</li> <li><strong>确保可重现性</strong>：通过版本控制保证每次获取的提示词一致</li></ol> <p>这是一种高效、可维护的方式来管理提示词，特别适合团队协作和生产环境部署。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-7115df4a data-v-1c636796><li class="level-2" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#langchain-核心知识点" class="sidebar-link reco-side-langchain-核心知识点" data-v-7115df4a>Langchain 核心知识点</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_1-langchain-表达式语言-lcel" class="sidebar-link reco-side-_1-langchain-表达式语言-lcel" data-v-7115df4a>1. LangChain 表达式语言（LCEL）</a></li><li class="level-2" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#核心作用" class="sidebar-link reco-side-核心作用" data-v-7115df4a>核心作用</a></li><li class="level-2" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#详细解释" class="sidebar-link reco-side-详细解释" data-v-7115df4a>详细解释</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_1-langchain-hub-是什么" class="sidebar-link reco-side-_1-langchain-hub-是什么" data-v-7115df4a>1. LangChain Hub 是什么？</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_2-rlm-rag-prompt-的具体内容" class="sidebar-link reco-side-_2-rlm-rag-prompt-的具体内容" data-v-7115df4a>2. &quot;rlm/rag-prompt&quot; 的具体内容</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_3-实际获取的提示词结构" class="sidebar-link reco-side-_3-实际获取的提示词结构" data-v-7115df4a>3. 实际获取的提示词结构</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_4-为什么使用-hub-而不是硬编码" class="sidebar-link reco-side-_4-为什么使用-hub-而不是硬编码" data-v-7115df4a>4. 为什么使用 Hub 而不是硬编码？</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_5-等效的硬编码方式" class="sidebar-link reco-side-_5-等效的硬编码方式" data-v-7115df4a>5. 等效的硬编码方式</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_6-高级用法-版本控制和特定版本" class="sidebar-link reco-side-_6-高级用法-版本控制和特定版本" data-v-7115df4a>6. 高级用法：版本控制和特定版本</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#_7-在-rag-流程中的作用" class="sidebar-link reco-side-_7-在-rag-流程中的作用" data-v-7115df4a>7. 在 RAG 流程中的作用</a></li><li class="level-2" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#实践建议" class="sidebar-link reco-side-实践建议" data-v-7115df4a>实践建议</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#适合使用-hub-pull-的情况" class="sidebar-link reco-side-适合使用-hub-pull-的情况" data-v-7115df4a>适合使用 hub.pull() 的情况：</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#适合手动创建提示词的情况" class="sidebar-link reco-side-适合手动创建提示词的情况" data-v-7115df4a>适合手动创建提示词的情况：</a></li><li class="level-3" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#检查网络连接" class="sidebar-link reco-side-检查网络连接" data-v-7115df4a>检查网络连接：</a></li><li class="level-2" data-v-7115df4a><a href="/hmblog/modelstudy/model-langchain.html#总结" class="sidebar-link reco-side-总结" data-v-7115df4a>总结</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-65133105 data-v-65133105><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-65133105><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-65133105></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-65133105></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.6384c940.js" defer></script><script src="/hmblog/assets/js/3.9abc57d5.js" defer></script><script src="/hmblog/assets/js/1.d0f8c90c.js" defer></script><script src="/hmblog/assets/js/74.f6771a1c.js" defer></script><script src="/hmblog/assets/js/9.ffd10309.js" defer></script>
+  </body>
+</html>
