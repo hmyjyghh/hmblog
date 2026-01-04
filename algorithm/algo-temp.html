@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1. 实现一个带有取最小值min 方法的栈 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.432a7983.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/41.0cffe87b.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.fcfda1cc.js"><link rel="prefetch" href="/hmblog/assets/js/101.c3849e4a.js"><link rel="prefetch" href="/hmblog/assets/js/102.2070ce59.js"><link rel="prefetch" href="/hmblog/assets/js/103.d3f56ef5.js"><link rel="prefetch" href="/hmblog/assets/js/104.4b0fcbce.js"><link rel="prefetch" href="/hmblog/assets/js/105.abf0989e.js"><link rel="prefetch" href="/hmblog/assets/js/106.10d8bd26.js"><link rel="prefetch" href="/hmblog/assets/js/107.30b3b2d6.js"><link rel="prefetch" href="/hmblog/assets/js/108.c7edb21b.js"><link rel="prefetch" href="/hmblog/assets/js/109.7a57772e.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.eca9eda5.js"><link rel="prefetch" href="/hmblog/assets/js/111.a27b0fd5.js"><link rel="prefetch" href="/hmblog/assets/js/112.37a37a0b.js"><link rel="prefetch" href="/hmblog/assets/js/113.d960dc56.js"><link rel="prefetch" href="/hmblog/assets/js/114.7942c611.js"><link rel="prefetch" href="/hmblog/assets/js/115.dca63718.js"><link rel="prefetch" href="/hmblog/assets/js/116.492be37e.js"><link rel="prefetch" href="/hmblog/assets/js/117.354aecc2.js"><link rel="prefetch" href="/hmblog/assets/js/118.52b72f7f.js"><link rel="prefetch" href="/hmblog/assets/js/119.cb834180.js"><link rel="prefetch" href="/hmblog/assets/js/120.d634d240.js"><link rel="prefetch" href="/hmblog/assets/js/121.81f85049.js"><link rel="prefetch" href="/hmblog/assets/js/122.2adb153f.js"><link rel="prefetch" href="/hmblog/assets/js/123.7b4dde7d.js"><link rel="prefetch" href="/hmblog/assets/js/124.e2a9b3cf.js"><link rel="prefetch" href="/hmblog/assets/js/125.01e4a7da.js"><link rel="prefetch" href="/hmblog/assets/js/126.c3eb0f4c.js"><link rel="prefetch" href="/hmblog/assets/js/127.d686d655.js"><link rel="prefetch" href="/hmblog/assets/js/128.b4729d2b.js"><link rel="prefetch" href="/hmblog/assets/js/129.f90c62e8.js"><link rel="prefetch" href="/hmblog/assets/js/130.15b6889b.js"><link rel="prefetch" href="/hmblog/assets/js/131.14ee2984.js"><link rel="prefetch" href="/hmblog/assets/js/132.13b1db98.js"><link rel="prefetch" href="/hmblog/assets/js/133.d39f05a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.11a58fb4.js"><link rel="prefetch" href="/hmblog/assets/js/135.971f8030.js"><link rel="prefetch" href="/hmblog/assets/js/136.3e3504af.js"><link rel="prefetch" href="/hmblog/assets/js/137.fc61baaf.js"><link rel="prefetch" href="/hmblog/assets/js/138.dc2a393d.js"><link rel="prefetch" href="/hmblog/assets/js/139.40e36d52.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.3ef51d7f.js"><link rel="prefetch" href="/hmblog/assets/js/141.af9f0daa.js"><link rel="prefetch" href="/hmblog/assets/js/142.df24c198.js"><link rel="prefetch" href="/hmblog/assets/js/143.5de220f9.js"><link rel="prefetch" href="/hmblog/assets/js/144.9c9d6034.js"><link rel="prefetch" href="/hmblog/assets/js/145.51fc7ecd.js"><link rel="prefetch" href="/hmblog/assets/js/146.53790c2f.js"><link rel="prefetch" href="/hmblog/assets/js/147.3210f868.js"><link rel="prefetch" href="/hmblog/assets/js/148.7fa222c9.js"><link rel="prefetch" href="/hmblog/assets/js/149.77350b0f.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.6316cca4.js"><link rel="prefetch" href="/hmblog/assets/js/151.82441253.js"><link rel="prefetch" href="/hmblog/assets/js/152.af952472.js"><link rel="prefetch" href="/hmblog/assets/js/153.ce5af63b.js"><link rel="prefetch" href="/hmblog/assets/js/154.899f4d27.js"><link rel="prefetch" href="/hmblog/assets/js/155.73d93741.js"><link rel="prefetch" href="/hmblog/assets/js/156.6d0d7e5c.js"><link rel="prefetch" href="/hmblog/assets/js/157.46f88e97.js"><link rel="prefetch" href="/hmblog/assets/js/158.1d321223.js"><link rel="prefetch" href="/hmblog/assets/js/159.40ad7b0b.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.503c8bf0.js"><link rel="prefetch" href="/hmblog/assets/js/161.fc502c93.js"><link rel="prefetch" href="/hmblog/assets/js/162.565e2f40.js"><link rel="prefetch" href="/hmblog/assets/js/163.b4771f84.js"><link rel="prefetch" href="/hmblog/assets/js/164.691db7df.js"><link rel="prefetch" href="/hmblog/assets/js/165.1056d168.js"><link rel="prefetch" href="/hmblog/assets/js/166.9c704aba.js"><link rel="prefetch" href="/hmblog/assets/js/167.a9a2f8d4.js"><link rel="prefetch" href="/hmblog/assets/js/168.84df9556.js"><link rel="prefetch" href="/hmblog/assets/js/169.41699a5e.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.93cda1d5.js"><link rel="prefetch" href="/hmblog/assets/js/171.460fd59b.js"><link rel="prefetch" href="/hmblog/assets/js/172.cb7dd928.js"><link rel="prefetch" href="/hmblog/assets/js/173.fefad7b6.js"><link rel="prefetch" href="/hmblog/assets/js/174.7778087b.js"><link rel="prefetch" href="/hmblog/assets/js/175.818cafb4.js"><link rel="prefetch" href="/hmblog/assets/js/176.063543bf.js"><link rel="prefetch" href="/hmblog/assets/js/177.b25f671c.js"><link rel="prefetch" href="/hmblog/assets/js/178.61046a2d.js"><link rel="prefetch" href="/hmblog/assets/js/179.6483efd5.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.3428bd15.js"><link rel="prefetch" href="/hmblog/assets/js/181.f002b0d8.js"><link rel="prefetch" href="/hmblog/assets/js/182.a444e259.js"><link rel="prefetch" href="/hmblog/assets/js/183.b7fbeae5.js"><link rel="prefetch" href="/hmblog/assets/js/184.81ae35da.js"><link rel="prefetch" href="/hmblog/assets/js/185.157e49a2.js"><link rel="prefetch" href="/hmblog/assets/js/186.e2f20b02.js"><link rel="prefetch" href="/hmblog/assets/js/187.a1cbf54a.js"><link rel="prefetch" href="/hmblog/assets/js/188.3cdc3f91.js"><link rel="prefetch" href="/hmblog/assets/js/189.874fe0d7.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.6758ff12.js"><link rel="prefetch" href="/hmblog/assets/js/191.faae3327.js"><link rel="prefetch" href="/hmblog/assets/js/192.0779a750.js"><link rel="prefetch" href="/hmblog/assets/js/193.87176101.js"><link rel="prefetch" href="/hmblog/assets/js/194.323ec2f3.js"><link rel="prefetch" href="/hmblog/assets/js/195.4dcdc388.js"><link rel="prefetch" href="/hmblog/assets/js/196.98111dc5.js"><link rel="prefetch" href="/hmblog/assets/js/197.282283e9.js"><link rel="prefetch" href="/hmblog/assets/js/198.d41e55c0.js"><link rel="prefetch" href="/hmblog/assets/js/199.43332c5f.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.bff3307d.js"><link rel="prefetch" href="/hmblog/assets/js/201.bd09ef60.js"><link rel="prefetch" href="/hmblog/assets/js/202.01a8c549.js"><link rel="prefetch" href="/hmblog/assets/js/203.bdcc5bea.js"><link rel="prefetch" href="/hmblog/assets/js/204.e8e8dca7.js"><link rel="prefetch" href="/hmblog/assets/js/205.64dc90c9.js"><link rel="prefetch" href="/hmblog/assets/js/206.12faea32.js"><link rel="prefetch" href="/hmblog/assets/js/207.0551b9c8.js"><link rel="prefetch" href="/hmblog/assets/js/208.dd8292f9.js"><link rel="prefetch" href="/hmblog/assets/js/209.0a820666.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/210.161b374c.js"><link rel="prefetch" href="/hmblog/assets/js/211.f922fb0a.js"><link rel="prefetch" href="/hmblog/assets/js/212.ff7c858e.js"><link rel="prefetch" href="/hmblog/assets/js/213.380e2400.js"><link rel="prefetch" href="/hmblog/assets/js/214.0526f327.js"><link rel="prefetch" href="/hmblog/assets/js/215.5ef03cb6.js"><link rel="prefetch" href="/hmblog/assets/js/216.c43ff286.js"><link rel="prefetch" href="/hmblog/assets/js/217.28e6d549.js"><link rel="prefetch" href="/hmblog/assets/js/218.2e35d9de.js"><link rel="prefetch" href="/hmblog/assets/js/219.4c5090db.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/220.93d8a8d2.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.67bc9334.js"><link rel="prefetch" href="/hmblog/assets/js/42.28705486.js"><link rel="prefetch" href="/hmblog/assets/js/43.d40aff24.js"><link rel="prefetch" href="/hmblog/assets/js/44.f64d5e4b.js"><link rel="prefetch" href="/hmblog/assets/js/45.94236040.js"><link rel="prefetch" href="/hmblog/assets/js/46.0705e320.js"><link rel="prefetch" href="/hmblog/assets/js/47.5f0af86d.js"><link rel="prefetch" href="/hmblog/assets/js/48.b2635c28.js"><link rel="prefetch" href="/hmblog/assets/js/49.5911d456.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.f13658ee.js"><link rel="prefetch" href="/hmblog/assets/js/51.a0dba021.js"><link rel="prefetch" href="/hmblog/assets/js/52.6abfb97d.js"><link rel="prefetch" href="/hmblog/assets/js/53.589b13c3.js"><link rel="prefetch" href="/hmblog/assets/js/54.bd322d94.js"><link rel="prefetch" href="/hmblog/assets/js/55.9c25b2fe.js"><link rel="prefetch" href="/hmblog/assets/js/56.8f1cae2b.js"><link rel="prefetch" href="/hmblog/assets/js/57.cb582068.js"><link rel="prefetch" href="/hmblog/assets/js/58.38e0d90f.js"><link rel="prefetch" href="/hmblog/assets/js/59.f15516e4.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.eb163b2c.js"><link rel="prefetch" href="/hmblog/assets/js/61.b5f53821.js"><link rel="prefetch" href="/hmblog/assets/js/62.a07a096e.js"><link rel="prefetch" href="/hmblog/assets/js/63.65697b96.js"><link rel="prefetch" href="/hmblog/assets/js/64.177a751d.js"><link rel="prefetch" href="/hmblog/assets/js/65.9f957148.js"><link rel="prefetch" href="/hmblog/assets/js/66.f1fd7e2a.js"><link rel="prefetch" href="/hmblog/assets/js/67.f809625c.js"><link rel="prefetch" href="/hmblog/assets/js/68.ae528d69.js"><link rel="prefetch" href="/hmblog/assets/js/69.60a03631.js"><link rel="prefetch" href="/hmblog/assets/js/70.1d9d4701.js"><link rel="prefetch" href="/hmblog/assets/js/71.8343a21d.js"><link rel="prefetch" href="/hmblog/assets/js/72.95f8e771.js"><link rel="prefetch" href="/hmblog/assets/js/73.bcf99c5b.js"><link rel="prefetch" href="/hmblog/assets/js/74.47ab50e5.js"><link rel="prefetch" href="/hmblog/assets/js/75.f970b564.js"><link rel="prefetch" href="/hmblog/assets/js/76.8246232c.js"><link rel="prefetch" href="/hmblog/assets/js/77.651c0812.js"><link rel="prefetch" href="/hmblog/assets/js/78.92b44eea.js"><link rel="prefetch" href="/hmblog/assets/js/79.4b34f82a.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.bf6798e5.js"><link rel="prefetch" href="/hmblog/assets/js/81.1eb5ffc6.js"><link rel="prefetch" href="/hmblog/assets/js/82.1500a0ec.js"><link rel="prefetch" href="/hmblog/assets/js/83.6ea83899.js"><link rel="prefetch" href="/hmblog/assets/js/84.7cdcaae3.js"><link rel="prefetch" href="/hmblog/assets/js/85.61900f36.js"><link rel="prefetch" href="/hmblog/assets/js/86.ad36a100.js"><link rel="prefetch" href="/hmblog/assets/js/87.ae9c7535.js"><link rel="prefetch" href="/hmblog/assets/js/88.0abd6c73.js"><link rel="prefetch" href="/hmblog/assets/js/89.e39697e3.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.16c04c7f.js"><link rel="prefetch" href="/hmblog/assets/js/91.d6ebf065.js"><link rel="prefetch" href="/hmblog/assets/js/92.e55d0541.js"><link rel="prefetch" href="/hmblog/assets/js/93.0544ad03.js"><link rel="prefetch" href="/hmblog/assets/js/94.3d87e457.js"><link rel="prefetch" href="/hmblog/assets/js/95.6d2cc48b.js"><link rel="prefetch" href="/hmblog/assets/js/96.9705e6ff.js"><link rel="prefetch" href="/hmblog/assets/js/97.7f430b22.js"><link rel="prefetch" href="/hmblog/assets/js/98.87817ff4.js"><link rel="prefetch" href="/hmblog/assets/js/99.e295e79d.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python 常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  python 序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  python 列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python 相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python 中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python 永久存储
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>143</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python 基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python 常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  python 序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  python 列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python 内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python 函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python 相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python 数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python 常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python 中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python 几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python 汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  Python Web框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python 中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python 字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python 永久存储
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">1. 实现一个带有取最小值min 方法的栈</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="_1-实现一个带有取最小值min-方法的栈"><a href="#_1-实现一个带有取最小值min-方法的栈" class="header-anchor">#</a> 1. 实现一个带有取<code>最小值</code>min 方法的栈</h2> <ul><li><p>实现一个带有取最小值min方法的栈,min方法返回当前栈中的最小值</p> <ul><li>实现的栈将支持push,pop和min操作,所有操作要求都在O(1)时间内完成</li> <li>我们可以使用两个栈:一个用于存储所有元素,另一个用于存当前最小值</li></ul></li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">class</span> <span class="token class-name">MinStack</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化两个栈，一个用于存储所有元素，另一个用于存储最小值</span>
+        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>min_stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token comment"># 将元素x推入主栈</span>
+        self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        <span class="token comment"># 如果最小值栈为空，或x小于等于当前最小值，则将x推入最小值栈</span>
+        <span class="token comment"># -1 是指栈顶: 先进后出，相比队列，尾部就是顶部,也就是栈顶</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>min_stack <span class="token keyword">or</span> x <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token comment"># 从主栈中弹出元素</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">:</span>
+            top <span class="token operator">=</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment"># 如果弹出的元素等于最小值栈的栈顶元素，则从最小值栈中也弹出该元素</span>
+            <span class="token keyword">if</span> top <span class="token operator">==</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">top</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token comment"># 返回主栈的栈顶元素</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">raise</span> IndexError<span class="token punctuation">(</span><span class="token string">&quot;Stack is empty&quot;</span><span class="token punctuation">)</span>
+    
+
+    <span class="token keyword">def</span> <span class="token function">getMin</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token comment"># 返回最小值栈的栈顶元素，即当前栈中的最小值</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">raise</span> IndexError<span class="token punctuation">(</span><span class="token string">&quot;MinStack is empty&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>总结一下,这个带有取最小值min方法的栈通过使用`两个栈`来实现所有操作都在O(1)时间内完成。
+主栈用于存储所有元素,最小值栈用于存储当前最小值。每当有新元素入栈时,如果该元素小于或等于当前最小
+值,则将其同时推入最小值栈;
+当元素出栈时,如果该元素等于当前最小值,则从最小值栈中也弹出该元素。
+- 这样可以确保我们在O(1)时间内完成push,pop和min操作。
+</code></pre></div><ul><li>要看下 入栈  和  出栈的  动画效果，结合去理解</li></ul> <h2 id="_2-使用数组实现一个栈-需要提供自动扩容和缩容功能"><a href="#_2-使用数组实现一个栈-需要提供自动扩容和缩容功能" class="header-anchor">#</a> 2. 使用数组实现一个栈,需要提供自动扩容和缩容功能</h2> <ul><li>我们将定义一个栈类,<code>内部维护一个数组用于存储元素</code>,并在需要时调整数组的大小。</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">class</span> <span class="token class-name">ArrayStack</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> capacity<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化栈，初始容量为2</span>
+        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">*</span> capacity
+        self<span class="token punctuation">.</span>capacity <span class="token operator">=</span> capacity
+        self<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token number">0</span>
+    
+    <span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 如果栈已满，则进行扩容</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>size <span class="token operator">==</span> self<span class="token punctuation">.</span>capacity<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>_resize<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>capacity<span class="token punctuation">)</span>
+        <span class="token comment"># 将元素x推入栈中</span>
+        self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span>self<span class="token punctuation">.</span>size<span class="token punctuation">]</span> <span class="token operator">=</span> x
+        self<span class="token punctuation">.</span>size <span class="token operator">+=</span> <span class="token number">1</span>
+    
+    <span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>size <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> IndexError<span class="token punctuation">(</span><span class="token string">&quot;pop from empty stack&quot;</span><span class="token punctuation">)</span>
+        <span class="token comment"># 从栈中弹出元素</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span>self<span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span>self<span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>size <span class="token operator">-=</span> <span class="token number">1</span>
+        <span class="token comment"># 如果栈的大小小于容量的四分之一，则进行缩容(感觉应该是扩容吧---待确定)</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>size <span class="token operator">==</span> self<span class="token punctuation">.</span>capacity <span class="token operator">//</span> <span class="token number">4</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>_resize<span class="token punctuation">(</span>self<span class="token punctuation">.</span>capacity <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x
+    
+
+    <span class="token keyword">def</span> <span class="token function">peek</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>size <span class="token operator">==</span> <span class="token number">0</span>
+            <span class="token keyword">raise</span> IndexError<span class="token punctuation">(</span><span class="token string">&quot;pop from empty stack&quot;</span><span class="token punctuation">)</span>
+        <span class="token comment"># 返回栈顶元素</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span>self<span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">_resize</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new_capacity<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 调整数组大小</span>
+        new_stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">*</span> new_capacity
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            new_stack<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> new_stack
+        self<span class="token punctuation">.</span>capacity <span class="token operator">=</span> new_capacity
+    
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 返回当前栈的大小</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>size
+    
+    <span class="token keyword">def</span> <span class="token function">is_empty</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 判断栈是否为空</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>size <span class="token operator">==</span> <span class="token number">0</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>总结一下,这个使用数组实现的栈通过在需要时调整数组大小小来实现自动扩容和缩容功能。当栈满时,数组容量加
+倍;当栈大小小于容量的四分之一时,数组容量减半。时间复杂度为00(1)均摊,因为调整大小的操作在多次push
+和pop操作中摊销开来。
+</code></pre></div><h2 id="_3-两个队列实现栈"><a href="#_3-两个队列实现栈" class="header-anchor">#</a> 3. 两个队列实现栈</h2> <ul><li><p>通过两个队列来实现栈的后进先出(LIFO)特性。</p></li> <li><p>具体方法是将新元素总是加入到一个空队列中,
+然后将另一个队列的所有元素依次移到这个队列中,从而实现栈的效果。</p></li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
+
+<span class="token keyword">class</span> <span class="token class-name">MyStack</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化两个队列</span>
+        self<span class="token punctuation">.</span>quene1 <span class="token operator">=</span> deque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>quene2 <span class="token operator">=</span> deque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token comment"># 将新元素加入到空的quene2 中</span>
+        self<span class="token punctuation">.</span>quene2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        <span class="token comment"># 将quene1的所有元素移动quene2 中</span>
+
+        <span class="token keyword">while</span> self<span class="token punctuation">.</span>quene1<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>quene2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>quene1<span class="token punctuation">.</span>popleft<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment"># 交换quene1 和 quene2 </span>
+        self<span class="token punctuation">.</span>quene1<span class="token punctuation">,</span> self<span class="token punctuation">.</span>quene2 <span class="token operator">=</span> self<span class="token punctuation">.</span>quene2<span class="token punctuation">,</span> self<span class="token punctuation">.</span>quene1
+    
+    <span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token comment"># 从quene1 中弹出元素，即为栈顶元素</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>quene1<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>quene1<span class="token punctuation">.</span>popleft<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> IndexError<span class="token punctuation">(</span><span class="token string">&quot;pop from empty stack&quot;</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">top</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token comment"># 返回quene1 的队首元素，即为栈顶元素</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>quene1：
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>quene1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> IndexError<span class="token punctuation">(</span><span class="token string">&quot;top from empty stack&quot;</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">empty</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token comment"># 判断栈是否为空</span>
+        <span class="token keyword">return</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>quene1
+
+</code></pre></div><p>总结一下,通过两个队列实现栈的算法,通过在一个空队列中加入新元素,
+并将另一个队列的所有元素依次移到这个队列中,从而实现栈的后进先出(LIFO)特性。</p> <p>push操作的时间复杂度为O(n),因为需要将所有元素移动到新队列中中,而pop和top操作的时间复杂度为0(1)。</p> <h2 id="_4-字符串查找"><a href="#_4-字符串查找" class="header-anchor">#</a> 4. 字符串查找</h2> <p>给定的source字符串和target字符串,在source字符串中找出target字符串出现的第一个位置(从0开始)。若
+不存在,返回-1
+cool968(59026571)
+样例:
+如果source=&quot;source&quot;和target=&quot;target&quot;,返回-1
+如果source=&quot;abcdabcdefg&quot;和target=&quot;bcd&quot;,返回1
+这个问题可以通过暴力匹配或KMP来解决,在面试时候,至少要能能写出暴力匹配算法,它的时间复杂度是
+O(n*m),其中n是source的长度,m是target的长度。</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">strStr</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> source<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> target<span class="token punctuation">:</span><span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token comment"># 获取source 和 target 的长度</span>
+        n<span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+
+        <span class="token comment"># 边界条件, 如果target为空字符串， 返回0</span>
+        <span class="token keyword">if</span> m <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">0</span>
+        <span class="token comment"># 遍历source 字符串</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 检查从当前索引开始的子字符串是否与target 匹配</span>
+            <span class="token keyword">if</span> source<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i <span class="token operator">+</span> m<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> i
+        
+        <span class="token comment"># 如果遍历结束后没有匹配到，返回-1</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+</code></pre></div><hr> <blockquote><p>算法心得</p></blockquote> <ul><li>栈或者数组  初始化 []</li> <li>边界条件处理</li></ul> <h2 id="_5-逆序一个栈"><a href="#_5-逆序一个栈" class="header-anchor">#</a> 5. 逆序一个栈</h2> <p>我们可以使用递归的方法。需要两个步骤:首先,通过递归的的方法将栈顶元素取出,然后递归逆序剩余的栈。其
+次,将取出的元素插入到逆序后的栈底。</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">reverseStack</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> stack<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 如果栈为空，直接返回, (not stack 没有栈，栈为空)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> stack<span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+        
+        <span class="token comment"># 递归地取出栈顶元素</span>
+        top <span class="token operator">=</span> stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>reverseStack<span class="token punctuation">(</span>stack<span class="token punctuation">)</span>
+
+        <span class="token comment"># 将取出的元素插入到逆序后的栈底</span>
+        self<span class="token punctuation">.</span>insertAtBottom<span class="token punctuation">(</span>stack<span class="token punctuation">,</span> top<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">insertAtBottom</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> stack<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 如果栈为空，直接将值推入栈中</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> stack<span class="token punctuation">:</span>
+            stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+            <span class="token keyword">return</span>
+        
+        <span class="token comment"># 递归地取出栈顶元素</span>
+        top <span class="token operator">=</span> stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>insertAtBottom<span class="token punctuation">(</span>stack<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+
+        <span class="token comment"># 将取出的元素重新推入栈中</span>
+        stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>top<span class="token punctuation">)</span>
+        
+</code></pre></div><p>总结一下,算法时间复杂度为O(n2)</p> <p>1.reverseStack函数:
+。每次递归调用处理栈顶元素,将问题规模减1(即处理n-1的栈)。
+每次递归返回后调用 insertAtBottom,将当前元素插入到已反转的栈底。
+2.insertAtBottom函数:
+需要将栈中所有元素依次弹出再重新压入,时间复杂度为O(k),其中k是当前找的大小。
+3.总时间复杂度:
+对于规模为n的栈,
+reversestack 递归n次,每次递归调用 insertAtBottom。
+每次调用insertAtBottom的时间复杂度依次为0,1,2,.........,n-1
+总操作次数为:0+1+2+...+(n-1)=n(n-1)/2→O(n2)。
+空间复杂度为O(n),因为递归调用栈的深度为n,其中n是栈的大小。</p> <h2 id="_6-用一个栈实现对另一个栈的排序"><a href="#_6-用一个栈实现对另一个栈的排序" class="header-anchor">#</a> 6. 用一个栈实现对另一个栈的排序</h2> <p>通过一个辅助栈来对另一个找进行排序。具体来说,我们将使用一个临时找来帮助排序原栈中的元素。这个算法的
+思想是将原栈中的元素逐个弹出,并按顺序插入到临时找中,从而实现排序。
+以下是具体实现:</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">sortStack</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> stack<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 创建一个临时栈用于排序</span>
+        temp_stack <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 遍历原栈中的每个元素</span>
+        <span class="token keyword">while</span> stack<span class="token punctuation">:</span>
+            <span class="token comment"># 取出原栈的栈顶元素</span>
+            current <span class="token operator">=</span> stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token comment"># 将临时栈中大于当前元素的元素依次弹出并推入原栈</span>
+            <span class="token keyword">while</span> temp_stack <span class="token keyword">and</span> temp_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> current<span class="token punctuation">:</span>
+                stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>temp_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            
+            <span class="token comment"># 将当前元素推入临时栈</span>
+            temp_stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>current<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 将临时栈中的元素重新推入原栈，完成排序</span>
+        <span class="token keyword">while</span> temp_stack<span class="token punctuation">:</span>
+            stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>temp_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 示例代码</span>
+solution <span class="token operator">=</span> new Solution<span class="token punctuation">(</span><span class="token punctuation">)</span>
+stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+solution<span class="token punctuation">.</span>sortStack<span class="token punctuation">(</span>stack<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span> <span class="token comment"># 输出: [1, 2, 3, 4, 5]</span>
+</code></pre></div><h2 id="_7-删除无序链表中值重复出现的节点"><a href="#_7-删除无序链表中值重复出现的节点" class="header-anchor">#</a> 7. 删除无序链表中值重复出现的节点</h2> <p>方式一:
+我们可以使用一个哈希集合来记录已经出现的节点值,并在遍万链表的过程中删除重复节点。</p> <p>总结一下,这个算法通过使用哈希集合来记录已经出现的节点值,并在遍历链表时删除重复节点。
+时间复杂度为O(n),因为我们需要遍历整个链表一次。
+空间复杂度为0(n),因为我们需要额外的空间来存储已经出现的节点值。</p> <p>方式二:
+使用两个指针:一个指针遍历链表,另一个指针检查并删除重复的的节点。这样可以在0(1)的额外空间复杂度下完
+成任务。
+以下是具体实现:</p> <p>时间复杂度为O(n^2),因为每个节点都需要与后续节点进行比较。
+空间复杂度为0(1),因为我们只使用了常数级别的额外空间。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_1-实现一个带有取最小值min-方法的栈" class="sidebar-link reco-side-_1-实现一个带有取最小值min-方法的栈" data-v-b57cc07c>1. 实现一个带有取最小值min 方法的栈</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_2-使用数组实现一个栈-需要提供自动扩容和缩容功能" class="sidebar-link reco-side-_2-使用数组实现一个栈-需要提供自动扩容和缩容功能" data-v-b57cc07c>2. 使用数组实现一个栈,需要提供自动扩容和缩容功能</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_3-两个队列实现栈" class="sidebar-link reco-side-_3-两个队列实现栈" data-v-b57cc07c>3. 两个队列实现栈</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_4-字符串查找" class="sidebar-link reco-side-_4-字符串查找" data-v-b57cc07c>4. 字符串查找</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_5-逆序一个栈" class="sidebar-link reco-side-_5-逆序一个栈" data-v-b57cc07c>5. 逆序一个栈</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_6-用一个栈实现对另一个栈的排序" class="sidebar-link reco-side-_6-用一个栈实现对另一个栈的排序" data-v-b57cc07c>6. 用一个栈实现对另一个栈的排序</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/algorithm/algo-temp.html#_7-删除无序链表中值重复出现的节点" class="sidebar-link reco-side-_7-删除无序链表中值重复出现的节点" data-v-b57cc07c>7. 删除无序链表中值重复出现的节点</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.432a7983.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/41.0cffe87b.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>
