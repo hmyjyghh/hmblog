@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>模型微调需要的库或者方法 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.d50dda49.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/99.e295e79d.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.b5370e15.js"><link rel="prefetch" href="/hmblog/assets/js/101.11d69293.js"><link rel="prefetch" href="/hmblog/assets/js/102.ec371acb.js"><link rel="prefetch" href="/hmblog/assets/js/103.b19e3302.js"><link rel="prefetch" href="/hmblog/assets/js/104.a5d1118b.js"><link rel="prefetch" href="/hmblog/assets/js/105.027e1e70.js"><link rel="prefetch" href="/hmblog/assets/js/106.29059eec.js"><link rel="prefetch" href="/hmblog/assets/js/107.df098f41.js"><link rel="prefetch" href="/hmblog/assets/js/108.b32395ba.js"><link rel="prefetch" href="/hmblog/assets/js/109.04680449.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.3f0e265c.js"><link rel="prefetch" href="/hmblog/assets/js/111.267fca7d.js"><link rel="prefetch" href="/hmblog/assets/js/112.777e7460.js"><link rel="prefetch" href="/hmblog/assets/js/113.3fa5c9d1.js"><link rel="prefetch" href="/hmblog/assets/js/114.7942c611.js"><link rel="prefetch" href="/hmblog/assets/js/115.73cbc360.js"><link rel="prefetch" href="/hmblog/assets/js/116.13fbd424.js"><link rel="prefetch" href="/hmblog/assets/js/117.50aa2803.js"><link rel="prefetch" href="/hmblog/assets/js/118.66821f6e.js"><link rel="prefetch" href="/hmblog/assets/js/119.da118f68.js"><link rel="prefetch" href="/hmblog/assets/js/120.4472cbe6.js"><link rel="prefetch" href="/hmblog/assets/js/121.389268b2.js"><link rel="prefetch" href="/hmblog/assets/js/122.df5b0c2c.js"><link rel="prefetch" href="/hmblog/assets/js/123.d9c9fac7.js"><link rel="prefetch" href="/hmblog/assets/js/124.e61413bb.js"><link rel="prefetch" href="/hmblog/assets/js/125.01e4a7da.js"><link rel="prefetch" href="/hmblog/assets/js/126.c3eb0f4c.js"><link rel="prefetch" href="/hmblog/assets/js/127.ad38efca.js"><link rel="prefetch" href="/hmblog/assets/js/128.aa1a2c28.js"><link rel="prefetch" href="/hmblog/assets/js/129.8d20593d.js"><link rel="prefetch" href="/hmblog/assets/js/130.91e775b6.js"><link rel="prefetch" href="/hmblog/assets/js/131.eb9c25a2.js"><link rel="prefetch" href="/hmblog/assets/js/132.416369ca.js"><link rel="prefetch" href="/hmblog/assets/js/133.d39f05a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.a8d198f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b1325deb.js"><link rel="prefetch" href="/hmblog/assets/js/136.20239e0e.js"><link rel="prefetch" href="/hmblog/assets/js/137.6b8f99e3.js"><link rel="prefetch" href="/hmblog/assets/js/138.1e5b21c9.js"><link rel="prefetch" href="/hmblog/assets/js/139.11c4327d.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.fee44758.js"><link rel="prefetch" href="/hmblog/assets/js/141.c3b89020.js"><link rel="prefetch" href="/hmblog/assets/js/142.df24c198.js"><link rel="prefetch" href="/hmblog/assets/js/143.9d2052df.js"><link rel="prefetch" href="/hmblog/assets/js/144.2f4e1d52.js"><link rel="prefetch" href="/hmblog/assets/js/145.51fc7ecd.js"><link rel="prefetch" href="/hmblog/assets/js/146.8a157335.js"><link rel="prefetch" href="/hmblog/assets/js/147.0cf4ccf1.js"><link rel="prefetch" href="/hmblog/assets/js/148.7fa222c9.js"><link rel="prefetch" href="/hmblog/assets/js/149.d2ea3e9f.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.aece84af.js"><link rel="prefetch" href="/hmblog/assets/js/151.b2abf121.js"><link rel="prefetch" href="/hmblog/assets/js/152.f974f4d5.js"><link rel="prefetch" href="/hmblog/assets/js/153.576ae466.js"><link rel="prefetch" href="/hmblog/assets/js/154.feb7351a.js"><link rel="prefetch" href="/hmblog/assets/js/155.ceb7ee93.js"><link rel="prefetch" href="/hmblog/assets/js/156.59e5e60c.js"><link rel="prefetch" href="/hmblog/assets/js/157.b2d98899.js"><link rel="prefetch" href="/hmblog/assets/js/158.1d321223.js"><link rel="prefetch" href="/hmblog/assets/js/159.34fb3587.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.327c24a5.js"><link rel="prefetch" href="/hmblog/assets/js/161.46989a6e.js"><link rel="prefetch" href="/hmblog/assets/js/162.aca9fc03.js"><link rel="prefetch" href="/hmblog/assets/js/163.7b750de2.js"><link rel="prefetch" href="/hmblog/assets/js/164.11817a34.js"><link rel="prefetch" href="/hmblog/assets/js/165.69f84a6d.js"><link rel="prefetch" href="/hmblog/assets/js/166.04a9455e.js"><link rel="prefetch" href="/hmblog/assets/js/167.de58f97c.js"><link rel="prefetch" href="/hmblog/assets/js/168.1fda293d.js"><link rel="prefetch" href="/hmblog/assets/js/169.658d866b.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.93cda1d5.js"><link rel="prefetch" href="/hmblog/assets/js/171.ec137401.js"><link rel="prefetch" href="/hmblog/assets/js/172.503542ca.js"><link rel="prefetch" href="/hmblog/assets/js/173.e01bb63d.js"><link rel="prefetch" href="/hmblog/assets/js/174.f62b3b69.js"><link rel="prefetch" href="/hmblog/assets/js/175.1e81affb.js"><link rel="prefetch" href="/hmblog/assets/js/176.c228e264.js"><link rel="prefetch" href="/hmblog/assets/js/177.8b701f5f.js"><link rel="prefetch" href="/hmblog/assets/js/178.b3040418.js"><link rel="prefetch" href="/hmblog/assets/js/179.95b66158.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.28a002e6.js"><link rel="prefetch" href="/hmblog/assets/js/181.a5b2a85a.js"><link rel="prefetch" href="/hmblog/assets/js/182.b0d528f9.js"><link rel="prefetch" href="/hmblog/assets/js/183.064f0686.js"><link rel="prefetch" href="/hmblog/assets/js/184.a55849ef.js"><link rel="prefetch" href="/hmblog/assets/js/185.d30053a1.js"><link rel="prefetch" href="/hmblog/assets/js/186.43690601.js"><link rel="prefetch" href="/hmblog/assets/js/187.1885f261.js"><link rel="prefetch" href="/hmblog/assets/js/188.14bc02b8.js"><link rel="prefetch" href="/hmblog/assets/js/189.c39e7169.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.6df8a6cb.js"><link rel="prefetch" href="/hmblog/assets/js/191.7c034f61.js"><link rel="prefetch" href="/hmblog/assets/js/192.87493c0b.js"><link rel="prefetch" href="/hmblog/assets/js/193.614b7fd7.js"><link rel="prefetch" href="/hmblog/assets/js/194.55efe45a.js"><link rel="prefetch" href="/hmblog/assets/js/195.84ae7930.js"><link rel="prefetch" href="/hmblog/assets/js/196.9b92a9e9.js"><link rel="prefetch" href="/hmblog/assets/js/197.d5ce227e.js"><link rel="prefetch" href="/hmblog/assets/js/198.a889219a.js"><link rel="prefetch" href="/hmblog/assets/js/199.cb7acbba.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.6b03dbe5.js"><link rel="prefetch" href="/hmblog/assets/js/201.04210c55.js"><link rel="prefetch" href="/hmblog/assets/js/202.841b96be.js"><link rel="prefetch" href="/hmblog/assets/js/203.e43080f2.js"><link rel="prefetch" href="/hmblog/assets/js/204.f9ac267d.js"><link rel="prefetch" href="/hmblog/assets/js/205.e7b6c5bc.js"><link rel="prefetch" href="/hmblog/assets/js/206.7856c113.js"><link rel="prefetch" href="/hmblog/assets/js/207.3fa7673f.js"><link rel="prefetch" href="/hmblog/assets/js/208.321f34da.js"><link rel="prefetch" href="/hmblog/assets/js/209.424fbd4a.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/210.9674b994.js"><link rel="prefetch" href="/hmblog/assets/js/211.76ff10e6.js"><link rel="prefetch" href="/hmblog/assets/js/212.1f945f3c.js"><link rel="prefetch" href="/hmblog/assets/js/213.1b05ce01.js"><link rel="prefetch" href="/hmblog/assets/js/214.be92c192.js"><link rel="prefetch" href="/hmblog/assets/js/215.e9904e30.js"><link rel="prefetch" href="/hmblog/assets/js/216.82c8a94e.js"><link rel="prefetch" href="/hmblog/assets/js/217.42174e7c.js"><link rel="prefetch" href="/hmblog/assets/js/218.72f00225.js"><link rel="prefetch" href="/hmblog/assets/js/219.34766469.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/220.7fa45ba3.js"><link rel="prefetch" href="/hmblog/assets/js/221.11000c3e.js"><link rel="prefetch" href="/hmblog/assets/js/222.c80e9b19.js"><link rel="prefetch" href="/hmblog/assets/js/223.55e2a3f3.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.67bc9334.js"><link rel="prefetch" href="/hmblog/assets/js/41.0cffe87b.js"><link rel="prefetch" href="/hmblog/assets/js/42.7007a9e2.js"><link rel="prefetch" href="/hmblog/assets/js/43.4cdc1a74.js"><link rel="prefetch" href="/hmblog/assets/js/44.f4802bc7.js"><link rel="prefetch" href="/hmblog/assets/js/45.34debc14.js"><link rel="prefetch" href="/hmblog/assets/js/46.c2ce5dd7.js"><link rel="prefetch" href="/hmblog/assets/js/47.39c8ff51.js"><link rel="prefetch" href="/hmblog/assets/js/48.948d1838.js"><link rel="prefetch" href="/hmblog/assets/js/49.3a7623be.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.ac02ad0e.js"><link rel="prefetch" href="/hmblog/assets/js/51.f16547e7.js"><link rel="prefetch" href="/hmblog/assets/js/52.7fe5922d.js"><link rel="prefetch" href="/hmblog/assets/js/53.c1c2c7fb.js"><link rel="prefetch" href="/hmblog/assets/js/54.0e306c09.js"><link rel="prefetch" href="/hmblog/assets/js/55.b421f487.js"><link rel="prefetch" href="/hmblog/assets/js/56.81af8d2b.js"><link rel="prefetch" href="/hmblog/assets/js/57.a75ace25.js"><link rel="prefetch" href="/hmblog/assets/js/58.da08dcac.js"><link rel="prefetch" href="/hmblog/assets/js/59.dab6d7fa.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.119bb2a1.js"><link rel="prefetch" href="/hmblog/assets/js/61.edc5e570.js"><link rel="prefetch" href="/hmblog/assets/js/62.7716e6b6.js"><link rel="prefetch" href="/hmblog/assets/js/63.862022f3.js"><link rel="prefetch" href="/hmblog/assets/js/64.140c3499.js"><link rel="prefetch" href="/hmblog/assets/js/65.9f957148.js"><link rel="prefetch" href="/hmblog/assets/js/66.bfc80bb5.js"><link rel="prefetch" href="/hmblog/assets/js/67.3d565f98.js"><link rel="prefetch" href="/hmblog/assets/js/68.bf75b3e1.js"><link rel="prefetch" href="/hmblog/assets/js/69.702f7500.js"><link rel="prefetch" href="/hmblog/assets/js/70.4ff5100f.js"><link rel="prefetch" href="/hmblog/assets/js/71.8343a21d.js"><link rel="prefetch" href="/hmblog/assets/js/72.5f656cae.js"><link rel="prefetch" href="/hmblog/assets/js/73.8b747092.js"><link rel="prefetch" href="/hmblog/assets/js/74.ce37eef4.js"><link rel="prefetch" href="/hmblog/assets/js/75.146a5498.js"><link rel="prefetch" href="/hmblog/assets/js/76.4984e890.js"><link rel="prefetch" href="/hmblog/assets/js/77.2cd2e868.js"><link rel="prefetch" href="/hmblog/assets/js/78.90dbc4be.js"><link rel="prefetch" href="/hmblog/assets/js/79.1b20039d.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.0494bb83.js"><link rel="prefetch" href="/hmblog/assets/js/81.ed79dacf.js"><link rel="prefetch" href="/hmblog/assets/js/82.1500a0ec.js"><link rel="prefetch" href="/hmblog/assets/js/83.6ea83899.js"><link rel="prefetch" href="/hmblog/assets/js/84.97c0c987.js"><link rel="prefetch" href="/hmblog/assets/js/85.5478ff3d.js"><link rel="prefetch" href="/hmblog/assets/js/86.eefe55cf.js"><link rel="prefetch" href="/hmblog/assets/js/87.36078833.js"><link rel="prefetch" href="/hmblog/assets/js/88.c154a1ac.js"><link rel="prefetch" href="/hmblog/assets/js/89.9d69c066.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.52e79e0e.js"><link rel="prefetch" href="/hmblog/assets/js/91.ee7188ed.js"><link rel="prefetch" href="/hmblog/assets/js/92.e55d0541.js"><link rel="prefetch" href="/hmblog/assets/js/93.7a66a588.js"><link rel="prefetch" href="/hmblog/assets/js/94.862ef2ed.js"><link rel="prefetch" href="/hmblog/assets/js/95.3902dbfc.js"><link rel="prefetch" href="/hmblog/assets/js/96.58ae93f2.js"><link rel="prefetch" href="/hmblog/assets/js/97.b5822d64.js"><link rel="prefetch" href="/hmblog/assets/js/98.1873d69b.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>146</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">模型微调需要的库或者方法</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="模型微调需要的库或者方法"><a href="#模型微调需要的库或者方法" class="header-anchor">#</a> 模型微调需要的库或者方法</h2> <h3 id="_1-create-and-prepare-model"><a href="#_1-create-and-prepare-model" class="header-anchor">#</a> 1. create_and_prepare_model</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">from</span> utils <span class="token keyword">import</span> create_and_prepare_model<span class="token punctuation">,</span> create_datasets
+</code></pre></div><p><code>create_and_prepare_model</code> 是一个从 <code>utils</code> 模块导入的工具函数，从函数名推测，它的主要作用是<strong>创建并预处理模型</strong>，通常用于机器学习或深度学习任务中。</p> <p>具体来说，这个函数可能包含以下功能：</p> <ol><li><strong>模型创建</strong>：根据任务需求（如分类、回归、生成等）初始化一个模型结构（可能是自定义模型或基于现有框架的预训练模型）</li> <li><strong>模型配置</strong>：设置模型的超参数（如学习率、优化器、损失函数等）</li> <li><strong>预处理操作</strong>：
+<ul><li>可能包含模型权重的初始化或加载</li> <li>对模型进行必要的调整（如冻结部分层、修改输出层适应新任务等）</li> <li>可能还会将模型移动到指定设备（如GPU）</li></ul></li></ol> <p>这类函数通常与数据处理函数（如你提到的 <code>create_datasets</code>）配合使用，形成&quot;数据准备-模型创建-训练评估&quot;的完整流程。</p> <p>如果没有具体的实现代码，以上是基于函数命名的合理推测。实际功能可能会根据具体项目的需求有所不同。</p> <h3 id="_2-trainer"><a href="#_2-trainer" class="header-anchor">#</a> 2. Trainer</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">from</span> transformers <span class="token keyword">import</span> Trainer<span class="token punctuation">,</span> TrainingArguments
+</code></pre></div><h3 id="_3-练习-peft-微调-mathstral-7b-v0-1-模型"><a href="#_3-练习-peft-微调-mathstral-7b-v0-1-模型" class="header-anchor">#</a> 3. 练习 peft 微调 Mathstral-7B-v0.1 模型</h3> <h4 id="_3-1-克隆-peft-仓库-安装根目录下相关库"><a href="#_3-1-克隆-peft-仓库-安装根目录下相关库" class="header-anchor">#</a> 3.1 克隆 peft 仓库，安装根目录下相关库，</h4> <ul><li>安装 <code>modelscope</code> 库，用于下载 Mathstral-7B-v0.1 模型</li> <li>运行 <code>run_peft.sh</code> 脚本，微调 Mathstral-7B-v0.1 模型</li></ul> <div class="language-Text extra-class"><pre class="language-text"><code>git clone https://github.com/huggingface/peft.git
+
+cd peft
+pip install -e .
+
+运行 SFT 示例前的准备：
+
+cd examples/sft
+pip install -r requirements.txt
+
+
+然后就可以运行脚本了：
+
+bash run_peft.sh
+
+- 下载模型到本地
+
+
+- 安装 `modelscope` 库，用于下载 Mathstral-7B-v0.1 模型
+- 运行 `run_peft.sh` 脚本，微调 Mathstral-7B-v0.1 模型
+
+pip install modelscope
+modelscope download --model mistralai/Mathstral-7B-v0.1
+
+
+# 推荐使用 huggingface-cli 下载，保持一致性
+pip install huggingface-hub
+huggingface-cli download --resume-download mistralai/Mathstral-7B-v0.1 --local-dir ./mathstral-7b-model
+
+- 数据集
+
+smangrul/ultrachat-10k-chatml 是一个用于对话微调的数据集，基于 UltraChat 数据，使用 ChatML 格式进行处理。
+
+
+# 设置镜像环境变量
+export HF_ENDPOINT=https://hf-mirror.com
+
+# 使用 huggingface-cli 下载
+pip install huggingface-hub
+huggingface-cli download --repo-type dataset smangrul/ultrachat-10k-chatml --local-dir ./ultrachat-10k-chatml
+
+
+
+
+
+/mnt/workspace/.cache/modelscope/models/mistralai/Mathstral-7B-v0.1
+./ultrachat-10k-chatml
+
+
+</code></pre></div><h4 id="_3-2-完整的修正步骤"><a href="#_3-2-完整的修正步骤" class="header-anchor">#</a> 3.2 完整的修正步骤</h4> <h5 id="_1-克隆仓库"><a href="#_1-克隆仓库" class="header-anchor">#</a> 1. 克隆仓库</h5> <p>git clone https://github.com/huggingface/peft.git
+cd peft</p> <h5 id="_2-安装-peft"><a href="#_2-安装-peft" class="header-anchor">#</a> 2. 安装 PEFT</h5> <p>pip install -e .</p> <h5 id="_3-进入示例目录并安装依赖"><a href="#_3-进入示例目录并安装依赖" class="header-anchor">#</a> 3. 进入示例目录并安装依赖</h5> <p>cd examples/sft
+pip install -r requirements.txt</p> <h5 id="_4-设置镜像-如果国内网络需要"><a href="#_4-设置镜像-如果国内网络需要" class="header-anchor">#</a> 4. 设置镜像（如果国内网络需要）</h5> <p>export HF_ENDPOINT=https://hf-mirror.com</p> <h5 id="_5-下载模型-推荐方式"><a href="#_5-下载模型-推荐方式" class="header-anchor">#</a> 5. 下载模型（推荐方式）</h5> <p>pip install huggingface-hub
+huggingface-cli download --resume-download mistralai/Mathstral-7B-v0.1 --local-dir ./mathstral-7b-model</p> <h5 id="_6-下载数据集"><a href="#_6-下载数据集" class="header-anchor">#</a> 6. 下载数据集</h5> <p>huggingface-cli download --repo-type dataset smangrul/ultrachat-10k-chatml --local-dir ./ultrachat-10k-chatml</p> <h5 id="_7-修改脚本或使用参数指定路径-重要"><a href="#_7-修改脚本或使用参数指定路径-重要" class="header-anchor">#</a> 7. 修改脚本或使用参数指定路径（重要！）</h5> <h5 id="确保-run-peft-sh-脚本中指定了正确的模型路径和数据集路径"><a href="#确保-run-peft-sh-脚本中指定了正确的模型路径和数据集路径" class="header-anchor">#</a> 确保 run_peft.sh 脚本中指定了正确的模型路径和数据集路径</h5> <h5 id="例如"><a href="#例如" class="header-anchor">#</a> 例如：</h5> <h5 id="model-name-or-path-mathstral-7b-model"><a href="#model-name-or-path-mathstral-7b-model" class="header-anchor">#</a> --model_name_or_path ./mathstral-7b-model</h5> <h5 id="dataset-name-ultrachat-10k-chatml"><a href="#dataset-name-ultrachat-10k-chatml" class="header-anchor">#</a> --dataset_name ./ultrachat-10k-chatml</h5> <h4 id="autodl-4090-环境注意事项"><a href="#autodl-4090-环境注意事项" class="header-anchor">#</a> AutoDL 4090 环境注意事项</h4> <h5 id="_1-显存优化"><a href="#_1-显存优化" class="header-anchor">#</a> 1. 显存优化</h5> <p>4090 有 24GB 显存，但对于 7B 模型还是有些紧张，建议：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 减小批次大小，如果出现 OOM 错误</span>
+<span class="token parameter variable">--per_device_train_batch_size</span> <span class="token number">1</span> <span class="token punctuation">\</span>
+<span class="token parameter variable">--gradient_accumulation_steps</span> <span class="token number">4</span> <span class="token punctuation">\</span>
+
+<span class="token comment"># 启用梯度检查点</span>
+<span class="token parameter variable">--gradient_checkpointing</span> True
+</code></pre></div><h5 id="_2-环境检查"><a href="#_2-环境检查" class="header-anchor">#</a> 2. 环境检查</h5> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 检查 GPU 状态</span>
+nvidia-smi
+
+<span class="token comment"># 检查 CUDA 和 PyTorch</span>
+python <span class="token parameter variable">-c</span> <span class="token string">&quot;import torch; print(torch.cuda.is_available()); print(torch.cuda.device_count())&quot;</span>
+</code></pre></div><h5 id="_3-完整的验证流程"><a href="#_3-完整的验证流程" class="header-anchor">#</a> 3. 完整的验证流程</h5> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 1. 环境验证</span>
+python <span class="token parameter variable">-c</span> <span class="token string">&quot;
+import torch
+print(f'CUDA available: {torch.cuda.is_available()}')
+print(f'GPU count: {torch.cuda.device_count()}')
+print(f'Current GPU: {torch.cuda.current_device()}')
+print(f'GPU name: {torch.cuda.get_device_name()}')
+print(f'GPU memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB')
+&quot;</span>
+
+<span class="token comment"># 2. 测试模型加载</span>
+python <span class="token parameter variable">-c</span> <span class="token string">&quot;
+from transformers import AutoModelForCausalLM, AutoTokenizer
+model = AutoModelForCausalLM.from_pretrained('./mathstral-7b-model', torch_dtype=torch.bfloat16)
+print('模型加载成功！')
+&quot;</span>
+
+<span class="token comment"># 3. 运行训练（先小规模测试）</span>
+<span class="token comment"># 添加 --max_steps 10 进行快速测试</span>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>你的基本步骤是正确的，主要需要：</p> <ol><li><strong>统一模型下载方式</strong>（建议都用 huggingface-cli）</li> <li><strong>正确指定本地路径</strong></li> <li><strong>根据 4090 的显存适当调整批次大小</strong></li> <li><strong>先进行小规模测试验证环境</strong></li></ol> <p>按照这个修正后的流程，你应该能在 AutoDL 的 4090 上成功运行 PEFT SFT 示例。</p> <blockquote><p>只对模型下载使用镜像，其他操作使用官方源：</p></blockquote> <h1 id="下载模型和数据时使用镜像"><a href="#下载模型和数据时使用镜像" class="header-anchor">#</a> 下载模型和数据时使用镜像</h1> <p>export HF_ENDPOINT=https://hf-mirror.com
+huggingface-cli download --resume-download mistralai/Mathstral-7B-v0.1 --local-dir ./mathstral-7b-model
+huggingface-cli download --repo-type dataset smangrul/ultrachat-10k-chatml --local-dir ./ultrachat-10k-chatml</p> <h1 id="训练时使用官方源"><a href="#训练时使用官方源" class="header-anchor">#</a> 训练时使用官方源</h1> <p>unset HF_ENDPOINT</p> <h1 id="_1-确保已经下载了模型和数据集-使用镜像"><a href="#_1-确保已经下载了模型和数据集-使用镜像" class="header-anchor">#</a> 1. 确保已经下载了模型和数据集（使用镜像）</h1> <p>export HF_ENDPOINT=https://hf-mirror.com
+pip install huggingface-hub
+huggingface-cli download --resume-download mistralai/Mathstral-7B-v0.1 --local-dir ./mathstral-7b-model
+huggingface-cli download --repo-type dataset smangrul/ultrachat-10k-chatml --local-dir ./ultrachat-10k-chatml</p> <h1 id="_2-取消镜像设置"><a href="#_2-取消镜像设置" class="header-anchor">#</a> 2. 取消镜像设置</h1> <p>unset HF_ENDPOINT</p> <h1 id="_3-创建修正版脚本"><a href="#_3-创建修正版脚本" class="header-anchor">#</a> 3. 创建修正版脚本</h1> <p>cat &gt; run_peft_fixed.sh &lt;&lt; 'EOF'
+#!/bin/bash</p> <p>accelerate launch <br>
+--config_file ../configs/accelerate_configs/multi_gpu.yaml <br>
+../sft.py <br>
+--model_name_or_path ./mathstral-7b-model <br>
+--dataset_name ./ultrachat-10k-chatml <br>
+--output_dir ./mathstral-7b-sft-lora <br>
+--log_with none <br>
+--use_peft <br>
+--peft_method lora <br>
+--lora_r 16 <br>
+--lora_alpha 32 <br>
+--lora_target_modules q_proj k_proj v_proj o_proj <br>
+--per_device_train_batch_size 1 <br>
+--gradient_accumulation_steps 4 <br>
+--learning_rate 2e-4 <br>
+--lr_scheduler_type constant <br>
+--warmup_ratio 0.03 <br>
+--weight_decay 0.0 <br>
+--num_train_epochs 1 <br>
+--max_steps 50 <br>
+--logging_steps 5 <br>
+--save_strategy no <br>
+--bf16 <br>
+--tf32 True <br>
+--packing True <br>
+--gradient_checkpointing True
+EOF</p> <p>chmod +x run_peft_fixed.sh</p> <h1 id="_4-运行测试-先小规模"><a href="#_4-运行测试-先小规模" class="header-anchor">#</a> 4. 运行测试（先小规模）</h1> <p>./run_peft_fixed.sh</p> <h3 id="_4-错误收集"><a href="#_4-错误收集" class="header-anchor">#</a> 4. 错误收集</h3> <ul><li>ConnectionError: Couldn't reach 'smangrul/ultrachat-10k-chatml' on the Hub (LocalEntryNotFoundError)</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> huggingface_hub
+
+<span class="token comment"># Check Hub connectivity</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hub status:&quot;</span><span class="token punctuation">,</span> huggingface_hub<span class="token punctuation">.</span>hf_hub_url<span class="token punctuation">(</span><span class="token string">&quot;smangrul/ultrachat-10k-chatml&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Try with different parameters</span>
+dataset <span class="token operator">=</span> load_dataset<span class="token punctuation">(</span>
+    <span class="token string">&quot;smangrul/ultrachat-10k-chatml&quot;</span><span class="token punctuation">,</span>
+    trust_remote_code<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    use_auth_token<span class="token operator">=</span><span class="token boolean">True</span>  <span class="token comment"># if needed</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="peft"><a href="#peft" class="header-anchor">#</a> PEFT</h2> <p>Hugging Face 的 <strong>PEFT</strong> 代码仓库。</p> <h3 id="_1-项目概览"><a href="#_1-项目概览" class="header-anchor">#</a> 1. 项目概览</h3> <p><strong>PEFT</strong> 的全称是 <strong>Parameter-Efficient Fine-Tuning</strong>。这是一个非常流行且重要的开源库，它的核心目标是让开发者能够<strong>高效地</strong>对大型预训练语言模型进行微调。</p> <ul><li><strong>核心问题</strong>：直接微调像 Llama、GPT、T5 这样拥有数十亿甚至数百亿参数的大模型，成本极高。它需要庞大的 GPU 显存来存储模型权重、优化器状态、梯度等，这对于大多数研究者和公司来说是不现实的。</li> <li><strong>PEFT 的解决方案</strong>：PEFT 提供了一系列技术，<strong>只微调模型的一小部分参数</strong>（比如添加一些额外的层或参数），同时保持原始预训练模型的绝大部分参数冻结不变。这种方法能以极小的计算和存储成本，达到接近全参数微调的性能。</li></ul> <p><strong>一句话总结：PEFT 让普通开发者也能在自己的硬件上（例如单个消费级 GPU）微调大模型。</strong></p> <h3 id="_2-核心方法与技术"><a href="#_2-核心方法与技术" class="header-anchor">#</a> 2. 核心方法与技术</h3> <p>PEFT 库实现了多种主流的参数高效微调方法，以下是其中最关键的几种：</p> <ol><li><p><strong>LoRA</strong></p> <ul><li><strong>思想</strong>：假设模型在微调过程中的权重变化是低秩的。LoRA 不在原始权重上直接更新，而是为模型中的特定层（通常是注意力层的 Q, K, V, O 矩阵）注入一对小的、可训练的<strong>低秩矩阵</strong>。在推理时，这些小矩阵可以与原始权重合并，因此<strong>不会引入任何延迟</strong>。</li> <li><strong>优势</strong>：广泛适用，效果出色，是目前最流行的方法之一。</li></ul></li> <li><p><strong>QLoRA</strong></p> <ul><li><strong>思想</strong>：LoRA 的进一步优化。它首先将原始模型权重量化为 4-bit（大大减少显存占用），然后在此基础上进行 LoRA 微调。它还引入了分页优化器等技巧来防止显存溢出。</li> <li><strong>优势</strong>：<strong>显存需求极低</strong>！使得在单张 24GB 的 GPU 上微调 70B 参数的模型成为可能。</li></ul></li> <li><p><strong>Prompt Tuning / Prefix Tuning</strong></p> <ul><li><strong>思想</strong>：不修改模型本身，而是在输入序列前添加一些可训练的<strong>软提示向量</strong>。模型通过这些提示向量来适应下游任务。</li> <li><strong>区别</strong>：Prompt Tuning 直接训练这些向量；Prefix Tuning 通过一个小型的前馈网络来生成这些向量，训练的是这个网络的参数。</li></ul></li> <li><p><strong>AdaLoRA</strong></p> <ul><li><strong>思想</strong>：LoRA 的自适应版本。它不是为所有选定的层分配固定的秩，而是根据重要性评分动态地调整每个 LoRA 模块的秩（参数预算），将更多的参数分配给更重要的模块。</li> <li><strong>优势</strong>：在相同的参数预算下，通常能获得比标准 LoRA 更好的性能。</li></ul></li> <li><p><strong>IA³</strong></p> <ul><li><strong>思想</strong>：通过引入可训练的<strong>缩放向量</strong>来放大模型内部激活值的重要部分。这些向量被添加到注意力机制和前馈网络中的特定位置。</li> <li><strong>优势</strong>：需要训练的参数比 LoRA 更少，速度更快。</li></ul></li></ol> <h3 id="_3-项目结构与代码组织"><a href="#_3-项目结构与代码组织" class="header-anchor">#</a> 3. 项目结构与代码组织</h3> <p>仓库的结构非常清晰，主要部分在 <code>src/peft</code> 目录下：</p> <div class="language- extra-class"><pre class="language-text"><code>src/peft/
+├── __init__.py                         # 导出主要类和函数
+├── config.py                           # 所有 PEFT 方法的配置类
+├── mapping.py                          # 模型名称与自动 PEFT 配置的映射
+├── tuners/                             # **核心目录：各种微调方法的实现**
+│   ├── __init__.py
+│   ├── lora.py                         # LoRA, QLoRA 的实现
+│   ├── prefix_tuning.py               # Prefix Tuning 的实现
+│   ├── prompt_tuning.py               # Prompt Tuning 的实现
+│   ├── adalora.py                     # AdaLoRA 的实现
+│   └── ... (其他方法)
+├── trainer.py                          # 与 Hugging Face Trainer 的集成
+├── utils/                              # 工具函数
+│   ├── constants.py                    # 常量定义
+│   ├── save_and_load.py               # 模型保存和加载逻辑
+│   └── ...
+└── import_utils.py                     # 动态导入辅助函数
+</code></pre></div><p><strong>关键设计模式：</strong>
+PEFT 库采用了<strong>配置类</strong> + <strong>模型包装器</strong>的设计模式。</p> <ol><li><strong>配置类</strong>（如 <code>LoraConfig</code>）：你首先创建一个配置对象，指定要使用的方法（如 <code>method=&quot;lora&quot;</code>）及其超参数（如 <code>r=8</code>, <code>lora_alpha=16</code>）。</li> <li><strong>模型包装器</strong>：通过 <code>get_peft_model(model, config)</code> 函数，该函数会根据配置，将原始模型包装成一个 <code>PeftModel</code>。这个 <code>PeftModel</code> 内部会冻结原始模型的参数，并注入可训练的参数（如 LoRA 矩阵）。</li></ol> <h3 id="_4-主要特性与优势"><a href="#_4-主要特性与优势" class="header-anchor">#</a> 4. 主要特性与优势</h3> <ul><li><strong>与 Transformers 无缝集成</strong>：这是 PEFT 成功的关键。它可以轻松地与 Hugging Face <code>transformers</code> 库中的任何模型结合使用，API 设计非常友好。</li> <li><strong>支持多种流行方法</strong>：在一个库中集成了多种 SOTA 方法，方便用户比较和选择。</li> <li><strong>易于使用</strong>：通常只需要几行代码就可以将一个大模型转换为可高效微调的 PEFT 模型。</li> <li><strong>实用性极强</strong>：
+<ul><li><strong>节省显存</strong>：大幅降低硬件门槛。</li> <li><strong>节省时间</strong>：训练参数少，收敛更快。</li> <li><strong>便于部署</strong>：多个任务可以共享同一个基础模型，只需加载不同的、体积很小的适配器权重（通常只有几 MB 到几十 MB），大大简化了模型管理。</li></ul></li> <li><strong>支持保存和加载适配器</strong>：可以单独保存训练好的“小权重”（适配器），并轻松地加载到基础模型上，实现灵活的任务切换。</li></ul> <h3 id="_5-示例代码"><a href="#_5-示例代码" class="header-anchor">#</a> 5. 示例代码</h3> <p>以下是一个典型的使用 LoRA 微调模型的代码片段：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> transformers <span class="token keyword">import</span> AutoModelForCausalLM<span class="token punctuation">,</span> AutoTokenizer
+<span class="token keyword">from</span> peft <span class="token keyword">import</span> LoraConfig<span class="token punctuation">,</span> get_peft_model
+
+<span class="token comment"># 1. 加载预训练模型和分词器</span>
+model_name <span class="token operator">=</span> <span class="token string">&quot;bigscience/bloomz-560m&quot;</span>
+model <span class="token operator">=</span> AutoModelForCausalLM<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>model_name<span class="token punctuation">)</span>
+tokenizer <span class="token operator">=</span> AutoTokenizer<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>model_name<span class="token punctuation">)</span>
+
+<span class="token comment"># 2. 定义 LoRA 配置</span>
+lora_config <span class="token operator">=</span> LoraConfig<span class="token punctuation">(</span>
+  r<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span>           <span class="token comment"># LoRA 的秩</span>
+  lora_alpha<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">,</span>  <span class="token comment"># 缩放参数</span>
+  target_modules<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">&quot;query_key_value&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment"># 针对 BLOOM 模型的注意力层</span>
+  lora_dropout<span class="token operator">=</span><span class="token number">0.05</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 3. 包装模型，得到 PeftModel</span>
+peft_model <span class="token operator">=</span> get_peft_model<span class="token punctuation">(</span>model<span class="token punctuation">,</span> lora_config<span class="token punctuation">)</span>
+peft_model<span class="token punctuation">.</span>print_trainable_parameters<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 打印可训练参数数量，会发现只占原模型的一小部分</span>
+
+<span class="token comment"># 4. 接下来就可以像往常一样使用 Hugging Face Trainer 进行训练了</span>
+<span class="token comment"># ... (准备数据，设置 TrainingArguments)</span>
+<span class="token comment"># trainer = Trainer(model=peft_model, ...)</span>
+<span class="token comment"># trainer.train()</span>
+
+<span class="token comment"># 5. 保存适配器（只保存 LoRA 权重）</span>
+peft_model<span class="token punctuation">.</span>save_pretrained<span class="token punctuation">(</span><span class="token string">&quot;./my_lora_model&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 6. 加载适配器进行推理</span>
+<span class="token comment"># from peft import PeftModel</span>
+<span class="token comment"># model = AutoModelForCausalLM.from_pretrained(model_name)</span>
+<span class="token comment"># model = PeftModel.from_pretrained(model, &quot;./my_lora_model&quot;)</span>
+</code></pre></div><h3 id="_6-总结"><a href="#_6-总结" class="header-anchor">#</a> 6. 总结</h3> <p><strong>PEFT 仓库是一个设计精良、功能强大且极其实用的工具库。</strong> 它深刻地把握住了大模型时代的关键痛点——微调成本，并通过提供一套统一、易用的 API 来解决这个问题。它的成功不仅在于技术的先进性，更在于其出色的工程实现和与 Hugging Face 生态系统的深度集成，极大地推动了大模型技术的民主化。</p> <p><strong>如果你打算在自己的项目中对大模型进行微调，PEFT 绝对是你的首选工具之一。</strong></p> <h2 id="peft-bash-run-peft-sh"><a href="#peft-bash-run-peft-sh" class="header-anchor">#</a> PEFT bash run_peft.sh</h2> <p>执行输出</p> <div class="language-Text extra-class"><pre class="language-text"><code>Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [05:14&amp;lt;00:00, 52.38s/it]
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+The new lm_head weights will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+Size of the train set: 10000. Size of the validation set: 2000
+A sample of train dataset: {'content': &quot;&amp;lt;|im_start|&gt;user\nThese instructions apply to section-based themes (Responsive 6.0+, Retina 4.0+, Parallax 3.0+ Turbo 2.0+, Mobilia 5.0+). What theme version am I using?\nOn your Collections pages &amp;amp; Featured Collections sections, you can easily show the secondary image of a product on hover by enabling one of the theme's built-in settings!\nYour Collection pages &amp;amp; Featured Collections sections will now display the secondary product image just by hovering over that product image thumbnail.\nDoes this feature apply to all sections of the theme or just specific ones as listed in the text material?&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;assistant\nThis feature only applies to Collection pages and Featured Collections sections of the section-based themes listed in the text material.&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;user\nCan you guide me through the process of enabling the secondary image hover feature on my Collection pages and Featured Collections sections?&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;assistant\nSure, here are the steps to enable the secondary image hover feature on your Collection pages and Featured Collections sections:\n\n1. Log in to your Shopify account and go to your Online Store.\n2. Click on Customize theme for the section-based theme you are using.\n3. Navigate to the Collection pages or Featured Collections section where you want to enable the secondary image hover feature.\n4. With the section open, click on the section's setting (gear) icon in the top-left corner.\n5. In the settings panel that appears, look for an option labeled 'Image display' or 'Image hover'.\n6. If available, select 'Show secondary image on hover'.\n7. Save the changes and preview the Collection/Featured Collection page to see the effect.\n\nIf you're having trouble finding the setting, the best thing to do is refer to your theme's documentation, since the location and labeling of settings can vary between themes.&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;user\nCan you provide me with a link to the documentation for my theme?&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;assistant\nI don't have access to your store's theme information. However, you can usually find the documentation for your theme by going to the shopify theme store, finding your theme and clicking on the 'support' link located in the bottom right corner of the page. Alternatively, you can do a google search for the name of your theme followed by 'documentation' or 'user guide'.&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;user\nCan you confirm if this feature also works for the Quick Shop section of my theme?&amp;lt;|im_end|&gt;\n&amp;lt;|im_start|&gt;assistant\nThe secondary image hover feature may or may not work for your Quick Shop section, depending on the configuration of your theme. Some themes include this feature in the Quick Shop section by default, while others may require additional customization. To check if this feature is available for the Quick Shop section of your theme, follow these steps:\n\n1. Go to the Quick Shop section where you would like to enable the feature. 2. Click on the Quick Shop settings icon (gear icon) and look for 'Image display' or 'Image hover'. 3. If available, select 'Show secondary image on hover'. 4. Save the changes. If this option is not available in your Quick Shop section settings, you may need to reach out to your theme developer for assistance with customizing your Quick Shop section to include this feature.&amp;lt;|im_end|&gt;\n&quot;}
+[2025-09-26 18:18:14,200] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-26 18:18:16,092] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+Using auto half precision backend
+PeftModelForCausalLM(
+  (base_model): LoraModel(
+    (model): MistralForCausalLM(
+      (model): MistralModel(
+        (embed_tokens): Embedding(32776, 4096)
+        (layers): ModuleList(
+          (0-31): 32 x MistralDecoderLayer(
+            (self_attn): MistralAttention(
+              (q_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=4096, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+              (k_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=4096, out_features=1024, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=1024, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+              (v_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=4096, out_features=1024, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=1024, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+              (o_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=4096, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+            )
+            (mlp): MistralMLP(
+              (gate_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=4096, out_features=14336, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=14336, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+              (up_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=4096, out_features=14336, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=14336, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+              (down_proj): lora.Linear4bit(
+                (base_layer): Linear4bit(in_features=14336, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=14336, out_features=8, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=8, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+                (lora_magnitude_vector): ModuleDict()
+              )
+              (act_fn): SiLU()
+            )
+            (input_layernorm): MistralRMSNorm((4096,), eps=1e-05)
+            (post_attention_layernorm): MistralRMSNorm((4096,), eps=1e-05)
+          )
+        )
+        (norm): MistralRMSNorm((4096,), eps=1e-05)
+        (rotary_emb): MistralRotaryEmbedding()
+      )
+      (lm_head): Linear(in_features=4096, out_features=32776, bias=False)
+    )
+  )
+)
+trainable params: 20,971,520 || all params: 7,269,060,608 || trainable%: 0.2885
+The following columns in the Training set don't have a corresponding argument in `PeftModelForCausalLM.forward` and have been ignored: content. If content are not expected by `PeftModelForCausalLM.forward`,  you can safely ignore this message.
+***** Running training *****
+  Num examples = 10,000
+  Num Epochs = 1
+  Instantaneous batch size per device = 1
+  Total train batch size (w. parallel, distributed &amp;amp; accumulation) = 4
+  Gradient Accumulation steps = 4
+  Total optimization steps = 2,500
+  Number of trainable parameters = 20,971,520
+</code></pre></div><hr> <h2 id="lora"><a href="#lora" class="header-anchor">#</a> LoRA</h2> <p><img src="/hmblog//images/fine-tuning/Lora1.png" alt="Lora 思想"></p> <ul><li><p>具体做法：在矩阵计算中增加一个旁系分支，旁系分支由两个低秩矩阵A和B组成。</p></li> <li><p>做法：对指定参数增加额外的低秩矩阵，也就是在原始的PLM旁边，增加一个旁路(智泊的说法)</p></li></ul> <p><img src="/hmblog//images/fine-tuning/Lora2.png" alt="Lora 训练中 和 训练完成发生了什么"></p> <ul><li><p>在优化的过程中，我们是不会对原始权重进行优化的，这也符合参数高效微调的特点：只更新部分参数</p></li> <li><p>更新的这部分参数，就是<code>低秩矩阵A</code> 和 <code>低秩矩阵B</code></p></li></ul> <blockquote><p>训练完成后，是把这2个低秩矩阵和原始模型中的权重，进行合并</p></blockquote> <ul><li>合并步骤： 将A*B 相乘的，得到的值和 W 是一样的，新的模型，就是合并之后的模型，看起来和 原始模型没有差别了</li> <li>这样做的好处，相较于之前的 prompt-tuning, <code>不需要额外的计算量</code></li> <li>直白点说，一个模型，加了<code>LoRA</code> 合并之后，和 没加LoRA 之前，其实是一个模型</li> <li>而 用prompt-tuning  or p-tuning or prefix-tuning 的话，终究是有一些额外的计算量</li></ul> <blockquote><p>LoRA 核心，一句话总结:</p></blockquote> <ul><li>在每一个要计算的大的矩阵(权重)旁边，新起一条分支，</li> <li>这个分支的话，是由两个小矩阵组成</li> <li>那我更新的时候只更新这两个小矩阵</li> <li>训练完成之后，再把它合并回去，这就是LoRA</li></ul> <h3 id="实战部分"><a href="#实战部分" class="header-anchor">#</a> 实战部分</h3> <blockquote><p>所需环境或者依赖: transformer、peft、accelerate</p></blockquote> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> peft <span class="token keyword">import</span> LoraConfig<span class="token punctuation">,</span> TaskType<span class="token punctuation">,</span> get_peft_model
+
+config <span class="token operator">=</span> LoraConfig<span class="token punctuation">(</span>task_type<span class="token operator">=</span>TaskType<span class="token punctuation">.</span>CAUSAL_LM<span class="token punctuation">)</span>
+
+<span class="token comment"># LoraConfig 参数配置， 比如 r：多少秩 ？ </span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+
+<span class="token comment"># 为模型引入lora 配置，并打印model</span>
+model <span class="token operator">=</span> get_peft_model<span class="token punctuation">(</span>model<span class="token punctuation">,</span> config<span class="token punctuation">)</span>
+
+model
+<span class="token comment"># 打印这个model，随便看一层，能看到有 input_layernorm, self_attention(里面有query_key_value)</span>
+<span class="token comment"># query_key_value: 是一个 Linear(也就是全连接层) 里面有lora_A  和  lora_B</span>
+</code></pre></div><h3 id="原理部分"><a href="#原理部分" class="header-anchor">#</a> 原理部分</h3> <h4 id="_1-loraconfig-这个类里"><a href="#_1-loraconfig-这个类里" class="header-anchor">#</a> 1. LoraConfig 这个类里，</h4> <ul><li>能指定的参数有：<code>r</code>, <code>target_modules</code>, <code>lora_alpha</code>, <code>lora_dropout</code>, <code>bias</code>, <code>modules_to_save</code> 等
+<ul><li><code>target_modules</code> 是个数组，里面的值可以从导的模块里：<code>TRANSFORMERS_MODELS_TO_LORA_TARGET_MODULES_MAPPING</code>，点进去能看到好多，比如：<code>bloom</code></li> <li><code>target_modules</code> 还支持指定正则表达式，config = LoraConfig(task_type=TaskType.CAUSAL_LM, target_modules=[&quot;.*.1.*query_key_value&quot;])</li></ul></li> <li><code>lora_alpha</code> 是对lora 这部分的权重，进行缩放的一个控制，lora的更新占的比重更大一些，就可以调整这个值</li> <li><code>modules_to_save</code> 可以把你想训练的那部分存进去，它就会进行训练，而且会把这部分的权重保留下来，</li> <li><code>modules_to_save</code> 你除了lora 部分以外，你还要训练哪些参数config = LoraConfig(..., modules_to_save=[&quot;word_embeddings&quot;])</li></ul> <h4 id="_2-训练完之后-怎么进行合并的"><a href="#_2-训练完之后-怎么进行合并的" class="header-anchor">#</a> 2. 训练完之后，怎么进行合并的</h4> <ul><li>权重合并</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>merge_model <span class="token operator">=</span> peft_model<span class="token punctuation">.</span>merge_and_unload<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 得到merge 之后的model, 和之前是一样的</span>
+<span class="token comment"># 用一个Question 去验证(或者叫推理) ，看结果是否一样</span>
+</code></pre></div><hr> <h2 id="ia3"><a href="#ia3" class="header-anchor">#</a> IA3</h2> <ul><li>通过可学习的向量对激活值进行抑制或放大。</li> <li>具体来说，会对<code>K、V、FFN 三部分</code>的值进行调整</li> <li>训练过程中同样冻结原始模型的权重，只更新可学习的向量部分。</li> <li>训练完成后，与LoRA 类似，也可以将学习部分的参数与原始权重合并，没有额外的推理开销。</li></ul> <blockquote><p>一句话描述： 通过一个<code>可学习的向量</code>, 然后对计算过程中的激活值, 进行抑制或放大，从而达到对整个模型进行调整的一个效果。</p></blockquote> <p><img src="/hmblog//images/fine-tuning/IA3-1.png" alt="Lora"></p> <ol><li>图中的lv lk  lff  就是对应上述提到的，会对<code>K、V、FFN 三部分</code>的值进行调整</li></ol> <ul><li>优势： 真的调了非常非常少的参数，就可以让模型的效果非常好</li> <li>具体使用哪种方案，看任务需求</li></ul> <h3 id="实战部分-2"><a href="#实战部分-2" class="header-anchor">#</a> 实战部分</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> peft <span class="token keyword">import</span> IA3Config<span class="token punctuation">,</span> TaskType<span class="token punctuation">,</span> get_peft_model
+
+config <span class="token operator">=</span> IA3Config<span class="token punctuation">(</span>task_type<span class="token operator">=</span>TaskType<span class="token punctuation">.</span>CAUSAL_LM<span class="token punctuation">)</span>
+
+<span class="token comment"># 注意里面的 feedforward_modules=</span>
+<span class="token comment"># 还有target_modules</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+
+
+<span class="token comment"># 配置训练参数，重点注意：学习率:`learning_rate`, 官方推荐的是:3e-3</span>
+</code></pre></div><h3 id="原理部分-2"><a href="#原理部分-2" class="header-anchor">#</a> 原理部分</h3> <h4 id="_1-ia3config-这个类里"><a href="#_1-ia3config-这个类里" class="header-anchor">#</a> 1. IA3Config 这个类里，</h4> <ul><li>能指定的参数有：<code>target_modules</code>, <code>feedforward_modules</code>, <code>modules_to_save</code> 等</li> <li>这些参数来自： <code>TRANSFORMERS_MODELS_TO_IA3_FEEDFORWARD_MODULES_MAPPIING</code> 和 <code>TRANSFORMERS_MODELS_TO_IA3_TARGET_MODULES_MAPPING</code></li> <li>这2个MAPPING 就是来指定，我在当前这个模型里面，哪一部分<code>是我要去进行IA3 这个适配的</code></li></ul> <h4 id="_2-看里面的-linear"><a href="#_2-看里面的-linear" class="header-anchor">#</a> 2. 看里面的 <code>Linear</code></h4> <ul><li>看它的<code>forward</code>方法， 看 if self.is_feedforward  和 else 部分
+<ul><li>不是的话：先把数据经过这个全连接层, <code>F.linear(x, )</code>，再进行这个IA3 的Scale(或者叫 抑制或放大)</li> <li>是的话： 先对x 进行一个调整，然后再经过全连接层<code>F.linear()</code>, 相当于就是把可学习的向量lff， 先进行一个调整</li></ul></li></ul> <h4 id="_3-调整learning-rate为-3e-3-loss-下降会更明显"><a href="#_3-调整learning-rate为-3e-3-loss-下降会更明显" class="header-anchor">#</a> 3.  调整<code>learning_rate</code>为: 3e-3, loss 下降会更明显</h4> <h4 id="_4-跟lora-很相似"><a href="#_4-跟lora-很相似" class="header-anchor">#</a> 4. 跟LoRA 很相似</h4></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#模型微调需要的库或者方法" class="sidebar-link reco-side-模型微调需要的库或者方法" data-v-b57cc07c>模型微调需要的库或者方法</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_1-create-and-prepare-model" class="sidebar-link reco-side-_1-create-and-prepare-model" data-v-b57cc07c>1. createandprepare_model</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_2-trainer" class="sidebar-link reco-side-_2-trainer" data-v-b57cc07c>2. Trainer</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_3-练习-peft-微调-mathstral-7b-v0-1-模型" class="sidebar-link reco-side-_3-练习-peft-微调-mathstral-7b-v0-1-模型" data-v-b57cc07c>3. 练习 peft 微调 Mathstral-7B-v0.1 模型</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#总结" class="sidebar-link reco-side-总结" data-v-b57cc07c>总结</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_4-错误收集" class="sidebar-link reco-side-_4-错误收集" data-v-b57cc07c>4. 错误收集</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#peft" class="sidebar-link reco-side-peft" data-v-b57cc07c>PEFT</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_1-项目概览" class="sidebar-link reco-side-_1-项目概览" data-v-b57cc07c>1. 项目概览</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_2-核心方法与技术" class="sidebar-link reco-side-_2-核心方法与技术" data-v-b57cc07c>2. 核心方法与技术</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_3-项目结构与代码组织" class="sidebar-link reco-side-_3-项目结构与代码组织" data-v-b57cc07c>3. 项目结构与代码组织</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_4-主要特性与优势" class="sidebar-link reco-side-_4-主要特性与优势" data-v-b57cc07c>4. 主要特性与优势</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_5-示例代码" class="sidebar-link reco-side-_5-示例代码" data-v-b57cc07c>5. 示例代码</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#_6-总结" class="sidebar-link reco-side-_6-总结" data-v-b57cc07c>6. 总结</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#peft-bash-run-peft-sh" class="sidebar-link reco-side-peft-bash-run-peft-sh" data-v-b57cc07c>PEFT bash run_peft.sh</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#lora" class="sidebar-link reco-side-lora" data-v-b57cc07c>LoRA</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#实战部分" class="sidebar-link reco-side-实战部分" data-v-b57cc07c>实战部分</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#原理部分" class="sidebar-link reco-side-原理部分" data-v-b57cc07c>原理部分</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#ia3" class="sidebar-link reco-side-ia3" data-v-b57cc07c>IA3</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#实战部分-2" class="sidebar-link reco-side-实战部分-2" data-v-b57cc07c>实战部分</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/model-fine-tuning.html#原理部分-2" class="sidebar-link reco-side-原理部分-2" data-v-b57cc07c>原理部分</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.d50dda49.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/99.e295e79d.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>函数相关 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.d50dda49.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/169.658d866b.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.b5370e15.js"><link rel="prefetch" href="/hmblog/assets/js/101.11d69293.js"><link rel="prefetch" href="/hmblog/assets/js/102.ec371acb.js"><link rel="prefetch" href="/hmblog/assets/js/103.b19e3302.js"><link rel="prefetch" href="/hmblog/assets/js/104.a5d1118b.js"><link rel="prefetch" href="/hmblog/assets/js/105.027e1e70.js"><link rel="prefetch" href="/hmblog/assets/js/106.29059eec.js"><link rel="prefetch" href="/hmblog/assets/js/107.df098f41.js"><link rel="prefetch" href="/hmblog/assets/js/108.b32395ba.js"><link rel="prefetch" href="/hmblog/assets/js/109.04680449.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.3f0e265c.js"><link rel="prefetch" href="/hmblog/assets/js/111.267fca7d.js"><link rel="prefetch" href="/hmblog/assets/js/112.777e7460.js"><link rel="prefetch" href="/hmblog/assets/js/113.3fa5c9d1.js"><link rel="prefetch" href="/hmblog/assets/js/114.7942c611.js"><link rel="prefetch" href="/hmblog/assets/js/115.73cbc360.js"><link rel="prefetch" href="/hmblog/assets/js/116.13fbd424.js"><link rel="prefetch" href="/hmblog/assets/js/117.50aa2803.js"><link rel="prefetch" href="/hmblog/assets/js/118.66821f6e.js"><link rel="prefetch" href="/hmblog/assets/js/119.da118f68.js"><link rel="prefetch" href="/hmblog/assets/js/120.4472cbe6.js"><link rel="prefetch" href="/hmblog/assets/js/121.389268b2.js"><link rel="prefetch" href="/hmblog/assets/js/122.df5b0c2c.js"><link rel="prefetch" href="/hmblog/assets/js/123.d9c9fac7.js"><link rel="prefetch" href="/hmblog/assets/js/124.e61413bb.js"><link rel="prefetch" href="/hmblog/assets/js/125.01e4a7da.js"><link rel="prefetch" href="/hmblog/assets/js/126.c3eb0f4c.js"><link rel="prefetch" href="/hmblog/assets/js/127.ad38efca.js"><link rel="prefetch" href="/hmblog/assets/js/128.aa1a2c28.js"><link rel="prefetch" href="/hmblog/assets/js/129.8d20593d.js"><link rel="prefetch" href="/hmblog/assets/js/130.91e775b6.js"><link rel="prefetch" href="/hmblog/assets/js/131.eb9c25a2.js"><link rel="prefetch" href="/hmblog/assets/js/132.416369ca.js"><link rel="prefetch" href="/hmblog/assets/js/133.d39f05a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.a8d198f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b1325deb.js"><link rel="prefetch" href="/hmblog/assets/js/136.20239e0e.js"><link rel="prefetch" href="/hmblog/assets/js/137.6b8f99e3.js"><link rel="prefetch" href="/hmblog/assets/js/138.1e5b21c9.js"><link rel="prefetch" href="/hmblog/assets/js/139.11c4327d.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.fee44758.js"><link rel="prefetch" href="/hmblog/assets/js/141.c3b89020.js"><link rel="prefetch" href="/hmblog/assets/js/142.df24c198.js"><link rel="prefetch" href="/hmblog/assets/js/143.9d2052df.js"><link rel="prefetch" href="/hmblog/assets/js/144.2f4e1d52.js"><link rel="prefetch" href="/hmblog/assets/js/145.51fc7ecd.js"><link rel="prefetch" href="/hmblog/assets/js/146.8a157335.js"><link rel="prefetch" href="/hmblog/assets/js/147.0cf4ccf1.js"><link rel="prefetch" href="/hmblog/assets/js/148.7fa222c9.js"><link rel="prefetch" href="/hmblog/assets/js/149.d2ea3e9f.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.aece84af.js"><link rel="prefetch" href="/hmblog/assets/js/151.b2abf121.js"><link rel="prefetch" href="/hmblog/assets/js/152.f974f4d5.js"><link rel="prefetch" href="/hmblog/assets/js/153.576ae466.js"><link rel="prefetch" href="/hmblog/assets/js/154.feb7351a.js"><link rel="prefetch" href="/hmblog/assets/js/155.ceb7ee93.js"><link rel="prefetch" href="/hmblog/assets/js/156.59e5e60c.js"><link rel="prefetch" href="/hmblog/assets/js/157.b2d98899.js"><link rel="prefetch" href="/hmblog/assets/js/158.1d321223.js"><link rel="prefetch" href="/hmblog/assets/js/159.34fb3587.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.327c24a5.js"><link rel="prefetch" href="/hmblog/assets/js/161.46989a6e.js"><link rel="prefetch" href="/hmblog/assets/js/162.aca9fc03.js"><link rel="prefetch" href="/hmblog/assets/js/163.7b750de2.js"><link rel="prefetch" href="/hmblog/assets/js/164.11817a34.js"><link rel="prefetch" href="/hmblog/assets/js/165.69f84a6d.js"><link rel="prefetch" href="/hmblog/assets/js/166.04a9455e.js"><link rel="prefetch" href="/hmblog/assets/js/167.de58f97c.js"><link rel="prefetch" href="/hmblog/assets/js/168.1fda293d.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.93cda1d5.js"><link rel="prefetch" href="/hmblog/assets/js/171.ec137401.js"><link rel="prefetch" href="/hmblog/assets/js/172.503542ca.js"><link rel="prefetch" href="/hmblog/assets/js/173.e01bb63d.js"><link rel="prefetch" href="/hmblog/assets/js/174.f62b3b69.js"><link rel="prefetch" href="/hmblog/assets/js/175.1e81affb.js"><link rel="prefetch" href="/hmblog/assets/js/176.c228e264.js"><link rel="prefetch" href="/hmblog/assets/js/177.8b701f5f.js"><link rel="prefetch" href="/hmblog/assets/js/178.b3040418.js"><link rel="prefetch" href="/hmblog/assets/js/179.95b66158.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.28a002e6.js"><link rel="prefetch" href="/hmblog/assets/js/181.a5b2a85a.js"><link rel="prefetch" href="/hmblog/assets/js/182.b0d528f9.js"><link rel="prefetch" href="/hmblog/assets/js/183.064f0686.js"><link rel="prefetch" href="/hmblog/assets/js/184.a55849ef.js"><link rel="prefetch" href="/hmblog/assets/js/185.d30053a1.js"><link rel="prefetch" href="/hmblog/assets/js/186.43690601.js"><link rel="prefetch" href="/hmblog/assets/js/187.1885f261.js"><link rel="prefetch" href="/hmblog/assets/js/188.14bc02b8.js"><link rel="prefetch" href="/hmblog/assets/js/189.c39e7169.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.6df8a6cb.js"><link rel="prefetch" href="/hmblog/assets/js/191.7c034f61.js"><link rel="prefetch" href="/hmblog/assets/js/192.87493c0b.js"><link rel="prefetch" href="/hmblog/assets/js/193.614b7fd7.js"><link rel="prefetch" href="/hmblog/assets/js/194.55efe45a.js"><link rel="prefetch" href="/hmblog/assets/js/195.84ae7930.js"><link rel="prefetch" href="/hmblog/assets/js/196.9b92a9e9.js"><link rel="prefetch" href="/hmblog/assets/js/197.d5ce227e.js"><link rel="prefetch" href="/hmblog/assets/js/198.a889219a.js"><link rel="prefetch" href="/hmblog/assets/js/199.cb7acbba.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.6b03dbe5.js"><link rel="prefetch" href="/hmblog/assets/js/201.04210c55.js"><link rel="prefetch" href="/hmblog/assets/js/202.841b96be.js"><link rel="prefetch" href="/hmblog/assets/js/203.e43080f2.js"><link rel="prefetch" href="/hmblog/assets/js/204.f9ac267d.js"><link rel="prefetch" href="/hmblog/assets/js/205.e7b6c5bc.js"><link rel="prefetch" href="/hmblog/assets/js/206.7856c113.js"><link rel="prefetch" href="/hmblog/assets/js/207.3fa7673f.js"><link rel="prefetch" href="/hmblog/assets/js/208.321f34da.js"><link rel="prefetch" href="/hmblog/assets/js/209.424fbd4a.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/210.9674b994.js"><link rel="prefetch" href="/hmblog/assets/js/211.76ff10e6.js"><link rel="prefetch" href="/hmblog/assets/js/212.1f945f3c.js"><link rel="prefetch" href="/hmblog/assets/js/213.1b05ce01.js"><link rel="prefetch" href="/hmblog/assets/js/214.be92c192.js"><link rel="prefetch" href="/hmblog/assets/js/215.e9904e30.js"><link rel="prefetch" href="/hmblog/assets/js/216.82c8a94e.js"><link rel="prefetch" href="/hmblog/assets/js/217.42174e7c.js"><link rel="prefetch" href="/hmblog/assets/js/218.72f00225.js"><link rel="prefetch" href="/hmblog/assets/js/219.34766469.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/220.7fa45ba3.js"><link rel="prefetch" href="/hmblog/assets/js/221.11000c3e.js"><link rel="prefetch" href="/hmblog/assets/js/222.c80e9b19.js"><link rel="prefetch" href="/hmblog/assets/js/223.55e2a3f3.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.67bc9334.js"><link rel="prefetch" href="/hmblog/assets/js/41.0cffe87b.js"><link rel="prefetch" href="/hmblog/assets/js/42.7007a9e2.js"><link rel="prefetch" href="/hmblog/assets/js/43.4cdc1a74.js"><link rel="prefetch" href="/hmblog/assets/js/44.f4802bc7.js"><link rel="prefetch" href="/hmblog/assets/js/45.34debc14.js"><link rel="prefetch" href="/hmblog/assets/js/46.c2ce5dd7.js"><link rel="prefetch" href="/hmblog/assets/js/47.39c8ff51.js"><link rel="prefetch" href="/hmblog/assets/js/48.948d1838.js"><link rel="prefetch" href="/hmblog/assets/js/49.3a7623be.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.ac02ad0e.js"><link rel="prefetch" href="/hmblog/assets/js/51.f16547e7.js"><link rel="prefetch" href="/hmblog/assets/js/52.7fe5922d.js"><link rel="prefetch" href="/hmblog/assets/js/53.c1c2c7fb.js"><link rel="prefetch" href="/hmblog/assets/js/54.0e306c09.js"><link rel="prefetch" href="/hmblog/assets/js/55.b421f487.js"><link rel="prefetch" href="/hmblog/assets/js/56.81af8d2b.js"><link rel="prefetch" href="/hmblog/assets/js/57.a75ace25.js"><link rel="prefetch" href="/hmblog/assets/js/58.da08dcac.js"><link rel="prefetch" href="/hmblog/assets/js/59.dab6d7fa.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.119bb2a1.js"><link rel="prefetch" href="/hmblog/assets/js/61.edc5e570.js"><link rel="prefetch" href="/hmblog/assets/js/62.7716e6b6.js"><link rel="prefetch" href="/hmblog/assets/js/63.862022f3.js"><link rel="prefetch" href="/hmblog/assets/js/64.140c3499.js"><link rel="prefetch" href="/hmblog/assets/js/65.9f957148.js"><link rel="prefetch" href="/hmblog/assets/js/66.bfc80bb5.js"><link rel="prefetch" href="/hmblog/assets/js/67.3d565f98.js"><link rel="prefetch" href="/hmblog/assets/js/68.bf75b3e1.js"><link rel="prefetch" href="/hmblog/assets/js/69.702f7500.js"><link rel="prefetch" href="/hmblog/assets/js/70.4ff5100f.js"><link rel="prefetch" href="/hmblog/assets/js/71.8343a21d.js"><link rel="prefetch" href="/hmblog/assets/js/72.5f656cae.js"><link rel="prefetch" href="/hmblog/assets/js/73.8b747092.js"><link rel="prefetch" href="/hmblog/assets/js/74.ce37eef4.js"><link rel="prefetch" href="/hmblog/assets/js/75.146a5498.js"><link rel="prefetch" href="/hmblog/assets/js/76.4984e890.js"><link rel="prefetch" href="/hmblog/assets/js/77.2cd2e868.js"><link rel="prefetch" href="/hmblog/assets/js/78.90dbc4be.js"><link rel="prefetch" href="/hmblog/assets/js/79.1b20039d.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.0494bb83.js"><link rel="prefetch" href="/hmblog/assets/js/81.ed79dacf.js"><link rel="prefetch" href="/hmblog/assets/js/82.1500a0ec.js"><link rel="prefetch" href="/hmblog/assets/js/83.6ea83899.js"><link rel="prefetch" href="/hmblog/assets/js/84.97c0c987.js"><link rel="prefetch" href="/hmblog/assets/js/85.5478ff3d.js"><link rel="prefetch" href="/hmblog/assets/js/86.eefe55cf.js"><link rel="prefetch" href="/hmblog/assets/js/87.36078833.js"><link rel="prefetch" href="/hmblog/assets/js/88.c154a1ac.js"><link rel="prefetch" href="/hmblog/assets/js/89.9d69c066.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.52e79e0e.js"><link rel="prefetch" href="/hmblog/assets/js/91.ee7188ed.js"><link rel="prefetch" href="/hmblog/assets/js/92.e55d0541.js"><link rel="prefetch" href="/hmblog/assets/js/93.7a66a588.js"><link rel="prefetch" href="/hmblog/assets/js/94.862ef2ed.js"><link rel="prefetch" href="/hmblog/assets/js/95.3902dbfc.js"><link rel="prefetch" href="/hmblog/assets/js/96.58ae93f2.js"><link rel="prefetch" href="/hmblog/assets/js/97.b5822d64.js"><link rel="prefetch" href="/hmblog/assets/js/98.1873d69b.js"><link rel="prefetch" href="/hmblog/assets/js/99.e295e79d.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>146</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">函数相关</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="函数相关"><a href="#函数相关" class="header-anchor">#</a> 函数相关</h2> <h2 id="位置参数"><a href="#位置参数" class="header-anchor">#</a> 位置参数</h2> <ul><li>按形参位置, 传入实参</li></ul> <h3 id="位置参数问题"><a href="#位置参数问题" class="header-anchor">#</a> 位置参数问题</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span>s<span class="token operator">=</span><span class="token string">&quot;苹果&quot;</span><span class="token punctuation">,</span> vt<span class="token punctuation">,</span> o<span class="token operator">=</span><span class="token string">&quot;寒梦&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># vt 的位置，报错信息(会有红色波浪线)：Non-default argument follows default argument</span>
+<span class="token comment"># 非默认参数出现在默认参数之后</span>
+</code></pre></div><p>Python 有明确的函数参数定义规则：<strong>默认参数</strong>（带=赋值的参数，如s=&quot;苹果&quot;、o=&quot;寒梦&quot;）<strong>必须位于非默认参数</strong>（不带=赋值的参数，如vt）<strong>之后</strong>。</p> <h4 id="两种修改方式"><a href="#两种修改方式" class="header-anchor">#</a> 两种修改方式</h4> <ul><li>方案 1：调整参数顺序（推荐，不改变函数使用逻辑）</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 调整后：非默认参数vt放在默认参数s、o之前</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span>vt<span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token string">&quot;苹果&quot;</span><span class="token punctuation">,</span> o<span class="token operator">=</span><span class="token string">&quot;寒梦&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 测试使用（正常运行）</span>
+result <span class="token operator">=</span> myfunc<span class="token punctuation">(</span><span class="token string">&quot;吃&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>  <span class="token comment"># 输出：寒梦吃苹果</span>
+</code></pre></div><ul><li>方案 2：给vt也设置默认值（适用于需要保留原有参数顺序的场景）</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 给vt添加默认值，所有参数均为默认参数，顺序可保留</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span>s<span class="token operator">=</span><span class="token string">&quot;苹果&quot;</span><span class="token punctuation">,</span> vt<span class="token operator">=</span><span class="token string">&quot;喜欢&quot;</span><span class="token punctuation">,</span> o<span class="token operator">=</span><span class="token string">&quot;寒梦&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 测试使用（正常运行）</span>
+result1 <span class="token operator">=</span> myfunc<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 使用所有默认值</span>
+result2 <span class="token operator">=</span> myfunc<span class="token punctuation">(</span><span class="token string">&quot;香蕉&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;吃&quot;</span><span class="token punctuation">)</span>  <span class="token comment"># 自定义s和vt</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result1<span class="token punctuation">)</span>  <span class="token comment"># 输出：寒梦喜欢苹果</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span>  <span class="token comment"># 输出：寒梦吃香蕉</span>
+</code></pre></div><h2 id="斜杠语法"><a href="#斜杠语法" class="header-anchor">#</a> 斜杠语法</h2> <ul><li>斜杠左边是不能支持关键字参数的，必须传递位置参数</li></ul> <h2 id="关键字参数"><a href="#关键字参数" class="header-anchor">#</a> 关键字参数</h2> <blockquote><p>关键字参数，就是在赋值的时候，把这个形参的名字给写上去</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myFunc</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> o<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>myFunc<span class="token punctuation">(</span><span class="token string">'我'</span><span class="token punctuation">,</span> <span class="token string">'喜欢'</span><span class="token punctuation">,</span> <span class="token string">'学习'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 学习喜欢我</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>myFunc<span class="token punctuation">(</span><span class="token string">'学习'</span><span class="token punctuation">,</span> <span class="token string">'喜欢'</span><span class="token punctuation">,</span> <span class="token string">'我'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 我喜欢学习</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>myFunc<span class="token punctuation">(</span>s<span class="token operator">=</span><span class="token string">'学习'</span><span class="token punctuation">,</span> vt<span class="token operator">=</span><span class="token string">'喜欢'</span><span class="token punctuation">,</span> o<span class="token operator">=</span><span class="token string">'我'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 我喜欢学习</span>
+</code></pre></div><blockquote><p>限制只能使用<strong>关键字参数</strong>的语法</p></blockquote> <ul><li><p>那就是利用<code>*</code>, 星号左侧既可以是未知参数, 也可以是关键字参数, 右侧的b和c就只能是关键字参数才不会报错</p></li> <li><p>我们还有一个非常重要的收集参数</p></li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span>
+这个函数就拥有一个收集参数<span class="token punctuation">,</span> 叫 `args`
+
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span>：
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;有｛｝个參数。&quot;</span><span class="token punctuation">.</span> <span class="token builtin">format</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;第2个参数是：｛｝&quot;</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>args［<span class="token number">1</span>］<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+通过下标<span class="token punctuation">,</span> 我们就可以获取它的第二个参数
+
+myfunc<span class="token punctuation">(</span><span class="token string">&quot;寒梦&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;不二如是&quot;</span><span class="token punctuation">)</span>
+有<span class="token number">2</span>个参数。
+第<span class="token number">2</span>个参数是：不二如是
+</code></pre></div><div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span> <span class="token comment"># 背后的原理是, 用的元组</span>
+myfunc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token comment"># (1, 2, 3, 4, 5) # 这个就是打印的 args</span>
+
+<span class="token comment"># 然后, 元组具有打包和解包的能力</span>
+
+<span class="token comment"># 这个函数是否可以同时返回多个值？</span>
+
+myfunc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">#  # (1,2,3,4,5)</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span>
+<span class="token comment"># 返回多个值, Python 其实是利用元组进行了打包</span>
+myfunc<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># (1,2,3)</span>
+<span class="token comment"># 看到了元组</span>
+</code></pre></div><ul><li>那么能不能将拿到的返回值解包呢？</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>myfunc<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># (1,2,3)</span>
+x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z <span class="token operator">=</span> myfunc<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><blockquote><p>函数参数, 其实就是实现了打包的操作, 将多个参数打包到一个元组里头。</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 就是一个元组</span>
+
+myfunc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment"># &lt;class 'tuple'&gt; # type 输出的结果, 类型就是个元组</span>
+
+<span class="token comment"># 如果在收集参数后面还需要指定其它参数, 就应该使用关键字参数来指定后面的参数</span>
+<span class="token comment"># 否则, Python 就会把实参, 纳入到收集参数中</span>
+</code></pre></div><div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>：
+    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+
+<span class="token comment"># 这个函数在调用的时候, </span>
+
+myfunc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment"># TypeError: myfunc() missing 2 required keyword-only arguments:</span>
+
+<span class="token comment"># 我们把4和5分配给a和b, 1,2,3 , 给它扔到 args这个收集参数里面去, 就是都到了传递参数这里</span>
+myfunc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> a<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">abc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+
+abc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment"># TypeError: abc() takes 1 positional argument but  given 3</span>
+
+<span class="token comment"># 因为这个星号它事实上呢就是一个, 匿名的收集参数</span>
+abc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment"># 1 2 3</span>
+
+<span class="token comment"># 那么除了可以将多个参数打包为元组, 收集参数呢其实还可以将参数打包为字典</span>
+</code></pre></div><h3 id="使用两个连续的星号"><a href="#使用两个连续的星号" class="header-anchor">#</a> 使用两个连续的星号</h3> <ul><li>必须要使用关键字参数了</li></ul> <p><strong>位置参数必须在关键字参数之前</strong></p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myFunc</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> o<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>myFunc<span class="token punctuation">(</span>s<span class="token operator">=</span><span class="token string">'学习'</span><span class="token punctuation">,</span> <span class="token string">'喜欢'</span><span class="token punctuation">,</span> <span class="token string">'我'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># SyntaxError: positional argument follows keyword argument</span>
+</code></pre></div><h3 id="默认参数"><a href="#默认参数" class="header-anchor">#</a> 默认参数</h3> <blockquote><p>python 是允许函数的参数在定义的时候就指定默认值的</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myFunc</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> o<span class="token operator">=</span><span class="token string">'Hmyjy'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> vt<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="那有没有那种限制只能使用关键字参数的语法"><a href="#那有没有那种限制只能使用关键字参数的语法" class="header-anchor">#</a> 那有没有那种限制只能使用关键字参数的语法</h3> <ul><li>就是利用<code>*</code>号</li> <li><ul><li>号, 表示的是它的左侧</li></ul></li></ul> <div class="language-py extra-class"><pre class="language-py"><code></code></pre></div><h2 id="解包参数"><a href="#解包参数" class="header-anchor">#</a> 解包参数</h2> <h3 id="args"><a href="#args" class="header-anchor">#</a> *args</h3> <h3 id="kwargs-关键字参数"><a href="#kwargs-关键字参数" class="header-anchor">#</a> **kwargs，关键字参数</h3> <ul><li>使用2个星号，对应的是关键字参数</li> <li>将这个字典给解包成关键字参数</li> <li>使用**kwargs，将1,2,3,6 给解包，分别传递到 a,b,c,d 4个形参里去</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>kwargs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">}</span>
+
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">)</span> <span class="token comment"># 1 2 3 6, 将kwargs 这个字典给解包成关键字参数</span>
+
+myfunc<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span> <span class="token comment"># 使用的是2个星号</span>
+
+<span class="token comment"># 使用**kwargs，将1,2,3,6 给解包，分别传递到 a,b,c,d 4个形参里去</span>
+</code></pre></div><h3 id="补充说明"><a href="#补充说明" class="header-anchor">#</a> 补充说明</h3> <ul><li><code>*args</code> 只能收集「位置参数」, 无法收集「关键字参数」(关键字参数需用 <code>**kwargs</code> 收集, 打包为字典)；</li> <li><code>*args</code> 在函数参数列表中, 必须放在「显式位置参数」之后 和 <code>**kwargs</code> 之前。</li></ul> <h2 id="global语句"><a href="#global语句" class="header-anchor">#</a> global语句</h2> <div class="language-py extra-class"><pre class="language-py"><code>x <span class="token operator">=</span> <span class="token number">280</span>
+
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">global</span> x
+    x <span class="token operator">=</span> <span class="token number">520</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+myfunc<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 520</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># 520</span>
+</code></pre></div><h2 id="嵌套函数"><a href="#嵌套函数" class="header-anchor">#</a> 嵌套函数</h2> <blockquote><p>在实际开发中，很有用</p></blockquote> <h3 id="示例一"><a href="#示例一" class="header-anchor">#</a> 示例一</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">funA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> <span class="token number">520</span>
+    <span class="token keyword">def</span> <span class="token function">funB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token number">880</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;In funB, x =&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;In funA, x =&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+
+funB<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># NameError: name 'funB' is not defined. Did you mean: 'funA'?</span>
+
+<span class="token keyword">def</span> <span class="token function">funA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> <span class="token number">520</span>
+    <span class="token keyword">def</span> <span class="token function">funB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token number">880</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;In funB, x =&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+    funB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;In funA, x =&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+
+funA<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># In funB, x = 880</span>
+<span class="token comment"># In funA, x = 520</span>
+</code></pre></div><h3 id="示例二"><a href="#示例二" class="header-anchor">#</a> 示例二</h3> <div class="language-py extra-class"><pre class="language-py"><code>
+</code></pre></div><h2 id="闭包"><a href="#闭包" class="header-anchor">#</a> 闭包</h2> <ol><li>函数内部可以访问外部函数的变量(涉及到一个作用域的问题)</li> <li>返回的是一个函数</li></ol> <h3 id="核心技巧"><a href="#核心技巧" class="header-anchor">#</a> 核心技巧</h3> <ol><li>利用嵌套函数的外层作用域具有记忆能力这个特性, 让数据保存在外层函数的参数或者变量中</li> <li>将内层函数作为返回值给返回，这样就可以从外部间接的调用到内层的函数</li></ol> <p><strong>这2个点就是闭包的生成原理</strong></p> <h2 id="nonlocal"><a href="#nonlocal" class="header-anchor">#</a> nonlocal</h2> <ul><li>nonlocal语句, 如果我们非要在内部函数去修改外部函数的变量</li> <li>了解即可，轻易不要用</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">funA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> <span class="token number">520</span>
+    <span class="token keyword">def</span> <span class="token function">funB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">nonlocal</span> x <span class="token comment"># 可理解为，不使用全局变量</span>
+        x <span class="token operator">=</span> <span class="token number">880</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;In funB, x =&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+    funB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;In funA, x =&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+
+funA<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># In funB, x = 880</span>
+<span class="token comment"># In funA, x = 880</span>
+</code></pre></div><h2 id="legb-规则"><a href="#legb-规则" class="header-anchor">#</a> LEGB 规则</h2> <blockquote><p>掌握了LEGB 规则，相当于掌握了：Python 变量的解析机制</p></blockquote> <ul><li>Local</li> <li>Enclosed, 是嵌套函数的外层函数作用域</li> <li>Global, 全局作用域</li> <li>Build-In， 也叫内置作用域</li></ul> <h3 id="优先级-g-b"><a href="#优先级-g-b" class="header-anchor">#</a> 优先级，G &gt; B</h3> <ul><li>当局部作用域与全局作用域发生冲突的时候, Python会使用局部作用域的变量, 除非你使用<code>Global</code>语句, 进行特别的声明</li> <li>然后当函数嵌套发生的时候, 局部作用域又会覆盖外层函数的这个作用域, 除非你使用<code>nonlocal</code>语句进行声明</li></ul> <p><strong>切记：不要使用内置函数名，作为变量名</strong></p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">'变量名使用了python中的内置函数，引发的问题'</span>
+
+<span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">520</span><span class="token punctuation">)</span> <span class="token comment"># TypeError: 'str' object is not callable</span>
+
+<span class="token comment"># LEGB 法则，G &gt; B， G 就把B 给覆盖了，str 的Build-In， 就被毁了</span>
+</code></pre></div><hr> <h2 id="装饰器-函数"><a href="#装饰器-函数" class="header-anchor">#</a> 装饰器—函数</h2> <p>能不能把一个函数作为参数传递给另一个函数呢？作为参数传递给另外一个函数呢?</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;正在调用myfunc...&quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">report</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;主人，我要开始调用函数了..&quot;</span><span class="token punctuation">)</span>
+    func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;主人，我调用完函数啦，快夸夸我^o^&quot;</span><span class="token punctuation">)</span>
+
+report<span class="token punctuation">(</span>myfunc<span class="token punctuation">)</span>
+<span class="token comment"># 主人，我要开始调用函数了..</span>
+<span class="token comment"># 正在调用myfunc...</span>
+<span class="token comment"># 主人，我调用完函数啦，快夸夸我^o^</span>
+</code></pre></div><ol start="4"><li>写一个，时间管理大师的函数</li></ol> <blockquote><p>通过<code>time</code>模块的<code>time()</code>函数运行时间的一个方式，</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;开始运行程序..&quot;</span><span class="token punctuation">)</span>
+    start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 计算的是时间戳</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;结束程序运行..&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;一共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec"> .2f</span><span class="token punctuation">}</span></span><span class="token string"> 秒。&quot;</span></span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Hmyjy.&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 主动调用time_master 函数</span>
+time_master<span class="token punctuation">(</span>myfunc<span class="token punctuation">)</span>
+<span class="token comment"># 开始运行程序..</span>
+<span class="token comment"># Hello Hmyjy.</span>
+<span class="token comment"># 结束程序运行..</span>
+<span class="token comment"># 一共耗费了  2.00 秒。</span>
+</code></pre></div><ul><li><p>计算耗时思想, 函数执行前,打印时间</p></li> <li><p>函数执行后，再次打印时间（不是接口请求的话，可以加延迟2秒后，再执行函数）</p></li> <li><p>两者的时间差，就是函数执行所消耗的时间，也就是函数运行的时间。</p></li> <li><p>那么我们这个<code>time_master()</code>函数</p></li> <li><p>那么它最后得到的时间呢</p></li> <li><p>但是想要打印函数运行，需要的时间, 都要显示的去调用这个time_master()函数才行</p></li> <li><p>这就是装饰器存在的意义</p></li> <li><p>更好的方案是在调用myfunc()函数的时候，它能够自觉地去执行time_master()函数</p></li> <li><p>到这里，引入了装饰器的概念</p></li></ul> <blockquote><p>学会了Python的装饰器，很有用，能做很多事情</p></blockquote> <ul><li>装饰器有2个特性</li></ul> <ol><li>将内层函数作为返回值返回</li> <li>拿函数当参数</li></ol> <p>2者综合起来，就是装饰器</p> <ul><li><code>@</code> + 装饰器的名字，这是一个<strong>语法糖</strong></li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+
+
+<span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">call_fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;开始运行程序..&quot;</span><span class="token punctuation">)</span>
+        start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 计算的是时间戳</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;结束程序运行..&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;一共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec"> .2f</span><span class="token punctuation">}</span></span><span class="token string"> 秒。&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> call_fun
+
+<span class="token decorator annotation punctuation">@time_master</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Hmyjy.&quot;</span><span class="token punctuation">)</span>
+
+myfunc<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 开始运行程序..</span>
+<span class="token comment"># Hello Hmyjy.</span>
+<span class="token comment"># 结束程序运行..</span>
+<span class="token comment"># 一共耗费了  2.00 秒。</span>
+</code></pre></div><h3 id="如果不用装饰器语法糖-代码则是这样的"><a href="#如果不用装饰器语法糖-代码则是这样的" class="header-anchor">#</a> 如果不用装饰器语法糖，代码则是这样的</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">call_fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;开始运行程序..&quot;</span><span class="token punctuation">)</span>
+        start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 计算的是时间戳</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;结束程序运行..&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;一共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec"> .2f</span><span class="token punctuation">}</span></span><span class="token string"> 秒。&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> call_fun
+
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Hmyjy.&quot;</span><span class="token punctuation">)</span>
+
+funA <span class="token operator">=</span> time_master<span class="token punctuation">(</span>myfunc<span class="token punctuation">)</span>
+
+<span class="token comment"># 后面我们调用myfunc的时候我们并不是直接去调用myfunc</span>
+<span class="token comment"># 而是把myfunc这个函数作为一个参数，塞到上面的这个装饰器里面</span>
+<span class="token comment"># 塞到上面的这个装饰器里面, 然后去调用这个装饰器</span>
+funA<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 不用装饰器的写法</span>
+</code></pre></div><h3 id="聊一聊语法糖"><a href="#聊一聊语法糖" class="header-anchor">#</a> 聊一聊语法糖</h3> <ul><li>我们说的语法糖：是某种特殊的语法。</li> <li>有了装饰器，<strong>程序就有了更好的易用性、简洁性、可读性和便捷性</strong>。</li> <li>@ + 装饰器函数名称，就是装饰器的语法糖</li></ul> <h4 id="其他的语法糖"><a href="#其他的语法糖" class="header-anchor">#</a> 其他的语法糖</h4> <ol><li>像<code>f</code> 字符串，它就是一个语法糖，它是<code>format</code> 的一个语法糖</li></ol> <div class="language-py extra-class"><pre class="language-py"><code>name <span class="token operator">=</span> <span class="token string">'Hmyjy'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;我的名字是: </span><span class="token interpolation"><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+</code></pre></div><ul><li><p>装饰器用在哪个函数上面，哪个函数就作为装饰器函数的参数传入</p> <ul><li>可去对比下之前学的es6 里面的，装饰器</li> <li>使用装饰器实现缓存功能 等等，看下有哪些示例</li></ul></li> <li><p>有了装饰器，我们就可以不用修改原来的代码，进而实现其他的逻辑，很灵活，通用</p></li> <li><p>任何需要这个装饰器的函数，都可以在其函数定义的上面引入</p></li></ul> <h3 id="多个装饰器能否同时用在同一个函数上呢"><a href="#多个装饰器能否同时用在同一个函数上呢" class="header-anchor">#</a> 多个装饰器能否同时用在同一个函数上呢?</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> inner
+
+<span class="token keyword">def</span> <span class="token function">cube</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x <span class="token operator">*</span> x <span class="token operator">*</span> x
+    <span class="token keyword">return</span> inner
+
+<span class="token keyword">def</span> <span class="token function">square</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x <span class="token operator">*</span> x
+    <span class="token keyword">return</span> inner
+
+<span class="token decorator annotation punctuation">@add</span>
+<span class="token decorator annotation punctuation">@cube</span>
+<span class="token decorator annotation punctuation">@square</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">2</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>test<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 这里有3个装饰器，先去调用 @square， 再去调用@cube, 再是：@add</span>
+<span class="token comment"># 这就是同时使用多个装饰器的场景、还有了解了它的执行顺序</span>
+</code></pre></div><h3 id="带参数的装饰器"><a href="#带参数的装饰器" class="header-anchor">#</a> 带参数的装饰器</h3> <ul><li>如何给装饰器传递参数呢?</li></ul> <blockquote><p>多加了一层函数嵌套, 也就是 <code>def logger(msg):</code></p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">logger</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">call_func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;[</span><span class="token interpolation"><span class="token punctuation">{</span>msg<span class="token punctuation">}</span></span><span class="token string">]—共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> call_func
+    <span class="token keyword">return</span> time_master
+
+<span class="token comment"># @logger(msg=&quot;A&quot;)</span>
+<span class="token keyword">def</span> <span class="token function">funA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;正在调用funA...&quot;</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@logger</span><span class="token punctuation">(</span>msg<span class="token operator">=</span><span class="token string">&quot;B&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">funB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;正在调用funB...&quot;</span><span class="token punctuation">)</span>
+
+funA<span class="token punctuation">(</span><span class="token punctuation">)</span>
+funB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># funA 上面假设不使用装饰器语法，则这么写</span>
+
+funA <span class="token operator">=</span> logger<span class="token punctuation">(</span>msg<span class="token operator">=</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">(</span>funA<span class="token punctuation">)</span> <span class="token comment"># 调用一次logger函数，然后将msg 参数传进去。</span>
+
+<span class="token comment"># 正在调用funA...</span>
+<span class="token comment"># [A]—共耗费了 1.00</span>
+<span class="token comment"># 正在调用funB...</span>
+<span class="token comment"># [B]—共耗费了 1.01</span>
+</code></pre></div><h4 id="不使用装饰器语法"><a href="#不使用装饰器语法" class="header-anchor">#</a> 不使用装饰器语法</h4> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">logger</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">call_func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;[</span><span class="token interpolation"><span class="token punctuation">{</span>msg<span class="token punctuation">}</span></span><span class="token string">]—共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> call_func
+    <span class="token keyword">return</span> time_master
+
+<span class="token comment"># @logger(msg=&quot;A&quot;)</span>
+<span class="token keyword">def</span> <span class="token function">funA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;正在调用funA...&quot;</span><span class="token punctuation">)</span>
+
+test <span class="token operator">=</span> logger<span class="token punctuation">(</span>msg<span class="token operator">=</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">(</span>funA<span class="token punctuation">)</span> <span class="token comment"># 原理就是： 通过这种函数嵌套的方式来执行， 第一次把参数传递进去，第二次调用把这个函数扔进去，最后再执行最内层的函数。</span>
+test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 正在调用funA...</span>
+<span class="token comment"># [A]—共耗费了 1.00</span>
+</code></pre></div><ul><li>nonlocal</li> <li>让它可以修改到外层函数作用域的里面的这个变量, 我们就可以实现了一个带记忆功能的一个函数</li></ul> <h2 id="解包参数-一个星号-两个星号"><a href="#解包参数-一个星号-两个星号" class="header-anchor">#</a> 解包参数，一个星号，两个星号</h2> <div class="language-py extra-class"><pre class="language-py"><code>args <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">)</span> 
+
+myfunc<span class="token punctuation">(</span>args<span class="token punctuation">)</span> <span class="token comment"># 会报错，缺少参数, TypeError: myfunc() missing 3 required positional arguments: 'b', 'c', and 'd'</span>
+
+myfunc<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span> <span class="token comment"># 加上*, 这样就不会报错了, 只传递一个参数的时候，这么用，参数前面加一个*</span>
+</code></pre></div><ul><li><p>引入解包参数，但是如果加上星号，那会解包为1,2,3,4 传入</p></li> <li><p>myfunc(*args) 这样就不会报错了</p></li> <li><p>解包参数的原理：就不再是一个元组了， 它被解包成1,2,3,4,</p></li></ul> <hr> <h2 id="lambda-匿名函数"><a href="#lambda-匿名函数" class="header-anchor">#</a> lambda 匿名函数</h2> <blockquote><p>lambda 是一个表达式而非语句，它能够出现在Python语法不允许def语句出现的地方，这是它最大的优势</p></blockquote> <ul><li>设计这个匿名函数的意义，它希望让lambda 去做那些简单的事情，我们就不用花心思去考虑这个函数叫什么</li> <li>map函数中，使用lambda, 求出10以内的所有奇数. 代码待补充，看手机截图上的时间，</li> <li>但由于所有的功能代码都局限在一个表达式中去实现，所以，lambda通常也只能实现那些较为简单的需求，然后def语句则负责用于定义功能复杂的函数</li> <li>一行流，仅用一行代码，快速实现功能</li></ul> <blockquote><p>语法格式</p></blockquote> <div class="language-Text extra-class"><pre class="language-text"><code>lambda arg1, arg2, arg3, ... argN : expression
+
+1. lambda 是关键字
+2. 冒号左边是传入函数的参数, 冒号右边是表达式
+3. 可以理解为一个极致精简之后的函数, 整个表达式就是一个函数的引用
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code>squareY <span class="token operator">=</span> <span class="token keyword">lambda</span> y<span class="token punctuation">:</span> y <span class="token operator">*</span> y
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>squareY<span class="token punctuation">)</span> <span class="token comment"># &lt;function &lt;lambda&gt; at 0x000002DEE2E7F920&gt;</span>
+
+
+<span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x <span class="token operator">+</span> y
+
+<span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="🎯-一句话总结"><a href="#🎯-一句话总结" class="header-anchor">#</a> 🎯 一句话总结</h3> <p><strong><code>lambda x: x.split(&quot;\n&quot;)</code> 就像一个「迷你加工机器」, 它的作用是：接收输入文本, 按换行符切割成列表, 然后输出这个列表。</strong></p> <hr> <h4 id="示例一-最简洁"><a href="#示例一-最简洁" class="header-anchor">#</a> 示例一 (最简洁)</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例二-定义正式函数"><a href="#示例二-定义正式函数" class="header-anchor">#</a> 示例二：定义正式函数</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">split_by_newline</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+
+generate_queries <span class="token operator">=</span> <span class="token punctuation">(</span>
+    prompt_perspectives 
+    <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span>temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> 
+    <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+    <span class="token operator">|</span> split_by_newline  <span class="token comment"># 使用定义好的函数</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例三-展开写更清晰"><a href="#示例三-展开写更清晰" class="header-anchor">#</a> 示例三：展开写更清晰</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 分步执行, 更容易理解</span>
+result1 <span class="token operator">=</span> prompt_perspectives<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+result2 <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>invoke<span class="token punctuation">(</span>result1<span class="token punctuation">)</span>
+result3 <span class="token operator">=</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>invoke<span class="token punctuation">(</span>result2<span class="token punctuation">)</span>
+final_result <span class="token operator">=</span> result3<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>  <span class="token comment"># 这就是lambda做的事情</span>
+</code></pre></div><hr> <h4 id="实际应用示例"><a href="#实际应用示例" class="header-anchor">#</a> 实际应用示例</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 假设 LLM 返回的文本是：</span>
+llm_output <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;什么是机器学习？
+机器学习的应用场景有哪些？
+深度学习与机器学习有什么区别？&quot;&quot;&quot;</span>
+
+<span class="token comment"># 经过 lambda 处理：</span>
+questions <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span>llm_output<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>questions<span class="token punctuation">)</span>
+<span class="token comment"># 输出: ['什么是机器学习？', '机器学习的应用场景有哪些？', '深度学习与机器学习有什么区别？']</span>
+</code></pre></div><hr> <h4 id="⚡-进阶技巧"><a href="#⚡-进阶技巧" class="header-anchor">#</a> ⚡ 进阶技巧</h4> <p>如果想要更严格的处理, 可以这样写：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 去除空行和空白字符</span>
+<span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token punctuation">[</span>line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> line <span class="token keyword">in</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span> <span class="token keyword">if</span> line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 或者只取前N个问题</span>
+<span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>
+</code></pre></div><hr> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 输出labels中我们添加了大量的-100特殊标记, 将其过滤掉后再输出。</span>
+tokenizer<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">filter</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span> train_dataset<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&quot;labels&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="递归"><a href="#递归" class="header-anchor">#</a> 递归</h2> <ol><li>递归函数，在调用的时候，不会立刻去返回</li> <li>而是经过层层调用</li> <li>直到遇到符合条件的时候，触发返回机制，接着再逐层的返回。</li></ol> <blockquote><p>使用递归，把复杂任务，给简化成一个个小问题</p></blockquote> <h3 id="汉诺塔"><a href="#汉诺塔" class="header-anchor">#</a> 汉诺塔</h3> <blockquote><p>它就是一个典型的不能按照常规套路出牌的游戏</p></blockquote> <ul><li>必须先想办法，把压在身上的其他圆盘，给挪开</li> <li>如此往复，直到遇到最顶上的一个圆盘，才可以真正地去移动它。</li></ul> <h4 id="游戏规则"><a href="#游戏规则" class="header-anchor">#</a> 游戏规则</h4> <ul><li>规则一: 一次只能移动一枚金片</li> <li>规则二: 小片必须在大片的上面</li></ul> <h4 id="思路-先用最简单的3片圆盘-来做移动"><a href="#思路-先用最简单的3片圆盘-来做移动" class="header-anchor">#</a> 思路，先用最简单的3片圆盘，来做移动</h4> <ul><li>先借助C，把上面最小的A，移动到C</li> <li>再把B，移动到中间的位置</li> <li>再把最小的A，挪到B</li> <li>然后把最大的圆盘挪到C</li> <li>再把最小的圆盘，挪到A</li> <li>B挪到C，再把A挪过去(也就是挪到C，C对应的参数为: z)，完成。</li></ul> <p><img src="/hmblog/images/python/function/hannuota-1.png" alt="汉诺塔游戏，使用递归思路解决"></p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">hannuota</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>  
+        <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'--&gt;'</span><span class="token punctuation">,</span> z<span class="token punctuation">)</span>  <span class="token comment"># 如果只有 1 层，直接将金片从 x 移动到 z  </span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>  
+        hannuota<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> z<span class="token punctuation">,</span> y<span class="token punctuation">)</span>  <span class="token comment"># 将 x 上的 n-1 个金片移动到 y  </span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token string">'--&gt;'</span><span class="token punctuation">,</span> z<span class="token punctuation">)</span>  <span class="token comment"># 将最底下的金片从 x 移动到 z  </span>
+        hannuota<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token punctuation">,</span> z<span class="token punctuation">)</span>  <span class="token comment"># 将 y 上的 n-1 个金片移动到 z</span>
+
+n <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请输入汉语塔的层数：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+hannuota<span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="代码解释"><a href="#代码解释" class="header-anchor">#</a> 代码解释</h3> <ol><li>分别将ABC传递到x,y,z三个参数中</li> <li>if <code>n == 1</code>的话，也就是汉诺塔的层数只有一层的时候</li> <li>就直接将×上的金片移动到z上面, 也就是从A到C</li> <li>if <code>n &gt; 1</code>, 那么就会进入到 递归程序里</li> <li>先将<code>n-1</code>个金片从<code>x</code>移动到<code>y</code>(也就是把上面的小的，都先挪开，借助一根柱子)</li> <li>再将<code>x</code>上剩下的一个金片移动到<code>z</code></li> <li>最后将<code>n-1</code>个金片从<code>y</code>移动到<code>z</code></li></ol> <h3 id="代码里的难点"><a href="#代码里的难点" class="header-anchor">#</a> 代码里的难点</h3> <ul><li>一下子是x, y, z</li> <li>一下子又是x, z, y</li> <li>最后又是y, x, z</li></ul> <h4 id="需要分清"><a href="#需要分清" class="header-anchor">#</a> 需要分清</h4> <ol><li>一定要分清形参和实参</li> <li>变来变去的其实是实参</li> <li>也就是刚开始我们传递进去的ABC这三个值，在变来变去</li> <li>ABC 三个值，通过x,y,z来进行一个传递</li></ol> <h4 id="代码理解"><a href="#代码理解" class="header-anchor">#</a> 代码理解</h4> <ul><li>假设<code>n=3</code>, 那么第一次调用, 就是：hanoi(3,'A','B','C')</li> <li>按照这个思路去捋</li></ul> <h3 id="汉诺塔函数-执行结果示例"><a href="#汉诺塔函数-执行结果示例" class="header-anchor">#</a> 汉诺塔函数，执行结果示例</h3> <ul><li>层数为5层，输出结果展示</li></ul> <p><img src="/hmblog/images/python/function/hannuota-2.png" alt="汉诺塔游戏，层数为5层"></p> <ul><li>按照以上步骤，就能够把A上面的五个圆盘移动到了C上面</li></ul> <h2 id="函数文档、类型注释、内省-函数"><a href="#函数文档、类型注释、内省-函数" class="header-anchor">#</a> 函数文档、类型注释、内省--函数</h2> <h3 id="函数文档"><a href="#函数文档" class="header-anchor">#</a> 函数文档</h3> <blockquote><p>函数文档一定是在函数的最顶部的</p></blockquote> <ul><li>这就是一个标准的函数文档的写法</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">exchange</span><span class="token punctuation">(</span>dollar<span class="token punctuation">,</span> rate<span class="token operator">=</span><span class="token number">6.32</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+    功能：汇率转换，美元 -&gt; 人民币
+    参数：
+    - dollar 美元数量
+    - rate 汇率，默认值是 6.32（2022-03-08）
+    返回值：
+    - 人民币的数量
+    &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> dollar <span class="token operator">*</span> rate
+
+<span class="token builtin">help</span><span class="token punctuation">(</span>exchange<span class="token punctuation">)</span>
+<span class="token comment"># exchange(dollar, rate=6.32)</span>
+<span class="token comment">#     功能：汇率转换，美元 -&gt; 人民币</span>
+<span class="token comment">#     参数：</span>
+<span class="token comment">#     - dollar 美元数量</span>
+<span class="token comment">#     - rate 汇率，默认值是 6.32（2022-03-08）</span>
+<span class="token comment">#     返回值：</span>
+<span class="token comment">#     - 人民币的数量</span>
+</code></pre></div><h3 id="类型注释"><a href="#类型注释" class="header-anchor">#</a> 类型注释</h3> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">times</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span><span class="token builtin">str</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> s <span class="token operator">*</span> n
+
+<span class="token comment"># 希望调用者传入到s参数中的类型是字符串类型，传递给n的是 int 类型</span>
+
+
+<span class="token comment"># 如果我们期待的参数类型是 列表</span>
+<span class="token keyword">def</span> <span class="token function">times</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span><span class="token builtin">list</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> s <span class="token operator">*</span> n
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>times<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># [1, 2, 3, 1, 2, 3, 1, 2, 3]</span>
+
+<span class="token comment"># 如果我们期待的参数类型是 列表, 整数列表</span>
+<span class="token keyword">def</span> <span class="token function">times</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> s <span class="token operator">*</span> n
+
+<span class="token comment"># 如果期待的是字典类型,dict</span>
+<span class="token comment"># 这里面的，[str, int]，约束键的类型要是个字符串，第二个init是它的这个值的类型</span>
+<span class="token keyword">def</span> <span class="token function">times</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span><span class="token builtin">dict</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">dict</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> n
+</code></pre></div><p><strong>如果你想让Python真正的做一下检测, 推荐使用第三方模块: Mypy</strong></p> <h3 id="内省"><a href="#内省" class="header-anchor">#</a> 内省</h3> <blockquote><p>它是指在程序运行的时候能够进行自我检测的一种机制</p></blockquote> <ul><li>Python是通过一些特殊的属性来实现内省的:</li> <li>内省属性，可以IDE里，输入., 编辑器会自动提示，可以看其他的属性</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">times</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> s <span class="token operator">*</span> n
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>times<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>times<span class="token punctuation">.</span>__annotations__<span class="token punctuation">)</span>
+<span class="token comment"># {'s': list[int], 'n': &lt;class 'int'&gt;, 'return': &lt;class 'list'&gt;}</span>
+<span class="token comment"># 以字典形式，打印出了：我们这个函数里面的三个类型注释</span>
+</code></pre></div><h2 id="偏函数-partial"><a href="#偏函数-partial" class="header-anchor">#</a> 偏函数，partial</h2> <ol><li>偏函数是指对指定的函数进行二次包装</li> <li>通常呢是将现有的函数部分参数预先给绑定</li> <li>从而得到一个新的函数，该函数我们就称之为偏函数。相比原函数, 偏函数具有较少的可变参数, 从而降低了函数调用的难度。</li> <li>偏函数被调用的时候, 如果提供更多的参数, 它们会被附加到<code>func函数</code>的位置参数<code>args</code>中;</li> <li>如果额外的关键字参数, 它们会扩展并重载<code>func函数</code>的关键字参数<code>keywords</code>.</li> <li>实现原理大致等价于:</li></ol> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">partial</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> <span class="token operator">/</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>keywords<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">newfunc</span><span class="token punctuation">(</span><span class="token operator">*</span>fargs<span class="token punctuation">,</span> <span class="token operator">**</span>fkeywords<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        newkeywords <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">**</span>keywords<span class="token punctuation">,</span> <span class="token operator">**</span>fkeywords<span class="token punctuation">}</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">*</span>fargs<span class="token punctuation">,</span> <span class="token operator">**</span>newkeywords<span class="token punctuation">)</span>
+    newfunc<span class="token punctuation">.</span>func <span class="token operator">=</span> func
+    newfunc<span class="token punctuation">.</span>args <span class="token operator">=</span> args
+    newfunc<span class="token punctuation">.</span>keywords <span class="token operator">=</span> keywords
+    <span class="token keyword">return</span> newfunc
+
+<span class="token comment"># 其实就是闭包，但是使用偏函数更简单了，我们无需关注细节实现，拿来即用</span>
+</code></pre></div><blockquote><p>偏函数的作用就是将一个函数的这个多个参数给拆分, 多次进行传递的样子</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> functools
+
+
+square <span class="token operator">=</span> functools<span class="token punctuation">.</span>partial<span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">,</span> exp<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>square<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 4</span>
+
+cube <span class="token operator">=</span> functools<span class="token punctuation">.</span>partial<span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">,</span> exp<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>cube<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 8</span>
+</code></pre></div><ul><li>print(), 在打印时，会把转义字符(eg: \n) 这种转义字符给解析出来，所以打印出来的内容是带格式的。</li></ul> <h2 id="高阶函数"><a href="#高阶函数" class="header-anchor">#</a> 高阶函数</h2> <h3 id="特点"><a href="#特点" class="header-anchor">#</a> 特点</h3> <ol><li>函数是可以被当作变量一样传来传去，自由传递</li> <li>那么当一个函数接收另一个函数，作为参数的时候呢, 这种函数我们就把它称之为<strong>高阶函数</strong></li></ol> <h3 id="高阶函数有哪些"><a href="#高阶函数有哪些" class="header-anchor">#</a> 高阶函数有哪些</h3> <ul><li>map、filter、reduce函数(被收录到<code>functools</code> 库里去了)</li> <li>min、max、salty也可以算是高阶，因为它们的key 参数，接收的正是一个函数对象</li></ul> <p><strong>高阶函数，可以看作是python 编程的灵魂所在, Python专程为此搞了一个模块叫做functools</strong></p> <h2 id="functools-库"><a href="#functools-库" class="header-anchor">#</a> functools 库</h2> <blockquote><p>包含了非常多实用的高阶函数以及装饰器</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> functools
+
+<span class="token comment"># 语法</span>
+<span class="token comment"># functools.reduce(function, iterable[, initializer])</span>
+
+<span class="token keyword">import</span> functools
+
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>functools<span class="token punctuation">.</span><span class="token builtin">reduce</span><span class="token punctuation">(</span>add<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 21</span>
+
+<span class="token comment"># 使用lambda, 省略 add 函数定义</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>functools<span class="token punctuation">.</span><span class="token builtin">reduce</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x<span class="token operator">+</span>y<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="装饰器副作用"><a href="#装饰器副作用" class="header-anchor">#</a> 装饰器副作用</h3> <h4 id="wraps-装饰器使用"><a href="#wraps-装饰器使用" class="header-anchor">#</a> @wraps 装饰器使用</h4> <ul><li><code>@wraps</code>, 其实是为了解决麻烦创造出来的新东西</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">call_func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;—共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> call_func
+
+<span class="token decorator annotation punctuation">@time_master</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Hmyjy.&quot;</span><span class="token punctuation">)</span>
+
+myfunc <span class="token operator">=</span> time_master<span class="token punctuation">(</span>myfunc<span class="token punctuation">)</span> <span class="token comment"># 使用同名的变量，对上面的，定义的函数，进行覆盖。</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>myfunc<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span> <span class="token comment"># myfunc的名字竟然不叫`myfunc`而叫`call_func`</span>
+</code></pre></div><ul><li><code>@time_master</code>这个装饰器只是一个语法糖, 其实是在调用call_func()函数</li> <li>所以我们这里使用name 属性进行内省的时候, myfunc.<em>name</em>, 输出的是：'call_func'</li> <li>这个其实就是装饰器的一个副作用, 因此又发明了这个@wraps装饰器来装饰装饰器</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> time
+<span class="token keyword">import</span> functools
+
+<span class="token keyword">def</span> <span class="token function">time_master</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@functools<span class="token punctuation">.</span>wraps</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span> <span class="token comment"># 我们把这个真正的函数给作为参数传给这个wraps，副作用就没了</span>
+    <span class="token keyword">def</span> <span class="token function">call_func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        stop <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;—共耗费了 </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token punctuation">(</span>stop<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> call_func
+
+<span class="token decorator annotation punctuation">@time_master</span>
+<span class="token keyword">def</span> <span class="token function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Hmyjy.&quot;</span><span class="token punctuation">)</span>
+
+myfunc <span class="token operator">=</span> time_master<span class="token punctuation">(</span>myfunc<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>myfunc<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span> <span class="token comment"># myfunc, myfunc 的 name，还是 myfunc</span>
+</code></pre></div><h2 id="生成器"><a href="#生成器" class="header-anchor">#</a> 生成器</h2> <blockquote><p>有没有办法让函数在退出之后, 还能保留状态呢？</p></blockquote> <ul><li>过多的使用全局变量会污染命名空间</li> <li>闭包的定义呢又相对复杂</li> <li>有没有一种既简单又安全的方法呢？</li></ul> <blockquote><p>生成器，generator，定义一个生成器很简单。</p></blockquote> <ul><li>就在函数中使用yield表达式来代替</li></ul> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">yield</span> i
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># &lt;generator object counter at 0x000001F8D8F35B40&gt;</span>
+<span class="token comment"># 输出的类型是生成器对象。</span>
+
+<span class="token comment"># 方式1：使用 next() 函数逐个获取值（手动控制）</span>
+gen <span class="token operator">=</span> counter<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 获取生成器对象，此时函数未执行</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 0（首次执行，暂停在 yield 处）</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1（从暂停位置继续执行）</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 3</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 4</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 5</span>
+<span class="token comment"># print(next(gen))  # 超出范围，抛出 StopIteration 异常</span>
+
+<span class="token comment"># 方式2：使用 for 循环遍历（推荐，自动处理 StopIteration 异常）</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\nfor 循环遍历结果：&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> num <span class="token keyword">in</span> counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">&quot; &quot;</span><span class="token punctuation">)</span>  <span class="token comment"># 输出：0 1 2 3 4 5</span>
+
+<span class="token comment"># 方式3：转换为列表/元组（一次性获取所有值，本质是遍历生成器）</span>
+gen_list <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n\n转换为列表：&quot;</span><span class="token punctuation">,</span> gen_list<span class="token punctuation">)</span>  <span class="token comment"># 输出：[0, 1, 2, 3, 4, 5]</span>
+gen_tuple <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;转换为元组：&quot;</span><span class="token punctuation">,</span> gen_tuple<span class="token punctuation">)</span>  <span class="token comment"># 输出：(0, 1, 2, 3, 4, 5)</span>
+</code></pre></div><h3 id="实现生成器的两种方法"><a href="#实现生成器的两种方法" class="header-anchor">#</a> 实现生成器的两种方法</h3> <blockquote><p>生成器表达式: generator expression</p></blockquote> <ul><li>一个就是将普通函数里面的return 替换成yield表达式, 也就是 def + yield 关键字</li> <li>第二个，就是直接使用这个<strong>生成器表达式</strong>： 圆括号 () 包裹，类似列表推导式</li></ul> <div class="language-py extra-class"><pre class="language-py"><code>t <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">**</span> <span class="token number">2</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 0</span>
+<span class="token comment"># 1</span>
+<span class="token comment"># 4</span>
+</code></pre></div><p><strong>这种利用推导的形式，获得生成器的方法，就称之为：生成器表达式</strong></p> <blockquote><p>注意：列表有推导式，字典也有推导式，但是元组没有推导式</p></blockquote> <hr> <div class="language-py extra-class"><pre class="language-py"><code>gen_expr_obj <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># range(6) 对应 0-5，圆括号标识生成器表达式</span>
+
+
+<span class="token comment"># 3. 带条件判断的生成器表达式（示例：生成 0-10 中的偶数）</span>
+even_gen_expr <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n0-10的偶数序列：&quot;</span><span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">(</span>even_gen_expr<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 输出：[0, 2, 4, 6, 8, 10]</span>
+</code></pre></div><h3 id="生成器的2个特点"><a href="#生成器的2个特点" class="header-anchor">#</a> 生成器的2个特点</h3> <ol><li>记住当时的状态</li> <li>第二个是支持<code>next()</code>函数</li></ol> <h3 id="生成器函数"><a href="#生成器函数" class="header-anchor">#</a> 生成器函数</h3> <blockquote><p>斐波那契数列: 每一个新的数据，都等于前2个数的和</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 由于我们在函数中没有设置结束条件</span>
+<span class="token comment"># 这样我们就得到了一个永恒的斐波那契数列生成器</span>
+<span class="token keyword">def</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    back1<span class="token punctuation">,</span> back2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">yield</span> back1
+        back1<span class="token punctuation">,</span> back2 <span class="token operator">=</span> back2<span class="token punctuation">,</span> back1 <span class="token operator">+</span> back2
+
+f <span class="token operator">=</span> fib<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 0</span>
+<span class="token comment"># 1</span>
+<span class="token comment"># 1</span>
+<span class="token comment"># 2</span>
+<span class="token comment"># 3</span>
+
+<span class="token comment"># 只要我们调用next(f), 就可以继续生成一个新的这个斐波那契数</span>
+</code></pre></div><h2 id="递归-recursion"><a href="#递归-recursion" class="header-anchor">#</a> 递归, recursion</h2> <blockquote><p>其实是属于算法的范畴</p></blockquote> <ol><li>自己调用自己</li> <li>设置恰当的结束条件</li></ol> <p>普通程序员用迭代，天才程序员用递归</p> <ul><li>但注意，递归有性能问题，多层函数依次放入栈里，先执行最低层的函数，依次往上执行</li> <li>每一次调用递归函数，不会立即返回，而是要等到最底层的那个函数返回，然后呢在一层一层地往上走</li></ul> <h3 id="学习了函数递归之后"><a href="#学习了函数递归之后" class="header-anchor">#</a> 学习了函数递归之后</h3> <ul><li>求一个数的阶乘！</li></ul> <p>一个正整数的阶乘是指，所有小于等于该数的正整数的积，5的阶乘是1<em>2</em>3<em>4</em>5</p> <ul><li>两个实战题目</li></ul> <ol><li>求一个数的阶乘！</li> <li>斐波那契数列</li></ol> <h4 id="两种写法"><a href="#两种写法" class="header-anchor">#</a> 两种写法</h4> <ol><li>一个是迭代的形式实现，迅速返回结果。</li> <li>一个是，递归的方法实现，返回速度慢，递归会导致效率问题。</li></ol> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">factIter</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result <span class="token operator">=</span> n
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">*=</span> i
+    <span class="token keyword">return</span> result
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>factIter<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 120</span>
+</code></pre></div><ul><li>这是使用迭代的形式来实现的</li></ul> <h4 id="递归的实现方式"><a href="#递归的实现方式" class="header-anchor">#</a> 递归的实现方式</h4> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">factRecur</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> n <span class="token operator">*</span> factRecur<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>factRecur<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 120</span>
+</code></pre></div><ul><li>使用递归的实现方式，然后<strong>让参数在每次调用的时候都递减一下</strong>，当检测到参数的值为1的时候就停止递归</li></ul> <blockquote><p>递归函数，使用规律， 数字递减</p></blockquote> <ul><li>eg: 依次缩小数组长度，比如pop 元素减少，等数组长度为1 时，触发结束条件。</li></ul> <h2 id="python-官方文档"><a href="#python-官方文档" class="header-anchor">#</a> python 官方文档</h2> <p><a href="https://peps.python.org/pep-3107/" target="_blank" rel="noopener noreferrer">python 官方文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#函数相关" class="sidebar-link reco-side-函数相关" data-v-b57cc07c>函数相关</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#位置参数" class="sidebar-link reco-side-位置参数" data-v-b57cc07c>位置参数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#位置参数问题" class="sidebar-link reco-side-位置参数问题" data-v-b57cc07c>位置参数问题</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#斜杠语法" class="sidebar-link reco-side-斜杠语法" data-v-b57cc07c>斜杠语法</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#关键字参数" class="sidebar-link reco-side-关键字参数" data-v-b57cc07c>关键字参数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#使用两个连续的星号" class="sidebar-link reco-side-使用两个连续的星号" data-v-b57cc07c>使用两个连续的星号</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#默认参数" class="sidebar-link reco-side-默认参数" data-v-b57cc07c>默认参数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#那有没有那种限制只能使用关键字参数的语法" class="sidebar-link reco-side-那有没有那种限制只能使用关键字参数的语法" data-v-b57cc07c>那有没有那种限制只能使用关键字参数的语法</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#解包参数" class="sidebar-link reco-side-解包参数" data-v-b57cc07c>解包参数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#args" class="sidebar-link reco-side-args" data-v-b57cc07c>*args</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#kwargs-关键字参数" class="sidebar-link reco-side-kwargs-关键字参数" data-v-b57cc07c>**kwargs，关键字参数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#补充说明" class="sidebar-link reco-side-补充说明" data-v-b57cc07c>补充说明</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#global语句" class="sidebar-link reco-side-global语句" data-v-b57cc07c>global语句</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#嵌套函数" class="sidebar-link reco-side-嵌套函数" data-v-b57cc07c>嵌套函数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#示例一" class="sidebar-link reco-side-示例一" data-v-b57cc07c>示例一</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#示例二" class="sidebar-link reco-side-示例二" data-v-b57cc07c>示例二</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#闭包" class="sidebar-link reco-side-闭包" data-v-b57cc07c>闭包</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#核心技巧" class="sidebar-link reco-side-核心技巧" data-v-b57cc07c>核心技巧</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#nonlocal" class="sidebar-link reco-side-nonlocal" data-v-b57cc07c>nonlocal</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#legb-规则" class="sidebar-link reco-side-legb-规则" data-v-b57cc07c>LEGB 规则</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#优先级-g-b" class="sidebar-link reco-side-优先级-g-b" data-v-b57cc07c>优先级，G &gt; B</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#装饰器-函数" class="sidebar-link reco-side-装饰器-函数" data-v-b57cc07c>装饰器—函数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#如果不用装饰器语法糖-代码则是这样的" class="sidebar-link reco-side-如果不用装饰器语法糖-代码则是这样的" data-v-b57cc07c>如果不用装饰器语法糖，代码则是这样的</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#聊一聊语法糖" class="sidebar-link reco-side-聊一聊语法糖" data-v-b57cc07c>聊一聊语法糖</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#多个装饰器能否同时用在同一个函数上呢" class="sidebar-link reco-side-多个装饰器能否同时用在同一个函数上呢" data-v-b57cc07c>多个装饰器能否同时用在同一个函数上呢?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#带参数的装饰器" class="sidebar-link reco-side-带参数的装饰器" data-v-b57cc07c>带参数的装饰器</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#解包参数-一个星号-两个星号" class="sidebar-link reco-side-解包参数-一个星号-两个星号" data-v-b57cc07c>解包参数，一个星号，两个星号</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#lambda-匿名函数" class="sidebar-link reco-side-lambda-匿名函数" data-v-b57cc07c>lambda 匿名函数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#🎯-一句话总结" class="sidebar-link reco-side-🎯-一句话总结" data-v-b57cc07c>🎯 一句话总结</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#递归" class="sidebar-link reco-side-递归" data-v-b57cc07c>递归</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#汉诺塔" class="sidebar-link reco-side-汉诺塔" data-v-b57cc07c>汉诺塔</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#代码解释" class="sidebar-link reco-side-代码解释" data-v-b57cc07c>代码解释</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#代码里的难点" class="sidebar-link reco-side-代码里的难点" data-v-b57cc07c>代码里的难点</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#汉诺塔函数-执行结果示例" class="sidebar-link reco-side-汉诺塔函数-执行结果示例" data-v-b57cc07c>汉诺塔函数，执行结果示例</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#函数文档、类型注释、内省-函数" class="sidebar-link reco-side-函数文档、类型注释、内省-函数" data-v-b57cc07c>函数文档、类型注释、内省--函数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#函数文档" class="sidebar-link reco-side-函数文档" data-v-b57cc07c>函数文档</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#类型注释" class="sidebar-link reco-side-类型注释" data-v-b57cc07c>类型注释</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#内省" class="sidebar-link reco-side-内省" data-v-b57cc07c>内省</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#偏函数-partial" class="sidebar-link reco-side-偏函数-partial" data-v-b57cc07c>偏函数，partial</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#高阶函数" class="sidebar-link reco-side-高阶函数" data-v-b57cc07c>高阶函数</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#特点" class="sidebar-link reco-side-特点" data-v-b57cc07c>特点</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#高阶函数有哪些" class="sidebar-link reco-side-高阶函数有哪些" data-v-b57cc07c>高阶函数有哪些</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#functools-库" class="sidebar-link reco-side-functools-库" data-v-b57cc07c>functools 库</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#装饰器副作用" class="sidebar-link reco-side-装饰器副作用" data-v-b57cc07c>装饰器副作用</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#生成器" class="sidebar-link reco-side-生成器" data-v-b57cc07c>生成器</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#实现生成器的两种方法" class="sidebar-link reco-side-实现生成器的两种方法" data-v-b57cc07c>实现生成器的两种方法</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#生成器的2个特点" class="sidebar-link reco-side-生成器的2个特点" data-v-b57cc07c>生成器的2个特点</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#生成器函数" class="sidebar-link reco-side-生成器函数" data-v-b57cc07c>生成器函数</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#递归-recursion" class="sidebar-link reco-side-递归-recursion" data-v-b57cc07c>递归, recursion</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#学习了函数递归之后" class="sidebar-link reco-side-学习了函数递归之后" data-v-b57cc07c>学习了函数递归之后</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/pystudy/function.html#python-官方文档" class="sidebar-link reco-side-python-官方文档" data-v-b57cc07c>python 官方文档</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.d50dda49.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/169.658d866b.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>

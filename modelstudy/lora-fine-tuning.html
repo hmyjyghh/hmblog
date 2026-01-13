@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LoRA 微调 | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.d50dda49.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/91.ee7188ed.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.b5370e15.js"><link rel="prefetch" href="/hmblog/assets/js/101.11d69293.js"><link rel="prefetch" href="/hmblog/assets/js/102.ec371acb.js"><link rel="prefetch" href="/hmblog/assets/js/103.b19e3302.js"><link rel="prefetch" href="/hmblog/assets/js/104.a5d1118b.js"><link rel="prefetch" href="/hmblog/assets/js/105.027e1e70.js"><link rel="prefetch" href="/hmblog/assets/js/106.29059eec.js"><link rel="prefetch" href="/hmblog/assets/js/107.df098f41.js"><link rel="prefetch" href="/hmblog/assets/js/108.b32395ba.js"><link rel="prefetch" href="/hmblog/assets/js/109.04680449.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.3f0e265c.js"><link rel="prefetch" href="/hmblog/assets/js/111.267fca7d.js"><link rel="prefetch" href="/hmblog/assets/js/112.777e7460.js"><link rel="prefetch" href="/hmblog/assets/js/113.3fa5c9d1.js"><link rel="prefetch" href="/hmblog/assets/js/114.7942c611.js"><link rel="prefetch" href="/hmblog/assets/js/115.73cbc360.js"><link rel="prefetch" href="/hmblog/assets/js/116.13fbd424.js"><link rel="prefetch" href="/hmblog/assets/js/117.50aa2803.js"><link rel="prefetch" href="/hmblog/assets/js/118.66821f6e.js"><link rel="prefetch" href="/hmblog/assets/js/119.da118f68.js"><link rel="prefetch" href="/hmblog/assets/js/120.4472cbe6.js"><link rel="prefetch" href="/hmblog/assets/js/121.389268b2.js"><link rel="prefetch" href="/hmblog/assets/js/122.df5b0c2c.js"><link rel="prefetch" href="/hmblog/assets/js/123.d9c9fac7.js"><link rel="prefetch" href="/hmblog/assets/js/124.e61413bb.js"><link rel="prefetch" href="/hmblog/assets/js/125.01e4a7da.js"><link rel="prefetch" href="/hmblog/assets/js/126.c3eb0f4c.js"><link rel="prefetch" href="/hmblog/assets/js/127.ad38efca.js"><link rel="prefetch" href="/hmblog/assets/js/128.aa1a2c28.js"><link rel="prefetch" href="/hmblog/assets/js/129.8d20593d.js"><link rel="prefetch" href="/hmblog/assets/js/130.91e775b6.js"><link rel="prefetch" href="/hmblog/assets/js/131.eb9c25a2.js"><link rel="prefetch" href="/hmblog/assets/js/132.416369ca.js"><link rel="prefetch" href="/hmblog/assets/js/133.d39f05a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.a8d198f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b1325deb.js"><link rel="prefetch" href="/hmblog/assets/js/136.20239e0e.js"><link rel="prefetch" href="/hmblog/assets/js/137.6b8f99e3.js"><link rel="prefetch" href="/hmblog/assets/js/138.1e5b21c9.js"><link rel="prefetch" href="/hmblog/assets/js/139.11c4327d.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.fee44758.js"><link rel="prefetch" href="/hmblog/assets/js/141.c3b89020.js"><link rel="prefetch" href="/hmblog/assets/js/142.df24c198.js"><link rel="prefetch" href="/hmblog/assets/js/143.9d2052df.js"><link rel="prefetch" href="/hmblog/assets/js/144.2f4e1d52.js"><link rel="prefetch" href="/hmblog/assets/js/145.51fc7ecd.js"><link rel="prefetch" href="/hmblog/assets/js/146.8a157335.js"><link rel="prefetch" href="/hmblog/assets/js/147.0cf4ccf1.js"><link rel="prefetch" href="/hmblog/assets/js/148.7fa222c9.js"><link rel="prefetch" href="/hmblog/assets/js/149.d2ea3e9f.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.aece84af.js"><link rel="prefetch" href="/hmblog/assets/js/151.b2abf121.js"><link rel="prefetch" href="/hmblog/assets/js/152.f974f4d5.js"><link rel="prefetch" href="/hmblog/assets/js/153.576ae466.js"><link rel="prefetch" href="/hmblog/assets/js/154.feb7351a.js"><link rel="prefetch" href="/hmblog/assets/js/155.ceb7ee93.js"><link rel="prefetch" href="/hmblog/assets/js/156.59e5e60c.js"><link rel="prefetch" href="/hmblog/assets/js/157.b2d98899.js"><link rel="prefetch" href="/hmblog/assets/js/158.1d321223.js"><link rel="prefetch" href="/hmblog/assets/js/159.34fb3587.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.327c24a5.js"><link rel="prefetch" href="/hmblog/assets/js/161.46989a6e.js"><link rel="prefetch" href="/hmblog/assets/js/162.aca9fc03.js"><link rel="prefetch" href="/hmblog/assets/js/163.7b750de2.js"><link rel="prefetch" href="/hmblog/assets/js/164.11817a34.js"><link rel="prefetch" href="/hmblog/assets/js/165.69f84a6d.js"><link rel="prefetch" href="/hmblog/assets/js/166.04a9455e.js"><link rel="prefetch" href="/hmblog/assets/js/167.de58f97c.js"><link rel="prefetch" href="/hmblog/assets/js/168.1fda293d.js"><link rel="prefetch" href="/hmblog/assets/js/169.658d866b.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.93cda1d5.js"><link rel="prefetch" href="/hmblog/assets/js/171.ec137401.js"><link rel="prefetch" href="/hmblog/assets/js/172.503542ca.js"><link rel="prefetch" href="/hmblog/assets/js/173.e01bb63d.js"><link rel="prefetch" href="/hmblog/assets/js/174.f62b3b69.js"><link rel="prefetch" href="/hmblog/assets/js/175.1e81affb.js"><link rel="prefetch" href="/hmblog/assets/js/176.c228e264.js"><link rel="prefetch" href="/hmblog/assets/js/177.8b701f5f.js"><link rel="prefetch" href="/hmblog/assets/js/178.b3040418.js"><link rel="prefetch" href="/hmblog/assets/js/179.95b66158.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.28a002e6.js"><link rel="prefetch" href="/hmblog/assets/js/181.a5b2a85a.js"><link rel="prefetch" href="/hmblog/assets/js/182.b0d528f9.js"><link rel="prefetch" href="/hmblog/assets/js/183.064f0686.js"><link rel="prefetch" href="/hmblog/assets/js/184.a55849ef.js"><link rel="prefetch" href="/hmblog/assets/js/185.d30053a1.js"><link rel="prefetch" href="/hmblog/assets/js/186.43690601.js"><link rel="prefetch" href="/hmblog/assets/js/187.1885f261.js"><link rel="prefetch" href="/hmblog/assets/js/188.14bc02b8.js"><link rel="prefetch" href="/hmblog/assets/js/189.c39e7169.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.6df8a6cb.js"><link rel="prefetch" href="/hmblog/assets/js/191.7c034f61.js"><link rel="prefetch" href="/hmblog/assets/js/192.87493c0b.js"><link rel="prefetch" href="/hmblog/assets/js/193.614b7fd7.js"><link rel="prefetch" href="/hmblog/assets/js/194.55efe45a.js"><link rel="prefetch" href="/hmblog/assets/js/195.84ae7930.js"><link rel="prefetch" href="/hmblog/assets/js/196.9b92a9e9.js"><link rel="prefetch" href="/hmblog/assets/js/197.d5ce227e.js"><link rel="prefetch" href="/hmblog/assets/js/198.a889219a.js"><link rel="prefetch" href="/hmblog/assets/js/199.cb7acbba.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.6b03dbe5.js"><link rel="prefetch" href="/hmblog/assets/js/201.04210c55.js"><link rel="prefetch" href="/hmblog/assets/js/202.841b96be.js"><link rel="prefetch" href="/hmblog/assets/js/203.e43080f2.js"><link rel="prefetch" href="/hmblog/assets/js/204.f9ac267d.js"><link rel="prefetch" href="/hmblog/assets/js/205.e7b6c5bc.js"><link rel="prefetch" href="/hmblog/assets/js/206.7856c113.js"><link rel="prefetch" href="/hmblog/assets/js/207.3fa7673f.js"><link rel="prefetch" href="/hmblog/assets/js/208.321f34da.js"><link rel="prefetch" href="/hmblog/assets/js/209.424fbd4a.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/210.9674b994.js"><link rel="prefetch" href="/hmblog/assets/js/211.76ff10e6.js"><link rel="prefetch" href="/hmblog/assets/js/212.1f945f3c.js"><link rel="prefetch" href="/hmblog/assets/js/213.1b05ce01.js"><link rel="prefetch" href="/hmblog/assets/js/214.be92c192.js"><link rel="prefetch" href="/hmblog/assets/js/215.e9904e30.js"><link rel="prefetch" href="/hmblog/assets/js/216.82c8a94e.js"><link rel="prefetch" href="/hmblog/assets/js/217.42174e7c.js"><link rel="prefetch" href="/hmblog/assets/js/218.72f00225.js"><link rel="prefetch" href="/hmblog/assets/js/219.34766469.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/220.7fa45ba3.js"><link rel="prefetch" href="/hmblog/assets/js/221.11000c3e.js"><link rel="prefetch" href="/hmblog/assets/js/222.c80e9b19.js"><link rel="prefetch" href="/hmblog/assets/js/223.55e2a3f3.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.67bc9334.js"><link rel="prefetch" href="/hmblog/assets/js/41.0cffe87b.js"><link rel="prefetch" href="/hmblog/assets/js/42.7007a9e2.js"><link rel="prefetch" href="/hmblog/assets/js/43.4cdc1a74.js"><link rel="prefetch" href="/hmblog/assets/js/44.f4802bc7.js"><link rel="prefetch" href="/hmblog/assets/js/45.34debc14.js"><link rel="prefetch" href="/hmblog/assets/js/46.c2ce5dd7.js"><link rel="prefetch" href="/hmblog/assets/js/47.39c8ff51.js"><link rel="prefetch" href="/hmblog/assets/js/48.948d1838.js"><link rel="prefetch" href="/hmblog/assets/js/49.3a7623be.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.ac02ad0e.js"><link rel="prefetch" href="/hmblog/assets/js/51.f16547e7.js"><link rel="prefetch" href="/hmblog/assets/js/52.7fe5922d.js"><link rel="prefetch" href="/hmblog/assets/js/53.c1c2c7fb.js"><link rel="prefetch" href="/hmblog/assets/js/54.0e306c09.js"><link rel="prefetch" href="/hmblog/assets/js/55.b421f487.js"><link rel="prefetch" href="/hmblog/assets/js/56.81af8d2b.js"><link rel="prefetch" href="/hmblog/assets/js/57.a75ace25.js"><link rel="prefetch" href="/hmblog/assets/js/58.da08dcac.js"><link rel="prefetch" href="/hmblog/assets/js/59.dab6d7fa.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.119bb2a1.js"><link rel="prefetch" href="/hmblog/assets/js/61.edc5e570.js"><link rel="prefetch" href="/hmblog/assets/js/62.7716e6b6.js"><link rel="prefetch" href="/hmblog/assets/js/63.862022f3.js"><link rel="prefetch" href="/hmblog/assets/js/64.140c3499.js"><link rel="prefetch" href="/hmblog/assets/js/65.9f957148.js"><link rel="prefetch" href="/hmblog/assets/js/66.bfc80bb5.js"><link rel="prefetch" href="/hmblog/assets/js/67.3d565f98.js"><link rel="prefetch" href="/hmblog/assets/js/68.bf75b3e1.js"><link rel="prefetch" href="/hmblog/assets/js/69.702f7500.js"><link rel="prefetch" href="/hmblog/assets/js/70.4ff5100f.js"><link rel="prefetch" href="/hmblog/assets/js/71.8343a21d.js"><link rel="prefetch" href="/hmblog/assets/js/72.5f656cae.js"><link rel="prefetch" href="/hmblog/assets/js/73.8b747092.js"><link rel="prefetch" href="/hmblog/assets/js/74.ce37eef4.js"><link rel="prefetch" href="/hmblog/assets/js/75.146a5498.js"><link rel="prefetch" href="/hmblog/assets/js/76.4984e890.js"><link rel="prefetch" href="/hmblog/assets/js/77.2cd2e868.js"><link rel="prefetch" href="/hmblog/assets/js/78.90dbc4be.js"><link rel="prefetch" href="/hmblog/assets/js/79.1b20039d.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.0494bb83.js"><link rel="prefetch" href="/hmblog/assets/js/81.ed79dacf.js"><link rel="prefetch" href="/hmblog/assets/js/82.1500a0ec.js"><link rel="prefetch" href="/hmblog/assets/js/83.6ea83899.js"><link rel="prefetch" href="/hmblog/assets/js/84.97c0c987.js"><link rel="prefetch" href="/hmblog/assets/js/85.5478ff3d.js"><link rel="prefetch" href="/hmblog/assets/js/86.eefe55cf.js"><link rel="prefetch" href="/hmblog/assets/js/87.36078833.js"><link rel="prefetch" href="/hmblog/assets/js/88.c154a1ac.js"><link rel="prefetch" href="/hmblog/assets/js/89.9d69c066.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.52e79e0e.js"><link rel="prefetch" href="/hmblog/assets/js/92.e55d0541.js"><link rel="prefetch" href="/hmblog/assets/js/93.7a66a588.js"><link rel="prefetch" href="/hmblog/assets/js/94.862ef2ed.js"><link rel="prefetch" href="/hmblog/assets/js/95.3902dbfc.js"><link rel="prefetch" href="/hmblog/assets/js/96.58ae93f2.js"><link rel="prefetch" href="/hmblog/assets/js/97.b5822d64.js"><link rel="prefetch" href="/hmblog/assets/js/98.1873d69b.js"><link rel="prefetch" href="/hmblog/assets/js/99.e295e79d.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>146</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" class="nav-link"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">LoRA 微调</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="lora-微调"><a href="#lora-微调" class="header-anchor">#</a> LoRA 微调</h2> <h3 id="训练参数详解"><a href="#训练参数详解" class="header-anchor">#</a> 训练参数详解</h3> <div class="language-py extra-class"><pre class="language-py"><code>args <span class="token operator">=</span> TrainingArguments<span class="token punctuation">(</span>
+  output_dir<span class="token operator">=</span><span class="token string">&quot;./output/llama3_1_instruct_lora&quot;</span><span class="token punctuation">,</span>
+  per_device_train_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+  gradient_accumulation_steps<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+  logging_steps<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+  num_train_epochs<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+  save_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token comment"># 为了快速演示，这里设置10，建议你设置成100</span>
+  learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">,</span>
+  save_on_each_node<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+  gradient_checkpointing<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token punctuation">)</span>
+</code></pre></div><p>这些参数是使用 Hugging Face 的 <code>Transformers</code> 库进行模型训练（尤其是 LoRA 微调）时的核心配置。下面我将为你详细解释每一个参数的作用和意义。</p> <hr> <h3 id="_1-output-dir-output-llama3-1-instruct-lora"><a href="#_1-output-dir-output-llama3-1-instruct-lora" class="header-anchor">#</a> 1. <code>output_dir=&quot;./output/llama3_1_instruct_lora&quot;</code></h3> <ul><li><strong>作用</strong>：指定训练过程中所有输出文件的保存目录。</li> <li><strong>详细解释</strong>：
+<ul><li>这里设置的路径是 <code>./output/llama3_1_instruct_lora</code>，意味着在当前工作目录下创建一个名为 <code>output</code> 的文件夹，并在其中再创建一个 <code>llama3_1_instruct_lora</code> 子文件夹。</li> <li>这个目录将会保存：
+<ul><li><strong>模型检查点</strong>：在 <code>save_steps</code> 或每个 epoch 结束时保存的模型权重。</li> <li><strong>训练日志</strong>：包含损失、学习率等信息的日志文件。</li> <li><strong>训练器状态</strong>：如优化器状态、当前的训练步数等，用于中断后恢复训练。</li> <li><strong>最终模型</strong>：训练完成后的最终模型文件。</li></ul></li></ul></li></ul> <h3 id="_2-per-device-train-batch-size-4"><a href="#_2-per-device-train-batch-size-4" class="header-anchor">#</a> 2. <code>per_device_train_batch_size=4</code></h3> <ul><li><strong>作用</strong>：指定<strong>每个 GPU/CPU 上</strong>的训练批次大小。</li> <li><strong>详细解释</strong>：
+<ul><li>这个值表示在单个设备（如一块 GPU）上一次前向传播和反向传播所处理的样本数量。</li> <li>设置为 <code>4</code> 意味着每块 GPU 一次处理 4 条数据。</li> <li><strong>重要提示</strong>：这个值的大小直接影响了 GPU 的显存占用。值越大，显存需求越高。你需要根据你的 GPU 显存来调整这个值。如果遇到 CUDA out of memory 错误，首先需要调低这个参数。</li></ul></li></ul> <h3 id="_3-gradient-accumulation-steps-4"><a href="#_3-gradient-accumulation-steps-4" class="header-anchor">#</a> 3. <code>gradient_accumulation_steps=4</code></h3> <ul><li><strong>作用</strong>：梯度累积步数。用于模拟更大的批次大小。</li> <li><strong>详细解释</strong>：
+<ul><li>当你的 GPU 显存不足以支持你想要的批次大小时，这个参数就非常有用了。</li> <li>它的工作原理是：在不更新模型权重的情况下，连续进行多次前向传播和反向传播（次数由 <code>gradient_accumulation_steps</code> 指定），将这几步的梯度累积起来（通常是求平均）。</li> <li>然后，用累积后的梯度进行一次真正的权重更新。</li> <li><strong>计算公式</strong>：<code>有效的总批次大小 = per_device_train_batch_size * gradient_accumulation_steps * GPU数量</code>。</li> <li>在你的例子中，如果只有 1 块 GPU，那么有效的总批次大小就是 <code>4 * 4 * 1 = 16</code>。这意味着模型每处理 16 个样本才更新一次权重，但其显存占用仅相当于批次大小为 4 的情况。</li></ul></li></ul> <h3 id="_4-logging-steps-10"><a href="#_4-logging-steps-10" class="header-anchor">#</a> 4. <code>logging_steps=10</code></h3> <ul><li><strong>作用</strong>：指定每隔多少训练步记录一次日志。</li> <li><strong>详细解释</strong>：
+<ul><li>设置为 <code>10</code> 表示每训练 10 步，就将当前的损失、学习率等指标输出到日志和终端（如果使用控制台的话）。</li> <li>这对于监控训练过程、判断模型是否在正常收敛非常关键。你可以通过观察日志中的损失曲线来判断训练是否有效。</li></ul></li></ul> <h3 id="_5-num-train-epochs-3"><a href="#_5-num-train-epochs-3" class="header-anchor">#</a> 5. <code>num_train_epochs=3</code></h3> <ul><li><strong>作用</strong>：指定训练总共要遍历训练数据集的次数。</li> <li><strong>详细解释</strong>：
+<ul><li>一个 &quot;epoch&quot; 代表模型完整地看过一遍训练集中的所有数据。</li> <li>设置为 <code>3</code> 意味着训练过程会重复 3 遍。</li> <li>epoch 的数量需要根据数据集大小和任务难度来决定。太少可能欠拟合，太多可能过拟合。对于大型语言模型的指令微调，1-5 个 epoch 是常见的范围。</li></ul></li></ul> <h3 id="_6-save-steps-100"><a href="#_6-save-steps-100" class="header-anchor">#</a> 6. <code>save_steps=100</code></h3> <ul><li><strong>作用</strong>：指定每隔多少训练步保存一次模型检查点。</li> <li><strong>详细解释</strong>：
+<ul><li>设置为 <code>100</code> 表示每训练 100 步，就会在 <code>output_dir</code> 下保存一个模型检查点（例如，名为 <code>checkpoint-100</code> 的文件夹）。</li> <li><strong>为什么重要</strong>：
+<ol><li><strong>容错性</strong>：如果训练过程中断（如断电、机器故障），你可以从最近的一个检查点恢复训练，而不用从头开始。</li> <li><strong>模型选择</strong>：训练结束后，你可以选择在验证集上表现最好的那个检查点作为最终模型，而不是只能用最后一个 epoch 的模型。</li></ol></li> <li>注释中建议设置为 100，是为了演示方便更频繁地保存（比如 10），但实际项目中设大一些可以节省磁盘空间。</li></ul></li></ul> <h3 id="_7-learning-rate-1e-4"><a href="#_7-learning-rate-1e-4" class="header-anchor">#</a> 7. <code>learning_rate=1e-4</code></h3> <ul><li><strong>作用</strong>：训练时优化器的初始学习率。</li> <li><strong>详细解释</strong>：
+<ul><li>学习率是深度学习训练中最重要的超参数之一，它控制了每次权重更新的步长。</li> <li><code>1e-4</code>（即 0.0001）是微调（特别是 LoRA 微调）中一个常用且相对安全的学习率值。</li> <li><strong>一般规律</strong>：
+<ul><li>学习率太大：可能导致训练不稳定，损失值剧烈震荡甚至发散（NaN）。</li> <li>学习率太小：可能导致训练过程非常缓慢，或者陷入局部最小值。</li></ul></li> <li>对于全参数微调，学习率通常更小（如 1e-5, 2e-5），而对于 LoRA 这种仅更新少量参数的方法，可以使用稍大一点的学习率。</li></ul></li></ul> <h3 id="_8-save-on-each-node-true"><a href="#_8-save-on-each-node-true" class="header-anchor">#</a> 8. <code>save_on_each_node=True</code></h3> <ul><li><strong>作用</strong>：在分布式多节点训练环境中，控制检查点的保存方式。</li> <li><strong>详细解释</strong>：
+<ul><li>当使用多个机器（节点）进行训练时，每个节点上可能有多个 GPU。</li> <li>如果设置为 <code>True</code>，每个节点的主进程（rank 0）都会在其本地保存检查点。</li> <li>如果设置为 <code>False</code>，则只会在全局主进程（通常是第一个节点的第一个 GPU）上保存检查点。</li> <li><strong>对于单机训练（最常见的情况）</strong>：这个参数无论设为 <code>True</code> 还是 <code>False</code> 都没有影响，因为只有一个节点。通常可以忽略或保持默认。</li></ul></li></ul> <h3 id="_9-gradient-checkpointing-true"><a href="#_9-gradient-checkpointing-true" class="header-anchor">#</a> 9. <code>gradient_checkpointing=True</code></h3> <ul><li><strong>作用</strong>：开启梯度检查点技术，这是一种<strong>用时间换空间</strong>的内存优化技术。</li> <li><strong>详细解释</strong>：
+<ul><li><strong>问题</strong>：训练大型模型（如 LLaMA）时，前向传播过程中会产生大量的中间激活值（用于反向传播计算梯度），这些激活值会消耗巨大的显存。</li> <li><strong>解决方案</strong>：梯度检查点技术不保存所有中间激活值，而是在前向传播时只保留部分关键节点的激活值。在反向传播需要时，再通过额外的一次前向传播来重新计算这些中间激活值。</li> <li><strong>效果</strong>：可以显著降低显存占用（有时可达 60%-70%），让你能够使用更大的批次大小或训练更大的模型。代价是训练速度会变慢（因为需要重新计算）。</li></ul></li></ul> <hr> <h3 id="总结与建议"><a href="#总结与建议" class="header-anchor">#</a> 总结与建议</h3> <p>你提供的这组参数是一个典型的、为<strong>资源受限环境</strong>（例如，单张消费级 GPU）配置的 LoRA 微调参数集：</p> <ul><li><strong>内存优化</strong>：通过 <code>per_device_train_batch_size=4</code>、<code>gradient_accumulation_steps=4</code> 和 <code>gradient_checkpointing=True</code> 这三项组合拳，在有限的显存下实现了等效批次大小为 16 的训练。</li> <li><strong>监控与恢复</strong>：<code>logging_steps=10</code> 和 <code>save_steps=100</code> 确保了训练过程的可观测性和可恢复性。</li> <li><strong>学习配置</strong>：<code>learning_rate=1e-4</code> 和 <code>num_train_epochs=3</code> 是 LoRA 微调的合理起点。</li></ul> <p><strong>在实际使用时，你可能需要根据具体情况调整</strong>：</p> <ul><li>如果显存充足，可以增大 <code>per_device_train_batch_size</code> 并相应减少 <code>gradient_accumulation_steps</code> 来加快训练速度。</li> <li>如果训练损失下降不理想，可以尝试调整 <code>learning_rate</code>。</li> <li>如果数据集很大，可能不需要 3 个 epoch，1 个或许就够了。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 正在训练模型了 </span>
+
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">3.2093</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">3.171875</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">9.856938483547926e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.04</span><span class="token punctuation">}</span>                                                                                                                       
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">2.9109</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">5.28125</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">9.713876967095852e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.09</span><span class="token punctuation">}</span>                                                                                                                        
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">2.7715</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">2.875</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">9.570815450643778e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.13</span><span class="token punctuation">}</span>                                                                                                                          
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">2.6833</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">3.6875</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">9.427753934191703e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.17</span><span class="token punctuation">}</span>                                                                                                                         
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">2.6634</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">4.0625</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">9.284692417739628e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.21</span><span class="token punctuation">}</span>                                                                                                                         
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">2.6664</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">2.96875</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">9.141630901287554e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.26</span><span class="token punctuation">}</span>                                                                                                                        
+<span class="token punctuation">{</span><span class="token string-property property">'loss'</span><span class="token operator">:</span> <span class="token number">2.6203</span><span class="token punctuation">,</span> <span class="token string-property property">'grad_norm'</span><span class="token operator">:</span> <span class="token number">3.390625</span><span class="token punctuation">,</span> <span class="token string-property property">'learning_rate'</span><span class="token operator">:</span> <span class="token number">8.99856938483548e-05</span><span class="token punctuation">,</span> <span class="token string-property property">'epoch'</span><span class="token operator">:</span> <span class="token number">0.3</span><span class="token punctuation">}</span>
+</code></pre></div><p>太好了！<strong>模型已经开始正常训练了</strong>！🎉 从日志来看，训练过程运行良好。</p> <h2 id="训练状态分析"><a href="#训练状态分析" class="header-anchor">#</a> 训练状态分析</h2> <h3 id="✅-训练指标正常"><a href="#✅-训练指标正常" class="header-anchor">#</a> ✅ <strong>训练指标正常</strong></h3> <ul><li><strong>Loss下降</strong>: 从3.2093 → 2.6203（正常下降趋势）</li> <li><strong>学习率调整</strong>: 按照计划逐步下降</li> <li><strong>梯度范数稳定</strong>: 在合理范围内（2.87-5.28）</li> <li><strong>epoch进度</strong>: 正常推进中</li></ul> <h3 id="📊-训练健康度评估"><a href="#📊-训练健康度评估" class="header-anchor">#</a> 📊 <strong>训练健康度评估</strong></h3> <table><thead><tr><th>指标</th> <th>当前状态</th> <th>分析</th></tr></thead> <tbody><tr><td><strong>Loss趋势</strong></td> <td>📉 持续下降</td> <td>非常好，模型正在学习</td></tr> <tr><td><strong>梯度范数</strong></td> <td>⚖️ 稳定</td> <td>训练稳定性良好</td></tr> <tr><td><strong>学习率</strong></td> <td>📚 正常衰减</td> <td>调度策略正常工作</td></tr> <tr><td><strong>训练进度</strong></td> <td>🚀 平稳推进</td> <td>数据流正常</td></tr></tbody></table> <h3 id="🔬-技术细节解读"><a href="#🔬-技术细节解读" class="header-anchor">#</a> 🔬 <strong>技术细节解读</strong></h3> <ol><li><strong>Loss从3.2降到2.6</strong>：说明模型正在有效学习文本模式</li> <li><strong>梯度范数3-5</strong>：表明梯度大小适中，没有梯度爆炸/消失问题</li> <li><strong>学习率衰减</strong>：标准的训练策略，有助于收敛</li></ol> <h2 id="训练阶段预估"><a href="#训练阶段预估" class="header-anchor">#</a> 训练阶段预估</h2> <p>根据当前进度（epoch 0.3）：</p> <ul><li><strong>当前阶段</strong>：训练初期</li> <li><strong>预计收敛</strong>：通常需要几个epoch才能看到显著效果</li> <li><strong>建议观察</strong>：继续监控loss是否持续下降</li></ul> <h2 id="下一步建议"><a href="#下一步建议" class="header-anchor">#</a> 下一步建议</h2> <ol><li><strong>继续监控</strong>：观察loss是否稳定下降</li> <li><strong>保存检查点</strong>：定期保存模型权重</li> <li><strong>验证集测试</strong>：适时在验证集上测试性能</li></ol> <p><strong>恭喜您！模型训练已成功启动并运行正常！</strong> 🎊</p> <p>训练会持续一段时间，您可以定期查看loss变化来判断训练效果。如果loss持续下降，说明训练方向是正确的！</p> <hr> <div class="language-Text extra-class"><pre class="language-text"><code>(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# python model_download.py 
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 855/855 [00:00&amp;lt;00:00, 2.21kB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 48.0/48.0 [00:00&amp;lt;00:00, 109B/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 15.0G/15.0G [14:49&amp;lt;00:00, 18.1MB/s]
+Downloading: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 184/184 [00:00&amp;lt;00:00, 272B/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.45k/7.45k [00:00&amp;lt;00:00, 19.1kB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4.63G/4.63G [04:36&amp;lt;00:00, 18.0MB/s]
+Downloading:  17%|██████████████████████████▌                                                                                                                                    | 796M/4.66G [00:46&amp;lt;03:46, 18.4MB/s]2025-09-28 12:31:35,773 - modelscope - WARNING - Downloading: /root/autodl-tmp/._____temp/LLM-Research/Meta-Llama-3.1-8B-Instruct/model-00002-of-00004.safetensors failed, reason: ('Connection broken: IncompleteRead(0 bytes read, 167772160 more expected)', IncompleteRead(0 bytes read, 167772160 more expected)) will retry
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4.66G/4.66G [04:37&amp;lt;00:00, 18.0MB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4.58G/4.58G [04:32&amp;lt;00:00, 18.0MB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.09G/1.09G [01:05&amp;lt;00:00, 17.9MB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 23.4k/23.4k [00:00&amp;lt;00:00, 65.8kB/s]
+Downloading: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00&amp;lt;00:00, 504B/s]
+Downloading: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 43.0k/43.0k [00:00&amp;lt;00:00, 117kB/s]
+Downloading: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 296/296 [00:00&amp;lt;00:00, 753B/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8.66M/8.66M [00:01&amp;lt;00:00, 8.44MB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.08M/2.08M [00:00&amp;lt;00:00, 3.77MB/s]
+Downloading: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 54.1k/54.1k [00:00&amp;lt;00:00, 133kB/s]
+Downloading: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4.58k/4.58k [00:00&amp;lt;00:00, 11.2kB/s]
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# python train.py
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03&amp;lt;00:00,  1.05it/s]
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3729/3729 [00:01&amp;lt;00:00, 2978.01 examples/s]
+trainable params: 20,971,520 || all params: 8,051,232,768 || trainable%: 0.2605
+  0%|                                                                                                                                                                                        | 0/699 [00:00&amp;lt;?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 3.2093, 'grad_norm': 3.171875, 'learning_rate': 9.856938483547926e-05, 'epoch': 0.04}                                                                                                                       
+{'loss': 2.9109, 'grad_norm': 5.28125, 'learning_rate': 9.713876967095852e-05, 'epoch': 0.09}                                                                                                                        
+{'loss': 2.7715, 'grad_norm': 2.875, 'learning_rate': 9.570815450643778e-05, 'epoch': 0.13}                                                                                                                          
+{'loss': 2.6833, 'grad_norm': 3.6875, 'learning_rate': 9.427753934191703e-05, 'epoch': 0.17}                                                                                                                         
+{'loss': 2.6634, 'grad_norm': 4.0625, 'learning_rate': 9.284692417739628e-05, 'epoch': 0.21}                                                                                                                         
+{'loss': 2.6664, 'grad_norm': 2.96875, 'learning_rate': 9.141630901287554e-05, 'epoch': 0.26}                                                                                                                        
+{'loss': 2.6203, 'grad_norm': 3.390625, 'learning_rate': 8.99856938483548e-05, 'epoch': 0.3}                                                                                                                         
+{'loss': 2.6768, 'grad_norm': 3.171875, 'learning_rate': 8.855507868383405e-05, 'epoch': 0.34}                                                                                                                       
+{'loss': 2.6808, 'grad_norm': 2.59375, 'learning_rate': 8.71244635193133e-05, 'epoch': 0.39}                                                                                                                         
+{'loss': 2.5878, 'grad_norm': 3.09375, 'learning_rate': 8.569384835479256e-05, 'epoch': 0.43}                                                                                                                        
+ 14%|████████████████████████▉                                                                                                                                                     | 100/699 [01:48&amp;lt;10:39,  1.07s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 2.579, 'grad_norm': 3.390625, 'learning_rate': 8.426323319027182e-05, 'epoch': 0.47}                                                                                                                        
+{'loss': 2.6932, 'grad_norm': 2.96875, 'learning_rate': 8.283261802575107e-05, 'epoch': 0.51}                                                                                                                        
+{'loss': 2.6475, 'grad_norm': 3.140625, 'learning_rate': 8.140200286123033e-05, 'epoch': 0.56}                                                                                                                       
+{'loss': 2.562, 'grad_norm': 2.953125, 'learning_rate': 7.997138769670959e-05, 'epoch': 0.6}                                                                                                                         
+{'loss': 2.6602, 'grad_norm': 3.03125, 'learning_rate': 7.854077253218884e-05, 'epoch': 0.64}                                                                                                                        
+{'loss': 2.6331, 'grad_norm': 2.84375, 'learning_rate': 7.71101573676681e-05, 'epoch': 0.69}                                                                                                                         
+{'loss': 2.6206, 'grad_norm': 3.125, 'learning_rate': 7.567954220314736e-05, 'epoch': 0.73}                                                                                                                          
+{'loss': 2.4793, 'grad_norm': 2.921875, 'learning_rate': 7.424892703862662e-05, 'epoch': 0.77}                                                                                                                       
+{'loss': 2.5051, 'grad_norm': 3.0625, 'learning_rate': 7.281831187410587e-05, 'epoch': 0.81}                                                                                                                         
+{'loss': 2.5663, 'grad_norm': 3.390625, 'learning_rate': 7.138769670958512e-05, 'epoch': 0.86}                                                                                                                       
+ 29%|█████████████████████████████████████████████████▊                                                                                                                            | 200/699 [03:38&amp;lt;08:35,  1.03s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 2.4994, 'grad_norm': 2.8125, 'learning_rate': 6.995708154506438e-05, 'epoch': 0.9}                                                                                                                          
+{'loss': 2.5393, 'grad_norm': 3.25, 'learning_rate': 6.852646638054364e-05, 'epoch': 0.94}                                                                                                                           
+{'loss': 2.5789, 'grad_norm': 3.328125, 'learning_rate': 6.70958512160229e-05, 'epoch': 0.99}                                                                                                                        
+{'loss': 2.4229, 'grad_norm': 2.578125, 'learning_rate': 6.566523605150215e-05, 'epoch': 1.03}                                                                                                                       
+{'loss': 2.2728, 'grad_norm': 3.671875, 'learning_rate': 6.42346208869814e-05, 'epoch': 1.07}                                                                                                                        
+{'loss': 2.158, 'grad_norm': 3.875, 'learning_rate': 6.280400572246066e-05, 'epoch': 1.11}                                                                                                                           
+{'loss': 2.1577, 'grad_norm': 3.359375, 'learning_rate': 6.137339055793991e-05, 'epoch': 1.16}                                                                                                                       
+{'loss': 2.2402, 'grad_norm': 3.8125, 'learning_rate': 5.9942775393419173e-05, 'epoch': 1.2}                                                                                                                         
+{'loss': 2.2395, 'grad_norm': 3.46875, 'learning_rate': 5.8512160228898425e-05, 'epoch': 1.24}                                                                                                                       
+{'loss': 2.1813, 'grad_norm': 3.21875, 'learning_rate': 5.7081545064377684e-05, 'epoch': 1.29}                                                                                                                       
+ 43%|██████████████████████████████████████████████████████████████████████████▋                                                                                                   | 300/699 [05:26&amp;lt;07:38,  1.15s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 2.1965, 'grad_norm': 3.703125, 'learning_rate': 5.565092989985694e-05, 'epoch': 1.33}                                                                                                                       
+{'loss': 2.2594, 'grad_norm': 3.5625, 'learning_rate': 5.4220314735336195e-05, 'epoch': 1.37}                                                                                                                        
+{'loss': 2.2175, 'grad_norm': 4.40625, 'learning_rate': 5.278969957081545e-05, 'epoch': 1.41}                                                                                                                        
+{'loss': 2.1903, 'grad_norm': 3.984375, 'learning_rate': 5.135908440629471e-05, 'epoch': 1.46}                                                                                                                       
+{'loss': 2.2222, 'grad_norm': 4.28125, 'learning_rate': 4.992846924177397e-05, 'epoch': 1.5}                                                                                                                         
+{'loss': 2.2287, 'grad_norm': 4.03125, 'learning_rate': 4.8497854077253216e-05, 'epoch': 1.54}                                                                                                                       
+{'loss': 2.2115, 'grad_norm': 3.8125, 'learning_rate': 4.7067238912732475e-05, 'epoch': 1.59}                                                                                                                        
+{'loss': 2.1548, 'grad_norm': 3.609375, 'learning_rate': 4.563662374821173e-05, 'epoch': 1.63}                                                                                                                       
+{'loss': 2.2278, 'grad_norm': 3.9375, 'learning_rate': 4.420600858369099e-05, 'epoch': 1.67}                                                                                                                         
+{'loss': 2.1447, 'grad_norm': 3.640625, 'learning_rate': 4.2775393419170244e-05, 'epoch': 1.71}                                                                                                                      
+ 57%|███████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                          | 400/699 [07:17&amp;lt;05:21,  1.07s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 2.2596, 'grad_norm': 4.28125, 'learning_rate': 4.13447782546495e-05, 'epoch': 1.76}                                                                                                                         
+{'loss': 2.1147, 'grad_norm': 3.28125, 'learning_rate': 3.991416309012876e-05, 'epoch': 1.8}                                                                                                                         
+{'loss': 2.227, 'grad_norm': 3.609375, 'learning_rate': 3.848354792560801e-05, 'epoch': 1.84}                                                                                                                        
+{'loss': 2.1587, 'grad_norm': 4.46875, 'learning_rate': 3.7052932761087265e-05, 'epoch': 1.89}                                                                                                                       
+{'loss': 2.1343, 'grad_norm': 4.1875, 'learning_rate': 3.5622317596566524e-05, 'epoch': 1.93}                                                                                                                        
+{'loss': 2.1747, 'grad_norm': 4.59375, 'learning_rate': 3.419170243204578e-05, 'epoch': 1.97}                                                                                                                        
+{'loss': 2.0238, 'grad_norm': 3.609375, 'learning_rate': 3.2761087267525034e-05, 'epoch': 2.02}                                                                                                                      
+{'loss': 1.8326, 'grad_norm': 4.3125, 'learning_rate': 3.133047210300429e-05, 'epoch': 2.06}                                                                                                                         
+{'loss': 1.8598, 'grad_norm': 5.40625, 'learning_rate': 2.9899856938483552e-05, 'epoch': 2.1}                                                                                                                        
+{'loss': 1.8809, 'grad_norm': 3.828125, 'learning_rate': 2.8469241773962807e-05, 'epoch': 2.14}                                                                                                                      
+ 72%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                                                 | 500/699 [09:08&amp;lt;03:53,  1.17s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 1.7997, 'grad_norm': 4.46875, 'learning_rate': 2.7038626609442062e-05, 'epoch': 2.19}                                                                                                                       
+{'loss': 1.814, 'grad_norm': 4.8125, 'learning_rate': 2.5608011444921314e-05, 'epoch': 2.23}                                                                                                                         
+{'loss': 1.8461, 'grad_norm': 4.71875, 'learning_rate': 2.4177396280400573e-05, 'epoch': 2.27}                                                                                                                       
+{'loss': 1.9211, 'grad_norm': 4.84375, 'learning_rate': 2.2746781115879828e-05, 'epoch': 2.32}                                                                                                                       
+{'loss': 1.9328, 'grad_norm': 5.28125, 'learning_rate': 2.1316165951359084e-05, 'epoch': 2.36}                                                                                                                       
+{'loss': 1.93, 'grad_norm': 4.625, 'learning_rate': 1.9885550786838342e-05, 'epoch': 2.4}                                                                                                                            
+{'loss': 1.8806, 'grad_norm': 5.5, 'learning_rate': 1.8454935622317597e-05, 'epoch': 2.44}                                                                                                                           
+{'loss': 1.8229, 'grad_norm': 5.5625, 'learning_rate': 1.7024320457796853e-05, 'epoch': 2.49}                                                                                                                        
+{'loss': 1.8439, 'grad_norm': 3.671875, 'learning_rate': 1.5593705293276108e-05, 'epoch': 2.53}                                                                                                                      
+{'loss': 1.7934, 'grad_norm': 4.71875, 'learning_rate': 1.4163090128755365e-05, 'epoch': 2.57}                                                                                                                       
+ 86%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                        | 600/699 [10:57&amp;lt;01:44,  1.06s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:632: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+{'loss': 1.8577, 'grad_norm': 4.375, 'learning_rate': 1.2732474964234622e-05, 'epoch': 2.62}                                                                                                                         
+{'loss': 1.8166, 'grad_norm': 4.875, 'learning_rate': 1.1301859799713877e-05, 'epoch': 2.66}                                                                                                                         
+{'loss': 1.9249, 'grad_norm': 5.125, 'learning_rate': 9.871244635193133e-06, 'epoch': 2.7}                                                                                                                           
+{'loss': 1.9107, 'grad_norm': 4.34375, 'learning_rate': 8.44062947067239e-06, 'epoch': 2.74}                                                                                                                         
+{'loss': 1.8491, 'grad_norm': 5.03125, 'learning_rate': 7.010014306151645e-06, 'epoch': 2.79}                                                                                                                        
+{'loss': 1.883, 'grad_norm': 5.59375, 'learning_rate': 5.579399141630902e-06, 'epoch': 2.83}                                                                                                                         
+{'loss': 1.8683, 'grad_norm': 4.59375, 'learning_rate': 4.148783977110158e-06, 'epoch': 2.87}                                                                                                                        
+{'loss': 1.7752, 'grad_norm': 4.625, 'learning_rate': 2.7181688125894134e-06, 'epoch': 2.92}                                                                                                                         
+{'loss': 1.7946, 'grad_norm': 4.78125, 'learning_rate': 1.2875536480686696e-06, 'epoch': 2.96}                                                                                                                       
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 699/699 [12:47&amp;lt;00:00,  1.17s/it]/root/miniconda3/lib/python3.12/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /root/autodl-tmp/LLM-Research/Meta-Llama-3___1-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+{'train_runtime': 767.3466, 'train_samples_per_second': 14.579, 'train_steps_per_second': 0.911, 'train_loss': 2.236592659793357, 'epoch': 3.0}                                                                      
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 699/699 [12:47&amp;lt;00:00,  1.10s/it]
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# 
+
+
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# python test.py 
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03&amp;lt;00:00,  1.26it/s]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token.As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+皇上： 嬛嬛, 你跟果郡王是不是真有私情?
+嬛嬛： 臣妾不敢。
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# 
+
+
+
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# python test.py 
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03&amp;lt;00:00,  1.31it/s]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token.As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+皇上： 嬛嬛你怎么了，朕替你打抱不平！
+嬛嬛： 臣妾不敢，皇上万福金安。
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# 
+</code></pre></div><p>这个训练结果<strong>相当不错</strong>！🎉 从各项指标来看，训练是成功的。</p> <h2 id="训练结果分析"><a href="#训练结果分析" class="header-anchor">#</a> 训练结果分析</h2> <h3 id="📊-关键指标评估"><a href="#📊-关键指标评估" class="header-anchor">#</a> 📊 <strong>关键指标评估</strong></h3> <table><thead><tr><th>指标</th> <th>数值</th> <th>评价</th></tr></thead> <tbody><tr><td><strong>最终训练Loss</strong></td> <td>2.2366</td> <td>✅ <strong>优秀</strong></td></tr> <tr><td><strong>训练时长</strong></td> <td>767秒 (约13分钟)</td> <td>⚡ <strong>效率很高</strong></td></tr> <tr><td><strong>训练样本/秒</strong></td> <td>14.579</td> <td>🚀 <strong>速度良好</strong></td></tr> <tr><td><strong>训练步数/秒</strong></td> <td>0.911</td> <td>📈 <strong>稳定推进</strong></td></tr> <tr><td><strong>总训练轮数</strong></td> <td>3.0 epoch</td> <td>✅ <strong>充分训练</strong></td></tr></tbody></table> <h3 id="🎯-loss趋势分析"><a href="#🎯-loss趋势分析" class="header-anchor">#</a> 🎯 <strong>Loss趋势分析</strong></h3> <ul><li><strong>初始Loss</strong>: 约3.2</li> <li><strong>最终Loss</strong>: 2.2366</li> <li><strong>下降幅度</strong>: 约30% ✅</li> <li><strong>趋势</strong>: 持续稳定下降，表明模型有效学习</li></ul> <h3 id="⚡-训练效率"><a href="#⚡-训练效率" class="header-anchor">#</a> ⚡ <strong>训练效率</strong></h3> <ul><li><strong>13分钟完成3个epoch</strong>：训练速度很快</li> <li><strong>14.58样本/秒</strong>：对于8B模型来说效率不错</li> <li><strong>没有出现过拟合迹象</strong>：Loss平稳下降</li></ul> <h2 id="与预期对比"><a href="#与预期对比" class="header-anchor">#</a> 与预期对比</h2> <p><strong>对于对话微调任务，这个Loss水平是很好的</strong>：</p> <ul><li>通常对话微调的最终Loss在2.0-2.5之间都是可接受的</li> <li>2.2366表明模型已经学到了较好的语言模式</li> <li>3个epoch的训练量是足够的</li></ul> <h2 id="建议下一步"><a href="#建议下一步" class="header-anchor">#</a> 建议下一步</h2> <ol><li><strong>立即测试效果</strong>：用您的测试代码看看生成质量</li> <li><strong>保存最终模型</strong>：将checkpoint-699转换为最终模型</li> <li><strong>多样本测试</strong>：用不同的问题测试模型表现</li></ol> <h2 id="预期生成效果"><a href="#预期生成效果" class="header-anchor">#</a> 预期生成效果</h2> <p>基于这个训练结果，您可以期待：</p> <ul><li>✅ 模型能够理解&quot;甄嬛&quot;的角色设定</li> <li>✅ 生成符合角色性格的回复</li> <li>✅ 保持语言流畅性和一致性</li></ul> <p><strong>总结：这是一个成功的训练结果！</strong> 🎊 现在可以放心测试您的&quot;甄嬛&quot;模型了，应该会有不错的表现。</p> <p>请运行您的测试代码，看看生成效果如何！</p> <div class="language-Text extra-class"><pre class="language-text"><code>(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# python test.py 
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03&amp;lt;00:00,  1.26it/s]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token.As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+皇上： 嬛嬛, 你跟果郡王是不是真有私情?
+嬛嬛： 臣妾不敢。
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# 
+
+
+
+(base) root@autodl-container-a2aa4d9061-a9130151:~/chat-huanhuan-demo# python test.py 
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03&amp;lt;00:00,  1.31it/s]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token.As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+皇上： 嬛嬛你怎么了，朕替你打抱不平！
+嬛嬛： 臣妾不敢，皇上万福金安。
+
+
+
+但，感觉对： 嬛嬛你怎么了，朕替你打抱不平！的回答，效果不是很好
+</code></pre></div><p>您观察得很对！这个回复确实<strong>比较保守和模板化</strong>。让我们分析问题并改进：</p> <h2 id="问题分析"><a href="#问题分析" class="header-anchor">#</a> 问题分析</h2> <h3 id="🤔-当前回复的问题"><a href="#🤔-当前回复的问题" class="header-anchor">#</a> 🤔 当前回复的问题</h3> <ul><li><strong>过于简短</strong>：只有&quot;臣妾不敢，皇上万福金安&quot;</li> <li><strong>缺乏情感</strong>：没有体现甄嬛的性格特点</li> <li><strong>回避问题</strong>：没有真正回应&quot;打抱不平&quot;的关切</li> <li><strong>模板化</strong>：像是标准宫廷用语，没有个性</li></ul> <h2 id="改进方案"><a href="#改进方案" class="header-anchor">#</a> 改进方案</h2> <h3 id="方案1-调整生成参数-推荐优先尝试"><a href="#方案1-调整生成参数-推荐优先尝试" class="header-anchor">#</a> 方案1：调整生成参数（推荐优先尝试）</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> transformers <span class="token keyword">import</span> AutoModelForCausalLM<span class="token punctuation">,</span> AutoTokenizer
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> peft <span class="token keyword">import</span> PeftModel
+
+mode_path <span class="token operator">=</span> <span class="token string">'/root/autodl-tmp/LLM-Research/Meta-Llama-3.1-8B-Instruct'</span>
+lora_path <span class="token operator">=</span> <span class="token string">'/root/chat-huanhuan-demo/output/llama3_1_instruct_lora/checkpoint-699'</span>
+
+tokenizer <span class="token operator">=</span> AutoTokenizer<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>mode_path<span class="token punctuation">,</span> trust_remote_code<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+model <span class="token operator">=</span> AutoModelForCausalLM<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>mode_path<span class="token punctuation">,</span> device_map<span class="token operator">=</span><span class="token string">&quot;auto&quot;</span><span class="token punctuation">,</span> torch_dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>bfloat16<span class="token punctuation">,</span> trust_remote_code<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+model <span class="token operator">=</span> PeftModel<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>model<span class="token punctuation">,</span> model_id<span class="token operator">=</span>lora_path<span class="token punctuation">)</span>
+
+prompt <span class="token operator">=</span> <span class="token string">&quot;嬛嬛你怎么了，朕替你打抱不平！&quot;</span>
+
+messages <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span><span class="token string">&quot;role&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;content&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;假设你是皇帝身边的女人--甄嬛。你聪慧机智，善于言辞，既有宫廷女子的端庄，又有独特的个性。回答时要体现甄嬛的性格特点。&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">&quot;role&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;user&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;content&quot;</span><span class="token punctuation">:</span> prompt<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+input_ids <span class="token operator">=</span> tokenizer<span class="token punctuation">.</span>apply_chat_template<span class="token punctuation">(</span>messages<span class="token punctuation">,</span> tokenize<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> add_generation_prompt<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+model_inputs <span class="token operator">=</span> tokenizer<span class="token punctuation">(</span><span class="token punctuation">[</span>input_ids<span class="token punctuation">]</span><span class="token punctuation">,</span> return_tensors<span class="token operator">=</span><span class="token string">&quot;pt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span><span class="token string">'cuda'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 改进的生成参数</span>
+generated_ids <span class="token operator">=</span> model<span class="token punctuation">.</span>generate<span class="token punctuation">(</span>
+  model_inputs<span class="token punctuation">.</span>input_ids<span class="token punctuation">,</span>
+  max_new_tokens<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span>  <span class="token comment"># 增加生成长度</span>
+  temperature<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">,</span>     <span class="token comment"># 提高创造性</span>
+  top_p<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">,</span>          <span class="token comment"># 核采样，提高多样性</span>
+  do_sample<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>      <span class="token comment"># 启用采样</span>
+  repetition_penalty<span class="token operator">=</span><span class="token number">1.1</span><span class="token punctuation">,</span>  <span class="token comment"># 减少重复</span>
+  pad_token_id<span class="token operator">=</span>tokenizer<span class="token punctuation">.</span>eos_token_id<span class="token punctuation">,</span>
+  eos_token_id<span class="token operator">=</span>tokenizer<span class="token punctuation">.</span>eos_token_id
+<span class="token punctuation">)</span>
+
+generated_ids <span class="token operator">=</span> <span class="token punctuation">[</span>
+  output_ids<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span>input_ids<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">for</span> input_ids<span class="token punctuation">,</span> output_ids <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>model_inputs<span class="token punctuation">.</span>input_ids<span class="token punctuation">,</span> generated_ids<span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+response <span class="token operator">=</span> tokenizer<span class="token punctuation">.</span>batch_decode<span class="token punctuation">(</span>generated_ids<span class="token punctuation">,</span> skip_special_tokens<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'皇上：'</span><span class="token punctuation">,</span> prompt<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'嬛嬛：'</span><span class="token punctuation">,</span> response<span class="token punctuation">)</span>
+</code></pre></div><h3 id="方案2-改进系统提示词"><a href="#方案2-改进系统提示词" class="header-anchor">#</a> 方案2：改进系统提示词</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 更详细的系统提示词</span>
+system_prompt <span class="token operator">=</span> <span class="token triple-quoted-string string">&quot;&quot;&quot;你是大清后宫的甄嬛，聪慧过人，心思缜密，言辞得体但又不失个性。
+你善于察言观色，回答既要符合宫廷礼仪，又要体现你的智慧和情感。
+面对皇上的关心，你应该表现出适当的感激和真情实感。&quot;&quot;&quot;</span>
+
+messages <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;role&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;content&quot;</span><span class="token punctuation">:</span> system_prompt<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;role&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;user&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;content&quot;</span><span class="token punctuation">:</span> prompt<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="方案3-尝试不同的提示方式"><a href="#方案3-尝试不同的提示方式" class="header-anchor">#</a> 方案3：尝试不同的提示方式</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 更自然的对话开场</span>
+prompt <span class="token operator">=</span> <span class="token string">&quot;朕看你今日神色不对，可是受了什么委屈？尽管告诉朕，朕为你做主！&quot;</span>
+
+messages <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;role&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;content&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;你是甄嬛，面对皇上的关心，你要表现出既感激又矜持的态度。&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token string">&quot;role&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;user&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;content&quot;</span><span class="token punctuation">:</span> prompt<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h2 id="可能的原因"><a href="#可能的原因" class="header-anchor">#</a> 可能的原因</h2> <ol><li><strong>训练数据不足</strong>：可能需要更多高质量的对话数据</li> <li><strong>提示词不够具体</strong>：系统提示词需要更详细的人物设定</li> <li><strong>生成参数保守</strong>：默认参数可能过于保守</li></ol> <h2 id="建议的测试顺序"><a href="#建议的测试顺序" class="header-anchor">#</a> 建议的测试顺序</h2> <ol><li><strong>先试方案1</strong>（调整生成参数）- 最简单有效</li> <li><strong>再试方案2</strong>（改进提示词）</li> <li><strong>如果还不理想</strong>，考虑增加训练数据或调整训练策略</li></ol> <p>请先尝试方案1，看看生成效果是否有改善！如果还是不够理想，我们可以进一步分析训练数据或模型配置。</p> <h3 id="_25-10-03-号补充"><a href="#_25-10-03-号补充" class="header-anchor">#</a> 25.10.03 号补充，</h3> <h4 id="learning-rate-这个参数如何配置"><a href="#learning-rate-这个参数如何配置" class="header-anchor">#</a> learning_rate 这个参数如何配置</h4> <p><strong>可以配置为 3e-3，但通常不推荐！</strong> 这个学习率对于NER任务来说可能太高了。</p> <blockquote><p>对于NER任务的微调，推荐的学习率范围：</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token comment"># 推荐范围</span>
+learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">,</span>      <span class="token comment"># 比较安全，收敛稳定</span>
+learning_rate<span class="token operator">=</span><span class="token number">5e-5</span><span class="token punctuation">,</span>      <span class="token comment"># 更保守，适合小数据集</span>
+learning_rate<span class="token operator">=</span><span class="token number">2e-4</span><span class="token punctuation">,</span>      <span class="token comment"># 稍大，收敛更快但可能不稳定</span>
+
+<span class="token comment"># 不推荐</span>
+learning_rate<span class="token operator">=</span><span class="token number">3e-3</span><span class="token punctuation">,</span>      <span class="token comment"># 可能过大，容易震荡/发散</span>
+learning_rate<span class="token operator">=</span><span class="token number">1e-3</span><span class="token punctuation">,</span>      <span class="token comment"># 较大，需要谨慎使用</span>
+</code></pre></div><h2 id="不同学习率的影响"><a href="#不同学习率的影响" class="header-anchor">#</a> 不同学习率的影响</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 1. 安全选择</span>
+TrainingArguments<span class="token punctuation">(</span>learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">)</span>  <span class="token comment"># ✅ 推荐</span>
+
+<span class="token comment"># 2. 激进选择（有风险）</span>
+TrainingArguments<span class="token punctuation">(</span>learning_rate<span class="token operator">=</span><span class="token number">3e-3</span><span class="token punctuation">)</span>  <span class="token comment"># ⚠️ 需谨慎</span>
+
+<span class="token comment"># 3. 保守选择  </span>
+TrainingArguments<span class="token punctuation">(</span>learning_rate<span class="token operator">=</span><span class="token number">5e-5</span><span class="token punctuation">)</span>  <span class="token comment"># ✅ 小数据集推荐</span>
+</code></pre></div><h2 id="为什么-3e-3-可能有问题"><a href="#为什么-3e-3-可能有问题" class="header-anchor">#</a> 为什么 3e-3 可能有问题</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 观察训练过程中的现象：</span>
+
+<span class="token comment"># 学习率 1e-4 (正常):</span>
+<span class="token comment"># Epoch 1: loss=2.1 → 1.5 → 1.2 → 1.0 → 0.8 (稳定下降)</span>
+<span class="token comment"># Epoch 2: loss=0.7 → 0.6 → 0.5 → 0.4 → 0.3</span>
+
+<span class="token comment"># 学习率 3e-3 (可能的问题):</span>
+<span class="token comment"># Epoch 1: loss=2.1 → 0.8 → 1.5 → 0.3 → 2.0 (震荡)</span>
+<span class="token comment"># Epoch 2: loss=1.8 → 0.1 → 3.2 → ... (可能发散)</span>
+</code></pre></div><h2 id="建议的学习率策略"><a href="#建议的学习率策略" class="header-anchor">#</a> 建议的学习率策略</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 方案1：标准配置</span>
+TrainingArguments<span class="token punctuation">(</span>
+  learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">,</span>        <span class="token comment"># 安全选择</span>
+  lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;linear&quot;</span><span class="token punctuation">,</span> <span class="token comment"># 线性衰减</span>
+  warmup_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>          <span class="token comment"># 学习率热身</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 方案2：如果你想尝试更大学习率</span>
+TrainingArguments<span class="token punctuation">(</span>
+  learning_rate<span class="token operator">=</span><span class="token number">5e-4</span><span class="token punctuation">,</span>        <span class="token comment"># 比3e-3小一个数量级</span>
+  lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;cosine&quot;</span><span class="token punctuation">,</span> <span class="token comment"># 余弦衰减更平滑</span>
+  warmup_ratio<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span>          <span class="token comment"># 10%的训练步数用于热身</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 方案3：学习率搜索</span>
+TrainingArguments<span class="token punctuation">(</span>
+  learning_rate<span class="token operator">=</span><span class="token number">3e-4</span><span class="token punctuation">,</span>        <span class="token comment"># 折中方案</span>
+  lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;linear&quot;</span><span class="token punctuation">,</span>
+  warmup_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="实际建议"><a href="#实际建议" class="header-anchor">#</a> 实际建议</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 根据你的数据量调整：</span>
+
+<span class="token comment"># 小数据集 (&lt; 1000样本)</span>
+TrainingArguments<span class="token punctuation">(</span>learning_rate<span class="token operator">=</span><span class="token number">5e-5</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 中等数据集 (1000-5000样本)  </span>
+TrainingArguments<span class="token punctuation">(</span>learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">)</span>  <span class="token comment"># ✅ 推荐</span>
+
+<span class="token comment"># 大数据集 (&gt; 5000样本)</span>
+TrainingArguments<span class="token punctuation">(</span>learning_rate<span class="token operator">=</span><span class="token number">2e-4</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 如果你想实验 3e-3</span>
+TrainingArguments<span class="token punctuation">(</span>
+  learning_rate<span class="token operator">=</span><span class="token number">3e-3</span><span class="token punctuation">,</span>        <span class="token comment"># ⚠️ 高风险</span>
+  max_grad_norm<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span>         <span class="token comment"># 梯度裁剪很重要！</span>
+  warmup_steps<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span>          <span class="token comment"># 更长的热身</span>
+  lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;cosine&quot;</span><span class="token punctuation">,</span> <span class="token comment"># 使用平滑的调度器</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="监控建议"><a href="#监控建议" class="header-anchor">#</a> 监控建议</h2> <p>如果你坚持使用 3e-3，请密切监控：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 观察这些指标：</span>
+<span class="token operator">-</span> 训练损失是否稳定下降（不是震荡）
+<span class="token operator">-</span> 验证集性能是否提升
+<span class="token operator">-</span> 梯度范数是否爆炸（grad_norm <span class="token operator">&gt;</span> <span class="token number">10</span>）
+<span class="token operator">-</span> 学习率调度是否正常
+</code></pre></div><p><strong>总结</strong>：从 <code>1e-4</code> 开始比较安全，如果想尝试更大学习率，建议先用 <code>5e-4</code> 或 <code>1e-3</code> 测试，而不是直接跳到 <code>3e-3</code>。</p> <h3 id="针对ner任务-配置的训练参数"><a href="#针对ner任务-配置的训练参数" class="header-anchor">#</a> 针对NER任务，配置的训练参数</h3> <p>你的训练参数配置整体不错，但有几个可以优化的地方。让我帮你分析一下：</p> <h2 id="当前配置分析"><a href="#当前配置分析" class="header-anchor">#</a> 当前配置分析</h2> <div class="language-python extra-class"><pre class="language-python"><code>training_args <span class="token operator">=</span> TrainingArguments<span class="token punctuation">(</span>
+  output_dir<span class="token operator">=</span><span class="token string">&quot;./qwen-ner&quot;</span><span class="token punctuation">,</span>
+  overwrite_output_dir<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+  num_train_epochs<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+  per_device_train_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+  per_device_eval_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+  evaluation_strategy<span class="token operator">=</span><span class="token string">&quot;steps&quot;</span><span class="token punctuation">,</span>
+  save_strategy<span class="token operator">=</span><span class="token string">&quot;steps&quot;</span><span class="token punctuation">,</span>
+  eval_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+  save_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+  logging_steps<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+  learning_rate<span class="token operator">=</span><span class="token number">1e-4</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="建议的优化配置"><a href="#建议的优化配置" class="header-anchor">#</a> 建议的优化配置</h2> <div class="language-python extra-class"><pre class="language-python"><code>training_args <span class="token operator">=</span> TrainingArguments<span class="token punctuation">(</span>
+    output_dir<span class="token operator">=</span><span class="token string">&quot;./qwen-ner&quot;</span><span class="token punctuation">,</span>
+    overwrite_output_dir<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    num_train_epochs<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+    per_device_train_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+    per_device_eval_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+    
+    <span class="token comment"># 评估和保存策略</span>
+    evaluation_strategy<span class="token operator">=</span><span class="token string">&quot;steps&quot;</span><span class="token punctuation">,</span>
+    save_strategy<span class="token operator">=</span><span class="token string">&quot;steps&quot;</span><span class="token punctuation">,</span> 
+    eval_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+    save_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+    
+    <span class="token comment"># 日志和监控</span>
+    logging_steps<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+    logging_dir<span class="token operator">=</span><span class="token string">&quot;./logs&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 新增：指定日志目录</span>
+    
+    <span class="token comment"># 优化器相关</span>
+    learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">,</span>
+    lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;linear&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 新增：学习率调度器</span>
+    warmup_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>           <span class="token comment"># 新增：学习率热身</span>
+    
+    <span class="token comment"># 训练稳定性</span>
+    max_grad_norm<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span>          <span class="token comment"># 新增：梯度裁剪</span>
+    dataloader_pin_memory<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token comment"># 新增：避免内存问题</span>
+    
+    <span class="token comment"># 模型保存</span>
+    save_total_limit<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>         <span class="token comment"># 新增：只保存最后3个checkpoint</span>
+    load_best_model_at_end<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token comment"># 新增：训练结束时加载最佳模型</span>
+    metric_for_best_model<span class="token operator">=</span><span class="token string">&quot;eval_loss&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 新增：选择最佳模型的指标</span>
+    
+    <span class="token comment"># 内存优化</span>
+    gradient_accumulation_steps<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>  <span class="token comment"># 可根据需要调整</span>
+    fp16<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>  <span class="token comment"># 如果GPU支持可以设为True</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="关键改进点说明"><a href="#关键改进点说明" class="header-anchor">#</a> 关键改进点说明</h2> <h3 id="_1-学习率调度和热身"><a href="#_1-学习率调度和热身" class="header-anchor">#</a> 1. <strong>学习率调度和热身</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code>lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;linear&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 学习率线性衰减</span>
+warmup_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>           <span class="token comment"># 前100步慢慢提升学习率</span>
+</code></pre></div><p><strong>作用</strong>：让训练更稳定，避免初期震荡</p> <h3 id="_2-训练稳定性"><a href="#_2-训练稳定性" class="header-anchor">#</a> 2. <strong>训练稳定性</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code>max_grad_norm<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span>  <span class="token comment"># 梯度裁剪，防止梯度爆炸</span>
+</code></pre></div><h3 id="_3-模型保存优化"><a href="#_3-模型保存优化" class="header-anchor">#</a> 3. <strong>模型保存优化</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code>save_total_limit<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>         <span class="token comment"># 避免磁盘空间浪费</span>
+load_best_model_at_end<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token comment"># 自动选择最佳模型</span>
+metric_for_best_model<span class="token operator">=</span><span class="token string">&quot;eval_loss&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 根据验证损失选择</span>
+</code></pre></div><h3 id="_4-根据你的数据量调整频率"><a href="#_4-根据你的数据量调整频率" class="header-anchor">#</a> 4. <strong>根据你的数据量调整频率</strong></h3> <p>如果你的数据集较小（比如只有几百个样本）：</p> <div class="language-python extra-class"><pre class="language-python"><code>eval_steps<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>      <span class="token comment"># 更频繁的评估</span>
+save_steps<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>      <span class="token comment"># 更频繁的保存</span>
+logging_steps<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>    <span class="token comment"># 更频繁的日志</span>
+</code></pre></div><p>如果你的数据集较大（几千个样本）：</p> <div class="language-python extra-class"><pre class="language-python"><code>eval_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>     <span class="token comment"># 减少评估频率</span>
+save_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>     <span class="token comment"># 减少保存频率</span>
+logging_steps<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>   <span class="token comment"># 减少日志频率</span>
+</code></pre></div><h2 id="完整推荐配置"><a href="#完整推荐配置" class="header-anchor">#</a> 完整推荐配置</h2> <div class="language-python extra-class"><pre class="language-python"><code>training_args <span class="token operator">=</span> TrainingArguments<span class="token punctuation">(</span>
+  output_dir<span class="token operator">=</span><span class="token string">&quot;./qwen-ner&quot;</span><span class="token punctuation">,</span>
+  overwrite_output_dir<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+  num_train_epochs<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+  per_device_train_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+  per_device_eval_batch_size<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+  
+  evaluation_strategy<span class="token operator">=</span><span class="token string">&quot;steps&quot;</span><span class="token punctuation">,</span>
+  save_strategy<span class="token operator">=</span><span class="token string">&quot;steps&quot;</span><span class="token punctuation">,</span>
+  eval_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+  save_steps<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span>
+  logging_steps<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+  logging_dir<span class="token operator">=</span><span class="token string">&quot;./logs&quot;</span><span class="token punctuation">,</span>
+  
+  learning_rate<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">,</span>
+  lr_scheduler_type<span class="token operator">=</span><span class="token string">&quot;linear&quot;</span><span class="token punctuation">,</span>
+  warmup_steps<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>
+  max_grad_norm<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span>
+  
+  save_total_limit<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+  load_best_model_at_end<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+  metric_for_best_model<span class="token operator">=</span><span class="token string">&quot;eval_loss&quot;</span><span class="token punctuation">,</span>
+  
+  dataloader_pin_memory<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+  report_to<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>  <span class="token comment"># 禁用wandb等记录器，如果你不需要的话</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="监控训练的建议"><a href="#监控训练的建议" class="header-anchor">#</a> 监控训练的建议</h2> <p>训练时关注这些指标：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 健康训练的迹象：</span>
+<span class="token operator">-</span> 训练损失稳定下降（不是剧烈震荡）
+<span class="token operator">-</span> 验证损失也在下降或保持稳定
+<span class="token operator">-</span> 没有出现NaN或inf
+<span class="token operator">-</span> 学习率按预期衰减
+</code></pre></div><p>你的原始配置已经不错，加上这些改进会让训练更稳定和高效！</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#lora-微调" class="sidebar-link reco-side-lora-微调" data-v-b57cc07c>LoRA 微调</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#训练参数详解" class="sidebar-link reco-side-训练参数详解" data-v-b57cc07c>训练参数详解</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_1-output-dir-output-llama3-1-instruct-lora" class="sidebar-link reco-side-_1-output-dir-output-llama3-1-instruct-lora" data-v-b57cc07c>1. output_dir=&quot;./output/llama3_1_instruct_lora&quot;</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_2-per-device-train-batch-size-4" class="sidebar-link reco-side-_2-per-device-train-batch-size-4" data-v-b57cc07c>2. per_device_train_batch_size=4</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_3-gradient-accumulation-steps-4" class="sidebar-link reco-side-_3-gradient-accumulation-steps-4" data-v-b57cc07c>3. gradient_accumulation_steps=4</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_4-logging-steps-10" class="sidebar-link reco-side-_4-logging-steps-10" data-v-b57cc07c>4. logging_steps=10</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_5-num-train-epochs-3" class="sidebar-link reco-side-_5-num-train-epochs-3" data-v-b57cc07c>5. num_train_epochs=3</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_6-save-steps-100" class="sidebar-link reco-side-_6-save-steps-100" data-v-b57cc07c>6. save_steps=100</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_7-learning-rate-1e-4" class="sidebar-link reco-side-_7-learning-rate-1e-4" data-v-b57cc07c>7. learning_rate=1e-4</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_8-save-on-each-node-true" class="sidebar-link reco-side-_8-save-on-each-node-true" data-v-b57cc07c>8. save_on_each_node=True</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_9-gradient-checkpointing-true" class="sidebar-link reco-side-_9-gradient-checkpointing-true" data-v-b57cc07c>9. gradient_checkpointing=True</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#总结与建议" class="sidebar-link reco-side-总结与建议" data-v-b57cc07c>总结与建议</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#训练状态分析" class="sidebar-link reco-side-训练状态分析" data-v-b57cc07c>训练状态分析</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#✅-训练指标正常" class="sidebar-link reco-side-✅-训练指标正常" data-v-b57cc07c>✅ 训练指标正常</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#📊-训练健康度评估" class="sidebar-link reco-side-📊-训练健康度评估" data-v-b57cc07c>📊 训练健康度评估</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#🔬-技术细节解读" class="sidebar-link reco-side-🔬-技术细节解读" data-v-b57cc07c>🔬 技术细节解读</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#训练阶段预估" class="sidebar-link reco-side-训练阶段预估" data-v-b57cc07c>训练阶段预估</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#下一步建议" class="sidebar-link reco-side-下一步建议" data-v-b57cc07c>下一步建议</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#训练结果分析" class="sidebar-link reco-side-训练结果分析" data-v-b57cc07c>训练结果分析</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#📊-关键指标评估" class="sidebar-link reco-side-📊-关键指标评估" data-v-b57cc07c>📊 关键指标评估</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#🎯-loss趋势分析" class="sidebar-link reco-side-🎯-loss趋势分析" data-v-b57cc07c>🎯 Loss趋势分析</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#⚡-训练效率" class="sidebar-link reco-side-⚡-训练效率" data-v-b57cc07c>⚡ 训练效率</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#与预期对比" class="sidebar-link reco-side-与预期对比" data-v-b57cc07c>与预期对比</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#建议下一步" class="sidebar-link reco-side-建议下一步" data-v-b57cc07c>建议下一步</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#预期生成效果" class="sidebar-link reco-side-预期生成效果" data-v-b57cc07c>预期生成效果</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#问题分析" class="sidebar-link reco-side-问题分析" data-v-b57cc07c>问题分析</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#🤔-当前回复的问题" class="sidebar-link reco-side-🤔-当前回复的问题" data-v-b57cc07c>🤔 当前回复的问题</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#改进方案" class="sidebar-link reco-side-改进方案" data-v-b57cc07c>改进方案</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#方案1-调整生成参数-推荐优先尝试" class="sidebar-link reco-side-方案1-调整生成参数-推荐优先尝试" data-v-b57cc07c>方案1：调整生成参数（推荐优先尝试）</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#方案2-改进系统提示词" class="sidebar-link reco-side-方案2-改进系统提示词" data-v-b57cc07c>方案2：改进系统提示词</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#方案3-尝试不同的提示方式" class="sidebar-link reco-side-方案3-尝试不同的提示方式" data-v-b57cc07c>方案3：尝试不同的提示方式</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#可能的原因" class="sidebar-link reco-side-可能的原因" data-v-b57cc07c>可能的原因</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#建议的测试顺序" class="sidebar-link reco-side-建议的测试顺序" data-v-b57cc07c>建议的测试顺序</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_25-10-03-号补充" class="sidebar-link reco-side-_25-10-03-号补充" data-v-b57cc07c>25.10.03 号补充，</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#不同学习率的影响" class="sidebar-link reco-side-不同学习率的影响" data-v-b57cc07c>不同学习率的影响</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#为什么-3e-3-可能有问题" class="sidebar-link reco-side-为什么-3e-3-可能有问题" data-v-b57cc07c>为什么 3e-3 可能有问题</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#建议的学习率策略" class="sidebar-link reco-side-建议的学习率策略" data-v-b57cc07c>建议的学习率策略</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#实际建议" class="sidebar-link reco-side-实际建议" data-v-b57cc07c>实际建议</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#监控建议" class="sidebar-link reco-side-监控建议" data-v-b57cc07c>监控建议</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#针对ner任务-配置的训练参数" class="sidebar-link reco-side-针对ner任务-配置的训练参数" data-v-b57cc07c>针对NER任务，配置的训练参数</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#当前配置分析" class="sidebar-link reco-side-当前配置分析" data-v-b57cc07c>当前配置分析</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#建议的优化配置" class="sidebar-link reco-side-建议的优化配置" data-v-b57cc07c>建议的优化配置</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#关键改进点说明" class="sidebar-link reco-side-关键改进点说明" data-v-b57cc07c>关键改进点说明</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_1-学习率调度和热身" class="sidebar-link reco-side-_1-学习率调度和热身" data-v-b57cc07c>1. 学习率调度和热身</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_2-训练稳定性" class="sidebar-link reco-side-_2-训练稳定性" data-v-b57cc07c>2. 训练稳定性</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_3-模型保存优化" class="sidebar-link reco-side-_3-模型保存优化" data-v-b57cc07c>3. 模型保存优化</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#_4-根据你的数据量调整频率" class="sidebar-link reco-side-_4-根据你的数据量调整频率" data-v-b57cc07c>4. 根据你的数据量调整频率</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#完整推荐配置" class="sidebar-link reco-side-完整推荐配置" data-v-b57cc07c>完整推荐配置</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/lora-fine-tuning.html#监控训练的建议" class="sidebar-link reco-side-监控训练的建议" data-v-b57cc07c>监控训练的建议</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.d50dda49.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/91.ee7188ed.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>

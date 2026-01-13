@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>langchain Agent | 寒梦的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/hmblog/logo.png">
+    <meta name="description" content="宝剑锋从磨砺出，梅花香自苦寒来。">
+    
+    <link rel="preload" href="/hmblog/assets/css/0.styles.e7d53aa5.css" as="style"><link rel="preload" href="/hmblog/assets/js/app.d50dda49.js" as="script"><link rel="preload" href="/hmblog/assets/js/7.5041dce4.js" as="script"><link rel="preload" href="/hmblog/assets/js/2.79670d2b.js" as="script"><link rel="preload" href="/hmblog/assets/js/1.1d6abb18.js" as="script"><link rel="preload" href="/hmblog/assets/js/87.36078833.js" as="script"><link rel="preload" href="/hmblog/assets/js/34.b26cede8.js" as="script"><link rel="prefetch" href="/hmblog/assets/js/10.63d0ad8f.js"><link rel="prefetch" href="/hmblog/assets/js/100.b5370e15.js"><link rel="prefetch" href="/hmblog/assets/js/101.11d69293.js"><link rel="prefetch" href="/hmblog/assets/js/102.ec371acb.js"><link rel="prefetch" href="/hmblog/assets/js/103.b19e3302.js"><link rel="prefetch" href="/hmblog/assets/js/104.a5d1118b.js"><link rel="prefetch" href="/hmblog/assets/js/105.027e1e70.js"><link rel="prefetch" href="/hmblog/assets/js/106.29059eec.js"><link rel="prefetch" href="/hmblog/assets/js/107.df098f41.js"><link rel="prefetch" href="/hmblog/assets/js/108.b32395ba.js"><link rel="prefetch" href="/hmblog/assets/js/109.04680449.js"><link rel="prefetch" href="/hmblog/assets/js/11.08937b90.js"><link rel="prefetch" href="/hmblog/assets/js/110.3f0e265c.js"><link rel="prefetch" href="/hmblog/assets/js/111.267fca7d.js"><link rel="prefetch" href="/hmblog/assets/js/112.777e7460.js"><link rel="prefetch" href="/hmblog/assets/js/113.3fa5c9d1.js"><link rel="prefetch" href="/hmblog/assets/js/114.7942c611.js"><link rel="prefetch" href="/hmblog/assets/js/115.73cbc360.js"><link rel="prefetch" href="/hmblog/assets/js/116.13fbd424.js"><link rel="prefetch" href="/hmblog/assets/js/117.50aa2803.js"><link rel="prefetch" href="/hmblog/assets/js/118.66821f6e.js"><link rel="prefetch" href="/hmblog/assets/js/119.da118f68.js"><link rel="prefetch" href="/hmblog/assets/js/120.4472cbe6.js"><link rel="prefetch" href="/hmblog/assets/js/121.389268b2.js"><link rel="prefetch" href="/hmblog/assets/js/122.df5b0c2c.js"><link rel="prefetch" href="/hmblog/assets/js/123.d9c9fac7.js"><link rel="prefetch" href="/hmblog/assets/js/124.e61413bb.js"><link rel="prefetch" href="/hmblog/assets/js/125.01e4a7da.js"><link rel="prefetch" href="/hmblog/assets/js/126.c3eb0f4c.js"><link rel="prefetch" href="/hmblog/assets/js/127.ad38efca.js"><link rel="prefetch" href="/hmblog/assets/js/128.aa1a2c28.js"><link rel="prefetch" href="/hmblog/assets/js/129.8d20593d.js"><link rel="prefetch" href="/hmblog/assets/js/130.91e775b6.js"><link rel="prefetch" href="/hmblog/assets/js/131.eb9c25a2.js"><link rel="prefetch" href="/hmblog/assets/js/132.416369ca.js"><link rel="prefetch" href="/hmblog/assets/js/133.d39f05a1.js"><link rel="prefetch" href="/hmblog/assets/js/134.a8d198f5.js"><link rel="prefetch" href="/hmblog/assets/js/135.b1325deb.js"><link rel="prefetch" href="/hmblog/assets/js/136.20239e0e.js"><link rel="prefetch" href="/hmblog/assets/js/137.6b8f99e3.js"><link rel="prefetch" href="/hmblog/assets/js/138.1e5b21c9.js"><link rel="prefetch" href="/hmblog/assets/js/139.11c4327d.js"><link rel="prefetch" href="/hmblog/assets/js/14.0ac4aea5.js"><link rel="prefetch" href="/hmblog/assets/js/140.fee44758.js"><link rel="prefetch" href="/hmblog/assets/js/141.c3b89020.js"><link rel="prefetch" href="/hmblog/assets/js/142.df24c198.js"><link rel="prefetch" href="/hmblog/assets/js/143.9d2052df.js"><link rel="prefetch" href="/hmblog/assets/js/144.2f4e1d52.js"><link rel="prefetch" href="/hmblog/assets/js/145.51fc7ecd.js"><link rel="prefetch" href="/hmblog/assets/js/146.8a157335.js"><link rel="prefetch" href="/hmblog/assets/js/147.0cf4ccf1.js"><link rel="prefetch" href="/hmblog/assets/js/148.7fa222c9.js"><link rel="prefetch" href="/hmblog/assets/js/149.d2ea3e9f.js"><link rel="prefetch" href="/hmblog/assets/js/15.2cac15c3.js"><link rel="prefetch" href="/hmblog/assets/js/150.aece84af.js"><link rel="prefetch" href="/hmblog/assets/js/151.b2abf121.js"><link rel="prefetch" href="/hmblog/assets/js/152.f974f4d5.js"><link rel="prefetch" href="/hmblog/assets/js/153.576ae466.js"><link rel="prefetch" href="/hmblog/assets/js/154.feb7351a.js"><link rel="prefetch" href="/hmblog/assets/js/155.ceb7ee93.js"><link rel="prefetch" href="/hmblog/assets/js/156.59e5e60c.js"><link rel="prefetch" href="/hmblog/assets/js/157.b2d98899.js"><link rel="prefetch" href="/hmblog/assets/js/158.1d321223.js"><link rel="prefetch" href="/hmblog/assets/js/159.34fb3587.js"><link rel="prefetch" href="/hmblog/assets/js/16.41c97ec9.js"><link rel="prefetch" href="/hmblog/assets/js/160.327c24a5.js"><link rel="prefetch" href="/hmblog/assets/js/161.46989a6e.js"><link rel="prefetch" href="/hmblog/assets/js/162.aca9fc03.js"><link rel="prefetch" href="/hmblog/assets/js/163.7b750de2.js"><link rel="prefetch" href="/hmblog/assets/js/164.11817a34.js"><link rel="prefetch" href="/hmblog/assets/js/165.69f84a6d.js"><link rel="prefetch" href="/hmblog/assets/js/166.04a9455e.js"><link rel="prefetch" href="/hmblog/assets/js/167.de58f97c.js"><link rel="prefetch" href="/hmblog/assets/js/168.1fda293d.js"><link rel="prefetch" href="/hmblog/assets/js/169.658d866b.js"><link rel="prefetch" href="/hmblog/assets/js/17.29a60e10.js"><link rel="prefetch" href="/hmblog/assets/js/170.93cda1d5.js"><link rel="prefetch" href="/hmblog/assets/js/171.ec137401.js"><link rel="prefetch" href="/hmblog/assets/js/172.503542ca.js"><link rel="prefetch" href="/hmblog/assets/js/173.e01bb63d.js"><link rel="prefetch" href="/hmblog/assets/js/174.f62b3b69.js"><link rel="prefetch" href="/hmblog/assets/js/175.1e81affb.js"><link rel="prefetch" href="/hmblog/assets/js/176.c228e264.js"><link rel="prefetch" href="/hmblog/assets/js/177.8b701f5f.js"><link rel="prefetch" href="/hmblog/assets/js/178.b3040418.js"><link rel="prefetch" href="/hmblog/assets/js/179.95b66158.js"><link rel="prefetch" href="/hmblog/assets/js/18.27fd2b83.js"><link rel="prefetch" href="/hmblog/assets/js/180.28a002e6.js"><link rel="prefetch" href="/hmblog/assets/js/181.a5b2a85a.js"><link rel="prefetch" href="/hmblog/assets/js/182.b0d528f9.js"><link rel="prefetch" href="/hmblog/assets/js/183.064f0686.js"><link rel="prefetch" href="/hmblog/assets/js/184.a55849ef.js"><link rel="prefetch" href="/hmblog/assets/js/185.d30053a1.js"><link rel="prefetch" href="/hmblog/assets/js/186.43690601.js"><link rel="prefetch" href="/hmblog/assets/js/187.1885f261.js"><link rel="prefetch" href="/hmblog/assets/js/188.14bc02b8.js"><link rel="prefetch" href="/hmblog/assets/js/189.c39e7169.js"><link rel="prefetch" href="/hmblog/assets/js/19.e7351a57.js"><link rel="prefetch" href="/hmblog/assets/js/190.6df8a6cb.js"><link rel="prefetch" href="/hmblog/assets/js/191.7c034f61.js"><link rel="prefetch" href="/hmblog/assets/js/192.87493c0b.js"><link rel="prefetch" href="/hmblog/assets/js/193.614b7fd7.js"><link rel="prefetch" href="/hmblog/assets/js/194.55efe45a.js"><link rel="prefetch" href="/hmblog/assets/js/195.84ae7930.js"><link rel="prefetch" href="/hmblog/assets/js/196.9b92a9e9.js"><link rel="prefetch" href="/hmblog/assets/js/197.d5ce227e.js"><link rel="prefetch" href="/hmblog/assets/js/198.a889219a.js"><link rel="prefetch" href="/hmblog/assets/js/199.cb7acbba.js"><link rel="prefetch" href="/hmblog/assets/js/20.20706f57.js"><link rel="prefetch" href="/hmblog/assets/js/200.6b03dbe5.js"><link rel="prefetch" href="/hmblog/assets/js/201.04210c55.js"><link rel="prefetch" href="/hmblog/assets/js/202.841b96be.js"><link rel="prefetch" href="/hmblog/assets/js/203.e43080f2.js"><link rel="prefetch" href="/hmblog/assets/js/204.f9ac267d.js"><link rel="prefetch" href="/hmblog/assets/js/205.e7b6c5bc.js"><link rel="prefetch" href="/hmblog/assets/js/206.7856c113.js"><link rel="prefetch" href="/hmblog/assets/js/207.3fa7673f.js"><link rel="prefetch" href="/hmblog/assets/js/208.321f34da.js"><link rel="prefetch" href="/hmblog/assets/js/209.424fbd4a.js"><link rel="prefetch" href="/hmblog/assets/js/21.0feb36e8.js"><link rel="prefetch" href="/hmblog/assets/js/210.9674b994.js"><link rel="prefetch" href="/hmblog/assets/js/211.76ff10e6.js"><link rel="prefetch" href="/hmblog/assets/js/212.1f945f3c.js"><link rel="prefetch" href="/hmblog/assets/js/213.1b05ce01.js"><link rel="prefetch" href="/hmblog/assets/js/214.be92c192.js"><link rel="prefetch" href="/hmblog/assets/js/215.e9904e30.js"><link rel="prefetch" href="/hmblog/assets/js/216.82c8a94e.js"><link rel="prefetch" href="/hmblog/assets/js/217.42174e7c.js"><link rel="prefetch" href="/hmblog/assets/js/218.72f00225.js"><link rel="prefetch" href="/hmblog/assets/js/219.34766469.js"><link rel="prefetch" href="/hmblog/assets/js/22.40bc0c74.js"><link rel="prefetch" href="/hmblog/assets/js/220.7fa45ba3.js"><link rel="prefetch" href="/hmblog/assets/js/221.11000c3e.js"><link rel="prefetch" href="/hmblog/assets/js/222.c80e9b19.js"><link rel="prefetch" href="/hmblog/assets/js/223.55e2a3f3.js"><link rel="prefetch" href="/hmblog/assets/js/23.3f7042f4.js"><link rel="prefetch" href="/hmblog/assets/js/24.ed563c46.js"><link rel="prefetch" href="/hmblog/assets/js/25.ac1b0e72.js"><link rel="prefetch" href="/hmblog/assets/js/26.683143d5.js"><link rel="prefetch" href="/hmblog/assets/js/27.f0066995.js"><link rel="prefetch" href="/hmblog/assets/js/28.d8aebbf6.js"><link rel="prefetch" href="/hmblog/assets/js/29.411fc063.js"><link rel="prefetch" href="/hmblog/assets/js/3.1300dadf.js"><link rel="prefetch" href="/hmblog/assets/js/30.2f75779a.js"><link rel="prefetch" href="/hmblog/assets/js/31.a195dbd7.js"><link rel="prefetch" href="/hmblog/assets/js/32.a4da846d.js"><link rel="prefetch" href="/hmblog/assets/js/33.cbaf45e6.js"><link rel="prefetch" href="/hmblog/assets/js/35.b991843f.js"><link rel="prefetch" href="/hmblog/assets/js/36.ae8fa883.js"><link rel="prefetch" href="/hmblog/assets/js/37.dc5b3f34.js"><link rel="prefetch" href="/hmblog/assets/js/38.2acfc275.js"><link rel="prefetch" href="/hmblog/assets/js/39.c2783769.js"><link rel="prefetch" href="/hmblog/assets/js/4.a36b649a.js"><link rel="prefetch" href="/hmblog/assets/js/40.67bc9334.js"><link rel="prefetch" href="/hmblog/assets/js/41.0cffe87b.js"><link rel="prefetch" href="/hmblog/assets/js/42.7007a9e2.js"><link rel="prefetch" href="/hmblog/assets/js/43.4cdc1a74.js"><link rel="prefetch" href="/hmblog/assets/js/44.f4802bc7.js"><link rel="prefetch" href="/hmblog/assets/js/45.34debc14.js"><link rel="prefetch" href="/hmblog/assets/js/46.c2ce5dd7.js"><link rel="prefetch" href="/hmblog/assets/js/47.39c8ff51.js"><link rel="prefetch" href="/hmblog/assets/js/48.948d1838.js"><link rel="prefetch" href="/hmblog/assets/js/49.3a7623be.js"><link rel="prefetch" href="/hmblog/assets/js/5.ade88313.js"><link rel="prefetch" href="/hmblog/assets/js/50.ac02ad0e.js"><link rel="prefetch" href="/hmblog/assets/js/51.f16547e7.js"><link rel="prefetch" href="/hmblog/assets/js/52.7fe5922d.js"><link rel="prefetch" href="/hmblog/assets/js/53.c1c2c7fb.js"><link rel="prefetch" href="/hmblog/assets/js/54.0e306c09.js"><link rel="prefetch" href="/hmblog/assets/js/55.b421f487.js"><link rel="prefetch" href="/hmblog/assets/js/56.81af8d2b.js"><link rel="prefetch" href="/hmblog/assets/js/57.a75ace25.js"><link rel="prefetch" href="/hmblog/assets/js/58.da08dcac.js"><link rel="prefetch" href="/hmblog/assets/js/59.dab6d7fa.js"><link rel="prefetch" href="/hmblog/assets/js/6.3551780c.js"><link rel="prefetch" href="/hmblog/assets/js/60.119bb2a1.js"><link rel="prefetch" href="/hmblog/assets/js/61.edc5e570.js"><link rel="prefetch" href="/hmblog/assets/js/62.7716e6b6.js"><link rel="prefetch" href="/hmblog/assets/js/63.862022f3.js"><link rel="prefetch" href="/hmblog/assets/js/64.140c3499.js"><link rel="prefetch" href="/hmblog/assets/js/65.9f957148.js"><link rel="prefetch" href="/hmblog/assets/js/66.bfc80bb5.js"><link rel="prefetch" href="/hmblog/assets/js/67.3d565f98.js"><link rel="prefetch" href="/hmblog/assets/js/68.bf75b3e1.js"><link rel="prefetch" href="/hmblog/assets/js/69.702f7500.js"><link rel="prefetch" href="/hmblog/assets/js/70.4ff5100f.js"><link rel="prefetch" href="/hmblog/assets/js/71.8343a21d.js"><link rel="prefetch" href="/hmblog/assets/js/72.5f656cae.js"><link rel="prefetch" href="/hmblog/assets/js/73.8b747092.js"><link rel="prefetch" href="/hmblog/assets/js/74.ce37eef4.js"><link rel="prefetch" href="/hmblog/assets/js/75.146a5498.js"><link rel="prefetch" href="/hmblog/assets/js/76.4984e890.js"><link rel="prefetch" href="/hmblog/assets/js/77.2cd2e868.js"><link rel="prefetch" href="/hmblog/assets/js/78.90dbc4be.js"><link rel="prefetch" href="/hmblog/assets/js/79.1b20039d.js"><link rel="prefetch" href="/hmblog/assets/js/8.1407b990.js"><link rel="prefetch" href="/hmblog/assets/js/80.0494bb83.js"><link rel="prefetch" href="/hmblog/assets/js/81.ed79dacf.js"><link rel="prefetch" href="/hmblog/assets/js/82.1500a0ec.js"><link rel="prefetch" href="/hmblog/assets/js/83.6ea83899.js"><link rel="prefetch" href="/hmblog/assets/js/84.97c0c987.js"><link rel="prefetch" href="/hmblog/assets/js/85.5478ff3d.js"><link rel="prefetch" href="/hmblog/assets/js/86.eefe55cf.js"><link rel="prefetch" href="/hmblog/assets/js/88.c154a1ac.js"><link rel="prefetch" href="/hmblog/assets/js/89.9d69c066.js"><link rel="prefetch" href="/hmblog/assets/js/9.7b6dd5b4.js"><link rel="prefetch" href="/hmblog/assets/js/90.52e79e0e.js"><link rel="prefetch" href="/hmblog/assets/js/91.ee7188ed.js"><link rel="prefetch" href="/hmblog/assets/js/92.e55d0541.js"><link rel="prefetch" href="/hmblog/assets/js/93.7a66a588.js"><link rel="prefetch" href="/hmblog/assets/js/94.862ef2ed.js"><link rel="prefetch" href="/hmblog/assets/js/95.3902dbfc.js"><link rel="prefetch" href="/hmblog/assets/js/96.58ae93f2.js"><link rel="prefetch" href="/hmblog/assets/js/97.b5822d64.js"><link rel="prefetch" href="/hmblog/assets/js/98.1873d69b.js"><link rel="prefetch" href="/hmblog/assets/js/99.e295e79d.js"><link rel="prefetch" href="/hmblog/assets/js/vendors~docsearch.e480d9b8.js">
+    <link rel="stylesheet" href="/hmblog/assets/css/0.styles.e7d53aa5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>寒梦的博客</h3> <p class="description" data-v-59e6cb88>宝剑锋从磨砺出，梅花香自苦寒来。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hmblog/" class="home-link router-link-active"><!----> <span class="site-name">寒梦的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    寒梦
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>146</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>4</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Python
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/basic.html" class="nav-link"><i class="undefined"></i>
+  Python基础
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/dict-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python常用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/sequence.html" class="nav-link"><i class="undefined"></i>
+  Python序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/list-comprehension.html" class="nav-link"><i class="undefined"></i>
+  Python列表推导式
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/builtin-function.html" class="nav-link"><i class="undefined"></i>
+  Python内置函数的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/function.html" class="nav-link"><i class="undefined"></i>
+  Python函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/related-knowledge.html" class="nav-link"><i class="undefined"></i>
+  Python相关知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/numpy.html" class="nav-link"><i class="undefined"></i>
+  Python numpy
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/array-operation.html" class="nav-link"><i class="undefined"></i>
+  Python数组操作
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-library.html" class="nav-link"><i class="undefined"></i>
+  Python常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/string-function.html" class="nav-link"><i class="undefined"></i>
+  Python字符串函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/use-pip-install.html" class="nav-link"><i class="undefined"></i>
+  pip 那些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/line-continue.html" class="nav-link"><i class="undefined"></i>
+  Python中的行续行符
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/pandas-study.html" class="nav-link"><i class="undefined"></i>
+  pandas 库的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-important.html" class="nav-link"><i class="undefined"></i>
+  Python几个常用库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-collect.html" class="nav-link"><i class="undefined"></i>
+  Python汇总
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-web.html" class="nav-link"><i class="undefined"></i>
+  PythonWeb框架
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-list.html" class="nav-link"><i class="undefined"></i>
+  无切片，不python
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-set.html" class="nav-link"><i class="undefined"></i>
+  Python中的集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-str.html" class="nav-link"><i class="undefined"></i>
+  Python字符串及格式化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-storage.html" class="nav-link"><i class="undefined"></i>
+  Python永久存储
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-except.html" class="nav-link"><i class="undefined"></i>
+  Python异常处理
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-class.html" class="nav-link"><i class="undefined"></i>
+  Python类与对象
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/pystudy/python-magic.html" class="nav-link"><i class="undefined"></i>
+  Python里的魔法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      大模型应用开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/transformer-basic.html" class="nav-link"><i class="undefined"></i>
+  Transformer 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-knowledge.html" class="nav-link"><i class="undefined"></i>
+  大模型基础概念
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/prompts.html" class="nav-link"><i class="undefined"></i>
+  提示词工程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rag.html" class="nav-link"><i class="undefined"></i>
+  检索增强生成RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/data-chunk.html" class="nav-link"><i class="undefined"></i>
+  数据分块
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-langchain-rag.html" class="nav-link"><i class="undefined"></i>
+  Langchain &amp; RAG
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag.html" class="nav-link"><i class="undefined"></i>
+  RAG 知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-rag-pain.html" class="nav-link"><i class="undefined"></i>
+  RAG 痛点分析
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-study.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  Langchain use
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vector-database.html" class="nav-link"><i class="undefined"></i>
+  向量数据库
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/first-model-project.html" class="nav-link"><i class="undefined"></i>
+  RAG 项目实战
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-function-calling.html" class="nav-link"><i class="undefined"></i>
+  Function Calling
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/agent.html" class="nav-link"><i class="undefined"></i>
+  Agent 相关
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/langchain-prompt.html" class="nav-link"><i class="undefined"></i>
+  LangChain Prompt的使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-english.html" class="nav-link"><i class="undefined"></i>
+  大模型相关的英语词汇
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/rl.html" class="nav-link"><i class="undefined"></i>
+  强化学习
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/peft.html" class="nav-link"><i class="undefined"></i>
+  大模型微调
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/quantization.html" class="nav-link"><i class="undefined"></i>
+  模型量化
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/vLLM-intro.html" class="nav-link"><i class="undefined"></i>
+  vLLM
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-pytorch.html" class="nav-link"><i class="undefined"></i>
+  PyTorch Dataset VS Huggingface Dataset
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-process.html" class="nav-link"><i class="undefined"></i>
+  从零训练一个大模型的完整流程
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/basic-aigc.html" class="nav-link"><i class="undefined"></i>
+  生成式AI
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/modelstudy/model-train-related.html" class="nav-link"><i class="undefined"></i>
+  模型训练相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      强大的MCP
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-knowledge.html" class="nav-link"><i class="undefined"></i>
+  MCP 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/ide-mcp-server.html" class="nav-link"><i class="undefined"></i>
+  IDE 使用MCP Server实操
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/mcpstudy/mcp-tool.html" class="nav-link"><i class="undefined"></i>
+  常见的MCP工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/sort.html" class="nav-link"><i class="undefined"></i>
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/double-pointer.html" class="nav-link"><i class="undefined"></i>
+  双指针算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-tree.html" class="nav-link"><i class="undefined"></i>
+  二叉树
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/receive-rain.html" class="nav-link"><i class="undefined"></i>
+  接雨水
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/dynamic-plan.html" class="nav-link"><i class="undefined"></i>
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/greedy.html" class="nav-link"><i class="undefined"></i>
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/longasc-sequence.html" class="nav-link"><i class="undefined"></i>
+  最长上升子序列
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/binary-search.html" class="nav-link"><i class="undefined"></i>
+  二分查找
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/reverse-list.html" class="nav-link"><i class="undefined"></i>
+  反转链表
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/del-single-list.html" class="nav-link"><i class="undefined"></i>
+  删除单链表-集合
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/other.html" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/compare-al.html" class="nav-link"><i class="undefined"></i>
+  m个数，最多用n次比较，找出第二大的数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/algorithm/effect-bracket.html" class="nav-link"><i class="undefined"></i>
+  有效的括号
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hmblog/other/ai-agent.html" class="nav-link"><i class="undefined"></i>
+  AI项目
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/conda.html" class="nav-link"><i class="undefined"></i>
+  Conda 使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/using-packages.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架使用
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/pytorch-know.html" class="nav-link"><i class="undefined"></i>
+  Pytorch 框架知识点
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-learn.html" class="nav-link"><i class="undefined"></i>
+  transformer库中那些常用函数
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-collect.html" class="nav-link"><i class="undefined"></i>
+  transformer库学习哪些事
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-1.html" class="nav-link"><i class="undefined"></i>
+  transformer 使用T5模型
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-2.html" class="nav-link"><i class="undefined"></i>
+  torch DataLoader
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/transformer-3.html" class="nav-link"><i class="undefined"></i>
+  设置随机种子
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/model-refrence.html" class="nav-link"><i class="undefined"></i>
+  优秀的参考文档
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/git-operate.html" class="nav-link"><i class="undefined"></i>
+  git 操作命令
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/fine-tuning-adapters.html" class="nav-link"><i class="undefined"></i>
+  PEFT 之Adapters
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/swanLab-info.html" class="nav-link"><i class="undefined"></i>
+  深度学习之SwanLab
+</a></li><li class="dropdown-item"><!----> <a href="/hmblog/other/lora-0-1.html" class="nav-link"><i class="undefined"></i>
+  从0到1手撕LoRA类
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      关于我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hmyjyghh" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ghh_" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/cool-62-29/columns" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  知乎
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://hmyjyghh.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>寒梦</span>
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">langchain Agent</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>寒梦</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="langchain-agent"><a href="#langchain-agent" class="header-anchor">#</a> langchain Agent</h2> <h3 id="一、核心思想-从-工具-到-大脑"><a href="#一、核心思想-从-工具-到-大脑" class="header-anchor">#</a> 一、核心思想：从“工具”到“大脑”</h3> <ul><li><strong>传统的链式调用 (Chain)</strong>：像是<strong>一条自动化流水线</strong>。你预先设计好固定的步骤，比如：查询 -&gt; 检索 -&gt; 合成答案。对于确定性的任务非常高效，但缺乏灵活性。如果任务超出预设流程，它就会失败。</li> <li><strong>智能体 (Agent)</strong>：像是<strong>一个配备了工具和思考能力的人脑（LLM）</strong>。
+<ul><li>你告诉它一个目标（比如“帮我分析一下公司Q3的销售数据并总结成PPT”），它会自己<strong>思考</strong>需要做什么、使用什么工具、按什么顺序执行，并能处理意外情况。</li></ul></li></ul> <p><strong>核心概念</strong>：Agent 是一个由大语言模型驱动的<strong>决策系统</strong>。它的核心能力是<strong>使用工具</strong>。LLM 作为代理的“大脑”，负责推理、规划和决策，而工具则是它完成任务所依赖的外部手段。</p> <hr> <h3 id="二、agent-的关键组成部分"><a href="#二、agent-的关键组成部分" class="header-anchor">#</a> 二、Agent 的关键组成部分</h3> <p>一个典型的 Agent 由以下四个核心部分构成：</p> <h4 id="_1-代理-agent-本身-决策逻辑"><a href="#_1-代理-agent-本身-决策逻辑" class="header-anchor">#</a> 1. <strong>代理（Agent）本身：决策逻辑</strong></h4> <p>这是核心，它定义了 LLM 如何根据当前状态决定下一步行动。LangChain 提供了多种类型的代理，适用于不同场景：</p> <ul><li><strong>Zero-shot ReAct Agent</strong>：最常用的一种。它只根据当前提示词（Prompt）进行推理，不记忆之前的操作步骤。适合单一任务。</li> <li><strong>Conversational Agent</strong>：专为对话设计，它保留了聊天历史，能处理多轮交互中的上下文。</li> <li><strong>Self-ask with Search Agent</strong>：一种特殊设计，擅长通过不断自问自答来分解复杂问题，通常与搜索引擎配合使用。</li> <li><strong>ReAct Document Store Agent</strong>：专门为在文档库中寻找答案而优化。</li></ul> <h4 id="_2-工具-tools-执行能力"><a href="#_2-工具-tools-执行能力" class="header-anchor">#</a> 2. <strong>工具（Tools）：执行能力</strong></h4> <p>工具是 Agent 可以调用的函数。它们是与外部世界交互的接口。任何能力都可以被封装成一个工具。例如：</p> <ul><li><strong>搜索引擎</strong>：<code>GoogleSearchAPIWrapper</code></li> <li><strong>计算器</strong>：一个简单的数学计算函数</li> <li><strong>Python 解释器</strong>：执行代码来验证或计算复杂公式</li> <li><strong>数据库查询器</strong>：执行 SQL 查询</li> <li><strong>自定义 API</strong>：调用公司内部的任何 API</li></ul> <h4 id="_3-工具包-toolkits-工具的集合"><a href="#_3-工具包-toolkits-工具的集合" class="header-anchor">#</a> 3. <strong>工具包（Toolkits）：工具的集合</strong></h4> <p>将完成一个特定领域任务所需的一组工具打包在一起。例如，一个“SQL 工具包”可能包含：<code>sql_db_query</code>, <code>sql_db_schema</code>, <code>sql_db_list_tables</code> 等工具。</p> <h4 id="_4-代理执行器-agent-executor-运行时环境"><a href="#_4-代理执行器-agent-executor-运行时环境" class="header-anchor">#</a> 4. <strong>代理执行器（Agent Executor）：运行时环境</strong></h4> <p>这是驱动 Agent 运行的“引擎”。它负责：</p> <ul><li>调用 Agent 进行决策。</li> <li>执行 Agent 选择的工具。</li> <li>将工具的执行结果返回给 Agent，作为下一步决策的上下文。</li> <li>处理错误、控制循环、防止无限循环。</li></ul> <hr> <h3 id="三、agent-的工作流程-react-框架"><a href="#三、agent-的工作流程-react-框架" class="header-anchor">#</a> 三、Agent 的工作流程（ReAct 框架）</h3> <p>最经典的 Agent 工作模式是 <strong>ReAct</strong>，即 <strong>Reason（推理）</strong> + <strong>Act（行动）</strong>。</p> <p>假设我们有一个问题：<strong>“埃隆·马斯克的公司特斯拉目前股价是多少？换算成人民币是多少？”</strong></p> <p>Agent 的工作流程如下：</p> <ol><li><strong>输入问题</strong>：将问题传递给 Agent。</li> <li><strong>思考（Reason）</strong>：LLM 分析问题，并规划步骤。
+<ul><li><em>想法</em>：要回答这个问题，我需要先获取特斯拉的当前股价（美元），然后找到当前的美元对人民币汇率，最后进行换算。</li></ul></li> <li><strong>行动（Act）</strong>：LLM 决定调用哪个工具，并生成调用参数。
+<ul><li><em>行动</em>：调用 <code>stock_price</code> 工具，参数为 <code>&quot;TSLA&quot;</code>。</li></ul></li> <li><strong>观察（Observe）</strong>：Agent 执行器执行工具，并获得结果。
+<ul><li><em>观察</em>：<code>TSLA 股价为 250.00 美元</code>。</li></ul></li> <li><strong>再思考（Reason）</strong>：LLM 结合上一步的观察，进行下一步推理。
+<ul><li><em>想法</em>：好的，我拿到了股价是 250 美元。现在我需要获取汇率。</li></ul></li> <li><strong>再行动（Act）</strong>：LLM 决定调用下一个工具。
+<ul><li><em>行动</em>：调用 <code>currency_exchange</code> 工具，参数为 <code>{&quot;from&quot;: &quot;USD&quot;, &quot;to&quot;: &quot;CNY&quot;}</code>。</li></ul></li> <li><strong>再观察（Observe）</strong>：Agent 执行器再次执行工具。
+<ul><li><em>观察</em>：<code>1 美元 = 7.25 人民币</code>。</li></ul></li> <li><strong>最终思考与回答</strong>：LLM 认为已经获得了所有必要信息，不再调用工具，而是直接合成最终答案。
+<ul><li><em>最终答案</em>：特斯拉当前股价为 250.00 美元。根据当前汇率（1 USD = 7.25 CNY），换算成人民币大约是 1812.50 元。</li></ul></li></ol> <hr> <h3 id="四、代码示例-创建一个简单的-agent"><a href="#四、代码示例-创建一个简单的-agent" class="header-anchor">#</a> 四、代码示例：创建一个简单的 Agent</h3> <p>下面我们用一个具体的代码示例来演示如何创建一个能回答上述问题的 Agent。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 首先安装必要的库</span>
+<span class="token comment"># !pip install langchain-openai langchain langchain-community</span>
+
+<span class="token keyword">import</span> os
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> AgentType<span class="token punctuation">,</span> initialize_agent<span class="token punctuation">,</span> Tool
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>utilities <span class="token keyword">import</span> GoogleSearchAPIWrapper
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>tools <span class="token keyword">import</span> BaseTool
+<span class="token keyword">from</span> typing <span class="token keyword">import</span> Type
+<span class="token keyword">from</span> pydantic <span class="token keyword">import</span> BaseModel<span class="token punctuation">,</span> Field
+
+<span class="token comment"># 设置OpenAI API Key</span>
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">&quot;OPENAI_API_KEY&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;你的OpenAI API Key&quot;</span>
+
+<span class="token comment"># 1. 定义自定义工具：汇率换算（这里用模拟函数代替真实API）</span>
+<span class="token keyword">class</span> <span class="token class-name">CurrencyConversionInput</span><span class="token punctuation">(</span>BaseModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    amount<span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">=</span> Field<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">&quot;要换算的金额&quot;</span><span class="token punctuation">)</span>
+    from_currency<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Field<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">&quot;原货币代码，如 USD&quot;</span><span class="token punctuation">)</span>
+    to_currency<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Field<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">&quot;目标货币代码，如 CNY&quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CurrencyConversionTool</span><span class="token punctuation">(</span>BaseTool<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">&quot;currency_converter&quot;</span>
+    description <span class="token operator">=</span> <span class="token string">&quot;用于将一种货币换算成另一种货币。输入应包含金额、原货币和目标货币。&quot;</span>
+    args_schema<span class="token punctuation">:</span> Type<span class="token punctuation">[</span>BaseModel<span class="token punctuation">]</span> <span class="token operator">=</span> CurrencyConversionInput
+
+    <span class="token keyword">def</span> <span class="token function">_run</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> amount<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">,</span> from_currency<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> to_currency<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 模拟汇率数据（实际应用中应调用真实API）</span>
+        exchange_rates <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;USD_CNY&quot;</span><span class="token punctuation">:</span> <span class="token number">7.25</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;EUR_CNY&quot;</span><span class="token punctuation">:</span> <span class="token number">7.80</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+        key <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>from_currency<span class="token punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token punctuation">{</span>to_currency<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
+        rate <span class="token operator">=</span> exchange_rates<span class="token punctuation">.</span>get<span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> rate<span class="token punctuation">:</span>
+            converted_amount <span class="token operator">=</span> amount <span class="token operator">*</span> rate
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>amount<span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>from_currency<span class="token punctuation">}</span></span><span class="token string"> = </span><span class="token interpolation"><span class="token punctuation">{</span>converted_amount<span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>to_currency<span class="token punctuation">}</span></span><span class="token string"> (汇率: </span><span class="token interpolation"><span class="token punctuation">{</span>rate<span class="token punctuation">}</span></span><span class="token string">)&quot;</span></span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;找不到从 </span><span class="token interpolation"><span class="token punctuation">{</span>from_currency<span class="token punctuation">}</span></span><span class="token string"> 到 </span><span class="token interpolation"><span class="token punctuation">{</span>to_currency<span class="token punctuation">}</span></span><span class="token string"> 的汇率信息。&quot;</span></span>
+
+<span class="token comment"># 2. 初始化LLM（使用GPT-3.5-turbo，因为它足够智能且成本较低）</span>
+llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo&quot;</span><span class="token punctuation">,</span> temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 3. 定义工具列表</span>
+tools <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token comment"># 工具1：谷歌搜索（需要配置GOOGLE_API_KEY和GOOGLE_CSE_ID）</span>
+    <span class="token comment"># Tool(</span>
+    <span class="token comment">#     name=&quot;google_search&quot;,</span>
+    <span class="token comment">#     func=GoogleSearchAPIWrapper().run,</span>
+    <span class="token comment">#     description=&quot;用于搜索当前事件或事实信息。&quot;</span>
+    <span class="token comment"># ),</span>
+    <span class="token comment"># 工具2：我们自定义的汇率换算工具</span>
+    CurrencyConversionTool<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment"># 工具3：可以再添加一个计算器工具用于数学计算</span>
+    Tool<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&quot;Calculator&quot;</span><span class="token punctuation">,</span>
+        func<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">eval</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 简单演示，实际应用请使用更安全的计算库</span>
+        description<span class="token operator">=</span><span class="token string">&quot;用于执行数学计算，例如：'2 * 3' 或 '250 * 7.25'。&quot;</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment"># 4. 初始化Agent</span>
+<span class="token comment"># 使用 ZERO_SHOT_REACT_DESCRIPTION 代理类型，它根据工具的描述来决定使用哪个工具。</span>
+agent <span class="token operator">=</span> initialize_agent<span class="token punctuation">(</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+    llm<span class="token operator">=</span>llm<span class="token punctuation">,</span>
+    agent<span class="token operator">=</span>AgentType<span class="token punctuation">.</span>ZERO_SHOT_REACT_DESCRIPTION<span class="token punctuation">,</span> <span class="token comment"># 最常用的代理类型</span>
+    verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token comment"># 开启详细日志，可以看到Agent的思考过程！</span>
+    handle_parsing_errors<span class="token operator">=</span><span class="token boolean">True</span> <span class="token comment"># 优雅地处理解析错误</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 5. 运行Agent！</span>
+<span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token comment"># 问题1：需要多步推理和工具使用</span>
+    result1 <span class="token operator">=</span> agent<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">&quot;如果我有100美元，按照今天的汇率能换成多少人民币？&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;答案： </span><span class="token interpolation"><span class="token punctuation">{</span>result1<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;=&quot;</span><span class="token operator">*</span><span class="token number">50</span> <span class="token operator">+</span> <span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 问题2：涉及计算</span>
+    result2 <span class="token operator">=</span> agent<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">&quot;100的平方加上50的三分之一是多少？&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;答案： </span><span class="token interpolation"><span class="token punctuation">{</span>result2<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+
+<span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;发生错误：</span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>运行上述代码，当 <code>verbose=True</code> 时，你会在控制台看到类似以下的思考过程：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>&gt; Entering new AgentExecutor chain...
+ 我需要将100美元换算成人民币。我应该使用汇率换算工具。
+ 行动：currency_converter
+ 行动输入：{&quot;amount&quot;: 100, &quot;from_currency&quot;: &quot;USD&quot;, &quot;to_currency&quot;: &quot;CNY&quot;}
+ 观察：100 USD = 725.00 CNY (汇率: 7.25)
+ 思考：我已经得到了换算结果。
+ 最终答案：100美元按照今天的汇率（1美元=7.25人民币）可以兑换成725.00元人民币。
+
+&gt; Finished chain.
+答案： 100美元按照今天的汇率（1美元=7.25人民币）可以兑换成725.00元人民币。
+</code></pre></div><h3 id="五、总结-agent-的优势与挑战"><a href="#五、总结-agent-的优势与挑战" class="header-anchor">#</a> 五、总结：Agent 的优势与挑战</h3> <p><strong>优势：</strong></p> <ol><li><strong>强大灵活</strong>：能够完成需要多步骤、动态决策的复杂任务。</li> <li><strong>扩展性强</strong>：通过工具，LLM 的能力被无限扩展，可以操作现实世界中的各种系统。</li> <li><strong>自动化</strong>：将复杂工作流自动化，减少人工干预。</li></ol> <p><strong>挑战与注意事项：</strong></p> <ol><li><strong>延迟与成本</strong>：每一步都需要调用LLM，可能比Chain慢且贵。</li> <li><strong>可靠性</strong>：LLM可能做出错误的决策或生成错误的工具参数，需要完善的错误处理。</li> <li><strong>安全性</strong>：让LLM自主调用工具存在潜在风险，必须严格控制工具的权限。</li> <li><strong>调试复杂</strong>：由于决策路径不确定，调试比固定的Chain更困难。</li></ol> <p><strong>LangChain Agent 是将 LLM 从一個“无所不知但无能为力”的百科全书，转变为一个“善于规划并动手执行”的智能助手的关键技术。</strong></p> <ul><li>在选择使用 Chain 还是 Agent 时，一个简单的原则是：如果任务流程是固定的，用 Chain；</li> <li>如果任务需要动态规划和工具使用，就用 Agent。</li></ul> <hr> <h3 id="_1-langchain-agent的概念"><a href="#_1-langchain-agent的概念" class="header-anchor">#</a> 1. langchain Agent的概念?</h3> <ul><li>是一个基于大模型的智能体，它可以根据用户的输入，生成符合用户需求的文本</li> <li>它的核心思想是，将大模型的能力，与用户的输入，进行结合，生成符合用户需求的文本</li> <li>它的劣势是，它的计算复杂度较高</li></ul> <h3 id="_2-核心概念"><a href="#_2-核心概念" class="header-anchor">#</a> 2. 核心概念</h3> <ul><li>Agent 是一个由大语言模型驱动的决策系统。</li> <li>它的核心能力是使用工具。</li> <li>LLM 作为代理的“大脑”，负责推理、规划和决策，而工具则是它完成任务所依赖的外部手段。</li></ul> <blockquote><p>核心逻辑</p></blockquote> <p>感知--&gt;决策--&gt;执行</p> <h3 id="_3-关键特性"><a href="#_3-关键特性" class="header-anchor">#</a> 3. 关键特性</h3> <ol><li>自主性</li> <li>工具调用能力</li> <li>记忆与反馈</li></ol> <h2 id="langchain-memory"><a href="#langchain-memory" class="header-anchor">#</a> LangChain Memory</h2> <h3 id="_1-from-langchain-memory-import-conversationbuffermemory"><a href="#_1-from-langchain-memory-import-conversationbuffermemory" class="header-anchor">#</a> 1. from langchain.memory import ConversationBufferMemory</h3> <p>langchain 中 ConversationBufferMemory  这个类的作用</p> <ol><li>记忆对话历史</li></ol> <p><code>ConversationBufferMemory</code> 就像一个&quot;对话记录本&quot;，它会自动保存用户和AI之间的所有对话记录。</p> <ol start="2"><li>提供对话上下文</li></ol> <p>当进行新的对话时，内存会将历史记录作为上下文提供给LLM：</p> <h3 id="_2-from-langchain-agents-import-agenttype-initialize-agent-tool"><a href="#_2-from-langchain-agents-import-agenttype-initialize-agent-tool" class="header-anchor">#</a> 2. from langchain.agents import AgentType, initialize_agent, Tool</h3> <ol><li><code>initialize_agent</code> 这个函数的使用</li></ol> <h1 id="langchain-agent-2"><a href="#langchain-agent-2" class="header-anchor">#</a> langchain.agent</h1> <blockquote><p>from langchain.agents import AgentType, initialize_agent, Tool</p></blockquote> <p>我来详细解释这些函数的作用，并提供版本信息。</p> <h2 id="_1-agenttype-agent类型枚举"><a href="#_1-agenttype-agent类型枚举" class="header-anchor">#</a> 1. <code>AgentType</code> - Agent类型枚举</h2> <h3 id="作用"><a href="#作用" class="header-anchor">#</a> 作用：</h3> <p>定义不同类型的Agent策略，每种类型对应不同的推理和执行方式。</p> <h3 id="常用的agenttype"><a href="#常用的agenttype" class="header-anchor">#</a> 常用的AgentType：</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> AgentType
+
+<span class="token comment"># 主要类型示例：</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>AgentType<span class="token punctuation">.</span>ZERO_SHOT_REACT_DESCRIPTION<span class="token punctuation">)</span>        <span class="token comment"># &quot;zero-shot-react-description&quot;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>AgentType<span class="token punctuation">.</span>OPENAI_FUNCTIONS<span class="token punctuation">)</span>                   <span class="token comment"># &quot;openai-functions&quot;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>AgentType<span class="token punctuation">.</span>STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION<span class="token punctuation">)</span> <span class="token comment"># &quot;structured-chat-zero-shot-react-description&quot;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>AgentType<span class="token punctuation">.</span>CONVERSATIONAL_REACT_DESCRIPTION<span class="token punctuation">)</span>   <span class="token comment"># &quot;conversational-react-description&quot;</span>
+</code></pre></div><h3 id="各种类型的特点"><a href="#各种类型的特点" class="header-anchor">#</a> 各种类型的特点：</h3> <table><thead><tr><th>AgentType</th> <th>特点</th> <th>适用场景</th></tr></thead> <tbody><tr><td><code>ZERO_SHOT_REACT_DESCRIPTION</code></td> <td>零样本学习，基于工具描述</td> <td>简单任务，无记忆</td></tr> <tr><td><code>OPENAI_FUNCTIONS</code></td> <td>使用OpenAI函数调用</td> <td>与OpenAI模型配合最佳</td></tr> <tr><td><code>STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION</code></td> <td>支持结构化输入</td> <td>复杂任务，需要严格格式</td></tr> <tr><td><code>CONVERSATIONAL_REACT_DESCRIPTION</code></td> <td>支持对话记忆</td> <td>多轮对话场景</td></tr></tbody></table> <h2 id="_2-tool-工具类"><a href="#_2-tool-工具类" class="header-anchor">#</a> 2. <code>Tool</code> - 工具类</h2> <h3 id="作用-2"><a href="#作用-2" class="header-anchor">#</a> 作用：</h3> <p>将函数封装成Agent可以调用的工具。</p> <h3 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法：</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>tools <span class="token keyword">import</span> Tool
+<span class="token keyword">from</span> pydantic <span class="token keyword">import</span> BaseModel<span class="token punctuation">,</span> Field
+
+<span class="token comment"># 定义输入参数模型</span>
+<span class="token keyword">class</span> <span class="token class-name">CalculatorInput</span><span class="token punctuation">(</span>BaseModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    expression<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Field<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">&quot;数学表达式，如 '2 + 2'&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建工具函数</span>
+<span class="token keyword">def</span> <span class="token function">calculator</span><span class="token punctuation">(</span>expression<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;执行数学计算&quot;&quot;&quot;</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> <span class="token builtin">eval</span><span class="token punctuation">(</span>expression<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;结果: </span><span class="token interpolation"><span class="token punctuation">{</span>result<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;计算错误: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
+
+<span class="token comment"># 创建Tool实例</span>
+calc_tool <span class="token operator">=</span> Tool<span class="token punctuation">(</span>
+    name<span class="token operator">=</span><span class="token string">&quot;Calculator&quot;</span><span class="token punctuation">,</span>
+    description<span class="token operator">=</span><span class="token string">&quot;用于执行数学计算&quot;</span><span class="token punctuation">,</span>
+    func<span class="token operator">=</span>calculator<span class="token punctuation">,</span>
+    args_schema<span class="token operator">=</span>CalculatorInput  <span class="token comment"># 可选：定义参数格式</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h3 id="tool参数说明"><a href="#tool参数说明" class="header-anchor">#</a> Tool参数说明：</h3> <div class="language-python extra-class"><pre class="language-python"><code>Tool<span class="token punctuation">(</span>
+    name<span class="token operator">=</span><span class="token string">&quot;工具名称&quot;</span><span class="token punctuation">,</span>           <span class="token comment"># 工具标识</span>
+    description<span class="token operator">=</span><span class="token string">&quot;工具描述&quot;</span><span class="token punctuation">,</span>    <span class="token comment"># Agent根据描述选择工具</span>
+    func<span class="token operator">=</span>工具函数<span class="token punctuation">,</span>            <span class="token comment"># 实际执行的函数</span>
+    args_schema<span class="token operator">=</span>参数模型<span class="token punctuation">,</span>     <span class="token comment"># 可选：参数验证</span>
+    return_direct<span class="token operator">=</span><span class="token boolean">False</span>       <span class="token comment"># 是否直接返回结果</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="_3-initialize-agent-初始化agent"><a href="#_3-initialize-agent-初始化agent" class="header-anchor">#</a> 3. <code>initialize_agent</code> - 初始化Agent</h2> <h3 id="作用-3"><a href="#作用-3" class="header-anchor">#</a> 作用：</h3> <p>将LLM、工具、记忆等组件组合成一个可用的Agent。</p> <h3 id="基本用法-2"><a href="#基本用法-2" class="header-anchor">#</a> 基本用法：</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> initialize_agent<span class="token punctuation">,</span> AgentType
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>tools <span class="token keyword">import</span> Tool
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+
+<span class="token comment"># 1. 准备组件</span>
+llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo&quot;</span><span class="token punctuation">)</span>
+tools <span class="token operator">=</span> <span class="token punctuation">[</span>calc_tool<span class="token punctuation">,</span> search_tool<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>  <span class="token comment"># 工具列表</span>
+memory <span class="token operator">=</span> ConversationBufferMemory<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># 记忆组件</span>
+
+<span class="token comment"># 2. 初始化Agent</span>
+agent <span class="token operator">=</span> initialize_agent<span class="token punctuation">(</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+    llm<span class="token operator">=</span>llm<span class="token punctuation">,</span>
+    agent<span class="token operator">=</span>AgentType<span class="token punctuation">.</span>OPENAI_FUNCTIONS<span class="token punctuation">,</span>  <span class="token comment"># Agent类型</span>
+    memory<span class="token operator">=</span>memory<span class="token punctuation">,</span>                     <span class="token comment"># 可选：记忆</span>
+    verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>                      <span class="token comment"># 是否显示详细过程</span>
+    handle_parsing_errors<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>        <span class="token comment"># 是否处理解析错误</span>
+    max_iterations<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>                  <span class="token comment"># 最大迭代次数</span>
+    early_stopping_method<span class="token operator">=</span><span class="token string">&quot;generate&quot;</span>   <span class="token comment"># 停止条件</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h3 id="完整参数示例"><a href="#完整参数示例" class="header-anchor">#</a> 完整参数示例：</h3> <div class="language-python extra-class"><pre class="language-python"><code>agent <span class="token operator">=</span> initialize_agent<span class="token punctuation">(</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>                           <span class="token comment"># 工具列表</span>
+    llm<span class="token operator">=</span>llm<span class="token punctuation">,</span>                              <span class="token comment"># 语言模型</span>
+    agent<span class="token operator">=</span>AgentType<span class="token punctuation">.</span>OPENAI_FUNCTIONS<span class="token punctuation">,</span>     <span class="token comment"># Agent策略类型</span>
+    memory<span class="token operator">=</span>memory<span class="token punctuation">,</span>                        <span class="token comment"># 记忆组件</span>
+    verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>                         <span class="token comment"># 详细日志</span>
+    handle_parsing_errors<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>           <span class="token comment"># 错误处理</span>
+    max_iterations<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>                     <span class="token comment"># 防止无限循环</span>
+    early_stopping_method<span class="token operator">=</span><span class="token string">&quot;generate&quot;</span><span class="token punctuation">,</span>     <span class="token comment"># 停止方法</span>
+    agent_kwargs<span class="token operator">=</span><span class="token punctuation">{</span>                        <span class="token comment"># Agent额外参数</span>
+        <span class="token string">'prefix'</span><span class="token punctuation">:</span> <span class="token string">'你是一个助手...'</span><span class="token punctuation">,</span>      <span class="token comment"># 系统提示词</span>
+        <span class="token string">'suffix'</span><span class="token punctuation">:</span> <span class="token string">'开始任务...'</span><span class="token punctuation">,</span>         <span class="token comment"># 结束提示词</span>
+        <span class="token string">'format_instructions'</span><span class="token punctuation">:</span> <span class="token string">'...'</span>      <span class="token comment"># 格式指令</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="_4-版本信息"><a href="#_4-版本信息" class="header-anchor">#</a> 4. 版本信息</h2> <h3 id="initialize-agent-所在的langchain版本"><a href="#initialize-agent-所在的langchain版本" class="header-anchor">#</a> <code>initialize_agent</code> 所在的LangChain版本：</h3> <p><strong>主要版本演进：</strong></p> <table><thead><tr><th>版本范围</th> <th>特点</th> <th><code>initialize_agent</code> 状态</th></tr></thead> <tbody><tr><td><strong>&lt; 0.1.0</strong> (早期版本)</td> <td>实验性API</td> <td>存在但不稳定</td></tr> <tr><td><strong>0.1.x</strong></td> <td>正式发布</td> <td>稳定可用</td></tr> <tr><td><strong>≥ 0.2.0</strong></td> <td>模块化重构</td> <td>仍然存在，但推荐新方法</td></tr></tbody></table> <h3 id="当前推荐的使用方式"><a href="#当前推荐的使用方式" class="header-anchor">#</a> 当前推荐的使用方式：</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 方式1：传统的initialize_agent（仍然可用）</span>
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> initialize_agent
+
+<span class="token comment"># 方式2：新的推荐方式（LangChain ≥ 0.2.0）</span>
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> create_openai_functions_agent
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> AgentExecutor
+
+<span class="token comment"># 创建Agent</span>
+agent <span class="token operator">=</span> create_openai_functions_agent<span class="token punctuation">(</span>llm<span class="token punctuation">,</span> tools<span class="token punctuation">,</span> system_message<span class="token punctuation">)</span>
+<span class="token comment"># 创建执行器</span>
+agent_executor <span class="token operator">=</span> AgentExecutor<span class="token punctuation">(</span>agent<span class="token operator">=</span>agent<span class="token punctuation">,</span> tools<span class="token operator">=</span>tools<span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="检查你的langchain版本"><a href="#检查你的langchain版本" class="header-anchor">#</a> 检查你的LangChain版本：</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> langchain
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;LangChain版本: </span><span class="token interpolation"><span class="token punctuation">{</span>langchain<span class="token punctuation">.</span>__version__<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+
+<span class="token comment"># 安装特定版本</span>
+<span class="token comment"># pip install langchain==0.1.0</span>
+<span class="token comment"># pip install langchain&gt;=0.2.0</span>
+</code></pre></div><h2 id="_5-完整工作示例"><a href="#_5-完整工作示例" class="header-anchor">#</a> 5. 完整工作示例</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> initialize_agent<span class="token punctuation">,</span> AgentType<span class="token punctuation">,</span> Tool
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>memory <span class="token keyword">import</span> ConversationBufferMemory
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+
+<span class="token comment"># 1. 准备数据</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">&quot;titanic.csv&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 2. 创建工具</span>
+<span class="token keyword">def</span> <span class="token function">data_summary</span><span class="token punctuation">(</span>query<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;数据统计摘要工具&quot;&quot;&quot;</span>
+    numeric_cols <span class="token operator">=</span> df<span class="token punctuation">.</span>select_dtypes<span class="token punctuation">(</span>include<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'number'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>columns
+    summary <span class="token operator">=</span> df<span class="token punctuation">[</span>numeric_cols<span class="token punctuation">]</span><span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;统计摘要:\n</span><span class="token interpolation"><span class="token punctuation">{</span>summary<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
+
+summary_tool <span class="token operator">=</span> Tool<span class="token punctuation">(</span>
+    name<span class="token operator">=</span><span class="token string">&quot;DataSummary&quot;</span><span class="token punctuation">,</span>
+    description<span class="token operator">=</span><span class="token string">&quot;获取数据的统计摘要&quot;</span><span class="token punctuation">,</span>
+    func<span class="token operator">=</span>data_summary
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 3. 初始化Agent</span>
+llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo&quot;</span><span class="token punctuation">)</span>
+tools <span class="token operator">=</span> <span class="token punctuation">[</span>summary_tool<span class="token punctuation">]</span>
+memory <span class="token operator">=</span> ConversationBufferMemory<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+agent <span class="token operator">=</span> initialize_agent<span class="token punctuation">(</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+    llm<span class="token operator">=</span>llm<span class="token punctuation">,</span>
+    agent<span class="token operator">=</span>AgentType<span class="token punctuation">.</span>OPENAI_FUNCTIONS<span class="token punctuation">,</span>
+    memory<span class="token operator">=</span>memory<span class="token punctuation">,</span>
+    verbose<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 4. 使用Agent</span>
+result <span class="token operator">=</span> agent<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">&quot;请分析数据的统计特征&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <ul><li><strong><code>AgentType</code></strong>: 定义Agent的推理策略类型</li> <li><strong><code>Tool</code></strong>: 将函数封装成Agent可调用的工具</li> <li><strong><code>initialize_agent</code></strong>: 核心函数，将各个组件组合成可用的Agent</li> <li><strong>版本</strong>: <code>initialize_agent</code> 在 LangChain 0.1.x 和 0.2.x 中都可用，但新版本推荐使用更模块化的方式</li></ul> <p>这些组件共同构成了LangChain Agent框架的核心，让你能够创建智能的、可工具调用的AI助手。</p> <blockquote><p><code>initialize_agent</code> 虽然在新版本里依旧可以用，但推荐新方法：<code>create_openai_functions_agent</code></p></blockquote> <h2 id="如何使用langchain-的各个核心组件"><a href="#如何使用langchain-的各个核心组件" class="header-anchor">#</a> 如何使用langchain 的各个核心组件</h2> <blockquote><p>该从哪里导入</p></blockquote> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> ChatPromptTemplate<span class="token punctuation">,</span> MessagesPlaceholder
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>llms <span class="token keyword">import</span> LLM
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>embeddings <span class="token keyword">import</span> Embeddings
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>vectorstores <span class="token keyword">import</span> VectorStoreRetriever
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>output_parsers <span class="token keyword">import</span> StrOutputParser
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnablePassthrough
+<span class="token keyword">from</span> langchain_chat_models <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">from</span> langchain_embeddings <span class="token keyword">import</span> HuggingFaceEmbeddings
+<span class="token keyword">from</span> langchain_vectorstores <span class="token keyword">import</span> Chroma
+<span class="token keyword">from</span> langchain_hub <span class="token keyword">import</span> pull
+
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> create_openai_functions_agent<span class="token punctuation">,</span> AgentExecutor<span class="token punctuation">,</span> AgentType
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>tools <span class="token keyword">import</span> Tool
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>memory <span class="token keyword">import</span> ConversationBufferMemory
+
+</code></pre></div><h2 id="注意langchain-不同版本-initialize-agent-函数的参数可能会有差异-建议查看对应版本的文档。"><a href="#注意langchain-不同版本-initialize-agent-函数的参数可能会有差异-建议查看对应版本的文档。" class="header-anchor">#</a> 注意langchain 不同版本，<code>initialize_agent</code> 函数的参数可能会有差异，建议查看对应版本的文档。</h2> <blockquote><p>不同版本，可能缺少某些核心组件， 建议查看对应版本的文档。</p></blockquote> <p>eg:</p> <h3 id="版本兼容性对照表"><a href="#版本兼容性对照表" class="header-anchor">#</a> 版本兼容性对照表</h3> <table><thead><tr><th>LangChain版本</th> <th>导入方式</th> <th>状态</th></tr></thead> <tbody><tr><td><strong>&lt; 0.0.340</strong></td> <td><code>from langchain_experimental.agents import...</code></td> <td>✅ 可用</td></tr> <tr><td><strong>0.0.340 - 0.0.350</strong></td> <td><code>from langchain_experimental.agents import...</code></td> <td>✅ 可用</td></tr> <tr><td><strong>≥ 0.1.0</strong></td> <td><code>from langchain.agents import create_pandas_dataframe_agent</code></td> <td>✅ 推荐</td></tr> <tr><td><strong>≥ 0.2.0</strong></td> <td><code>from langchain_experimental.agents import...</code></td> <td>❌ 已移除</td></tr></tbody></table> <h2 id="查看langchain-版本"><a href="#查看langchain-版本" class="header-anchor">#</a> 查看langchain 版本</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> langchain
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;LangChain版本: </span><span class="token interpolation"><span class="token punctuation">{</span>langchain<span class="token punctuation">.</span>__version__<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="使用-create-openai-functions-agent"><a href="#使用-create-openai-functions-agent" class="header-anchor">#</a> 使用： create_openai_functions_agent</h2> <h3 id="新版本方式"><a href="#新版本方式" class="header-anchor">#</a> 新版本方式</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> create_openai_functions_agent<span class="token punctuation">,</span> AgentExecutor
+agent <span class="token operator">=</span> create_openai_functions_agent<span class="token punctuation">(</span>llm<span class="token punctuation">,</span> tools<span class="token punctuation">,</span> prompt<span class="token punctuation">)</span>
+executor <span class="token operator">=</span> AgentExecutor<span class="token punctuation">(</span>
+    agent<span class="token operator">=</span>agent<span class="token punctuation">,</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+    memory<span class="token operator">=</span>memory<span class="token punctuation">,</span>
+    verbose<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">return</span> executor
+</code></pre></div><h3 id="提示词模板缺少必需的-agent-scratchpad-变量"><a href="#提示词模板缺少必需的-agent-scratchpad-变量" class="header-anchor">#</a> 提示词模板缺少必需的 agent_scratchpad 变量</h3> <p>这个错误是因为提示词模板缺少必需的 <code>agent_scratchpad</code> 变量。以下是修复代码：</p> <h2 id="修复方案"><a href="#修复方案" class="header-anchor">#</a> 修复方案</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> ChatPromptTemplate<span class="token punctuation">,</span> MessagesPlaceholder
+
+<span class="token comment"># 创建包含必需变量的提示词模板</span>
+prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_messages<span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>_get_system_prompt<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;human&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;{input}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    MessagesPlaceholder<span class="token punctuation">(</span>variable_name<span class="token operator">=</span><span class="token string">&quot;agent_scratchpad&quot;</span><span class="token punctuation">)</span>  <span class="token comment"># 必需变量</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+agent <span class="token operator">=</span> create_openai_functions_agent<span class="token punctuation">(</span>
+    tools<span class="token operator">=</span>self<span class="token punctuation">.</span>tools<span class="token punctuation">,</span>
+    llm<span class="token operator">=</span>self<span class="token punctuation">.</span>llm<span class="token punctuation">,</span>
+    prompt<span class="token operator">=</span>prompt
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="如果需要支持多轮对话-添加记忆变量"><a href="#如果需要支持多轮对话-添加记忆变量" class="header-anchor">#</a> 如果需要支持多轮对话，添加记忆变量：</h2> <div class="language-python extra-class"><pre class="language-python"><code>prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_messages<span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>_get_system_prompt<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    MessagesPlaceholder<span class="token punctuation">(</span>variable_name<span class="token operator">=</span><span class="token string">&quot;chat_history&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 记忆变量</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;human&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;{input}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    MessagesPlaceholder<span class="token punctuation">(</span>variable_name<span class="token operator">=</span><span class="token string">&quot;agent_scratchpad&quot;</span><span class="token punctuation">)</span>  <span class="token comment"># 必需变量</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="完整的必需变量模板"><a href="#完整的必需变量模板" class="header-anchor">#</a> 完整的必需变量模板：</h2> <div class="language-python extra-class"><pre class="language-python"><code>prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_messages<span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;system&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;系统提示词&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    MessagesPlaceholder<span class="token punctuation">(</span>variable_name<span class="token operator">=</span><span class="token string">&quot;chat_history&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment"># 可选：记忆</span>
+    <span class="token punctuation">(</span><span class="token string">&quot;human&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;{input}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                                  <span class="token comment"># 必需：用户输入</span>
+    MessagesPlaceholder<span class="token punctuation">(</span>variable_name<span class="token operator">=</span><span class="token string">&quot;agent_scratchpad&quot;</span><span class="token punctuation">)</span>  <span class="token comment"># 必需：Agent思考过程</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>关键是要包含 <code>agent_scratchpad</code> 这个必需的占位符。</strong></p> <h2 id="使用react-agent"><a href="#使用react-agent" class="header-anchor">#</a> 使用ReAct agent</h2> <p>Reasoning + Action 推理+行动</p> <p><code>create_react_agent</code> 是 LangChain 中一个非常强大的工具，它实现了 <strong>ReAct（Reasoning + Acting）</strong> 框架，让 LLM 能够通过&quot;思考-行动&quot;循环来解决问题。</p> <h2 id="🎯-react-代理的核心思想"><a href="#🎯-react-代理的核心思想" class="header-anchor">#</a> 🎯 ReAct 代理的核心思想</h2> <p>ReAct 代理通过交替进行：</p> <ul><li><strong>Reasoning（推理）</strong>：分析当前情况，决定下一步行动</li> <li><strong>Acting（行动）</strong>：执行工具调用与环境交互</li></ul> <h2 id="🔧-基本用法"><a href="#🔧-基本用法" class="header-anchor">#</a> 🔧 基本用法</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> create_react_agent
+<span class="token keyword">from</span> langchain <span class="token keyword">import</span> hub
+<span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> AgentExecutor
+<span class="token keyword">from</span> langchain_community<span class="token punctuation">.</span>tools <span class="token keyword">import</span> Tool
+<span class="token keyword">from</span> langchain_community<span class="token punctuation">.</span>utilities <span class="token keyword">import</span> SerpAPIWrapper
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">import</span> os
+
+<span class="token comment"># 1. 定义工具</span>
+search <span class="token operator">=</span> SerpAPIWrapper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+calculator <span class="token operator">=</span> Tool<span class="token punctuation">(</span>
+    name<span class="token operator">=</span><span class="token string">&quot;Calculator&quot;</span><span class="token punctuation">,</span>
+    func<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">eval</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 简单计算器</span>
+    description<span class="token operator">=</span><span class="token string">&quot;用于数学计算，输入数学表达式如 '2 + 3 * 4'&quot;</span>
+<span class="token punctuation">)</span>
+
+tools <span class="token operator">=</span> <span class="token punctuation">[</span>
+    Tool<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&quot;Search&quot;</span><span class="token punctuation">,</span>
+        func<span class="token operator">=</span>search<span class="token punctuation">.</span>run<span class="token punctuation">,</span>
+        description<span class="token operator">=</span><span class="token string">&quot;用于搜索当前事件或事实信息&quot;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    calculator
+<span class="token punctuation">]</span>
+
+<span class="token comment"># 2. 获取 ReAct 提示模板</span>
+prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;hwchase17/react&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 3. 创建 LLM</span>
+llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo&quot;</span><span class="token punctuation">,</span> temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 4. 创建 ReAct 代理</span>
+agent <span class="token operator">=</span> create_react_agent<span class="token punctuation">(</span>llm<span class="token punctuation">,</span> tools<span class="token punctuation">,</span> prompt<span class="token punctuation">)</span>
+
+<span class="token comment"># 5. 创建代理执行器</span>
+agent_executor <span class="token operator">=</span> AgentExecutor<span class="token punctuation">(</span>
+    agent<span class="token operator">=</span>agent<span class="token punctuation">,</span> 
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span> 
+    verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    handle_parsing_errors<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 6. 运行代理</span>
+result <span class="token operator">=</span> agent_executor<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string">&quot;input&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;姚明现在的身高是多少？用计算器计算他比普通人高多少厘米？&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token string">&quot;output&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="📝-完整工作流程示例"><a href="#📝-完整工作流程示例" class="header-anchor">#</a> 📝 完整工作流程示例</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> create_react_agent<span class="token punctuation">,</span> AgentExecutor
+<span class="token keyword">from</span> langchain <span class="token keyword">import</span> hub
+<span class="token keyword">from</span> langchain_community<span class="token punctuation">.</span>tools <span class="token keyword">import</span> Tool
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> json
+
+<span class="token keyword">class</span> <span class="token class-name">CustomTools</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;自定义工具集&quot;&quot;&quot;</span>
+    
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">get_weather</span><span class="token punctuation">(</span>city<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取天气信息（模拟）&quot;&quot;&quot;</span>
+        weather_data <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;北京&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;晴，15°C&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;上海&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;多云，18°C&quot;</span><span class="token punctuation">,</span> 
+            <span class="token string">&quot;深圳&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;雨，22°C&quot;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> weather_data<span class="token punctuation">.</span>get<span class="token punctuation">(</span>city<span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f&quot;找不到</span><span class="token interpolation"><span class="token punctuation">{</span>city<span class="token punctuation">}</span></span><span class="token string">的天气信息&quot;</span></span><span class="token punctuation">)</span>
+    
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">get_current_time</span><span class="token punctuation">(</span>query<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取当前时间&quot;&quot;&quot;</span>
+        now <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;当前时间是: </span><span class="token interpolation"><span class="token punctuation">{</span>now<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d %H:%M:%S'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
+    
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">currency_converter</span><span class="token punctuation">(</span>amount<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;货币转换（模拟）&quot;&quot;&quot;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            amount_num <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>amount_num<span class="token punctuation">}</span></span><span class="token string"> 美元 ≈ </span><span class="token interpolation"><span class="token punctuation">{</span>amount_num <span class="token operator">*</span> <span class="token number">7.2</span><span class="token punctuation">:</span><span class="token format-spec">.2f</span><span class="token punctuation">}</span></span><span class="token string"> 人民币&quot;</span></span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;请输入有效的金额&quot;</span>
+
+<span class="token comment"># 创建工具列表</span>
+tools <span class="token operator">=</span> <span class="token punctuation">[</span>
+    Tool<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&quot;GetWeather&quot;</span><span class="token punctuation">,</span>
+        func<span class="token operator">=</span>CustomTools<span class="token punctuation">.</span>get_weather<span class="token punctuation">,</span>
+        description<span class="token operator">=</span><span class="token string">&quot;获取城市天气信息，输入格式：'北京'&quot;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Tool<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&quot;GetTime&quot;</span><span class="token punctuation">,</span> 
+        func<span class="token operator">=</span>CustomTools<span class="token punctuation">.</span>get_current_time<span class="token punctuation">,</span>
+        description<span class="token operator">=</span><span class="token string">&quot;获取当前时间，输入格式：'现在几点了'&quot;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Tool<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&quot;CurrencyConverter&quot;</span><span class="token punctuation">,</span>
+        func<span class="token operator">=</span>CustomTools<span class="token punctuation">.</span>currency_converter<span class="token punctuation">,</span> 
+        description<span class="token operator">=</span><span class="token string">&quot;美元转人民币，输入格式：'100'&quot;</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">create_advanced_react_agent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;创建高级 ReAct 代理&quot;&quot;&quot;</span>
+    
+    <span class="token comment"># 加载 ReAct 提示模板</span>
+    prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;hwchase17/react&quot;</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 创建 LLM</span>
+    llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>
+        model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo&quot;</span><span class="token punctuation">,</span>
+        temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
+        openai_api_key<span class="token operator">=</span>os<span class="token punctuation">.</span>getenv<span class="token punctuation">(</span><span class="token string">&quot;OPENAI_API_KEY&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 创建代理</span>
+    agent <span class="token operator">=</span> create_react_agent<span class="token punctuation">(</span>llm<span class="token punctuation">,</span> tools<span class="token punctuation">,</span> prompt<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 创建执行器</span>
+    agent_executor <span class="token operator">=</span> AgentExecutor<span class="token punctuation">(</span>
+        agent<span class="token operator">=</span>agent<span class="token punctuation">,</span>
+        tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+        verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        handle_parsing_errors<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        max_iterations<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>  <span class="token comment"># 最大迭代次数</span>
+        early_stopping_method<span class="token operator">=</span><span class="token string">&quot;generate&quot;</span>  <span class="token comment"># 提前停止策略</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> agent_executor
+
+<span class="token comment"># 使用代理</span>
+<span class="token keyword">def</span> <span class="token function">run_examples</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    agent <span class="token operator">=</span> create_advanced_react_agent<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    examples <span class="token operator">=</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;现在北京天气怎么样？告诉我当前时间，然后计算100美元等于多少人民币？&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;先获取上海天气，再告诉我现在的时间&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;计算50美元能换多少人民币，然后告诉我深圳的天气&quot;</span>
+    <span class="token punctuation">]</span>
+    
+    <span class="token keyword">for</span> i<span class="token punctuation">,</span> example <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>examples<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;\n</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'='</span><span class="token operator">*</span><span class="token number">50</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;示例 </span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>example<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'='</span><span class="token operator">*</span><span class="token number">50</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            result <span class="token operator">=</span> agent<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;input&quot;</span><span class="token punctuation">:</span> example<span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;最终答案: </span><span class="token interpolation"><span class="token punctuation">{</span>result<span class="token punctuation">[</span><span class="token string">'output'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;执行出错: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>
+    run_examples<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="🎨-自定义提示模板"><a href="#🎨-自定义提示模板" class="header-anchor">#</a> 🎨 自定义提示模板</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> PromptTemplate
+
+<span class="token comment"># 自定义 ReAct 提示模板</span>
+custom_react_prompt <span class="token operator">=</span> PromptTemplate<span class="token punctuation">(</span>
+    template<span class="token operator">=</span><span class="token triple-quoted-string string">&quot;&quot;&quot;你是一个智能助手，能够使用工具解决问题。按照以下格式回答：
+
+问题: {input}
+
+思考: 我需要分析问题并决定使用哪个工具
+行动: 工具名称
+行动输入: 工具输入
+观察: 工具返回的结果
+
+...（这个循环可以重复多次）
+
+思考: 我现在有足够信息回答问题了
+最终答案: 最终答案
+
+开始！
+
+问题: {input}
+{agent_scratchpad}&quot;&quot;&quot;</span><span class="token punctuation">,</span>
+    input_variables<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">&quot;input&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;agent_scratchpad&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 使用自定义提示创建代理</span>
+custom_agent <span class="token operator">=</span> create_react_agent<span class="token punctuation">(</span>
+    llm<span class="token operator">=</span>llm<span class="token punctuation">,</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span> 
+    prompt<span class="token operator">=</span>custom_react_prompt
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="🔧-高级配置选项"><a href="#🔧-高级配置选项" class="header-anchor">#</a> 🔧 高级配置选项</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>agents <span class="token keyword">import</span> AgentExecutor
+
+<span class="token keyword">def</span> <span class="token function">create_robust_react_agent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;创建健壮的 ReAct 代理&quot;&quot;&quot;</span>
+    
+    prompt <span class="token operator">=</span> hub<span class="token punctuation">.</span>pull<span class="token punctuation">(</span><span class="token string">&quot;hwchase17/react&quot;</span><span class="token punctuation">)</span>
+    llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">&quot;gpt-3.5-turbo&quot;</span><span class="token punctuation">,</span> temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+    
+    agent <span class="token operator">=</span> create_react_agent<span class="token punctuation">(</span>llm<span class="token punctuation">,</span> tools<span class="token punctuation">,</span> prompt<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 高级执行器配置</span>
+    agent_executor <span class="token operator">=</span> AgentExecutor<span class="token punctuation">(</span>
+        agent<span class="token operator">=</span>agent<span class="token punctuation">,</span>
+        tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+        verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        handle_parsing_errors<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        max_iterations<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span>           <span class="token comment"># 增加最大迭代次数</span>
+        max_execution_time<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span>      <span class="token comment"># 最大执行时间（秒）</span>
+        early_stopping_method<span class="token operator">=</span><span class="token string">&quot;generate&quot;</span><span class="token punctuation">,</span>
+        return_intermediate_steps<span class="token operator">=</span><span class="token boolean">True</span>  <span class="token comment"># 返回中间步骤</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> agent_executor
+
+<span class="token comment"># 使用并分析中间步骤</span>
+agent <span class="token operator">=</span> create_robust_react_agent<span class="token punctuation">(</span><span class="token punctuation">)</span>
+result <span class="token operator">=</span> agent<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string">&quot;input&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;查询北京天气，然后计算如果去旅游需要准备多少预算，假设每天花费100美元，玩3天&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;最终答案:&quot;</span><span class="token punctuation">,</span> result<span class="token punctuation">[</span><span class="token string">&quot;output&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n中间步骤分析:&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> step <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&quot;intermediate_steps&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;步骤 </span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>step<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="🛠️-错误处理与调试"><a href="#🛠️-错误处理与调试" class="header-anchor">#</a> 🛠️ 错误处理与调试</h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">safe_agent_invoke</span><span class="token punctuation">(</span>agent<span class="token punctuation">,</span> query<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;安全的代理调用&quot;&quot;&quot;</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> agent<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;input&quot;</span><span class="token punctuation">:</span> query<span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">[</span><span class="token string">&quot;output&quot;</span><span class="token punctuation">]</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&quot;代理执行出错: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
+
+<span class="token comment"># 测试各种边界情况</span>
+test_queries <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;这是一个简单问题&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 不需要工具</span>
+    <span class="token string">&quot;查询不存在的城市天气&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 工具返回错误</span>
+    <span class="token string">&quot;计算无效表达式&quot;</span><span class="token punctuation">,</span>  <span class="token comment"># 工具执行错误</span>
+    <span class="token string">&quot;需要多步推理的复杂问题&quot;</span>  <span class="token comment"># 正常流程</span>
+<span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> query <span class="token keyword">in</span> test_queries<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;\n查询: </span><span class="token interpolation"><span class="token punctuation">{</span>query<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+    result <span class="token operator">=</span> safe_agent_invoke<span class="token punctuation">(</span>agent<span class="token punctuation">,</span> query<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;结果: </span><span class="token interpolation"><span class="token punctuation">{</span>result<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="💡-最佳实践建议"><a href="#💡-最佳实践建议" class="header-anchor">#</a> 💡 最佳实践建议</h2> <h3 id="_1-工具设计原则"><a href="#_1-工具设计原则" class="header-anchor">#</a> 1. <strong>工具设计原则</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 好的工具描述</span>
+good_tool <span class="token operator">=</span> Tool<span class="token punctuation">(</span>
+    name<span class="token operator">=</span><span class="token string">&quot;Weather&quot;</span><span class="token punctuation">,</span>
+    func<span class="token operator">=</span>get_weather<span class="token punctuation">,</span>
+    description<span class="token operator">=</span><span class="token string">&quot;获取指定城市的当前天气情况。输入: 城市名称，如'北京'&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 不好的工具描述  </span>
+bad_tool <span class="token operator">=</span> Tool<span class="token punctuation">(</span>
+    name<span class="token operator">=</span><span class="token string">&quot;Weather&quot;</span><span class="token punctuation">,</span>
+    func<span class="token operator">=</span>get_weather<span class="token punctuation">,</span>
+    description<span class="token operator">=</span><span class="token string">&quot;天气工具&quot;</span>  <span class="token comment"># 太模糊</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_2-提示工程技巧"><a href="#_2-提示工程技巧" class="header-anchor">#</a> 2. <strong>提示工程技巧</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 在提示中添加领域知识</span>
+domain_specific_prompt <span class="token operator">=</span> prompt<span class="token punctuation">.</span>partial<span class="token punctuation">(</span>
+    domain_knowledge<span class="token operator">=</span><span class="token string">&quot;你是一个旅游助手，专门帮助用户规划旅行。&quot;</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_3-性能优化"><a href="#_3-性能优化" class="header-anchor">#</a> 3. <strong>性能优化</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 限制工具调用次数</span>
+agent_executor <span class="token operator">=</span> AgentExecutor<span class="token punctuation">(</span>
+    agent<span class="token operator">=</span>agent<span class="token punctuation">,</span>
+    tools<span class="token operator">=</span>tools<span class="token punctuation">,</span>
+    max_iterations<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>  <span class="token comment"># 避免无限循环</span>
+    early_stopping_method<span class="token operator">=</span><span class="token string">&quot;generate&quot;</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="🎯-典型应用场景"><a href="#🎯-典型应用场景" class="header-anchor">#</a> 🎯 典型应用场景</h2> <h3 id="_1-数据分析代理"><a href="#_1-数据分析代理" class="header-anchor">#</a> 1. <strong>数据分析代理</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code>tools <span class="token operator">=</span> <span class="token punctuation">[</span>
+    Tool<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;查询数据库&quot;</span><span class="token punctuation">,</span> func<span class="token operator">=</span>query_db<span class="token punctuation">,</span> description<span class="token operator">=</span><span class="token string">&quot;执行SQL查询&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Tool<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;数据统计&quot;</span><span class="token punctuation">,</span> func<span class="token operator">=</span>calculate_stats<span class="token punctuation">,</span> description<span class="token operator">=</span><span class="token string">&quot;计算统计指标&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Tool<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;生成图表&quot;</span><span class="token punctuation">,</span> func<span class="token operator">=</span>generate_plot<span class="token punctuation">,</span> description<span class="token operator">=</span><span class="token string">&quot;创建数据可视化&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+
+agent <span class="token operator">=</span> create_react_agent<span class="token punctuation">(</span>llm<span class="token punctuation">,</span> tools<span class="token punctuation">,</span> prompt<span class="token punctuation">)</span>
+result <span class="token operator">=</span> agent<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;input&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;分析上个月销售数据，找出最畅销的产品并生成趋势图&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_2-客户服务代理"><a href="#_2-客户服务代理" class="header-anchor">#</a> 2. <strong>客户服务代理</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code>tools <span class="token operator">=</span> <span class="token punctuation">[</span>
+    Tool<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;查询订单&quot;</span><span class="token punctuation">,</span> func<span class="token operator">=</span>lookup_order<span class="token punctuation">,</span> description<span class="token operator">=</span><span class="token string">&quot;根据订单号查询订单状态&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Tool<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;检查库存&quot;</span><span class="token punctuation">,</span> func<span class="token operator">=</span>check_inventory<span class="token punctuation">,</span> description<span class="token operator">=</span><span class="token string">&quot;查询产品库存&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Tool<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;创建工单&quot;</span><span class="token punctuation">,</span> func<span class="token operator">=</span>create_ticket<span class="token punctuation">,</span> description<span class="token operator">=</span><span class="token string">&quot;创建客服工单&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p><strong>总结</strong>：<code>create_react_agent</code> 提供了一个强大的框架，让 LLM 能够通过工具使用和环境交互来解决复杂问题。关键是设计好工具集、优化提示模板，并合理配置执行参数。</p> <h2 id="代码结构分析"><a href="#代码结构分析" class="header-anchor">#</a> 代码结构分析</h2> <p>您的代码结构是正确的，分为两个主要部分：</p> <h3 id="_1-indexing-索引构建-部分-✅"><a href="#_1-indexing-索引构建-部分-✅" class="header-anchor">#</a> 1. INDEXING（索引构建）部分 ✅</h3> <ul><li><strong>文档加载</strong>: 使用 <code>WebBaseLoader</code> 正确加载了网页内容</li> <li><strong>文本分割</strong>: 使用 <code>RecursiveCharacterTextSplitter</code> 适当分割文档</li> <li><strong>向量化</strong>: 使用 <code>HuggingFaceEmbeddings</code> 和本地模型 <code>bge-large-zh-v1.5</code></li> <li><strong>向量存储</strong>: 使用 <code>Chroma</code> 存储向量，创建检索器</li></ul> <h3 id="_2-retrieval-and-generation-检索与生成-部分-✅"><a href="#_2-retrieval-and-generation-检索与生成-部分-✅" class="header-anchor">#</a> 2. RETRIEVAL and GENERATION（检索与生成）部分 ✅</h3> <ul><li><strong>提示词</strong>: 从 LangChain Hub 拉取 RAG 提示模板</li> <li><strong>LLM 配置</strong>: 正确配置了 DeepSeek API</li> <li><strong>处理链</strong>: 构建了标准的 RAG 流程：检索 → 格式化 → 提示 → LLM → 输出解析</li> <li><strong>执行</strong>: 使用 <code>chain.invoke</code> 执行处理链，获取模型输出</li></ul></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#langchain-agent" class="sidebar-link reco-side-langchain-agent" data-v-b57cc07c>langchain Agent</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#一、核心思想-从-工具-到-大脑" class="sidebar-link reco-side-一、核心思想-从-工具-到-大脑" data-v-b57cc07c>一、核心思想：从“工具”到“大脑”</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#二、agent-的关键组成部分" class="sidebar-link reco-side-二、agent-的关键组成部分" data-v-b57cc07c>二、Agent 的关键组成部分</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#三、agent-的工作流程-react-框架" class="sidebar-link reco-side-三、agent-的工作流程-react-框架" data-v-b57cc07c>三、Agent 的工作流程（ReAct 框架）</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#四、代码示例-创建一个简单的-agent" class="sidebar-link reco-side-四、代码示例-创建一个简单的-agent" data-v-b57cc07c>四、代码示例：创建一个简单的 Agent</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#五、总结-agent-的优势与挑战" class="sidebar-link reco-side-五、总结-agent-的优势与挑战" data-v-b57cc07c>五、总结：Agent 的优势与挑战</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_1-langchain-agent的概念" class="sidebar-link reco-side-_1-langchain-agent的概念" data-v-b57cc07c>1. langchain Agent的概念?</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_2-核心概念" class="sidebar-link reco-side-_2-核心概念" data-v-b57cc07c>2. 核心概念</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_3-关键特性" class="sidebar-link reco-side-_3-关键特性" data-v-b57cc07c>3. 关键特性</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#langchain-memory" class="sidebar-link reco-side-langchain-memory" data-v-b57cc07c>LangChain Memory</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_1-from-langchain-memory-import-conversationbuffermemory" class="sidebar-link reco-side-_1-from-langchain-memory-import-conversationbuffermemory" data-v-b57cc07c>1. from langchain.memory import ConversationBufferMemory</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_2-from-langchain-agents-import-agenttype-initialize-agent-tool" class="sidebar-link reco-side-_2-from-langchain-agents-import-agenttype-initialize-agent-tool" data-v-b57cc07c>2. from langchain.agents import AgentType, initialize_agent, Tool</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_1-agenttype-agent类型枚举" class="sidebar-link reco-side-_1-agenttype-agent类型枚举" data-v-b57cc07c>1. AgentType - Agent类型枚举</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#作用" class="sidebar-link reco-side-作用" data-v-b57cc07c>作用：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#常用的agenttype" class="sidebar-link reco-side-常用的agenttype" data-v-b57cc07c>常用的AgentType：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#各种类型的特点" class="sidebar-link reco-side-各种类型的特点" data-v-b57cc07c>各种类型的特点：</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_2-tool-工具类" class="sidebar-link reco-side-_2-tool-工具类" data-v-b57cc07c>2. Tool - 工具类</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#作用-2" class="sidebar-link reco-side-作用-2" data-v-b57cc07c>作用：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#基本用法" class="sidebar-link reco-side-基本用法" data-v-b57cc07c>基本用法：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#tool参数说明" class="sidebar-link reco-side-tool参数说明" data-v-b57cc07c>Tool参数说明：</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_3-initialize-agent-初始化agent" class="sidebar-link reco-side-_3-initialize-agent-初始化agent" data-v-b57cc07c>3. initialize_agent - 初始化Agent</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#作用-3" class="sidebar-link reco-side-作用-3" data-v-b57cc07c>作用：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#基本用法-2" class="sidebar-link reco-side-基本用法-2" data-v-b57cc07c>基本用法：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#完整参数示例" class="sidebar-link reco-side-完整参数示例" data-v-b57cc07c>完整参数示例：</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_4-版本信息" class="sidebar-link reco-side-_4-版本信息" data-v-b57cc07c>4. 版本信息</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#initialize-agent-所在的langchain版本" class="sidebar-link reco-side-initialize-agent-所在的langchain版本" data-v-b57cc07c>initialize_agent 所在的LangChain版本：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#当前推荐的使用方式" class="sidebar-link reco-side-当前推荐的使用方式" data-v-b57cc07c>当前推荐的使用方式：</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#检查你的langchain版本" class="sidebar-link reco-side-检查你的langchain版本" data-v-b57cc07c>检查你的LangChain版本：</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_5-完整工作示例" class="sidebar-link reco-side-_5-完整工作示例" data-v-b57cc07c>5. 完整工作示例</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#总结" class="sidebar-link reco-side-总结" data-v-b57cc07c>总结</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#如何使用langchain-的各个核心组件" class="sidebar-link reco-side-如何使用langchain-的各个核心组件" data-v-b57cc07c>如何使用langchain 的各个核心组件</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#注意langchain-不同版本-initialize-agent-函数的参数可能会有差异-建议查看对应版本的文档。" class="sidebar-link reco-side-注意langchain-不同版本-initialize-agent-函数的参数可能会有差异-建议查看对应版本的文档。" data-v-b57cc07c>注意langchain 不同版本，initialize_agent 函数的参数可能会有差异，建议查看对应版本的文档。</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#版本兼容性对照表" class="sidebar-link reco-side-版本兼容性对照表" data-v-b57cc07c>版本兼容性对照表</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#查看langchain-版本" class="sidebar-link reco-side-查看langchain-版本" data-v-b57cc07c>查看langchain 版本</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#使用-create-openai-functions-agent" class="sidebar-link reco-side-使用-create-openai-functions-agent" data-v-b57cc07c>使用： createopenaifunctions_agent</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#新版本方式" class="sidebar-link reco-side-新版本方式" data-v-b57cc07c>新版本方式</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#提示词模板缺少必需的-agent-scratchpad-变量" class="sidebar-link reco-side-提示词模板缺少必需的-agent-scratchpad-变量" data-v-b57cc07c>提示词模板缺少必需的 agent_scratchpad 变量</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#修复方案" class="sidebar-link reco-side-修复方案" data-v-b57cc07c>修复方案</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#如果需要支持多轮对话-添加记忆变量" class="sidebar-link reco-side-如果需要支持多轮对话-添加记忆变量" data-v-b57cc07c>如果需要支持多轮对话，添加记忆变量：</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#完整的必需变量模板" class="sidebar-link reco-side-完整的必需变量模板" data-v-b57cc07c>完整的必需变量模板：</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#使用react-agent" class="sidebar-link reco-side-使用react-agent" data-v-b57cc07c>使用ReAct agent</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#🎯-react-代理的核心思想" class="sidebar-link reco-side-🎯-react-代理的核心思想" data-v-b57cc07c>🎯 ReAct 代理的核心思想</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#🔧-基本用法" class="sidebar-link reco-side-🔧-基本用法" data-v-b57cc07c>🔧 基本用法</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#📝-完整工作流程示例" class="sidebar-link reco-side-📝-完整工作流程示例" data-v-b57cc07c>📝 完整工作流程示例</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#🎨-自定义提示模板" class="sidebar-link reco-side-🎨-自定义提示模板" data-v-b57cc07c>🎨 自定义提示模板</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#🔧-高级配置选项" class="sidebar-link reco-side-🔧-高级配置选项" data-v-b57cc07c>🔧 高级配置选项</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#🛠️-错误处理与调试" class="sidebar-link reco-side-🛠️-错误处理与调试" data-v-b57cc07c>🛠️ 错误处理与调试</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#💡-最佳实践建议" class="sidebar-link reco-side-💡-最佳实践建议" data-v-b57cc07c>💡 最佳实践建议</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_1-工具设计原则" class="sidebar-link reco-side-_1-工具设计原则" data-v-b57cc07c>1. 工具设计原则</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_2-提示工程技巧" class="sidebar-link reco-side-_2-提示工程技巧" data-v-b57cc07c>2. 提示工程技巧</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_3-性能优化" class="sidebar-link reco-side-_3-性能优化" data-v-b57cc07c>3. 性能优化</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#🎯-典型应用场景" class="sidebar-link reco-side-🎯-典型应用场景" data-v-b57cc07c>🎯 典型应用场景</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_1-数据分析代理" class="sidebar-link reco-side-_1-数据分析代理" data-v-b57cc07c>1. 数据分析代理</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_2-客户服务代理" class="sidebar-link reco-side-_2-客户服务代理" data-v-b57cc07c>2. 客户服务代理</a></li><li class="level-2" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#代码结构分析" class="sidebar-link reco-side-代码结构分析" data-v-b57cc07c>代码结构分析</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_1-indexing-索引构建-部分-✅" class="sidebar-link reco-side-_1-indexing-索引构建-部分-✅" data-v-b57cc07c>1. INDEXING（索引构建）部分 ✅</a></li><li class="level-3" data-v-b57cc07c><a href="/hmblog/modelstudy/langchain-study.html#_2-retrieval-and-generation-检索与生成-部分-✅" class="sidebar-link reco-side-_2-retrieval-and-generation-检索与生成-部分-✅" data-v-b57cc07c>2. RETRIEVAL and GENERATION（检索与生成）部分 ✅</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/hmblog/assets/js/app.d50dda49.js" defer></script><script src="/hmblog/assets/js/7.5041dce4.js" defer></script><script src="/hmblog/assets/js/2.79670d2b.js" defer></script><script src="/hmblog/assets/js/1.1d6abb18.js" defer></script><script src="/hmblog/assets/js/87.36078833.js" defer></script><script src="/hmblog/assets/js/34.b26cede8.js" defer></script>
+  </body>
+</html>
